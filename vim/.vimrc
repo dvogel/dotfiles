@@ -28,7 +28,7 @@ set showmatch
 set laststatus=2
 set hidden
 set wildmenu
-set wildmode=full
+set wildmode=longest:list
 set title
 set scrolloff=1
 set wildignore=*.o,*.hi
