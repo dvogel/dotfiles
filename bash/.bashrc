@@ -15,6 +15,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=5000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -35,6 +36,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
+    screen-256color) color_prompt=yes;;
     xterm-color) color_prompt=yes;;
 esac
 
