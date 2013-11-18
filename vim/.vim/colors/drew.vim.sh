@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname $(readlink -f "$0"))
+
 (cat | sed -r \
     -e 's/_cyan/#10b2c0/g' \
     -e 's/_aqua/#0e8f9b/g' \
@@ -140,11 +142,26 @@ hi rubyPseudoVariable gui=NONE guifg=_mtdew
 hi link rubyDefine Statement
 hi link rubyClass Statement
 
+hi link javaScriptFuncKeyword Function
+hi javaScriptGlobalObjects guifg=_teal
+hi javaScriptOpSymbols guifg=_babyyellow
+hi javaScriptParens guifg=_tan
+hi javaScriptBraces guifg=_orange
+hi javaScriptEndColons guifg=_ltblue
+hi link javaScriptFuncArg Normal
+hi javaScriptFuncComma guifg=_orange
+hi link javaScriptString String
+hi javaScriptRegexpString guifg=_tan
+hi javaScriptNumber guifg=_cyan
+hi javaScriptFloat guifg=_cyan
+
 hi Function gui=NONE guifg=_ltblue
 hi Statement gui=NONE guifg=_orange
 hi Exception gui=NONE guifg=_babyyellow
 hi Repeat gui=NONE guifg=_babyyellow
 hi Conditional gui=NONE guifg=_babyyellow
+hi String gui=NONE guifg=_firebrick
+
 
 ENDOFSCHEME
 wait

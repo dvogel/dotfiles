@@ -117,9 +117,24 @@ hi rubyPseudoVariable gui=NONE guifg=#c6d80e
 hi link rubyDefine Statement
 hi link rubyClass Statement
 
+hi link javaScriptFuncKeyword Function
+hi javaScriptGlobalObjects guifg=#126d67
+hi javaScriptOpSymbols guifg=#fbe572
+hi javaScriptParens guifg=#c77624
+hi javaScriptBraces guifg=#e35c0f
+hi javaScriptEndColons guifg=#208ec8
+hi link javaScriptFuncArg Normal
+hi javaScriptFuncComma guifg=#e35c0f
+hi link javaScriptString String
+hi javaScriptRegexpString guifg=#c77624
+hi javaScriptNumber guifg=#10b2c0
+hi javaScriptFloat guifg=#10b2c0
+
 hi Function gui=NONE guifg=#208ec8
 hi Statement gui=NONE guifg=#e35c0f
 hi Exception gui=NONE guifg=#fbe572
 hi Repeat gui=NONE guifg=#fbe572
 hi Conditional gui=NONE guifg=#fbe572
+hi String gui=NONE guifg=#c53534
+
 
