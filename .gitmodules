@@ -7,3 +7,6 @@
 [submodule "vim/.vim/bundle/vim-clojure-static"]
 	path = vim/.vim/bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
+[submodule "vim/vim/.vim/bundle/vim-javascript-syntax"]
+	path = vim/vim/.vim/bundle/vim-javascript-syntax
+	url = https://github.com/jelera/vim-javascript-syntax
