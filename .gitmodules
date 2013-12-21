@@ -4,3 +4,6 @@
 [submodule "vim/.vim/bundle/vim-classpath"]
 	path = vim/.vim/bundle/vim-classpath
 	url = git://github.com/tpope/vim-classpath.git
+[submodule "vim/.vim/bundle/vim-clojure-static"]
+	path = vim/.vim/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
