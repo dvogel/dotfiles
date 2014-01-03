@@ -10,3 +10,6 @@
 [submodule "vim/vim/.vim/bundle/vim-javascript-syntax"]
 	path = vim/vim/.vim/bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax
+[submodule "vim/.vim/bundle/ctrlp.vim"]
+	path = vim/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
