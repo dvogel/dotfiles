@@ -162,6 +162,25 @@ hi Repeat gui=NONE guifg=_babyyellow
 hi Conditional gui=NONE guifg=_babyyellow
 hi String gui=NONE guifg=_firebrick
 
+hi jsonBoolean gui=NONE guifg=_skyblue
+hi jsonEscape gui=NONE guifg=_skyblue
+hi jsonKeywordMatch gui=NONE guifg=_babyyellow
+hi jsonNoQuotes gui=reverse guifg=_red
+hi jsonNull gui=NONE guifg=_mtdew
+hi jsonNumber gui=NONE guifg=_green
+hi jsonQuote gui=NONE guifg=_red
+hi jsonString gui=NONE guifg=_firebrick
+hi jsonBraces gui=NONE guifg=_babyyellow
+hi jsonFold gui=NONE guifg=_purple
+hi jsonKeywordRegion gui=NONE guifg=_orange
+hi jsonNoise gui=NONE guifg=_babyyellow
+hi jsonPadding gui=NONE guifg=_purple
+hi jsonStringSQ gui=NONE guifg=_red
+hi jsonCommaError gui=reverse guifg=_red
+hi jsonCommentError gui=reverse guifg=_red
+hi jsonNumError gui=reverse guifg=_red
+hi jsonSemicolonError gui=reverse guifg=_red
+
 
 ENDOFSCHEME
 wait

@@ -137,4 +137,23 @@ hi Repeat gui=NONE guifg=#fbe572
 hi Conditional gui=NONE guifg=#fbe572
 hi String gui=NONE guifg=#c53534
 
+hi jsonBoolean gui=NONE guifg=#9cd7eb
+hi jsonEscape gui=NONE guifg=#9cd7eb
+hi jsonKeywordMatch gui=NONE guifg=#fbe572
+hi jsonNoQuotes gui=reverse guifg=#cb3725
+hi jsonNull gui=NONE guifg=#c6d80e
+hi jsonNumber gui=NONE guifg=#379f4d
+hi jsonQuote gui=NONE guifg=#cb3725
+hi jsonString gui=NONE guifg=#c53534
+hi jsonBraces gui=NONE guifg=#fbe572
+hi jsonFold gui=NONE guifg=#b294bb
+hi jsonKeywordRegion gui=NONE guifg=#e35c0f
+hi jsonNoise gui=NONE guifg=#fbe572
+hi jsonPadding gui=NONE guifg=#b294bb
+hi jsonStringSQ gui=NONE guifg=#cb3725
+hi jsonCommaError gui=reverse guifg=#cb3725
+hi jsonCommentError gui=reverse guifg=#cb3725
+hi jsonNumError gui=reverse guifg=#cb3725
+hi jsonSemicolonError gui=reverse guifg=#cb3725
+
 

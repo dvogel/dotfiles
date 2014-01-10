@@ -166,3 +166,8 @@ highlight PmenuThumb ctermbg=14 ctermbg=14 guibg=#ffff00 guifg=#00ffff
 highlight Search guifg=#bbbb00 guibg=#000000 gui=bold
 
 let python_highlight_all = 1
+let g:vim_json_syntax_conceal = 0
+
+com! FormatJSON %!python -m json.tool
+map <leader>jf <Esc>:FormatJSON<CR>
+
