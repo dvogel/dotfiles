@@ -3,26 +3,28 @@
 cd $(dirname $(readlink -f "$0"))
 
 (cat | sed -r \
-    -e 's/_cyan/#10b2c0/g' \
-    -e 's/_aqua/#0e8f9b/g' \
-    -e 's/_blue/#0e689d/g' \
-    -e 's/_tan/#c77624/g' \
-    -e 's/_red/#cb3725/g' \
-    -e 's/_firebrick/#c53534/g' \
-    -e 's/_pink/#cf2152/g' \
-    -e 's/_purple/#b294bb/g' \
-    -e 's/_green/#379f4d/g' \
-    -e 's/_brown/#642e0e/g' \
-    -e 's/_orange/#e35c0f/g' \
-    -e 's/_teal/#126d67/g' \
-    -e 's/_mtdew/#c6d80e/g' \
-    -e 's/_ltblue/#208ec8/g' \
-    -e 's/_skyblue/#9cd7eb/g' \
+          -e 's/_cyan/#10b2c0/g' \
+          -e 's/_aqua/#0e8f9b/g' \
+          -e 's/_blue/#0e689d/g' \
+           -e 's/_tan/#c77624/g' \
+           -e 's/_red/#cb3725/g' \
+    -e 's/_watermelon/#ee1122/g' \
+     -e 's/_firebrick/#c53534/g' \
+          -e 's/_pink/#cf2152/g' \
+        -e 's/_purple/#b294bb/g' \
+         -e 's/_green/#379f4d/g' \
+         -e 's/_brown/#642e0e/g' \
+        -e 's/_orange/#e35c0f/g' \
+          -e 's/_teal/#126d67/g' \
+         -e 's/_mtdew/#c6d80e/g' \
+        -e 's/_ltblue/#208ec8/g' \
+       -e 's/_skyblue/#9cd7eb/g' \
     -e 's/_babyyellow/#fbe572/g' \
-    -e 's/_white/#dfdfdf/g' \
-    -e 's/_ltgray/#c5c8c6/g' \
-    -e 's/_darkgray/#5e6164/g' \
+         -e 's/_white/#dfdfdf/g' \
+        -e 's/_ltgray/#c5c8c6/g' \
+      -e 's/_darkgray/#5e6164/g' \
     -e 's/_background/#000000/g' > drew.vim) <<ENDOFSCHEME
+
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -134,6 +136,7 @@ hi pythonPreCondit guifg=_orange
 hi pythonDocTest guifg=_skyblue
 hi pythonDocTest2 guifg=_skyblue
 
+hi rubyBoolean gui=NONE guifg=_watermelon
 hi rubySymbol gui=NONE guifg=_orange
 hi rubyString gui=NONE guifg=_firebrick
 hi rubyConstant gui=NONE guifg=_ltblue

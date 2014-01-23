@@ -1,3 +1,4 @@
+
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -109,6 +110,7 @@ hi pythonPreCondit guifg=#e35c0f
 hi pythonDocTest guifg=#9cd7eb
 hi pythonDocTest2 guifg=#9cd7eb
 
+hi rubyBoolean gui=NONE guifg=#ee1122
 hi rubySymbol gui=NONE guifg=#e35c0f
 hi rubyString gui=NONE guifg=#c53534
 hi rubyConstant gui=NONE guifg=#208ec8

@@ -22,3 +22,6 @@
 [submodule "vim/.vim/bundle/EvalSelection.vim"]
 	path = vim/.vim/bundle/EvalSelection.vim
 	url = https://github.com/vim-scripts/EvalSelection.vim.git
+[submodule "vim/.vim/bundle/colorizer"]
+	path = vim/.vim/bundle/colorizer
+	url = https://github.com/lilydjwg/colorizer.git
