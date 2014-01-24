@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ft=vim
 
 cd $(dirname $(readlink -f "$0"))
 
@@ -165,25 +166,29 @@ hi Repeat gui=NONE guifg=_babyyellow
 hi Conditional gui=NONE guifg=_babyyellow
 hi String gui=NONE guifg=_firebrick
 
-hi jsonBoolean gui=NONE guifg=_skyblue
-hi jsonEscape gui=NONE guifg=_skyblue
-hi jsonKeywordMatch gui=NONE guifg=_babyyellow
-hi jsonNoQuotes gui=reverse guifg=_red
-hi jsonNull gui=NONE guifg=_mtdew
-hi jsonNumber gui=NONE guifg=_green
-hi jsonQuote gui=NONE guifg=_red
-hi jsonString gui=NONE guifg=_firebrick
-hi jsonBraces gui=NONE guifg=_babyyellow
-hi jsonFold gui=NONE guifg=_purple
-hi jsonKeywordRegion gui=NONE guifg=_orange
-hi jsonNoise gui=NONE guifg=_babyyellow
-hi jsonPadding gui=NONE guifg=_purple
-hi jsonStringSQ gui=NONE guifg=_red
-hi jsonCommaError gui=reverse guifg=_red
-hi jsonCommentError gui=reverse guifg=_red
-hi jsonNumError gui=reverse guifg=_red
-hi jsonSemicolonError gui=reverse guifg=_red
+hi jsonBoolean gui=NONE guifg=_skyblue ctermfg=LightBlue
+hi jsonEscape gui=NONE guifg=_skyblue ctermfg=LightBlue
+hi jsonKeywordMatch gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi jsonNoQuotes gui=reverse guifg=_red cterm=reverse ctermfg=Red
+hi jsonNull gui=NONE guifg=_mtdew ctermfg=Yellow
+hi jsonNumber gui=NONE guifg=_green ctermfg=Green
+hi jsonQuote gui=NONE guifg=_red ctermfg=LightRed
+hi jsonString gui=NONE guifg=_firebrick ctermfg=DarkRed
+hi jsonBraces gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi jsonFold gui=NONE guifg=_purple ctermfg=Magenta
+hi jsonKeywordRegion gui=NONE guifg=_orange ctermfg=Brown
+hi jsonNoise gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi jsonPadding gui=NONE guifg=_purple ctermfg=Magenta
+hi jsonStringSQ gui=NONE guifg=_red ctermfg=LightRed
+hi jsonCommaError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
+hi jsonCommentError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
+hi jsonNumError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
+hi jsonSemicolonError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 
+hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
+hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
+hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
+hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
 
 ENDOFSCHEME
 wait
