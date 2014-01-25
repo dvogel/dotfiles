@@ -25,3 +25,21 @@
 [submodule "vim/.vim/bundle/neocomplcache.vim"]
 	path = vim/.vim/bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+    url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/.vim/bundle/vim-fugitive"]
+    path = vim/.vim/bundle/vim-fugitive
+    url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/bundle/vim-indent-guides"]
+    path = vim/.vim/bundle/vim-indent-guides
+    url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim/.vim/bundle/vim-ruby"]
+    path = vim/.vim/bundle/vim-ruby
+    url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/.vim/bundle/vim-surround"]
+    path = vim/.vim/bundle/vim-surround
+    url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/bundle/vimroom"]
+    path = vim/.vim/bundle/vimroom
+    url = https://github.com/mikewest/vimroom.git
