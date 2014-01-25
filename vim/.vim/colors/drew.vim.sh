@@ -158,6 +158,17 @@ hi javaScriptRegexpString guifg=_tan
 hi javaScriptNumber guifg=_cyan
 hi javaScriptFloat guifg=_cyan
 
+hi link markdownH1 Identifier
+hi link markdownH2 Identifier
+hi link markdownH3 Identifier
+hi link markdownH4 Identifier
+hi link markdownH5 Identifier
+hi link markdownH6 Identifier
+hi link markdownCode Function
+hi link markdownCodeBlock Function
+hi link markdownHeadingDelimiter Statement
+hi link markdownHeadingRule Statement
+
 hi Function gui=NONE guifg=_ltblue
 hi Statement gui=NONE guifg=_orange
 hi Exception gui=NONE guifg=_babyyellow
