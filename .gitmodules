@@ -7,9 +7,6 @@
 [submodule "vim/.vim/bundle/vim-clojure-static"]
 	path = vim/.vim/bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
-[submodule "vim/vim/.vim/bundle/vim-javascript-syntax"]
-	path = vim/vim/.vim/bundle/vim-javascript-syntax
-	url = https://github.com/jelera/vim-javascript-syntax
 [submodule "vim/.vim/bundle/ctrlp.vim"]
 	path = vim/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
@@ -25,3 +22,6 @@
 [submodule "vim/.vim/bundle/colorizer"]
 	path = vim/.vim/bundle/colorizer
 	url = https://github.com/lilydjwg/colorizer.git
+[submodule "vim/.vim/bundle/neocomplcache.vim"]
+	path = vim/.vim/bundle/neocomplcache.vim
+	url = https://github.com/Shougo/neocomplcache.vim.git
