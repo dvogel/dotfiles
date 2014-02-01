@@ -132,6 +132,17 @@ hi javaScriptRegexpString guifg=#c77624
 hi javaScriptNumber guifg=#10b2c0
 hi javaScriptFloat guifg=#10b2c0
 
+hi link markdownH1 Identifier
+hi link markdownH2 Identifier
+hi link markdownH3 Identifier
+hi link markdownH4 Identifier
+hi link markdownH5 Identifier
+hi link markdownH6 Identifier
+hi link markdownCode Function
+hi link markdownCodeBlock Function
+hi link markdownHeadingDelimiter Statement
+hi link markdownHeadingRule Statement
+
 hi Function gui=NONE guifg=#208ec8
 hi Statement gui=NONE guifg=#e35c0f
 hi Exception gui=NONE guifg=#fbe572
