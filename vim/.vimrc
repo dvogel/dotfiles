@@ -32,7 +32,7 @@ set wildmode=longest:list
 set title
 set scrolloff=1
 set wildignore=*.o,*.hi
-set guioptions=PegimrLtT
+set guioptions=Pegit
 set splitbelow
 set splitright
 set conceallevel=2
