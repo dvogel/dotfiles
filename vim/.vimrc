@@ -156,7 +156,7 @@ highlight PMenuSel ctermbg=Magenta ctermfg=Gray
 
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_space_guides = 1
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 augroup filetype
   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex
