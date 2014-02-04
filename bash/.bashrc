@@ -53,10 +53,18 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+function __rails_env () {
+    if [ -z "$RAILS_ENV" ]; then
+        echo ""
+    else
+        echo " (rails:${RAILS_ENV})"
+    fi
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\[\033[31m\]$(__rails_env)\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}$(__rails_env)\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
