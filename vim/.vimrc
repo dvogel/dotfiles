@@ -180,6 +180,8 @@ highlight Search guifg=#bbbb00 guibg=#000000 gui=bold
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
 
+let g:evalSelectionRubyDir = $HOME."/.vim/bundle/EvalSelection.vim/ruby/"
+
 com! FormatJSON %!python -m json.tool
 map <leader>jf <Esc>:FormatJSON<CR>
 
