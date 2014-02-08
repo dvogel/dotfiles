@@ -32,7 +32,7 @@ set wildmode=longest:list
 set title
 set scrolloff=1
 set wildignore=*.o,*.hi
-set guioptions=PegimrLtT
+set guioptions=Pegit
 set splitbelow
 set splitright
 set conceallevel=2
@@ -156,7 +156,7 @@ highlight PMenuSel ctermbg=Magenta ctermfg=Gray
 
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_space_guides = 1
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 augroup filetype
   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex
@@ -179,6 +179,8 @@ highlight Search guifg=#bbbb00 guibg=#000000 gui=bold
 
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
+
+let g:evalSelectionRubyDir = $HOME."/.vim/bundle/EvalSelection.vim/ruby/"
 
 com! FormatJSON %!python -m json.tool
 map <leader>jf <Esc>:FormatJSON<CR>

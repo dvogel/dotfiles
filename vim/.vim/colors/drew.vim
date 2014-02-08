@@ -150,23 +150,27 @@ hi Repeat gui=NONE guifg=#fbe572
 hi Conditional gui=NONE guifg=#fbe572
 hi String gui=NONE guifg=#c53534
 
-hi jsonBoolean gui=NONE guifg=#9cd7eb
-hi jsonEscape gui=NONE guifg=#9cd7eb
-hi jsonKeywordMatch gui=NONE guifg=#fbe572
-hi jsonNoQuotes gui=reverse guifg=#cb3725
-hi jsonNull gui=NONE guifg=#c6d80e
-hi jsonNumber gui=NONE guifg=#379f4d
-hi jsonQuote gui=NONE guifg=#cb3725
-hi jsonString gui=NONE guifg=#c53534
-hi jsonBraces gui=NONE guifg=#fbe572
-hi jsonFold gui=NONE guifg=#b294bb
-hi jsonKeywordRegion gui=NONE guifg=#e35c0f
-hi jsonNoise gui=NONE guifg=#fbe572
-hi jsonPadding gui=NONE guifg=#b294bb
-hi jsonStringSQ gui=NONE guifg=#cb3725
-hi jsonCommaError gui=reverse guifg=#cb3725
-hi jsonCommentError gui=reverse guifg=#cb3725
-hi jsonNumError gui=reverse guifg=#cb3725
-hi jsonSemicolonError gui=reverse guifg=#cb3725
+hi jsonBoolean gui=NONE guifg=#9cd7eb ctermfg=LightBlue
+hi jsonEscape gui=NONE guifg=#9cd7eb ctermfg=LightBlue
+hi jsonKeywordMatch gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi jsonNoQuotes gui=reverse guifg=#cb3725 cterm=reverse ctermfg=Red
+hi jsonNull gui=NONE guifg=#c6d80e ctermfg=Yellow
+hi jsonNumber gui=NONE guifg=#379f4d ctermfg=Green
+hi jsonQuote gui=NONE guifg=#cb3725 ctermfg=LightRed
+hi jsonString gui=NONE guifg=#c53534 ctermfg=DarkRed
+hi jsonBraces gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi jsonFold gui=NONE guifg=#b294bb ctermfg=Magenta
+hi jsonKeywordRegion gui=NONE guifg=#e35c0f ctermfg=Brown
+hi jsonNoise gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi jsonPadding gui=NONE guifg=#b294bb ctermfg=Magenta
+hi jsonStringSQ gui=NONE guifg=#cb3725 ctermfg=LightRed
+hi jsonCommaError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
+hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
+hi jsonNumError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
+hi jsonSemicolonError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 
+hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
+hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
+hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
+hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
 

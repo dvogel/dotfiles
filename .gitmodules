@@ -26,7 +26,7 @@
 	path = vim/.vim/bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
 [submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
+    path = vim/.vim/bundle/syntastic
     url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/.vim/bundle/vim-fugitive"]
     path = vim/.vim/bundle/vim-fugitive
