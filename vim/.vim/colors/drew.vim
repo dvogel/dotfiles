@@ -1,4 +1,5 @@
 
+
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -88,7 +89,7 @@ hi link Debug			Special
 " hi pythonFunction guifg=#0e689d
 " hi pythonNumber guifg=#10b2c0
 
-hi Function gui=NONE guifg=#10b2c0
+hi Function gui=NONE guifg=#10b2c0 cterm=NONE ctermfg=Blue
 hi pythonFunction gui=NONE guifg=#208ec8
 hi pythonStatement gui=NONE guifg=#e35c0f
 hi pythonException gui=NONE guifg=#fbe572
@@ -119,18 +120,24 @@ hi rubyPseudoVariable gui=NONE guifg=#c6d80e
 hi link rubyDefine Statement
 hi link rubyClass Statement
 
-hi link javaScriptFuncKeyword Function
+hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=#e35c0f
 hi javaScriptGlobalObjects guifg=#126d67
 hi javaScriptOpSymbols guifg=#fbe572
-hi javaScriptParens guifg=#c77624
-hi javaScriptBraces guifg=#e35c0f
+hi javaScriptParens guifg=#c77624 ctermfg=Brown
+hi javaScriptBraces guifg=#e35c0f ctermfg=Yellow
 hi javaScriptEndColons guifg=#208ec8
 hi link javaScriptFuncArg Normal
+hi javaScriptFuncKeyword gui=NONE guifg=#0e689d cterm=NONE ctermfg=Blue
+hi javaScriptFuncDef gui=NONE guifg=#379f4d cterm=NONE ctermfg=LightGreen
+hi javaScriptFuncExp gui=NONE guifg=#379f4d cterm=NONE ctermfg=LightGreen
 hi javaScriptFuncComma guifg=#e35c0f
-hi link javaScriptString String
-hi javaScriptRegexpString guifg=#c77624
-hi javaScriptNumber guifg=#10b2c0
-hi javaScriptFloat guifg=#10b2c0
+hi javaScriptBoolean guifg=#9cd7eb ctermfg=Blue
+hi javaScriptString guifg=#c53534 ctermfg=Red
+hi javaScriptStringS guifg=#c53534 ctermfg=Red
+hi javaScriptStringD guifg=#c53534 ctermfg=Red
+hi javaScriptRegexpString guifg=#c77624 ctermfg=Brown
+hi javaScriptNumber guifg=#10b2c0 ctermfg=DarkCyan
+hi javaScriptFloat guifg=#10b2c0 ctermfg=DarkCyan
 
 hi link markdownH1 Identifier
 hi link markdownH2 Identifier
@@ -168,6 +175,14 @@ hi jsonCommaError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonNumError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
+
+hi CSVColumnEven          gui=NONE   guifg=#c5c8c6       guibg=#000000
+hi CSVColumnOdd           gui=NONE   guifg=#5e6164     guibg=#000000
+hi CSVColumnHeaderEven    gui=NONE   guifg=#ee1122
+hi CSVColumnHeaderOdd     gui=NONE   guifg=#c53534
+hi CSVDelimiter           gui=NONE   guifg=#e35c0f       guibg=#0e689d
+"hi CSVComment             gui=NONE
+"hi CSVHeaderLine          gui=NONE
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black

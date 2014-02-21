@@ -26,6 +26,7 @@ cd $(dirname $(readlink -f "$0"))
       -e 's/_darkgray/#5e6164/g' \
     -e 's/_background/#000000/g' > drew.vim) <<ENDOFSCHEME
 
+
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -115,7 +116,7 @@ hi link Debug			Special
 " hi pythonFunction guifg=_blue
 " hi pythonNumber guifg=_cyan
 
-hi Function gui=NONE guifg=_cyan
+hi Function gui=NONE guifg=_cyan cterm=NONE ctermfg=Blue
 hi pythonFunction gui=NONE guifg=_ltblue
 hi pythonStatement gui=NONE guifg=_orange
 hi pythonException gui=NONE guifg=_babyyellow
@@ -146,18 +147,24 @@ hi rubyPseudoVariable gui=NONE guifg=_mtdew
 hi link rubyDefine Statement
 hi link rubyClass Statement
 
-hi link javaScriptFuncKeyword Function
+hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=_orange
 hi javaScriptGlobalObjects guifg=_teal
 hi javaScriptOpSymbols guifg=_babyyellow
-hi javaScriptParens guifg=_tan
-hi javaScriptBraces guifg=_orange
+hi javaScriptParens guifg=_tan ctermfg=Brown
+hi javaScriptBraces guifg=_orange ctermfg=Yellow
 hi javaScriptEndColons guifg=_ltblue
 hi link javaScriptFuncArg Normal
+hi javaScriptFuncKeyword gui=NONE guifg=_blue cterm=NONE ctermfg=Blue
+hi javaScriptFuncDef gui=NONE guifg=_green cterm=NONE ctermfg=LightGreen
+hi javaScriptFuncExp gui=NONE guifg=_green cterm=NONE ctermfg=LightGreen
 hi javaScriptFuncComma guifg=_orange
-hi link javaScriptString String
-hi javaScriptRegexpString guifg=_tan
-hi javaScriptNumber guifg=_cyan
-hi javaScriptFloat guifg=_cyan
+hi javaScriptBoolean guifg=_skyblue ctermfg=Blue
+hi javaScriptString guifg=_firebrick ctermfg=Red
+hi javaScriptStringS guifg=_firebrick ctermfg=Red
+hi javaScriptStringD guifg=_firebrick ctermfg=Red
+hi javaScriptRegexpString guifg=_tan ctermfg=Brown
+hi javaScriptNumber guifg=_cyan ctermfg=DarkCyan
+hi javaScriptFloat guifg=_cyan ctermfg=DarkCyan
 
 hi link markdownH1 Identifier
 hi link markdownH2 Identifier
@@ -195,6 +202,14 @@ hi jsonCommaError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonCommentError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonNumError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
+
+hi CSVColumnEven          gui=NONE   guifg=_ltgray       guibg=_background
+hi CSVColumnOdd           gui=NONE   guifg=_darkgray     guibg=_background
+hi CSVColumnHeaderEven    gui=NONE   guifg=_watermelon
+hi CSVColumnHeaderOdd     gui=NONE   guifg=_firebrick
+hi CSVDelimiter           gui=NONE   guifg=_orange       guibg=_blue
+"hi CSVComment             gui=NONE
+"hi CSVHeaderLine          gui=NONE
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
