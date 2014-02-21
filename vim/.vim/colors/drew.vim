@@ -176,6 +176,49 @@ hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonNumError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 
+"hi groovyExternal                  xxx links to Include
+hi groovyError               gui=bold guifg=#fafafa guibg=#990000
+"hi groovyConditional               xxx links to Conditional
+"hi groovyRepeat                    xxx links to Repeat
+hi groovyBoolean             gui=NONE guifg=#208ec8
+"hi groovyConstant                  xxx links to Constant
+hi groovyTypedef             gui=NONE guifg=#e35c0f
+hi groovyOperator            gui=NONE guifg=#fbe572  
+hi groovyType                gui=NONE guifg=#126d67
+hi groovyStatement           gui=NONE guifg=#e35c0f
+hi groovyStorageClass        gui=NONE guifg=#e35c0f
+hi groovyExceptions          gui=NONE guifg=#c6d80e
+hi groovyAssert              gui=NONE guifg=#e35c0f
+hi groovyMethodDecl          gui=NONE guifg=#e35c0f
+hi groovyClassDecl           gui=NONE guifg=#e35c0f
+"hi groovyBranch                    xxx links to Conditional
+"hi groovyUserLabelRef              xxx links to groovyUserLabel
+"hi groovyScopeDecl                 xxx links to groovyStorageClass
+hi groovyLangClass           gui=NONE guifg=#ee1122
+hi groovyJavaLangClass       gui=NONE guifg=#cf2152
+hi groovyJavaLangObject      gui=NONE guifg=#cf2152
+hi groovyJDKBuiltin          gui=NONE guifg=#c6d80e
+hi groovyJDKOperOverl        gui=NONE guifg=#c6d80e
+hi groovyJDKMethods          gui=NONE guifg=#c6d80e
+"hi groovyLabel                     xxx links to Label
+hi groovyNumber              gui=NONE guifg=#0e8f9b
+hi groovyString              gui=NONE guifg=#c53534
+"hi groovyLabelRegion               xxx cleared
+"hi groovyUserLabel                 xxx links to Label
+"hi groovyError2                    xxx cleared
+"hi groovyLangObject                xxx cleared
+hi groovyTodo                gui=bold guifg=#fbe572
+"hi groovySpecial                   xxx links to Special
+"hi groovySpecialChar               xxx links to SpecialChar
+hi groovyComment             gui=NONE guifg=#c5c8c6
+hi groovyStar                gui=NONE guifg=#c5c8c6
+hi groovyLineComment         gui=NONE guifg=#c5c8c6
+hi groovyCommentString       gui=NONE guifg=#c5c8c6
+hi groovyComment2String      gui=NONE guifg=#c5c8c6
+hi groovyCommentCharacter    gui=NONE guifg=#c5c8c6
+"hi groovyCharacter                 xxx links to Character
+
+
 hi CSVColumnEven          gui=NONE   guifg=#c5c8c6       guibg=#000000
 hi CSVColumnOdd           gui=NONE   guifg=#5e6164     guibg=#000000
 hi CSVColumnHeaderEven    gui=NONE   guifg=#ee1122
