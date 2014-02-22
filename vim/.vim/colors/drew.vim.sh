@@ -26,6 +26,7 @@ cd $(dirname $(readlink -f "$0"))
       -e 's/_darkgray/#5e6164/g' \
     -e 's/_background/#000000/g' > drew.vim) <<ENDOFSCHEME
 
+
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -115,7 +116,7 @@ hi link Debug			Special
 " hi pythonFunction guifg=_blue
 " hi pythonNumber guifg=_cyan
 
-hi Function gui=NONE guifg=_cyan
+hi Function gui=NONE guifg=_cyan cterm=NONE ctermfg=Blue
 hi pythonFunction gui=NONE guifg=_ltblue
 hi pythonStatement gui=NONE guifg=_orange
 hi pythonException gui=NONE guifg=_babyyellow
@@ -146,18 +147,24 @@ hi rubyPseudoVariable gui=NONE guifg=_mtdew
 hi link rubyDefine Statement
 hi link rubyClass Statement
 
-hi link javaScriptFuncKeyword Function
+hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=_orange
 hi javaScriptGlobalObjects guifg=_teal
 hi javaScriptOpSymbols guifg=_babyyellow
-hi javaScriptParens guifg=_tan
-hi javaScriptBraces guifg=_orange
+hi javaScriptParens guifg=_tan ctermfg=Brown
+hi javaScriptBraces guifg=_orange ctermfg=Yellow
 hi javaScriptEndColons guifg=_ltblue
 hi link javaScriptFuncArg Normal
+hi javaScriptFuncKeyword gui=NONE guifg=_blue cterm=NONE ctermfg=Blue
+hi javaScriptFuncDef gui=NONE guifg=_green cterm=NONE ctermfg=LightGreen
+hi javaScriptFuncExp gui=NONE guifg=_green cterm=NONE ctermfg=LightGreen
 hi javaScriptFuncComma guifg=_orange
-hi link javaScriptString String
-hi javaScriptRegexpString guifg=_tan
-hi javaScriptNumber guifg=_cyan
-hi javaScriptFloat guifg=_cyan
+hi javaScriptBoolean guifg=_skyblue ctermfg=Blue
+hi javaScriptString guifg=_firebrick ctermfg=Red
+hi javaScriptStringS guifg=_firebrick ctermfg=Red
+hi javaScriptStringD guifg=_firebrick ctermfg=Red
+hi javaScriptRegexpString guifg=_tan ctermfg=Brown
+hi javaScriptNumber guifg=_cyan ctermfg=DarkCyan
+hi javaScriptFloat guifg=_cyan ctermfg=DarkCyan
 
 hi link markdownH1 Identifier
 hi link markdownH2 Identifier
@@ -195,6 +202,57 @@ hi jsonCommaError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonCommentError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonNumError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=_red cterm=reverse ctermfg=LightRed
+
+"hi groovyExternal                  xxx links to Include
+hi groovyError               gui=bold guifg=#fafafa guibg=#990000
+"hi groovyConditional               xxx links to Conditional
+"hi groovyRepeat                    xxx links to Repeat
+hi groovyBoolean             gui=NONE guifg=_ltblue
+"hi groovyConstant                  xxx links to Constant
+hi groovyTypedef             gui=NONE guifg=_orange
+hi groovyOperator            gui=NONE guifg=_babyyellow  
+hi groovyType                gui=NONE guifg=_teal
+hi groovyStatement           gui=NONE guifg=_orange
+hi groovyStorageClass        gui=NONE guifg=_orange
+hi groovyExceptions          gui=NONE guifg=_mtdew
+hi groovyAssert              gui=NONE guifg=_orange
+hi groovyMethodDecl          gui=NONE guifg=_orange
+hi groovyClassDecl           gui=NONE guifg=_orange
+"hi groovyBranch                    xxx links to Conditional
+"hi groovyUserLabelRef              xxx links to groovyUserLabel
+"hi groovyScopeDecl                 xxx links to groovyStorageClass
+hi groovyLangClass           gui=NONE guifg=_watermelon
+hi groovyJavaLangClass       gui=NONE guifg=_pink
+hi groovyJavaLangObject      gui=NONE guifg=_pink
+hi groovyJDKBuiltin          gui=NONE guifg=_mtdew
+hi groovyJDKOperOverl        gui=NONE guifg=_mtdew
+hi groovyJDKMethods          gui=NONE guifg=_mtdew
+"hi groovyLabel                     xxx links to Label
+hi groovyNumber              gui=NONE guifg=_aqua
+hi groovyString              gui=NONE guifg=_firebrick
+"hi groovyLabelRegion               xxx cleared
+"hi groovyUserLabel                 xxx links to Label
+"hi groovyError2                    xxx cleared
+"hi groovyLangObject                xxx cleared
+hi groovyTodo                gui=bold guifg=_babyyellow
+"hi groovySpecial                   xxx links to Special
+"hi groovySpecialChar               xxx links to SpecialChar
+hi groovyComment             gui=NONE guifg=_ltgray
+hi groovyStar                gui=NONE guifg=_ltgray
+hi groovyLineComment         gui=NONE guifg=_ltgray
+hi groovyCommentString       gui=NONE guifg=_ltgray
+hi groovyComment2String      gui=NONE guifg=_ltgray
+hi groovyCommentCharacter    gui=NONE guifg=_ltgray
+"hi groovyCharacter                 xxx links to Character
+
+
+hi CSVColumnEven          gui=NONE   guifg=_ltgray       guibg=_background
+hi CSVColumnOdd           gui=NONE   guifg=_darkgray     guibg=_background
+hi CSVColumnHeaderEven    gui=NONE   guifg=_watermelon
+hi CSVColumnHeaderOdd     gui=NONE   guifg=_firebrick
+hi CSVDelimiter           gui=NONE   guifg=_orange       guibg=_blue
+"hi CSVComment             gui=NONE
+"hi CSVHeaderLine          gui=NONE
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
