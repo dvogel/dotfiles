@@ -1,0 +1,11 @@
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[A": history-search-backward
+"^P": history-search-backward
+"\e[B": history-search-forward
+"^N": history-search-forward
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
