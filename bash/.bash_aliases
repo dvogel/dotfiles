@@ -3,7 +3,12 @@ alias mgmtcmds='find . -type f -wholename "***/management/commands/*.py" | sed -
 alias tolowercase='tr "[A-Z]" "[a-z]"'
 alias touppercase='tr "[a-z]" "[A-Z]"'
 alias ffdev='firefox -no-remote -profile /home/dvogel/.mozilla/firefox/enw0f079.dev -purgecaches -jsconsole &'
-alias githist='git log --graph --branches --oneline'
 alias gipython='python -m gevent.monkey $(which ipython)'
 alias reload_history='history -a && history -n'
+
+alias githist='git log --graph --branches --oneline'
+alias gst='git status'
+alias glog='git log'
+alias gsh='git show'
+alias gdif='git diff'
 
