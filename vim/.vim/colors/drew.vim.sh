@@ -46,6 +46,8 @@ let colors_name = "drew"
 
 hi Normal guifg=_ltgray guibg=_background
 
+hi Todo gui=REVERSE,BOLD guifg=_firebrick guibg=_babyyellow
+
 hi ErrorMsg guibg=_red guifg=_ltgray
 hi Error guibg=_red guifg=_ltgray
 hi IncSearch guibg=_tan guifg=_darkgray
@@ -111,6 +113,14 @@ hi link Debug			Special
 
 " vim: sw=2
 
+hi vimHightlight guifg=_orange
+hi vimGroup guifg=_blue
+hi vimHiGui guifg=_mtdew
+hi vimHiGuiFgBg guifg=_mtdew
+hi vimHiCterm guifg=_mtdew
+hi vimHiCtermFgBg guifg=_mtdew
+hi vimHiCtermColor guifg=_firebrick
+hi vimHiAttrib guifg=_firebrick
 
 " hi pythonComment guifg=_skyblue
 " hi pythonFunction guifg=_blue
@@ -144,8 +154,10 @@ hi rubyString gui=NONE guifg=_firebrick
 hi rubyConstant gui=NONE guifg=_ltblue
 hi rubyRailsUserClass gui=NONE guifg=_ltblue
 hi rubyPseudoVariable gui=NONE guifg=_mtdew
-hi link rubyDefine Statement
-hi link rubyClass Statement
+hi rubyConditional guifg=_babyyellow
+hi rubyDefine guifg=_orange
+hi rubyClass guifg=_mtdew
+hi rubyModule guifg=_watermelon
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=_orange
 hi javaScriptGlobalObjects guifg=_teal

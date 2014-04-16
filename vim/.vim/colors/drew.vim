@@ -19,6 +19,8 @@ let colors_name = "drew"
 
 hi Normal guifg=#c5c8c6 guibg=#000000
 
+hi Todo gui=REVERSE,BOLD guifg=#c53534 guibg=#fbe572
+
 hi ErrorMsg guibg=#cb3725 guifg=#c5c8c6
 hi Error guibg=#cb3725 guifg=#c5c8c6
 hi IncSearch guibg=#c77624 guifg=#5e6164
@@ -84,6 +86,14 @@ hi link Debug			Special
 
 " vim: sw=2
 
+hi vimHightlight guifg=#e35c0f
+hi vimGroup guifg=#0e689d
+hi vimHiGui guifg=#c6d80e
+hi vimHiGuiFgBg guifg=#c6d80e
+hi vimHiCterm guifg=#c6d80e
+hi vimHiCtermFgBg guifg=#c6d80e
+hi vimHiCtermColor guifg=#c53534
+hi vimHiAttrib guifg=#c53534
 
 " hi pythonComment guifg=#9cd7eb
 " hi pythonFunction guifg=#0e689d
@@ -117,8 +127,10 @@ hi rubyString gui=NONE guifg=#c53534
 hi rubyConstant gui=NONE guifg=#208ec8
 hi rubyRailsUserClass gui=NONE guifg=#208ec8
 hi rubyPseudoVariable gui=NONE guifg=#c6d80e
-hi link rubyDefine Statement
-hi link rubyClass Statement
+hi rubyConditional guifg=#fbe572
+hi rubyDefine guifg=#e35c0f
+hi rubyClass guifg=#c6d80e
+hi rubyModule guifg=#ee1122
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=#e35c0f
 hi javaScriptGlobalObjects guifg=#126d67
