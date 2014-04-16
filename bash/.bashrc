@@ -5,6 +5,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export LANG="en_US.utf8"
+
+source ~/.bash_unicode
+source ~/.bash_colors
+source ~/.bash_functions
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
@@ -62,7 +68,7 @@ function __rails_env () {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\[\033[31m\]$(__rails_env)\[\033[00m\]\$ '
+    PS1="${debian_chroot:+($debian_chroot)}$(ansi_color 32)\u$(ansi_bold_color 31)$(unichr 0x03b1)$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w$(ansi_bold_color 31)$(unichr 0x00bb)${color_rst}"
 else
     PS1='${debian_chroot:+($debian_chroot)}$(__rails_env)\u@\h:\w\$ '
 fi
@@ -104,6 +110,10 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+source ~/.bash_unicode
+source ~/.bash_colors
+source ~/.bash_functions
 
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
