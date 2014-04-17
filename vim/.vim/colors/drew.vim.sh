@@ -136,7 +136,7 @@ hi pythonDecorator gui=NONE guifg=_orange
 hi pythonDottedName gui=NONE guifg=_ltblue
 hi pythonDot gui=NONE guifg=_orange
 hi pythonRawString guifg=_cyan
-hi pythonString gui=NONE guifg=_pink
+hi pythonString gui=NONE guifg=_pink ctermfg=DarkMagenta
 hi pythonUniString guifg=_firebrick
 hi pythonUniEscape guifg=_aqua
 hi pythonOperator gui=NONE guifg=_babyyellow
