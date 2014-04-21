@@ -133,6 +133,7 @@ do
     fi
 done
 
+[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "$HOME/z/z.sh" ]] && . "$HOME/z/z.sh"
 
