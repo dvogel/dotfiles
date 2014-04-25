@@ -59,8 +59,6 @@ au FileType ruby setlocal shiftwidth=2 tabstop=2 expandtab nowrap
 au FileType eruby setlocal shiftwidth=2 tabstop=2 expandtab nowrap
 au! FileType taglist call SetTagListOptions()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
-au BufRead quickfix :AnsiEsc
-
 
 nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
