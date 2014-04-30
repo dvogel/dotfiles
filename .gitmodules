@@ -55,3 +55,6 @@
 [submodule "nvm/.nvm"]
 	path = nvm/.nvm
 	url = https://github.com/creationix/nvm.git
+[submodule "vim/.vim/bundle/vim-commentary"]
+	path = vim/.vim/bundle/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
