@@ -109,7 +109,7 @@ hi pythonDecorator gui=NONE guifg=#e35c0f
 hi pythonDottedName gui=NONE guifg=#208ec8
 hi pythonDot gui=NONE guifg=#e35c0f
 hi pythonRawString guifg=#10b2c0
-hi pythonString gui=NONE guifg=#cf2152
+hi pythonString gui=NONE guifg=#cf2152 ctermfg=DarkMagenta
 hi pythonUniString guifg=#c53534
 hi pythonUniEscape guifg=#0e8f9b
 hi pythonOperator gui=NONE guifg=#fbe572
@@ -238,6 +238,15 @@ hi CSVColumnHeaderOdd     gui=NONE   guifg=#c53534
 hi CSVDelimiter           gui=NONE   guifg=#e35c0f       guibg=#0e689d
 "hi CSVComment             gui=NONE
 "hi CSVHeaderLine          gui=NONE
+
+hi Delimiter     gui=NONE   guifg=#fbe572
+hi shSetList     gui=NONE   guifg=#208ec8
+hi shVariable    gui=NONE   guifg=#208ec8
+hi shExpr        gui=NONE   guifg=#9cd7eb
+hi shOption      gui=NONE   guifg=#c6d80e
+hi shCommandSub  gui=NONE   guifg=#fbe572
+hi shDerefSimple gui=NONE   guifg=#126d67
+hi shArithRegion gui=NONE   guifg=#126d67
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black

@@ -266,6 +266,15 @@ hi CSVDelimiter           gui=NONE   guifg=_orange       guibg=_blue
 "hi CSVComment             gui=NONE
 "hi CSVHeaderLine          gui=NONE
 
+hi Delimiter     gui=NONE   guifg=_babyyellow
+hi shSetList     gui=NONE   guifg=_ltblue
+hi shVariable    gui=NONE   guifg=_ltblue
+hi shExpr        gui=NONE   guifg=_skyblue
+hi shOption      gui=NONE   guifg=_mtdew
+hi shCommandSub  gui=NONE   guifg=_babyyellow
+hi shDerefSimple gui=NONE   guifg=_teal
+hi shArithRegion gui=NONE   guifg=_teal
+
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
 hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
