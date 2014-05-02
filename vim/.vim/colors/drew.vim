@@ -121,16 +121,16 @@ hi pythonPreCondit guifg=#e35c0f
 hi pythonDocTest guifg=#9cd7eb
 hi pythonDocTest2 guifg=#9cd7eb
 
-hi rubyBoolean gui=NONE guifg=#ee1122
-hi rubySymbol gui=NONE guifg=#e35c0f
-hi rubyString gui=NONE guifg=#c53534
-hi rubyConstant gui=NONE guifg=#208ec8
-hi rubyRailsUserClass gui=NONE guifg=#208ec8
-hi rubyPseudoVariable gui=NONE guifg=#c6d80e
+hi rubyBoolean gui=NONE guifg=#ee1122 ctermfg=LightRed
+hi rubySymbol gui=NONE guifg=#e35c0f ctermfg=Brown
+hi rubyString gui=NONE guifg=#c53534 ctermfg=DarkRed
+hi rubyConstant gui=NONE guifg=#208ec8 ctermfg=LightBlue
+hi rubyRailsUserClass gui=NONE guifg=#208ec8 ctermfg=LightBlue
+hi rubyPseudoVariable gui=NONE guifg=#c6d80e ctermfg=LightGreen
 hi rubyConditional guifg=#fbe572
-hi rubyDefine guifg=#e35c0f
-hi rubyClass guifg=#c6d80e
-hi rubyModule guifg=#ee1122
+hi rubyDefine guifg=#e35c0f ctermfg=Brown
+hi rubyClass guifg=#c6d80e ctermfg=LightGreen
+hi rubyModule guifg=#ee1122 ctermfg=LightRed
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=#e35c0f
 hi javaScriptGlobalObjects guifg=#126d67

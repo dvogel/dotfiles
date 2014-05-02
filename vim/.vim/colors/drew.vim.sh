@@ -148,16 +148,16 @@ hi pythonPreCondit guifg=_orange
 hi pythonDocTest guifg=_skyblue
 hi pythonDocTest2 guifg=_skyblue
 
-hi rubyBoolean gui=NONE guifg=_watermelon
-hi rubySymbol gui=NONE guifg=_orange
-hi rubyString gui=NONE guifg=_firebrick
-hi rubyConstant gui=NONE guifg=_ltblue
-hi rubyRailsUserClass gui=NONE guifg=_ltblue
-hi rubyPseudoVariable gui=NONE guifg=_mtdew
+hi rubyBoolean gui=NONE guifg=_watermelon ctermfg=LightRed
+hi rubySymbol gui=NONE guifg=_orange ctermfg=Brown
+hi rubyString gui=NONE guifg=_firebrick ctermfg=DarkRed
+hi rubyConstant gui=NONE guifg=_ltblue ctermfg=LightBlue
+hi rubyRailsUserClass gui=NONE guifg=_ltblue ctermfg=LightBlue
+hi rubyPseudoVariable gui=NONE guifg=_mtdew ctermfg=LightGreen
 hi rubyConditional guifg=_babyyellow
-hi rubyDefine guifg=_orange
-hi rubyClass guifg=_mtdew
-hi rubyModule guifg=_watermelon
+hi rubyDefine guifg=_orange ctermfg=Brown
+hi rubyClass guifg=_mtdew ctermfg=LightGreen
+hi rubyModule guifg=_watermelon ctermfg=LightRed
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=_orange
 hi javaScriptGlobalObjects guifg=_teal
