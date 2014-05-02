@@ -38,8 +38,11 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # This is a work-around for gnome-terminal advertising itself as xterm
-if [ "$TERM" == "xterm" -a "$COLORTERM" == "gnome-terminal" ]; then
-    export TERM=xterm-color
+if [[ "$TERM" == "xterm" ]]; then
+    case "$COLORTERM" in
+        gnome-terminal|xfce4-terminal)
+            export TERM=xterm-color
+    esac
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
