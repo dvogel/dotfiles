@@ -8,4 +8,6 @@
 "\e[5D": backward-word
 "\e[1;3C": forward-word
 "\e[1;3D": backward-word
+set bell-style visible
+set history-size -1
 
