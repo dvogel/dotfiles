@@ -99,11 +99,11 @@
 # Customizations:
 --color
 --type-add=json:ext:json
---type-add=rubytmpl:ext:html.erb
+--type-add=erb:ext:erb
 --type-add=haml:ext:haml
 --no-yaml
 #--no-haml
---ignore-file=match:/min[.]js$/
+--ignore-file=match:/[-.]min[.]js$/
 --ignore-file=match:/[.]log$/
 --ignore-file=match:/TAGS$/
 --ignore-file=match:/[.]sql$/
