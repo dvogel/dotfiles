@@ -116,10 +116,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-source ~/.bash_unicode
-source ~/.bash_colors
-source ~/.bash_functions
-
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 export FLEX_SDK_HOME=/home/dvogel/flex_sdk_4.6.0.23201B
