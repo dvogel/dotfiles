@@ -118,12 +118,9 @@ fi
 
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
-export FLEX_SDK_HOME=/home/dvogel/flex_sdk_4.6.0.23201B
 
-PATH_DIRS=$(echo "/home/dvogel/flex_sdk_4.6.0.23201B"
-            echo "/home/dvogel/firefox_trunk_x86_64"
+PATH_DIRS=$(echo "/home/dvogel/firefox_trunk_x86_64"
             echo "/usr/local/node/bin"
-            echo "$FLEX_SDK_HOME/bin"
             echo "$HOME/bin")
 
 for d in $PATH_DIRS
