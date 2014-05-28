@@ -122,7 +122,7 @@ hi pythonDocTest guifg=#9cd7eb
 hi pythonDocTest2 guifg=#9cd7eb
 
 hi rubyBoolean gui=NONE guifg=#ee1122 ctermfg=LightRed
-hi rubySymbol gui=NONE guifg=#e35c0f ctermfg=Brown
+hi rubySymbol gui=NONE guifg=#ebab6a ctermfg=Brown
 hi rubyString gui=NONE guifg=#c53534 ctermfg=DarkRed
 hi rubyConstant gui=NONE guifg=#208ec8 ctermfg=LightBlue
 hi rubyRailsUserClass gui=NONE guifg=#208ec8 ctermfg=LightBlue

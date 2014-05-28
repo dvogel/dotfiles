@@ -7,13 +7,17 @@ cd $(dirname $(readlink -f "$0"))
           -e 's/_cyan/#10b2c0/g' \
           -e 's/_aqua/#0e8f9b/g' \
           -e 's/_blue/#0e689d/g' \
+         -e 's/_peach/#e39e58/g' \
+          -e 's/_puke/#ebab6a/g' \
            -e 's/_tan/#c77624/g' \
+          -e 's/_skin/#e3b07d/g' \
            -e 's/_red/#cb3725/g' \
     -e 's/_watermelon/#ee1122/g' \
      -e 's/_firebrick/#c53534/g' \
           -e 's/_pink/#cf2152/g' \
         -e 's/_purple/#b294bb/g' \
          -e 's/_green/#379f4d/g' \
+         -e 's/_khaki/#ad6d2b/g' \
          -e 's/_brown/#642e0e/g' \
         -e 's/_orange/#e35c0f/g' \
           -e 's/_teal/#126d67/g' \
@@ -149,7 +153,7 @@ hi pythonDocTest guifg=_skyblue
 hi pythonDocTest2 guifg=_skyblue
 
 hi rubyBoolean gui=NONE guifg=_watermelon ctermfg=LightRed
-hi rubySymbol gui=NONE guifg=_orange ctermfg=Brown
+hi rubySymbol gui=NONE guifg=_puke ctermfg=Brown
 hi rubyString gui=NONE guifg=_firebrick ctermfg=DarkRed
 hi rubyConstant gui=NONE guifg=_ltblue ctermfg=LightBlue
 hi rubyRailsUserClass gui=NONE guifg=_ltblue ctermfg=LightBlue
