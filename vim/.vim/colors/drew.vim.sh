@@ -17,6 +17,7 @@ cd $(dirname $(readlink -f "$0"))
           -e 's/_pink/#cf2152/g' \
         -e 's/_purple/#b294bb/g' \
          -e 's/_green/#379f4d/g' \
+     -e 's/_neongreen/#b3e46f/g' \
          -e 's/_khaki/#ad6d2b/g' \
          -e 's/_brown/#642e0e/g' \
         -e 's/_orange/#e35c0f/g' \
@@ -25,6 +26,7 @@ cd $(dirname $(readlink -f "$0"))
         -e 's/_ltblue/#208ec8/g' \
        -e 's/_skyblue/#9cd7eb/g' \
     -e 's/_babyyellow/#fbe572/g' \
+     -e 's/_birchwood/#d9cd94/g' \
          -e 's/_white/#dfdfdf/g' \
         -e 's/_ltgray/#c5c8c6/g' \
       -e 's/_darkgray/#5e6164/g' \
@@ -278,6 +280,44 @@ hi shOption      gui=NONE   guifg=_mtdew
 hi shCommandSub  gui=NONE   guifg=_babyyellow
 hi shDerefSimple gui=NONE   guifg=_teal
 hi shArithRegion gui=NONE   guifg=_teal
+
+hi cssComment               gui=italic   guifg=_darkgray
+hi cssIdentifier            gui=NONE   guifg=_blue
+hi cssBraces                gui=NONE   guifg=_mtdew
+hi cssTagName               gui=NONE   guifg=_orange
+hi cssClassNameDot          gui=NONE   guifg=_ltblue
+hi cssClassName             gui=NONE   guifg=_ltblue
+hi cssPseudoClassId         gui=NONE   guifg=_peach
+hi cssSelectorOp            gui=NONE   guifg=_mtdew
+hi cssNoise                 gui=NONE   guifg=_purple
+hi cssDefinition            gui=NONE   guifg=_birchwood
+hi link cssFontProp         cssDefinition
+hi link cssTextProp         cssDefinition
+hi link cssBoxProp          cssDefinition
+hi link cssPositioningProp  cssDefinition
+hi link cssBorderProp       cssDefinition
+hi link cssBackgroundProp   cssDefinition
+hi link cssUIProp           cssDefinition
+hi link cssDimensionProp    cssDefinition
+hi link cssPageProp         cssDefinition
+hi cssVendor                gui=NONE   guifg=_babyyellow
+" hi cssDimensionProp         gui=NONE   guifg=
+hi cssColor                 gui=NONE   guifg=_orange
+hi cssImportant             gui=NONE   guifg=_pink
+" hi cssAttrRegion            gui=NONE   guifg=
+" hi cssCommonAttr            gui=NONE   guifg=
+hi cssBackgroundAttr        gui=NONE   guifg=_watermelon
+hi cssPositioningAttr       gui=NONE   guifg=_red
+hi cssBoxAttr               gui=NONE   guifg=_red
+hi cssUIAttr                gui=NONE   guifg=_red
+hi cssGradientAttr          gui=NONE   guifg=_red
+hi cssFunction              gui=NONE   guifg=_red
+hi cssFunctionName          gui=NONE   guifg=_green
+hi cssValueLength           gui=NONE   guifg=_watermelon
+hi cssValueNumber           gui=NONE   guifg=_watermelon
+hi cssUnitDecorators        gui=NONE   guifg=_red
+
+
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black

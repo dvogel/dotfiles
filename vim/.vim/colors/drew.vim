@@ -248,6 +248,44 @@ hi shCommandSub  gui=NONE   guifg=#fbe572
 hi shDerefSimple gui=NONE   guifg=#126d67
 hi shArithRegion gui=NONE   guifg=#126d67
 
+hi cssComment               gui=italic   guifg=#5e6164
+hi cssIdentifier            gui=NONE   guifg=#0e689d
+hi cssBraces                gui=NONE   guifg=#c6d80e
+hi cssTagName               gui=NONE   guifg=#e35c0f
+hi cssClassNameDot          gui=NONE   guifg=#208ec8
+hi cssClassName             gui=NONE   guifg=#208ec8
+hi cssPseudoClassId         gui=NONE   guifg=#e39e58
+hi cssSelectorOp            gui=NONE   guifg=#c6d80e
+hi cssNoise                 gui=NONE   guifg=#b294bb
+hi cssDefinition            gui=NONE   guifg=#d9cd94
+hi link cssFontProp         cssDefinition
+hi link cssTextProp         cssDefinition
+hi link cssBoxProp          cssDefinition
+hi link cssPositioningProp  cssDefinition
+hi link cssBorderProp       cssDefinition
+hi link cssBackgroundProp   cssDefinition
+hi link cssUIProp           cssDefinition
+hi link cssDimensionProp    cssDefinition
+hi link cssPageProp         cssDefinition
+hi cssVendor                gui=NONE   guifg=#fbe572
+" hi cssDimensionProp         gui=NONE   guifg=
+hi cssColor                 gui=NONE   guifg=#e35c0f
+hi cssImportant             gui=NONE   guifg=#cf2152
+" hi cssAttrRegion            gui=NONE   guifg=
+" hi cssCommonAttr            gui=NONE   guifg=
+hi cssBackgroundAttr        gui=NONE   guifg=#ee1122
+hi cssPositioningAttr       gui=NONE   guifg=#cb3725
+hi cssBoxAttr               gui=NONE   guifg=#cb3725
+hi cssUIAttr                gui=NONE   guifg=#cb3725
+hi cssGradientAttr          gui=NONE   guifg=#cb3725
+hi cssFunction              gui=NONE   guifg=#cb3725
+hi cssFunctionName          gui=NONE   guifg=#379f4d
+hi cssValueLength           gui=NONE   guifg=#ee1122
+hi cssValueNumber           gui=NONE   guifg=#ee1122
+hi cssUnitDecorators        gui=NONE   guifg=#cb3725
+
+
+
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
 hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
