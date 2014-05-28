@@ -108,8 +108,11 @@
 --ignore-file=match:/TAGS$/
 --ignore-file=match:/[.]sql$/
 --ignore-directory=testdata
---ignore-directory=public/assets
+--ignore-directory=public/assets/
+--ignore-directory=public/tinymce/
+--ignore-directory=vendor/plugins/
+--ignore-directory=tmp
 
 # Specific to OpenCongress
---ignore-directory=tmp/openids
+--ignore-directory=tmp/openids/
 
