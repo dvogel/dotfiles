@@ -45,6 +45,8 @@ set wildignore +=*.pyc
 set wildignore +=*.jpg,*.jpeg,*.bmp,*.gif,*.png,*.tiff
 set wildignore +=*.o,*.out,*.exe,*.dll,*.sw?
 
+let g:syntastic_python_checkers=['pyflakes']
+
 com W w
 com Q q
 
