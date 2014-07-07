@@ -49,6 +49,7 @@ fi
 case "$TERM" in
     screen-256color) color_prompt=yes;;
     xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
 esac
 
 if [ -n "$force_color_prompt" ]; then
@@ -136,6 +137,8 @@ do
     fi
 done
 
+[[ -s "$HOME/.git-completion.bash" ]] && . "$HOME/.git-completion.bash"
+[[ -s "$HOME/.git-prompt.sh" ]] && . "$HOME/.git-prompt.sh"
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "$HOME/z/z.sh" ]] && . "$HOME/z/z.sh"
