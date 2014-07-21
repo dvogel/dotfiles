@@ -131,7 +131,13 @@ endfunction
 " :inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
-set guifont=Consolas\ 13
+if has("gui")
+    if has("mac")
+        set guifont=Menlo\ Regular:h14
+    else
+        set guifont=Consolas\ 13
+    endif
+endif
 
 " set viminfo='10,\"100,:20,%,n~/.viminfo
 " au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
