@@ -153,3 +153,9 @@ function gut () {
 }
 export -f gut
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/bin:$PATH"      # Local bindir
+
+which -s vim && export EDITOR=vim
+
