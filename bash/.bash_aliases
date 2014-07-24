@@ -12,3 +12,9 @@ alias glog='git log'
 alias gsh='git show'
 alias gdif='git diff'
 
+alias bex='bundle exec'
+
+[[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
+
+[[ -e ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
+
