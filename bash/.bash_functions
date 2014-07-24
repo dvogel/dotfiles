@@ -35,3 +35,7 @@ function ansi_colors () {
     echo
 }
 
+function findfiles () {
+    [[ "$#" -eq 1 ]] || echo "You must specify a word to search for."
+    [[ "$#" -eq 1 ]] && find . -iname "*${1}*"
+}
