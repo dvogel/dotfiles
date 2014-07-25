@@ -37,5 +37,9 @@ function ansi_colors () {
 
 function findfiles () {
     [[ "$#" -eq 1 ]] || echo "You must specify a word to search for."
-    [[ "$#" -eq 1 ]] && find . -iname "*${1}*"
+    [[ "$#" -eq 1 ]] && (
+        [[ $OSTYPE =~ ^linux ]] && find . -xdev -iname "*${1}*"
+        [[ $OSTYPE =~ ^darwin ]] && find . -xdev -iname "*${1}*"
+    )
 }
+
