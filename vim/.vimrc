@@ -45,6 +45,12 @@ set wildignore +=*.pyc
 set wildignore +=*.jpg,*.jpeg,*.bmp,*.gif,*.png,*.tiff
 set wildignore +=*.o,*.out,*.exe,*.dll,*.sw?
 
+if has("mac")
+    " MacVim likes to complain about backup files when the file is already
+    " open in another buffer.
+    set nobackup
+end
+
 let g:syntastic_python_checkers=['pyflakes']
 
 com W w
