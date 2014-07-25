@@ -76,6 +76,7 @@ map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <F4> :bnext<CR>:bdelete#<CR>
 map <F5> :w<CR>
+map <F9> :NERDTreeToggle<CR>
 " Depends on vim-surround from Tim Pope:
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
