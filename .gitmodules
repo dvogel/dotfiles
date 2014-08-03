@@ -52,9 +52,6 @@
 [submodule "vim/.vim/bundle/vim-css3-syntax"]
 	path = vim/.vim/bundle/vim-css3-syntax
 	url = https://github.com/hail2u/vim-css3-syntax.git
-[submodule "nvm/.nvm"]
-	path = nvm/.nvm
-	url = https://github.com/creationix/nvm.git
 [submodule "vim/.vim/bundle/vim-commentary"]
 	path = vim/.vim/bundle/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
