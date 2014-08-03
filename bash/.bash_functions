@@ -55,3 +55,13 @@ function findfiles () {
     )
 }
 
+function woodhouse_jobs () {
+    jobsdir="/tmp/woodhouse/$1/jobs"
+    for j in $(ls -1tr "$jobsdir" | tail -n5); do
+        jname=$(basename "$j")
+        echo "JOB: $jname -----------------------------------------------------------"
+        cat "$jobsdir/$j"
+        echo
+    done
+}
+
