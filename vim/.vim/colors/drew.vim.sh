@@ -1,9 +1,12 @@
 #!/bin/bash
 # vim: ft=vim
 
-cd $(dirname $(readlink -f "$0"))
+[[ $OSTYPE =~ ^linux ]] && SED_BIN='sed -r'
+[[ $OSTYPE =~ ^darwin ]] && SED_BIN='sed -E'
+READLINK_BIN=$(which greadlink readlink | head -n1)
+cd $(dirname $("$READLINK_BIN" -f "$0"))
 
-(cat | sed -r \
+(cat | $SED_BIN \
           -e 's/_cyan/#10b2c0/g' \
           -e 's/_aqua/#0e8f9b/g' \
           -e 's/_blue/#0e689d/g' \
@@ -15,7 +18,8 @@ cd $(dirname $(readlink -f "$0"))
     -e 's/_watermelon/#ee1122/g' \
      -e 's/_firebrick/#c53534/g' \
           -e 's/_pink/#cf2152/g' \
-        -e 's/_purple/#b294bb/g' \
+    -e 's/_palepurple/#b294bb/g' \
+        -e 's/_purple/#ba99fa/g' \
          -e 's/_green/#379f4d/g' \
      -e 's/_neongreen/#b3e46f/g' \
          -e 's/_khaki/#ad6d2b/g' \
@@ -166,6 +170,7 @@ hi rubyConditional guifg=_babyyellow
 hi rubyDefine guifg=_orange ctermfg=Brown
 hi rubyClass guifg=_mtdew ctermfg=LightGreen
 hi rubyModule guifg=_watermelon ctermfg=LightRed
+hi rubyRailsTestMethod guifg=_purple
 
 hi coffeeObject       guifg=_ltblue       ctermfg=LightBlue
 hi coffeeObjAssign    guifg=_ltblue       ctermfg=LightBlue
@@ -301,7 +306,7 @@ hi cssClassNameDot          gui=NONE   guifg=_ltblue
 hi cssClassName             gui=NONE   guifg=_ltblue
 hi cssPseudoClassId         gui=NONE   guifg=_peach
 hi cssSelectorOp            gui=NONE   guifg=_mtdew
-hi cssNoise                 gui=NONE   guifg=_purple
+hi cssNoise                 gui=NONE   guifg=_palepurple
 hi cssDefinition            gui=NONE   guifg=_birchwood
 hi link cssFontProp         cssDefinition
 hi link cssTextProp         cssDefinition
@@ -335,6 +340,10 @@ hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray cter
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
 hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
 hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
+
+hi NERDTreeOpenable   gui=NONE   guifg=_skyblue
+hi NERDTreeClosable   gui=NONE   guifg=_skyblue
+hi NERDTreeDir        gui=NONE   guifg=_peach
 
 ENDOFSCHEME
 wait

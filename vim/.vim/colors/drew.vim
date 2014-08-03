@@ -132,6 +132,7 @@ hi rubyConditional guifg=#fbe572
 hi rubyDefine guifg=#e35c0f ctermfg=Brown
 hi rubyClass guifg=#c6d80e ctermfg=LightGreen
 hi rubyModule guifg=#ee1122 ctermfg=LightRed
+hi rubyRailsTestMethod guifg=#ba99fa
 
 hi coffeeObject       guifg=#208ec8       ctermfg=LightBlue
 hi coffeeObjAssign    guifg=#208ec8       ctermfg=LightBlue
@@ -189,10 +190,10 @@ hi jsonNumber gui=NONE guifg=#379f4d ctermfg=Green
 hi jsonQuote gui=NONE guifg=#cb3725 ctermfg=LightRed
 hi jsonString gui=NONE guifg=#c53534 ctermfg=DarkRed
 hi jsonBraces gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi jsonFold gui=NONE guifg=#b294bb ctermfg=Magenta
+hi jsonFold gui=NONE guifg=#ba99fa ctermfg=Magenta
 hi jsonKeywordRegion gui=NONE guifg=#e35c0f ctermfg=Brown
 hi jsonNoise gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi jsonPadding gui=NONE guifg=#b294bb ctermfg=Magenta
+hi jsonPadding gui=NONE guifg=#ba99fa ctermfg=Magenta
 hi jsonStringSQ gui=NONE guifg=#cb3725 ctermfg=LightRed
 hi jsonCommaError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
@@ -301,4 +302,8 @@ hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray cter
 hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
 hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
 hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
+
+hi NERDTreeOpenable   gui=NONE   guifg=#9cd7eb
+hi NERDTreeClosable   gui=NONE   guifg=#9cd7eb
+hi NERDTreeDir        gui=NONE   guifg=#e39e58
 
