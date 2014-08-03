@@ -24,6 +24,7 @@ set smartindent
 set autoindent
 set number
 set ruler
+set modeline
 set showmatch
 set laststatus=2
 set hidden
@@ -220,4 +221,20 @@ endfunction
 
 nnoremap <leader>sy :echo SyntaxTrailUnderCursor()<CR>
 
+function! RegenerateMyColorScheme()
+    if ! filewritable(g:color_scheme_file)
+        echomsg "Cannot over-write color scheme file: " . g:color_scheme_file
+        return
+    endif
+
+    let g:color_scheme_script = g:color_scheme_file . ".sh"
+    if ! filereadable(g:color_scheme_file)
+        echomsg "Cannot read color scheme script: " . color_scheme_script
+        return
+    endif
+
+    execute "!bash " . g:color_scheme_script
+    execute "source " g:color_scheme_file
+    windo :e
+endfunction
 

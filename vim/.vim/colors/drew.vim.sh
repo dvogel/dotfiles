@@ -49,6 +49,7 @@ if exists("syntax_on")
 endif
 
 let colors_name = "drew"
+let g:color_scheme_file = expand('<sfile>')
 
 hi Normal guifg=_ltgray guibg=_background
 
