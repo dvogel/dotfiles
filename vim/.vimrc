@@ -233,7 +233,7 @@ function! RegenerateMyColorScheme()
         return
     endif
 
-    execute "!bash " . g:color_scheme_script
+    execute ":silent !bash " . g:color_scheme_script
     execute "source " g:color_scheme_file
     windo :e
 endfunction
