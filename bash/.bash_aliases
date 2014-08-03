@@ -13,6 +13,7 @@ alias gsh='git show'
 alias gdif='git diff'
 
 alias bex='bundle exec'
+alias binst='bundle install'
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
