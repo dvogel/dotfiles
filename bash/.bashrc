@@ -119,22 +119,18 @@ fi
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 
-PATH_DIRS=$(echo "/home/dvogel/firefox_trunk_x86_64"
+PATH_DIRS=$(echo "${HOME}/firefox_trunk_x86_64"
             echo "/usr/local/node/bin"
-            echo "$HOME/bin")
+            echo "${HOME}/bin"
+            echo "${HOME}/.rvm/bin")
 
-for d in $PATH_DIRS
-do
-    if [ -n "${d}" -a -d "${d}" ]; then
-        export PATH="${d}:${PATH}"
-    fi
+for d in $PATH_DIRS; do
+    prepend_to_path "${d}"
 done
 
-[[ -s "$HOME/.git-completion.bash" ]] && . "$HOME/.git-completion.bash"
-[[ -s "$HOME/.git-prompt.sh" ]] && . "$HOME/.git-prompt.sh"
-[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-[[ -s "$HOME/z/z.sh" ]] && . "$HOME/z/z.sh"
+quiet_source "${HOME}/.git-completion.bash"
+quiet_source "${HOME}/.git-prompt.sh"
+quiet_source "${HOME}/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
 function gut () {
     echo $1
@@ -146,9 +142,6 @@ function gut () {
 }
 export -f gut
 
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$HOME/bin:$PATH"      # Local bindir
-
+[[ -e "$(which vi)" ]] && export EDITOR=vi
 [[ -e "$(which vim)" ]] && export EDITOR=vim
 

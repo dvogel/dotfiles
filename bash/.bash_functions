@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function quiet_source () {
+    [[ -n "$1" ]] && [[ -s "$1" ]] && source "$1"
+}
+
+function prepend_to_path () {
+    [[ -n "$1" ]] && [[ -d "$1" ]] && export PATH="${1}:${PATH}"
+}
+
+function append_to_path () {
+    [[ -n "$1" ]] && [[ -d "$1" ]] && export PATH="${PATH}:${1}"
+}
+
 function myip () {
     curl_bin="$(which curl)"
     if [[ -z "${curl_bin}" ]]; then
