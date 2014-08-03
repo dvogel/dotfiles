@@ -135,11 +135,13 @@ hi rubyModule guifg=#ee1122 ctermfg=LightRed
 
 hi coffeeObject       guifg=#208ec8       ctermfg=LightBlue
 hi coffeeObjAssign    guifg=#208ec8       ctermfg=LightBlue
-hi coffeeSpecialOp    guifg=#fbe572   ctermfg=Yellow
-hi coffeeExtendedOp   guifg=#c5c8c6       ctermfg=LightGray
+hi coffeeSpecialOp    guifg=#c5c8c6       ctermfg=Yellow
+hi coffeeExtendedOp   guifg=#fbe572   ctermfg=Brown
 hi coffeeParensParen  guifg=#c77624          ctermfg=Brown
-hi coffeeBoolean      guifg=#ee1122   ctermfg=LightBlue
+hi coffeeBooleanTrue  guifg=#b3e46f    ctermfg=LightGreen
+hi coffeeBooleanFalse guifg=#ee1122   ctermfg=LightRed
 hi coffeeSpecialIdent guifg=#cacaf0  ctermfg=LightGray
+hi coffeeRegex        guifg=#c77624          ctermfg=Brown
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=#e35c0f
 hi javaScriptGlobalObjects guifg=#126d67
