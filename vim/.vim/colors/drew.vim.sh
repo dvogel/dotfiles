@@ -28,6 +28,7 @@ cd $(dirname $(readlink -f "$0"))
     -e 's/_babyyellow/#fbe572/g' \
      -e 's/_birchwood/#d9cd94/g' \
          -e 's/_white/#dfdfdf/g' \
+   -e 's/_grayishblue/#cacaf0/g' \
         -e 's/_ltgray/#c5c8c6/g' \
       -e 's/_darkgray/#5e6164/g' \
     -e 's/_background/#000000/g' > drew.vim) <<ENDOFSCHEME
@@ -165,6 +166,14 @@ hi rubyConditional guifg=_babyyellow
 hi rubyDefine guifg=_orange ctermfg=Brown
 hi rubyClass guifg=_mtdew ctermfg=LightGreen
 hi rubyModule guifg=_watermelon ctermfg=LightRed
+
+hi coffeeObject       guifg=_ltblue       ctermfg=LightBlue
+hi coffeeObjAssign    guifg=_ltblue       ctermfg=LightBlue
+hi coffeeSpecialOp    guifg=_babyyellow   ctermfg=Yellow
+hi coffeeExtendedOp   guifg=_ltgray       ctermfg=LightGray
+hi coffeeParensParen  guifg=_tan          ctermfg=Brown
+hi coffeeBoolean      guifg=_watermelon   ctermfg=LightBlue
+hi coffeeSpecialIdent guifg=_grayishblue  ctermfg=LightGray
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=_orange
 hi javaScriptGlobalObjects guifg=_teal
