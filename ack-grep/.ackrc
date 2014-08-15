@@ -101,7 +101,7 @@
 --type-add=json:ext:json
 --type-add=erb:ext:erb
 --type-add=haml:ext:haml
---no-yaml
+#--no-yaml
 #--no-haml
 --ignore-file=match:/[-.]min[.]js$/
 --ignore-file=match:/[.]log$/
