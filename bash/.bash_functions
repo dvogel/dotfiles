@@ -102,3 +102,7 @@ function woodhouse_jobs () {
     done
 }
 
+function cdp () {
+    cd "$HOME/Projects/$1"*
+}
+
