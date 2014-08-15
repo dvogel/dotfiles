@@ -79,13 +79,13 @@ fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#    ;;
+#*)
+#    ;;
+#esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -116,6 +116,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+on_macos && set_utf8_locale
+
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 
@@ -144,4 +146,12 @@ export -f gut
 
 [[ -e "$(which vi)" ]] && export EDITOR=vi
 [[ -e "$(which vim)" ]] && export EDITOR=vim
+
+export -a term_title_for_pwd_whitelist
+term_title_for_pwd_whitelist=( "$HOME/Projects/"* )
+set_term_tab_title "BASH"
+set_term_title_for_pwd
+
+export -a chpwd_functions
+chpwd_functions=( "${chpwd_functions[@]}" set_term_title_for_pwd )
 

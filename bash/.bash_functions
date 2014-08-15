@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function set_utf8_locale () {
+    export LANG=en_US.UTF-8
+    export LANGUAGE=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+}
+
 function quiet_source () {
     [[ -n "$1" ]] && [[ -s "$1" ]] && source "$1"
 }
@@ -10,6 +16,14 @@ function prepend_to_path () {
 
 function append_to_path () {
     [[ -n "$1" ]] && [[ -d "$1" ]] && export PATH="${PATH}:${1}"
+}
+
+set_term_tab_title(){
+    echo -en "\033]1;$1\a"
+}
+
+set_term_window_title(){
+    echo -en "\033]2;$1\a"
 }
 
 function myip () {
@@ -47,12 +61,35 @@ function ansi_colors () {
     echo
 }
 
+function on_macos () {
+    [[ $OSTYPE =~ ^darwin ]]
+}
+
+function on_linux () {
+    [[ $OSTYPE =~ ^linux ]]
+}
+
 function findfiles () {
     [[ "$#" -eq 1 ]] || echo "You must specify a word to search for."
     [[ "$#" -eq 1 ]] && (
-        [[ $OSTYPE =~ ^linux ]] && find . -xdev -iname "*${1}*"
-        [[ $OSTYPE =~ ^darwin ]] && find . -xdev -iname "*${1}*"
+        on_linux && find . -xdev -iname "*${1}*"
+        on_macos && find . -xdev -iname "*${1}*"
     )
+}
+
+function set_term_title_for_pwd () {
+    local e
+    local elen
+    local pwdprefix
+    for e in "${term_title_for_pwd_whitelist[@]}"; do
+        elen="${#e}"
+        pwdprefix="${PWD:0:$elen}"
+        if [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
+            set_term_tab_title $(basename "$pwdprefix" | touppercase)
+            return
+        fi
+    done
+    set_term_tab_title $(basename "$SHELL" | touppercase)
 }
 
 function woodhouse_jobs () {
