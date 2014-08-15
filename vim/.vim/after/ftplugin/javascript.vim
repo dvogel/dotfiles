@@ -1,5 +1,7 @@
-set ts=2
-set sw=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set nowrap
 
 " Set JavaScript Lint as compiler. 
 if ! exists('b:current_compiler') 
