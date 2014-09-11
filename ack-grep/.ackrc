@@ -107,6 +107,7 @@
 --ignore-file=match:/[.]log$/
 --ignore-file=match:/TAGS$/
 --ignore-file=match:/[.]sql$/
+--ignore-file=match:/[.]scssc$/
 --ignore-directory=testdata
 --ignore-directory=public/assets/
 --ignore-directory=public/tinymce/
