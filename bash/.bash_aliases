@@ -11,6 +11,8 @@ alias gst='git status'
 alias glog='git log'
 alias gsh='git show'
 alias gdif='git diff'
+alias gpl='git pull'
+alias gcmt='git commit'
 
 alias bex='bundle exec'
 alias binst='bundle install'
