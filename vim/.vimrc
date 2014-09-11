@@ -80,6 +80,9 @@ nmap <C-F9> :NERDTreeToggle<CR>
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
 
+let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_use_caching = 1
+
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')
 vmap <expr> <RIGHT> DVB_Drag('right')
