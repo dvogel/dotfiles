@@ -72,7 +72,7 @@ function __rails_env () {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}$(ansi_color 32)\u$(ansi_bold_color 31)$(unichr 0x03b1)$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)$(unichr 0x2771)${color_rst} "
+    PS1="${debian_chroot:+($debian_chroot)}$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)>${color_rst} "
 else
     PS1='${debian_chroot:+($debian_chroot)}$(__rails_env)\u@\h:\w\$ '
 fi
