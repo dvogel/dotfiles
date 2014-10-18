@@ -18,12 +18,16 @@ function append_to_path () {
     [[ -n "$1" ]] && [[ -d "$1" ]] && export PATH="${PATH}:${1}"
 }
 
-set_term_tab_title(){
+function set_term_tab_title () {
     echo -en "\033]1;$1\a"
 }
 
-set_term_window_title(){
+function set_term_window_title () {
     echo -en "\033]2;$1\a"
+}
+
+function __virtualenv_name () {
+    [[ -n "$VIRTUAL_ENV" ]] && echo "($(basename "$VIRTUAL_ENV"))"
 }
 
 function myip () {
