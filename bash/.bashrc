@@ -32,11 +32,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # This is a work-around for gnome-terminal advertising itself as xterm
 if [[ "$TERM" == "xterm" ]]; then
     case "$COLORTERM" in
@@ -72,20 +67,11 @@ function __rails_env () {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)>${color_rst} "
+    PS1="(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)>${color_rst} "
 else
-    PS1='${debian_chroot:+($debian_chroot)}$(__rails_env)\u@\h:\w\$ '
+    PS1="\u@\h:\w\$(__git_ps1)\$ "
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-#case "$TERM" in
-#xterm*|rxvt*)
-#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-#    ;;
-#*)
-#    ;;
-#esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
