@@ -110,8 +110,8 @@ endfunction
 function! Buffer_Init_Clojure()
 	syn sync fromstart
 	set expandtab
-	nmap <F9> :w<CR>:!~/devel/clj/runscript %<CR>
-	imap <F9> <ESC>:w<CR>:!~/devel/clj/runscript %<CR>
+    " nmap <F9> :w<CR>:!~/devel/clj/runscript %<CR>
+    " imap <F9> <ESC>:w<CR>:!~/devel/clj/runscript %<CR>
 	nmap <F10> :w<CR>:!~/devel/clj/runrepl<CR>
 	imap <F10> <ESC>:w<CR>:!~/devel/clj/runrepl<CR>
 	nmap <F11> :w<CR>:!ant<CR>
@@ -119,7 +119,7 @@ function! Buffer_Init_Clojure()
 endfunction
 
 function! Buffer_Init_PHP()
-	map <F9> :call Show_PHP_Help_For_Word()<CR>
+	" map <F9> :call Show_PHP_Help_For_Word()<CR>
 	map <F10> :call Show_PHP_Declaration()<CR>
 endfunction
 
