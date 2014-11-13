@@ -67,7 +67,7 @@ function __rails_env () {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1="(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)>${color_rst} "
+    PS1="$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1)$(ansi_bold_color 31)>${color_rst} "
 else
     PS1="\u@\h:\w\$(__git_ps1)\$ "
 fi
