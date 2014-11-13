@@ -139,6 +139,8 @@ term_title_for_pwd_whitelist=( "$HOME/Projects/"* )
 set_term_tab_title "BASH"
 set_term_title_for_pwd
 
+[[ -e /usr/local/rust ]] && prepend_to_path /usr/local/rust/bin && export LD_LIBRARY_PATH="/usr/local/rust/lib:$LD_LIBRARY_PATH"
+
 export -a chpwd_functions
 chpwd_functions=( "${chpwd_functions[@]}" set_term_title_for_pwd )
 
