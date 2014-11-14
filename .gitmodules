@@ -67,3 +67,6 @@
 [submodule "vim-rust"]
 	path = vim/.vim/bundle/vim-rust
 	url = https://github.com/wting/rust.vim.git
+[submodule "vim-dockerfile"]
+	path = vim/.vim/bundle/vim-dockerfile
+	url = https://github.com/honza/dockerfile.vim.git

@@ -10,6 +10,7 @@ export LANG="en_US.utf8"
 source ~/.bash_unicode
 source ~/.bash_colors
 source ~/.bash_functions
+quiet_source ~/.bash_functions.local
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
