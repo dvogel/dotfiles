@@ -338,6 +338,10 @@ hi cssValueLength           gui=NONE   guifg=_watermelon
 hi cssValueNumber           gui=NONE   guifg=_watermelon
 hi cssUnitDecorators        gui=NONE   guifg=_red
 
+hi dosiniLabel     gui=NONE guifg=_blue
+hi dosiniHeader    gui=NONE guifg=_orange
+hi dosiniNumber    gui=NONE guifg=_green
+hi dosiniComment   gui=NONE guifg=_darkgray
 
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black

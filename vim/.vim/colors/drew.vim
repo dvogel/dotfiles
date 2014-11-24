@@ -300,6 +300,10 @@ hi cssValueLength           gui=NONE   guifg=#ee1122
 hi cssValueNumber           gui=NONE   guifg=#ee1122
 hi cssUnitDecorators        gui=NONE   guifg=#cb3725
 
+hi dosiniLabel     gui=NONE guifg=#0e689d
+hi dosiniHeader    gui=NONE guifg=#e35c0f
+hi dosiniNumber    gui=NONE guifg=#379f4d
+hi dosiniComment   gui=NONE guifg=#5e6164
 
 
 hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
