@@ -54,8 +54,8 @@ end
 
 let g:syntastic_python_checkers=['pyflakes']
 
-com W w
-com Q q
+com! W w
+com! Q q
 
 let g:pep8_map = '<C-F5>'
 
