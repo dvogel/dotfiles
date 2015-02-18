@@ -67,7 +67,7 @@ hi ModeMsg gui=bold
 hi StatusLine gui=reverse,bold
 hi StatusLineNC gui=reverse
 hi VertSplit guibg=_ltgray
-hi Visual gui=reverse guifg=Grey guibg=fg
+hi Visual gui=reverse guifg=NONE guibg=NONE
 hi VisualNOS gui=underline,bold
 hi DiffText gui=bold guibg=Red
 hi Cursor guibg=NONE guifg=NONE gui=inverse
@@ -167,6 +167,7 @@ hi rubyConstant gui=NONE guifg=_ltblue ctermfg=LightBlue
 hi rubyRailsUserClass gui=NONE guifg=_ltblue ctermfg=LightBlue
 hi rubyPseudoVariable gui=NONE guifg=_mtdew ctermfg=LightGreen
 hi rubyConditional guifg=_babyyellow
+hi rubyExceptional guifg=_orange ctermfg=Brown
 hi rubyDefine guifg=_orange ctermfg=Brown
 hi rubyClass guifg=_mtdew ctermfg=LightGreen
 hi rubyModule guifg=_watermelon ctermfg=LightRed
@@ -201,16 +202,19 @@ hi javaScriptRegexpString guifg=_tan ctermfg=Brown
 hi javaScriptNumber guifg=_cyan ctermfg=DarkCyan
 hi javaScriptFloat guifg=_cyan ctermfg=DarkCyan
 
-hi link markdownH1 Identifier
-hi link markdownH2 Identifier
-hi link markdownH3 Identifier
-hi link markdownH4 Identifier
-hi link markdownH5 Identifier
-hi link markdownH6 Identifier
-hi link markdownCode Function
-hi link markdownCodeBlock Function
-hi link markdownHeadingDelimiter Statement
-hi link markdownHeadingRule Statement
+hi markdownH1 guifg=_orange
+hi markdownH2 guifg=_watermelon
+hi markdownH3 guifg=_mtdew
+hi markdownH4 guifg=_pink
+hi markdownH5 guifg=_cyan
+hi markdownH6 guifg=_grayishblue
+hi markdownCode guifg=_green
+hi markdownCodeBlock guifg=_green
+hi markdownHeadingDelimiter guifg=_darkgray
+hi markdownHeadingRule guifg=_darkgray
+hi markdownListMarker guifg=_puke
+hi markdownOrderedListMarker guifg=_puke
+
 
 hi Function gui=NONE guifg=_ltblue
 hi Statement gui=NONE guifg=_orange
