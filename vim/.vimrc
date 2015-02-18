@@ -65,6 +65,7 @@ au FileType cpp call Buffer_Init_CPP()
 au FileType clojure call Buffer_Init_Clojure()
 au! FileType taglist call SetTagListOptions()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
