@@ -73,7 +73,7 @@ nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-map <F4> :bnext<CR>:bdelete#<CR>
+map <F4> :call DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
 nmap <F9> :BufExplorer<CR>
 nmap <C-F9> :NERDTreeToggle<CR>
@@ -139,6 +139,16 @@ function! Mosh_Tab_Or_Complete()
         return "\<Tab>"
 endfunction
 " :inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
+
+function! DelicatelyDeleteBuffer()
+  let l:bufs = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+  if l:bufs == 1
+    bdelete
+  else
+    buffer#
+    bdelete#
+  end
+endfunction
 
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 if has("gui")
