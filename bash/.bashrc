@@ -145,3 +145,5 @@ set_term_title_for_pwd
 export -a chpwd_functions
 chpwd_functions=( "${chpwd_functions[@]}" set_term_title_for_pwd )
 
+quiet_source "${HOME}/.bashrc.local"
+
