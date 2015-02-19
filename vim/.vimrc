@@ -140,13 +140,20 @@ function! Mosh_Tab_Or_Complete()
 endfunction
 " :inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
+
+function! ListedBuffers()
+  return filter(range(1, bufnr('$')), 'buflisted(v:val)')
+endfunction
+
 function! DelicatelyDeleteBuffer()
-  let l:bufs = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-  if l:bufs == 1
+  let l:bufcount = len(ListedBuffers())
+  if l:bufcount == 0
+    " there is no current buffer
+  elseif l:bufcount == 1
     bdelete
   else
-    buffer#
-    bdelete#
+    execute "bnext"
+    execute "bdelete" "#"
   end
 endfunction
 
