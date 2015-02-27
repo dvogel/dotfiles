@@ -112,6 +112,7 @@ PATH_DIRS=$(echo "${HOME}/firefox_trunk_x86_64"
             echo "/usr/local/bin"
             echo "/usr/local/node/bin"
             echo "${HOME}/bin"
+            echo "${HOME}/opt/bin"
             echo "${HOME}/.rvm/bin")
 
 for d in $PATH_DIRS; do
