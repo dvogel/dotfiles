@@ -18,12 +18,18 @@ function append_to_path () {
     [[ -n "$1" ]] && [[ -d "$1" ]] && export PATH="${PATH}:${1}"
 }
 
+function set_konsole_tab_title () {
+    qdbus org.kde.konsole $KONSOLE_DBUS_SESSION setTitle 1 "$1"
+}
+
 function set_term_tab_title () {
-    echo -en "\033]1;$1\a"
+    in_konsole || echo -en "\033]1;$1\a"
+    in_konsole && set_konsole_tab_title "$1"
 }
 
 function set_term_window_title () {
-    echo -en "\033]2;$1\a"
+    in_konsole || echo -en "\033]2;$1\a"
+    in_konsole && set_konsole_tab_title "$1"
 }
 
 function __virtualenv_name () {
@@ -73,6 +79,10 @@ function on_linux () {
     [[ $OSTYPE =~ ^linux ]]
 }
 
+function in_konsole () {
+    [[ -n $KONSOLE_DBUS_SESSION ]]
+}
+
 function findfiles () {
     [[ "$#" -eq 1 ]] || echo "You must specify a word to search for."
     [[ "$#" -eq 1 ]] && (
@@ -89,7 +99,9 @@ function set_term_title_for_pwd () {
         elen="${#e}"
         pwdprefix="${PWD:0:$elen}"
         if [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
-            set_term_tab_title $(basename "$pwdprefix" | touppercase)
+            newtitle=$(basename "$pwdprefix" | touppercase)
+            on_linux && set_term_window_title "$newtitle"
+            on_macos && set_term_tab_title "$newtitle"
             return
         fi
     done

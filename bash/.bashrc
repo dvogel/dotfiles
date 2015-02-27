@@ -137,7 +137,7 @@ export -f gut
 [[ -e "$(which vim)" ]] && export EDITOR=vim
 
 export -a term_title_for_pwd_whitelist
-term_title_for_pwd_whitelist=( "$HOME/Projects/"* )
+term_title_for_pwd_whitelist=( "$HOME/Projects/"* "$HOME/devel/"* )
 set_term_tab_title "BASH"
 set_term_title_for_pwd
 
