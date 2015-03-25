@@ -13,6 +13,8 @@ alias gsh='git show'
 alias gdif='git diff'
 alias gpl='git pull'
 alias gcmt='git commit'
+alias gsu='git submodule update'
+alias gsubs='git submodule init && git submodule sync && git submodule update'
 
 alias bex='bundle exec'
 alias binst='bundle install'
