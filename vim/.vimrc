@@ -153,7 +153,7 @@ function! DelicatelyDeleteBuffer()
     bdelete
   else
     execute "bnext"
-    if bufnr('#') >= 0
+    if bufnr('#') >= 0 && buflisted(bufnr('#')) == 1
       execute "bdelete" "#"
     end
   end
