@@ -255,3 +255,25 @@ function! RegenerateMyColorScheme()
     windo :e
 endfunction
 
+
+function! MuServicesComplete(arg_lead, cmd_line, cursor_pos)
+    let l:entries = split(globpath("libraries,apps,services", "" . a:arg_lead . "*"), "\n")
+    let l:names = map(l:entries, 'fnamemodify(v:val, ":t")')
+    return l:names
+endfunction
+
+function! OpenMuServicesComponent(name)
+    let l:entries = split(globpath("libraries,apps,services", "" . a:name), "\n")
+    let l:path = substitute(l:entries[0], "^\([.]\+/\)\+", "", "") " Strip dot prefix paths
+    let l:prefix = fnamemodify(l:path, ":h")
+    let l:subdir = "lib"
+    if l:prefix == "apps"
+        let l:subdir = "app"
+    endif
+    execute ":e " . l:path . "/" . l:subdir
+    call search('\m^\(\%u25b8\|\s\s[^\s]\)')
+endfunction
+
+command! -nargs=1 -complete=customlist,MuServicesComplete Mu :call OpenMuServicesComponent(<q-args>)
+
+
