@@ -107,6 +107,7 @@ on_macos && set_utf8_locale
 
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
+export ANDROID_HOME=~/Library/Android/sdk
 
 PATH_DIRS=$(echo "${HOME}/firefox_trunk_x86_64"
             echo "/usr/local/bin"
@@ -114,7 +115,10 @@ PATH_DIRS=$(echo "${HOME}/firefox_trunk_x86_64"
             echo "${HOME}/bin"
             echo "${HOME}/opt/bin"
             echo "${HOME}/opt/dart/dart-sdk/bin"
-            echo "${HOME}/.rvm/bin")
+            echo "${HOME}/.rvm/bin"
+            echo "${HOME}/Library/Android/sdk/tools"
+            echo "${HOME}/Library/Android/sdk/platform-tools"
+            echo "/usr/local/git/bin")
 
 for d in $PATH_DIRS; do
     prepend_to_path "${d}"
