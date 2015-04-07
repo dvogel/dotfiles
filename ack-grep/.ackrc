@@ -104,15 +104,26 @@
 #--no-yaml
 #--no-haml
 --ignore-file=match:/[-.]min[.]js$/
+--ignore-file=match:/[.]src[.]js$/
+--ignore-file=match:/[.]map$/
 --ignore-file=match:/[.]log$/
 --ignore-file=match:/TAGS$/
 --ignore-file=match:/[.]sql$/
 --ignore-file=match:/[.]scssc$/
+--ignore-file=match:/[.]pdf$/
+--ignore-file=is:bootstrap.css
 --ignore-directory=testdata
+--ignore-directory=is:coverage
+--ignore-directory=is:.simplecov
+--ignore-directory=is:db/bootstrap/
+--ignore-directory=is:assets
 --ignore-directory=public/assets/
 --ignore-directory=public/tinymce/
---ignore-directory=vendor/plugins/
+--ignore-directory=vendor/
 --ignore-directory=tmp
+--ignore-directory=android/Bearing/
+--ignore-directory=android/BearingUnitTest/
+--ignore-directory=ios/Tumbleweed
 
 # Specific to OpenCongress
 --ignore-directory=tmp/openids/
