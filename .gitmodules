@@ -79,3 +79,6 @@
 [submodule "dart-vim-plugin"]
 	path = vim/.vim/bundle/dart-vim-plugin
 	url = git@github.com:dart-lang/dart-vim-plugin.git
+[submodule "tsuquyomi"]
+	path = vim/.vim/bundle/tsuquyomi
+	url = git@github.com:Quramy/tsuquyomi.git
