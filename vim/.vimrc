@@ -220,9 +220,6 @@ let g:vim_json_syntax_conceal = 0
 
 let g:evalSelectionRubyDir = $HOME."/.vim/bundle/EvalSelection.vim/ruby/"
 
-com! FormatJSON %!python -m json.tool
-map <leader>jf <Esc>:FormatJSON<CR>
-
 function! SyntaxTrailAt(lnum, col)
     let l:stack = synstack(a:lnum, a:col)
 
