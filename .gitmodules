@@ -82,3 +82,9 @@
 [submodule "tsuquyomi"]
 	path = vim/.vim/bundle/tsuquyomi
 	url = git@github.com:Quramy/tsuquyomi.git
+[submodule "vimproc"]
+	path = vim/.vim/bundle/vimproc
+	url = git@github.com:Shougo/vimproc.vim.git
+[submodule "typescript-vim"]
+	path = vim/.vim/bundle/vim-typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
