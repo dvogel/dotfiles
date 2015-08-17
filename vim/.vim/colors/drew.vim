@@ -204,6 +204,12 @@ hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonNumError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
 
+hi yamlKey gui=NONE guifg=#ebab6a ctermfg=Brown
+hi yamlDelimiter gui=NONE guifg=#ebab6a ctermfg=Brown
+hi yamlString gui=NONE guifg=#c53534 ctermfg=DarkRed
+hi yamlNumber gui=NONE guifg=#379f4d ctermfg=Green
+hi yamlComment gui=NONE guifg=#c5c8c6 ctermfg=Grey
+
 "hi groovyExternal                  xxx links to Include
 hi groovyError               gui=bold guifg=#fafafa guibg=#990000
 "hi groovyConditional               xxx links to Conditional
