@@ -197,6 +197,7 @@ let g:indent_guides_enable_on_vim_startup = 0
 
 augroup filetype
   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex
+  au BufRead,BufNewFile *.q               set filetype=Q
 augroup END
 au Syntax jflex    so ~/.vim/syntax/jflex.vim
 
