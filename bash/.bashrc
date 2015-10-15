@@ -109,9 +109,12 @@ export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 export ANDROID_HOME=~/Library/Android/sdk
 
-PATH_DIRS=$(echo "${HOME}/firefox_trunk_x86_64"
-            echo "/usr/local/bin"
+export GOROOT=/media/bulk/opt/go
+export GOPATH="${HOME}/devel/golang"
+
+PATH_DIRS=$(echo "/usr/local/bin"
             echo "/usr/local/node/bin"
+            echo "${GOROOT}/bin"
             echo "${HOME}/bin"
             echo "${HOME}/opt/bin"
             echo "${HOME}/opt/dart/dart-sdk/bin"
