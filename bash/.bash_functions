@@ -122,3 +122,16 @@ function cdp () {
     cd "$HOME/Projects/$1"*
 }
 
+function venv_find_and_activate () {
+    activate_script=$(ls -1 env-*/bin/activate *-env/bin/activate 2>/dev/null | head -n1)
+    if [[ -n "$activate_script" && -f "$activate_script" ]]; then
+        rcfile_path=$(mktemp "virtualenv_bashrc_XXXXXX")
+        cat $HOME/.bashrc "$activate_script" >> "$rcfile_path"
+        echo 'echo "Welcome to your virtualenv"' >> "$rcfile_path"
+        echo "rm $rcfile_path" >> "$rcfile_path"
+        bash --rcfile "$rcfile_path"
+    else
+        2>&1 echo "Could not find a virtualenv"
+    fi
+}
+
