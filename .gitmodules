@@ -88,3 +88,6 @@
 [submodule "typescript-vim"]
 	path = vim/.vim/bundle/vim-typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "vim-elixir"]
+	path = vim/.vim/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
