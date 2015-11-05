@@ -97,3 +97,6 @@
 [submodule "vim-projectroot"]
 	path = vim/.vim/bundle/vim-projectroot
 	url = git://github.com/dbakker/vim-projectroot.git
+[submodule "vim-go"]
+	path = vim/.vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
