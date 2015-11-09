@@ -122,6 +122,44 @@ function cdp () {
     cd "$HOME/Projects/$1"*
 }
 
+function _view_as_html () {
+    (file "$1" | grep -i html >/dev/null) || return 1
+    lynx -stdin -dump < "$1" | less -S -R
+    return 0
+}
+
+function _view_as_json () {
+    which jq >/dev/null 2>&1 || return 1
+    cat "$1" | jq '.' >/dev/null 2>&1 || return 1
+    cat "$1" | jq -C '.' | less -S -R
+    return 0
+}
+
+function appropriate_viewer () {
+    tmp_path=`mktemp -t appropriate_viewer_`;
+    cat >"$tmp_path"
+    _view_as_html "$tmp_path" && return
+    _view_as_json "$tmp_path" && return
+    cat "$tmp_path" | less -S -R
+}
+
+function view_output_as_appropriate () {
+    stdout_path=`mktemp -t appropriate_viewer_`;
+    stderr_path=`mktemp -t appropriate_viewer_`;
+    "$@" >"${stdout_path}" 2>"${stderr_path}"
+
+    if [ -s "${stderr_path}" ]; then
+        cat "${stdout_path}"
+        ansi_color 31
+        cat "${stderr_path}"
+        echo "${color_rst}"
+    else
+        _view_as_html "${stdout_path}" && return
+        _view_as_json "${stdout_path}" && return
+        cat "${stdout_path}" | less -S -R
+    fi
+}
+
 function venv_find_and_activate () {
     activate_script=$(ls -1 env-*/bin/activate *-env/bin/activate 2>/dev/null | head -n1)
     if [[ -n "$activate_script" && -f "$activate_script" ]]; then
