@@ -1,4 +1,9 @@
 filetype off
+
+let g:ackpreview = 0
+let g:ackhighlight = 1
+let g:ack_use_dispatch = 0
+
 call pathogen#runtime_append_all_bundles()
 
 filetype plugin indent on
@@ -277,4 +282,13 @@ endfunction
 
 command! -nargs=1 -complete=customlist,MuServicesComplete Mu :call OpenMuServicesComponent(<q-args>)
 
+function! AckWordInProjectRoot (word)
+    let l:word = empty(a:word) ? expand('<cword>') : a:word
+    let l:root = ProjectRootGuess()
+    echomsg "Executing ack-grep for '" . l:word . "' in '" . l:root . "'"
+    call ack#Ack('grep', join([l:word, l:root], ' '))
+endfunction
+
+command! -bang -nargs=* AckRel call AckWordInProjectRoot(<q-args>)
+nmap <Leader>ag :AckRel<CR>
 
