@@ -8,3 +8,7 @@ setlocal nosmartindent
 
 com! FormatJSON %!python -m json.tool
 map <leader>jf <Esc>:FormatJSON<CR>
+
+com! PPJSON %!json_pp
+map <leader>jpp <Esc>:PPJSON<CR>
+
