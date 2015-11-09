@@ -12,7 +12,6 @@ cd $(dirname $("$READLINK_BIN" -f "$0"))
           -e 's/_blue/#0e689d/g' \
          -e 's/_peach/#e39e58/g' \
           -e 's/_puke/#ebab6a/g' \
-           -e 's/_tan/#c77624/g' \
           -e 's/_skin/#e3b07d/g' \
            -e 's/_red/#cb3725/g' \
     -e 's/_watermelon/#ee1122/g' \
@@ -25,6 +24,8 @@ cd $(dirname $("$READLINK_BIN" -f "$0"))
          -e 's/_khaki/#ad6d2b/g' \
          -e 's/_brown/#642e0e/g' \
         -e 's/_orange/#e35c0f/g' \
+        -e 's/_salmon/#f37c2f/g' \
+           -e 's/_tan/#c77624/g' \
           -e 's/_teal/#126d67/g' \
          -e 's/_mtdew/#c6d80e/g' \
         -e 's/_ltblue/#208ec8/g' \
@@ -168,6 +169,7 @@ hi rubyRailsUserClass gui=NONE guifg=_ltblue ctermfg=LightBlue
 hi rubyPseudoVariable gui=NONE guifg=_mtdew ctermfg=LightGreen
 hi rubyConditional guifg=_babyyellow
 hi rubyExceptional guifg=_orange ctermfg=Brown
+hi rubyAccess guifg=_birchwood ctermfg=Brown
 hi rubyDefine guifg=_orange ctermfg=Brown
 hi rubyClass guifg=_mtdew ctermfg=LightGreen
 hi rubyModule guifg=_watermelon ctermfg=LightRed
@@ -358,6 +360,9 @@ hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   cter
 hi NERDTreeOpenable   gui=NONE   guifg=_skyblue
 hi NERDTreeClosable   gui=NONE   guifg=_skyblue
 hi NERDTreeDir        gui=NONE   guifg=_peach
+
+hi procProcName guifg=_salmon
+hi procComment guifg=_ltgray
 
 ENDOFSCHEME
 wait

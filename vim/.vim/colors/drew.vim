@@ -130,6 +130,7 @@ hi rubyRailsUserClass gui=NONE guifg=#208ec8 ctermfg=LightBlue
 hi rubyPseudoVariable gui=NONE guifg=#c6d80e ctermfg=LightGreen
 hi rubyConditional guifg=#fbe572
 hi rubyExceptional guifg=#e35c0f ctermfg=Brown
+hi rubyAccess guifg=#d9cd94 ctermfg=Brown
 hi rubyDefine guifg=#e35c0f ctermfg=Brown
 hi rubyClass guifg=#c6d80e ctermfg=LightGreen
 hi rubyModule guifg=#ee1122 ctermfg=LightRed
@@ -320,4 +321,7 @@ hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   cter
 hi NERDTreeOpenable   gui=NONE   guifg=#9cd7eb
 hi NERDTreeClosable   gui=NONE   guifg=#9cd7eb
 hi NERDTreeDir        gui=NONE   guifg=#e39e58
+
+hi procProcName guifg=#f37c2f
+hi procComment guifg=#c5c8c6
 
