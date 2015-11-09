@@ -1,1 +1,3 @@
-setlocal noballooneval
+if has("gui")
+  setlocal noballooneval
+end
