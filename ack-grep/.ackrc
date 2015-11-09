@@ -112,7 +112,12 @@
 --ignore-file=match:/[.]scssc$/
 --ignore-file=match:/[.]pdf$/
 --ignore-file=is:bootstrap.css
+--ignore-directory=log
+--ignore-directory=frontend
+--ignore-directory=ember
 --ignore-directory=testdata
+--ignore-directory=node_modules
+--ignore-directory=config/svg_icon_pack_sources
 --ignore-directory=is:coverage
 --ignore-directory=is:.simplecov
 --ignore-directory=is:db/bootstrap/
