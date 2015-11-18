@@ -109,7 +109,7 @@ export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 export ANDROID_HOME=~/Library/Android/sdk
 
-export GOROOT=/media/bulk/opt/go
+export GOROOT=$(first_existing "/media/bulk/opt/go" "/usr/local/go")
 export GOPATH="${HOME}/devel/golang"
 
 PATH_DIRS=$(echo "/usr/local/bin"

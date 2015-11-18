@@ -83,6 +83,18 @@ function in_konsole () {
     [[ -n $KONSOLE_DBUS_SESSION ]]
 }
 
+function first_existing () {
+    while [[ "$#" -gt 0 ]]; do
+        p=$1
+        shift
+        if [[ -e "$p" ]]; then
+            echo "$p"
+            return 0
+        fi
+    done
+    return 1
+}
+
 function findfiles () {
     [[ "$#" -eq 1 ]] || echo "You must specify a word to search for."
     [[ "$#" -eq 1 ]] && (
