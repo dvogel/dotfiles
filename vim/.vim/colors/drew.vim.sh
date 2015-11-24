@@ -19,6 +19,7 @@ cd $(dirname $("$READLINK_BIN" -f "$0"))
           -e 's/_pink/#cf2152/g' \
     -e 's/_palepurple/#b294bb/g' \
         -e 's/_purple/#ba99fa/g' \
+       -e 's/_magenta/#bb00bb/g' \
          -e 's/_green/#379f4d/g' \
      -e 's/_neongreen/#b3e46f/g' \
          -e 's/_khaki/#ad6d2b/g' \
@@ -91,9 +92,9 @@ hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
 
 hi Comment guifg=_skyblue
 hi Constant guifg=_cyan
-hi PreProc guifg=#BB00BB guibg=Black
+hi PreProc guifg=_magenta guibg=Black ctermfg=DarkMagenta
 hi Statement gui=NONE guifg=_red
-hi Special guifg=#BB00BB guibg=Black
+hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
 hi Ignore guifg=Grey
 hi Identifier guifg=_blue
 hi Type guifg=#00BB00 guibg=Black
@@ -164,10 +165,12 @@ hi pythonDocTest2 guifg=_skyblue
 hi rubyBoolean gui=NONE guifg=_watermelon ctermfg=LightRed
 hi rubySymbol gui=NONE guifg=_puke ctermfg=Brown
 hi rubyString gui=NONE guifg=_firebrick ctermfg=DarkRed
-hi rubyConstant gui=NONE guifg=_ltblue ctermfg=LightBlue
+hi rubyInteger gui=NONE guifg=_aqua ctermfg=DarkCyan
+hi rubyConstant gui=NONE guifg=_ltblue ctermfg=Blue
+hi rubyInterpolationDelimiter gui=NONE guifg=_babyyellow ctermfg=Yellow
 hi rubyRailsUserClass gui=NONE guifg=_ltblue ctermfg=LightBlue
 hi rubyPseudoVariable gui=NONE guifg=_mtdew ctermfg=LightGreen
-hi rubyConditional guifg=_babyyellow
+hi rubyConditional guifg=_babyyellow ctermfg=Yellow
 hi rubyExceptional guifg=_orange ctermfg=Brown
 hi rubyAccess guifg=_birchwood ctermfg=Brown
 hi rubyDefine guifg=_orange ctermfg=Brown

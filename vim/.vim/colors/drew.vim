@@ -52,9 +52,9 @@ hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
 
 hi Comment guifg=#9cd7eb
 hi Constant guifg=#10b2c0
-hi PreProc guifg=#BB00BB guibg=Black
+hi PreProc guifg=#bb00bb guibg=Black ctermfg=DarkMagenta
 hi Statement gui=NONE guifg=#cb3725
-hi Special guifg=#BB00BB guibg=Black
+hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
 hi Ignore guifg=Grey
 hi Identifier guifg=#0e689d
 hi Type guifg=#00BB00 guibg=Black
@@ -125,10 +125,12 @@ hi pythonDocTest2 guifg=#9cd7eb
 hi rubyBoolean gui=NONE guifg=#ee1122 ctermfg=LightRed
 hi rubySymbol gui=NONE guifg=#ebab6a ctermfg=Brown
 hi rubyString gui=NONE guifg=#c53534 ctermfg=DarkRed
-hi rubyConstant gui=NONE guifg=#208ec8 ctermfg=LightBlue
+hi rubyInteger gui=NONE guifg=#0e8f9b ctermfg=DarkCyan
+hi rubyConstant gui=NONE guifg=#208ec8 ctermfg=Blue
+hi rubyInterpolationDelimiter gui=NONE guifg=#fbe572 ctermfg=Yellow
 hi rubyRailsUserClass gui=NONE guifg=#208ec8 ctermfg=LightBlue
 hi rubyPseudoVariable gui=NONE guifg=#c6d80e ctermfg=LightGreen
-hi rubyConditional guifg=#fbe572
+hi rubyConditional guifg=#fbe572 ctermfg=Yellow
 hi rubyExceptional guifg=#e35c0f ctermfg=Brown
 hi rubyAccess guifg=#d9cd94 ctermfg=Brown
 hi rubyDefine guifg=#e35c0f ctermfg=Brown
