@@ -59,6 +59,12 @@ end
 
 let g:syntastic_python_checkers=['pyflakes']
 
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 0
+let g:go_highlight_extra_types = 1
+let g:go_highlight_structs = 1
+
 com! W w
 com! Q q
 

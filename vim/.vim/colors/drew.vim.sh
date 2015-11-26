@@ -97,7 +97,7 @@ hi Statement gui=NONE guifg=_red
 hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
 hi Ignore guifg=Grey
 hi Identifier guifg=_blue
-hi Type guifg=#00BB00 guibg=Black
+hi Type guifg=_green gui=NONE
 
 hi link IncSearch		Visual
 hi link String			Constant
@@ -177,6 +177,14 @@ hi rubyDefine guifg=_orange ctermfg=Brown
 hi rubyClass guifg=_mtdew ctermfg=LightGreen
 hi rubyModule guifg=_watermelon ctermfg=LightRed
 hi rubyRailsTestMethod guifg=_purple
+
+hi goType          guifg=_green
+hi goUnsignedInts  guifg=_green
+hi goBoolean       guifg=_pink
+hi goMethod        guifg=_ltgray
+hi goOperator      guifg=_puke
+hi goStructDef     guifg=_ltblue
+hi link goStruct Normal
 
 hi coffeeObject       guifg=_ltblue       ctermfg=LightBlue
 hi coffeeObjAssign    guifg=_ltblue       ctermfg=LightBlue
