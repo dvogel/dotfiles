@@ -335,3 +335,15 @@ hi NERDTreeDir        gui=NONE   guifg=#e39e58
 hi procProcName guifg=#f37c2f
 hi procComment guifg=#c5c8c6
 
+hi bashStatement ctermfg=DarkCyan
+hi bashBlock ctermfg=Yellow
+hi bashDo ctermfg=Yellow
+hi bashComment ctermfg=Gray
+hi bashDeref ctermfg=DarkMagenta
+hi bashIdentifier ctermfg=DarkGreen
+hi bashHereDoc ctermfg=DarkGray
+hi bashRedir ctermfg=Yellow
+hi link bashCommandOpts Normal
+hi bashOperator ctermfg=Brown
+
+

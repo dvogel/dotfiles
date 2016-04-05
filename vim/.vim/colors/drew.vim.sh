@@ -375,6 +375,18 @@ hi NERDTreeDir        gui=NONE   guifg=_peach
 hi procProcName guifg=_salmon
 hi procComment guifg=_ltgray
 
+hi bashStatement ctermfg=DarkCyan
+hi bashBlock ctermfg=Yellow
+hi bashDo ctermfg=Yellow
+hi bashComment ctermfg=Gray
+hi bashDeref ctermfg=DarkMagenta
+hi bashIdentifier ctermfg=DarkGreen
+hi bashHereDoc ctermfg=DarkGray
+hi bashRedir ctermfg=Yellow
+hi link bashCommandOpts Normal
+hi bashOperator ctermfg=Brown
+
+
 ENDOFSCHEME
 wait
 
