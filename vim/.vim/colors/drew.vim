@@ -346,4 +346,11 @@ hi bashRedir ctermfg=Yellow
 hi link bashCommandOpts Normal
 hi bashOperator ctermfg=Brown
 
+hi link C89Identifier Normal
+hi link c89Function Normal
+hi c89Macro guifg=#c77624
+hi cCMacro guifg=#c77624
+hi c89Constant guifg=#0e8f9b
+hi cAnsiFunction guifg=#0e689d
+hi cUserFunction guifg=#208ec8
 

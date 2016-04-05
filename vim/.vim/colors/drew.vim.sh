@@ -386,6 +386,13 @@ hi bashRedir ctermfg=Yellow
 hi link bashCommandOpts Normal
 hi bashOperator ctermfg=Brown
 
+hi link C89Identifier Normal
+hi link c89Function Normal
+hi c89Macro guifg=_tan
+hi cCMacro guifg=_tan
+hi c89Constant guifg=_aqua
+hi cAnsiFunction guifg=_blue
+hi cUserFunction guifg=_ltblue
 
 ENDOFSCHEME
 wait
