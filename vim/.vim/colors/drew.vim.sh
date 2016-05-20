@@ -393,6 +393,7 @@ hi cCMacro guifg=_tan
 hi c89Constant guifg=_aqua
 hi cAnsiFunction guifg=_blue
 hi cUserFunction guifg=_ltblue
+hi link cCommentError Comment
 
 ENDOFSCHEME
 wait

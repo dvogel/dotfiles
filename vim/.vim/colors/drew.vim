@@ -353,4 +353,5 @@ hi cCMacro guifg=#c77624
 hi c89Constant guifg=#0e8f9b
 hi cAnsiFunction guifg=#0e689d
 hi cUserFunction guifg=#208ec8
+hi link cCommentError Comment
 
