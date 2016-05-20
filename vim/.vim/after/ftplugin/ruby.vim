@@ -1,8 +1,8 @@
-set ruler
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set nowrap
+setlocal ruler
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal expandtab
+setlocal nowrap
 
 function! ConvertRubySymbolToString()
   let save_cursor = getpos(".")
