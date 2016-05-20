@@ -70,9 +70,6 @@
 [submodule "vim-dockerfile"]
 	path = vim/.vim/bundle/vim-dockerfile
 	url = https://github.com/honza/dockerfile.vim.git
-[submodule "vim/.vim/bundle/riv"]
-	path = vim/.vim/bundle/riv
-	url = git@github.com:Rykka/riv.vim.git
 [submodule "vim/.vim/bundle/vim-bats"]
 	path = vim/.vim/bundle/vim-bats
 	url = git://github.com/markcornick/vim-bats.git
