@@ -101,14 +101,14 @@ hi vimHiAttrib guifg=#c53534
 " hi pythonNumber guifg=#10b2c0
 
 hi Function gui=NONE guifg=#10b2c0 cterm=NONE ctermfg=Blue
-hi pythonFunction gui=NONE guifg=#208ec8
-hi pythonStatement gui=NONE guifg=#e35c0f
-hi pythonException gui=NONE guifg=#fbe572
-hi pythonRepeat gui=NONE guifg=#fbe572
-hi pythonConditional gui=NONE guifg=#fbe572
-hi pythonDecorator gui=NONE guifg=#e35c0f
-hi pythonDottedName gui=NONE guifg=#208ec8
-hi pythonDot gui=NONE guifg=#e35c0f
+hi pythonFunction gui=NONE guifg=#208ec8 ctermfg=LightBlue
+hi pythonStatement gui=NONE guifg=#e35c0f ctermfg=Brown
+hi pythonException gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi pythonRepeat gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi pythonConditional gui=NONE guifg=#fbe572 ctermfg=Yellow
+hi pythonDecorator gui=NONE guifg=#e35c0f ctermfg=Brown
+hi pythonDottedName gui=NONE guifg=#208ec8 ctermfg=LightBlue
+hi pythonDot gui=NONE guifg=#e35c0f ctermfg=Brown
 hi pythonRawString guifg=#10b2c0
 hi pythonString gui=NONE guifg=#cf2152 ctermfg=DarkMagenta
 hi pythonUniString guifg=#c53534

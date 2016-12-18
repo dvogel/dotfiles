@@ -141,14 +141,14 @@ hi vimHiAttrib guifg=_firebrick
 " hi pythonNumber guifg=_cyan
 
 hi Function gui=NONE guifg=_cyan cterm=NONE ctermfg=Blue
-hi pythonFunction gui=NONE guifg=_ltblue
-hi pythonStatement gui=NONE guifg=_orange
-hi pythonException gui=NONE guifg=_babyyellow
-hi pythonRepeat gui=NONE guifg=_babyyellow
-hi pythonConditional gui=NONE guifg=_babyyellow
-hi pythonDecorator gui=NONE guifg=_orange
-hi pythonDottedName gui=NONE guifg=_ltblue
-hi pythonDot gui=NONE guifg=_orange
+hi pythonFunction gui=NONE guifg=_ltblue ctermfg=LightBlue
+hi pythonStatement gui=NONE guifg=_orange ctermfg=Brown
+hi pythonException gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi pythonRepeat gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi pythonConditional gui=NONE guifg=_babyyellow ctermfg=Yellow
+hi pythonDecorator gui=NONE guifg=_orange ctermfg=Brown
+hi pythonDottedName gui=NONE guifg=_ltblue ctermfg=LightBlue
+hi pythonDot gui=NONE guifg=_orange ctermfg=Brown
 hi pythonRawString guifg=_cyan
 hi pythonString gui=NONE guifg=_pink ctermfg=DarkMagenta
 hi pythonUniString guifg=_firebrick
