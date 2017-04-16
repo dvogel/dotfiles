@@ -36,7 +36,7 @@ shopt -s checkwinsize
 # This is a work-around for gnome-terminal advertising itself as xterm
 if [[ "$TERM" == "xterm" ]]; then
     case "$COLORTERM" in
-        gnome-terminal|konsole|xfce4-terminal)
+        gnome-terminal|konsole|xfce4-terminal|mate-terminal)
             export TERM=xterm-color
     esac
 fi
