@@ -4,6 +4,10 @@
 "^P": history-search-backward
 "\e[B": history-search-forward
 "^N": history-search-forward
+# MacOS, iTerm2:
+"\C-[\C-[[C": forward-word
+"\C-[\C-[[D": backward-word
+# Linux, libvte:
 "\e[5C": forward-word
 "\e[5D": backward-word
 "\e[1;3C": forward-word
