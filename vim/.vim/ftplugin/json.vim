@@ -6,6 +6,15 @@ setlocal smarttab
 setlocal expandtab
 setlocal nosmartindent
 
+function! LintJSON()
+  let output = system("python -m json.tool " . expand("%"))
+  if output =~ "^Expecting : "
+    echoerr output
+  end
+endfunction
+
+autocmd! BufWritePost *.json call LintJSON()
+
 com! FormatJSON %!python -m json.tool
 map <leader>jf <Esc>:FormatJSON<CR>
 
