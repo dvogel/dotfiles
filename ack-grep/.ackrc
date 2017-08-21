@@ -108,6 +108,7 @@
 --ignore-file=match:/[.]map$/
 --ignore-file=match:/[.]log$/
 --ignore-file=match:/TAGS$/
+--ignore-file=is:.routes
 --ignore-file=match:/[.]sql$/
 --ignore-file=match:/[.]scssc$/
 --ignore-file=match:/[.]pdf$/
