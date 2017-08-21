@@ -131,7 +131,11 @@ function woodhouse_jobs () {
 }
 
 function cdp () {
-    cd "$HOME/Projects/$1"*
+    for entry in ${HOME}/Projects/${1}*; do
+      if [[ -d "$entry" ]]; then
+        cd "$entry" && return
+      fi
+    done
 }
 
 function _view_as_html () {

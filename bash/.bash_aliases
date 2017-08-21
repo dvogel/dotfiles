@@ -16,12 +16,16 @@ alias gpl='git pull'
 alias gcmt='git commit'
 alias gsu='git submodule update'
 alias gsubs='git submodule init && git submodule sync && git submodule update'
+alias gco='git checkout'
 alias gmaster='git checkout master'
 alias gchanges='git whatchanged HEAD^.. | cat'
+alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
+alias lastcommit='git log HEAD^.. | cat'
 
 alias bex='bundle exec'
 alias binst='bundle install'
+alias locked_revisions="cat Gemfile.lock | egrep '^(GIT|\s+remote:|\s+revision:)'"
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 

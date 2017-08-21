@@ -121,6 +121,7 @@ PATH_DIRS=$(echo "/usr/local/bin"
             echo "${HOME}/.rvm/bin"
             echo "${HOME}/Library/Android/sdk/tools"
             echo "${HOME}/Library/Android/sdk/platform-tools"
+            echo "${HOME}/Projects/development_tools/bin"
             echo "${HOME}/Projects/muservices/bin"
             echo "/usr/local/git/bin")
 
