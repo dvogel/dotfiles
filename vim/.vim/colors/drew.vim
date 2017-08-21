@@ -175,18 +175,18 @@ hi javaScriptRegexpString guifg=#c77624 ctermfg=Brown
 hi javaScriptNumber guifg=#10b2c0 ctermfg=DarkCyan
 hi javaScriptFloat guifg=#10b2c0 ctermfg=DarkCyan
 
-hi markdownH1 guifg=#e35c0f
-hi markdownH2 guifg=#ee1122
-hi markdownH3 guifg=#c6d80e
-hi markdownH4 guifg=#cf2152
-hi markdownH5 guifg=#10b2c0
-hi markdownH6 guifg=#cacaf0
-hi markdownCode guifg=#379f4d
-hi markdownCodeBlock guifg=#379f4d
-hi markdownHeadingDelimiter guifg=#5e6164
-hi markdownHeadingRule guifg=#5e6164
-hi markdownListMarker guifg=#ebab6a
-hi markdownOrderedListMarker guifg=#ebab6a
+hi markdownH1 guifg=#e35c0f ctermfg=Yellow
+hi markdownH2 guifg=#ee1122 ctermfg=Yellow
+hi markdownH3 guifg=#c6d80e ctermfg=Yellow
+hi markdownH4 guifg=#cf2152 ctermfg=Yellow
+hi markdownH5 guifg=#10b2c0 ctermfg=Yellow
+hi markdownH6 guifg=#cacaf0 ctermfg=Yellow
+hi markdownCode guifg=#379f4d ctermfg=LightGray ctermbg=DarkBlue
+hi markdownCodeBlock guifg=#379f4d ctermfg=LightGray ctermbg=DarkBlue
+hi markdownHeadingDelimiter guifg=#5e6164 ctermfg=LightGray
+hi markdownHeadingRule guifg=#5e6164 ctermfg=LightGray
+hi markdownListMarker guifg=#ebab6a ctermfg=Brown
+hi markdownOrderedListMarker guifg=#ebab6a ctermfg=Brown
 
 
 hi Function gui=NONE guifg=#208ec8

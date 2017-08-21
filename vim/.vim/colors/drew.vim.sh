@@ -215,18 +215,18 @@ hi javaScriptRegexpString guifg=_tan ctermfg=Brown
 hi javaScriptNumber guifg=_cyan ctermfg=DarkCyan
 hi javaScriptFloat guifg=_cyan ctermfg=DarkCyan
 
-hi markdownH1 guifg=_orange
-hi markdownH2 guifg=_watermelon
-hi markdownH3 guifg=_mtdew
-hi markdownH4 guifg=_pink
-hi markdownH5 guifg=_cyan
-hi markdownH6 guifg=_grayishblue
-hi markdownCode guifg=_green
-hi markdownCodeBlock guifg=_green
-hi markdownHeadingDelimiter guifg=_darkgray
-hi markdownHeadingRule guifg=_darkgray
-hi markdownListMarker guifg=_puke
-hi markdownOrderedListMarker guifg=_puke
+hi markdownH1 guifg=_orange ctermfg=Yellow
+hi markdownH2 guifg=_watermelon ctermfg=Yellow
+hi markdownH3 guifg=_mtdew ctermfg=Yellow
+hi markdownH4 guifg=_pink ctermfg=Yellow
+hi markdownH5 guifg=_cyan ctermfg=Yellow
+hi markdownH6 guifg=_grayishblue ctermfg=Yellow
+hi markdownCode guifg=_green ctermfg=LightGray ctermbg=DarkBlue
+hi markdownCodeBlock guifg=_green ctermfg=LightGray ctermbg=DarkBlue
+hi markdownHeadingDelimiter guifg=_darkgray ctermfg=LightGray
+hi markdownHeadingRule guifg=_darkgray ctermfg=LightGray
+hi markdownListMarker guifg=_puke ctermfg=Brown
+hi markdownOrderedListMarker guifg=_puke ctermfg=Brown
 
 
 hi Function gui=NONE guifg=_ltblue
