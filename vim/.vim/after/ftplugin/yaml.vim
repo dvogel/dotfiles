@@ -13,6 +13,7 @@ let b:did_indent = 1
 setlocal autoindent sw=2 et
 setlocal indentexpr=GetYamlIndent()
 setlocal indentkeys=o,O,*<Return>,!^F
+setlocal nowrap
 
 function! GetYamlIndent()
   let lnum = v:lnum - 1
