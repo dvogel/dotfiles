@@ -103,3 +103,6 @@
 [submodule "vim-raml"]
 	path = vim/.vim/bundle/vim-raml
 	url = https://github.com/IN3D/vim-raml.git
+[submodule "vim-autoformat"]
+	path = vim/.vim/bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git
