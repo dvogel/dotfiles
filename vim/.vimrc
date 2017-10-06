@@ -58,6 +58,7 @@ if has("mac")
 end
 
 let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
