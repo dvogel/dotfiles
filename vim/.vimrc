@@ -63,6 +63,7 @@ end
 
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
+let g:syntastic_java_javac_config_file_enabled = 1
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
@@ -96,6 +97,8 @@ nmap <C-F9> :NERDTreeToggle<CR>
 " Depends on vim-surround from Tim Pope:
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
+
+let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['tags', 'TAGS']
