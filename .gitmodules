@@ -109,3 +109,6 @@
 [submodule "vim-csharp"]
 	path = vim/.vim/bundle/vim-csharp
 	url = git://github.com/OrangeT/vim-csharp.git
+[submodule "maven-compiler"]
+	path = vim/.vim/bundle/maven-compiler
+	url = https://github.com/JalaiAmitahl/maven-compiler.vim.git
