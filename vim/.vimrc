@@ -101,7 +101,9 @@ nmap <C-S> ysiw
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['tags', 'TAGS']
+let g:ctrlp_root_markers = ['tags', 'TAGS', 'pom.xml']
+let g:ctrlp_custom_ignore = 'target/clover'
+
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')
 vmap <expr> <RIGHT> DVB_Drag('right')
