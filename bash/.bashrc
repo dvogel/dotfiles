@@ -109,6 +109,11 @@ export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 export ANDROID_HOME=~/Library/Android/sdk
 
+# Turn off dotnet core telemetry because SSL version conflicts cause a
+# segfault on debian. Consider removing after this is fixed (presumable in
+# debian 'buster').
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 export GOROOT=$(first_existing "/media/bulk/opt/go" "/usr/local/go")
 export GOPATH="${HOME}/devel/golang"
 
