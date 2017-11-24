@@ -106,3 +106,6 @@
 [submodule "vim-autoformat"]
 	path = vim/.vim/bundle/vim-autoformat
 	url = https://github.com/Chiel92/vim-autoformat.git
+[submodule "vim-csharp"]
+	path = vim/.vim/bundle/vim-csharp
+	url = git://github.com/OrangeT/vim-csharp.git
