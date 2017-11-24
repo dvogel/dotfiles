@@ -138,13 +138,24 @@ hi rubyClass guifg=#c6d80e ctermfg=LightGreen
 hi rubyModule guifg=#ee1122 ctermfg=LightRed
 hi rubyRailsTestMethod guifg=#ba99fa
 
-hi goType          guifg=#379f4d
-hi goUnsignedInts  guifg=#379f4d
-hi goBoolean       guifg=#cf2152
-hi goMethod        guifg=#c5c8c6
-hi goOperator      guifg=#ebab6a
-hi goStructDef     guifg=#208ec8
+hi goBlock           guifg=#fbe572  ctermfg=Yellow
+hi goBoolean         guifg=#cf2152
+hi goDeclaration     guifg=#c6d80e       ctermfg=LightGreen
+hi goDeclType        guifg=#379f4d       ctermfg=LightGreen
+hi goDirective       guifg=#bb00bb     ctermfg=Magenta
+hi goFormatSpecifier guifg=#fbe572  ctermfg=Yellow
+hi goFunction        guifg=#208ec8      ctermfg=LightBlue
+hi goMethod          guifg=#c5c8c6
+hi goOperator        guifg=#ebab6a        ctermfg=Yellow
+hi goRepeat          guifg=#fbe572  ctermfg=Yellow
+hi goStatement       guifg=#e35c0f      ctermfg=Brown
+hi goString          guifg=#c53534   ctermfg=DarkRed
+hi goStructDef       guifg=#208ec8      ctermfg=LightBlue
+hi goType            guifg=#379f4d
+hi goUnsignedInts    guifg=#379f4d
 hi link goStruct Normal
+
+
 
 hi coffeeObject       guifg=#208ec8       ctermfg=LightBlue
 hi coffeeObjAssign    guifg=#208ec8       ctermfg=LightBlue
