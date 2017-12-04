@@ -43,6 +43,10 @@ set splitbelow
 set splitright
 set conceallevel=2
 
+set noerrorbells
+set visualbell
+set t_vb=
+
 set foldclose=all
 set foldcolumn=1
 set foldmethod=marker

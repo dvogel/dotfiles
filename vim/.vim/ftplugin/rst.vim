@@ -1,3 +1,3 @@
-set foldmethod=manual
-set foldlevel=999
+setlocal foldmethod=manual
+setlocal foldlevel=999
 
