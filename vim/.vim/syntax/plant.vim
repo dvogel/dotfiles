@@ -1,12 +1,13 @@
 
-syn keyword plantKeywords actor boundary database entity
+syn keyword plantKeywords actor boundary database entity node rectangle
 
 syn match plantBoundaryDecl /@startuml/
 syn match plantBoundaryDecl /@enduml/
 syn keyword plantKeyword note end
 " syn region plantDocument start='@startuml' end='@enduml' contains=plantUseCase,plantNote,plantUseCaseTitle,plantActorName
-syn match plantRightArrow /[-]\+>/
-syn match plantLeftArrow /<[-]\+/
+syn match plantConnectorUpDown /[*<]\?[-]*\(up\|down\)[-]*[>*]\?/
+syn match plantRightArrow /[*]\?\(right\)\?[-]\+[>]*/
+syn match plantLeftArrow /[<]*[-]\+\(left\)\?[*]\?/
 syn match plantActorName /:[A-Za-z0-9 ]\+:/
 syn match plantUseCaseTitle /([A-Za-z0-9 ]\+)/
 syn match plantAlias / as ([A-Za-z0-9]\+)/hs=s+4
@@ -23,5 +24,6 @@ hi plantUseCaseTitle guifg=DarkGreen
 hi plantAlias guifg=Yellow
 hi plantLeftArrow guifg=Cyan
 hi plantRightArrow guifg=Cyan
+hi plantConnectorUpDown guifg=Cyan
 hi plantKeywords guifg=Yellow
 
