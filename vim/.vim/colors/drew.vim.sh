@@ -406,6 +406,8 @@ hi cAnsiFunction guifg=_blue
 hi cUserFunction guifg=_ltblue
 hi link cCommentError Comment
 
+hi CtrlPPrtCursor guifg=_mtdew
+
 ENDOFSCHEME
 wait
 

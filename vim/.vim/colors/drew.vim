@@ -366,3 +366,5 @@ hi cAnsiFunction guifg=#0e689d
 hi cUserFunction guifg=#208ec8
 hi link cCommentError Comment
 
+hi CtrlPPrtCursor guifg=#c6d80e
+
