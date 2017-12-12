@@ -229,13 +229,6 @@ autocmd BufNewFile,BufRead *.cup setf cup
 set fillchars=
 highlight VertSplit guibg=background guifg=background gui=none term=none cterm=none
 
-highlight Pmenu ctermfg=7 ctermbg=0 guibg=#444444 guifg=#dddddd
-highlight PmenuSbar ctermfg=7 ctermbg=7 guibg=#666666 guifg=#ffffff
-highlight PmenuSel ctermfg=1 ctermbg=7 guibg=#888888 guifg=#dd0000
-highlight PmenuThumb ctermbg=14 ctermbg=14 guibg=#ffff00 guifg=#00ffff
-
-highlight Search guifg=#bbbb00 guibg=#000000 gui=bold
-
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
 

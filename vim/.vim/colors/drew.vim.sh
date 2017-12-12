@@ -89,6 +89,7 @@ hi FoldColumn guibg=Grey guifg=DarkBlue
 hi DiffAdd guibg=LightBlue
 hi DiffChange guibg=LightMagenta
 hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
+hi Search guifg=#bbbb00 guibg=#000000 gui=bold
 
 hi Comment guifg=_skyblue
 hi Constant guifg=_cyan
@@ -373,11 +374,10 @@ hi dosiniHeader    gui=NONE guifg=_orange
 hi dosiniNumber    gui=NONE guifg=_green
 hi dosiniComment   gui=NONE guifg=_darkgray
 
-
-hi Pmenu      gui=NONE    guibg=Gray     guifg=Black      ctermbg=LightGray ctermfg=Black
-hi PmenuSel   gui=NONE    guibg=Gray     guifg=Yellow     ctermbg=LightGray ctermfg=Black
-hi PmenuSbar  gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
-hi PmenuThumb gui=NONE    guibg=Magenta  guifg=Red        ctermbg=Magenta   ctermfg=Red
+highlight Pmenu      ctermfg=7  ctermbg=0  guibg=#444444 guifg=#dddddd
+highlight PmenuSbar  ctermfg=7  ctermbg=7  guibg=#666666 guifg=#ffffff
+highlight PmenuSel   ctermfg=1  ctermbg=7  guibg=#888888 guifg=#dd0000
+highlight PmenuThumb ctermbg=14 ctermbg=14 guibg=#ffff00 guifg=#00ffff
 
 hi NERDTreeOpenable   gui=NONE   guifg=_skyblue
 hi NERDTreeClosable   gui=NONE   guifg=_skyblue
