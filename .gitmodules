@@ -112,3 +112,6 @@
 [submodule "maven-compiler"]
 	path = vim/.vim/bundle/maven-compiler
 	url = https://github.com/JalaiAmitahl/maven-compiler.vim.git
+[submodule "vim-ruby-refactoring"]
+	path = vim/.vim/bundle/vim-ruby-refactoring
+	url = https://github.com/ecomba/vim-ruby-refactoring.git
