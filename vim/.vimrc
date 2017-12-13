@@ -4,7 +4,7 @@ let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
