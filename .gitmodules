@@ -115,3 +115,6 @@
 [submodule "vim-ruby-refactoring"]
 	path = vim/.vim/bundle/vim-ruby-refactoring
 	url = https://github.com/ecomba/vim-ruby-refactoring.git
+[submodule "vim-easy-align"]
+	path = vim/.vim/bundle/easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
