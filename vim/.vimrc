@@ -55,6 +55,8 @@ set wildignore +=*.pyc
 set wildignore +=*.jpg,*.jpeg,*.bmp,*.gif,*.png,*.tiff
 set wildignore +=*.o,*.out,*.exe,*.dll,*.sw?
 
+set tags=./TAGS;/
+
 if has("mac")
     " MacVim likes to complain about backup files when the file is already
     " open in another buffer.
