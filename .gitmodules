@@ -118,3 +118,12 @@
 [submodule "vim-easy-align"]
 	path = vim/.vim/bundle/easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vim-lsc"]
+	path = vim/.vim/bundle/vim-lsc
+	url = https://github.com/natebosch/vim-lsc.git
+[submodule "kotlin-vim"]
+	path = vim/.vim/bundle/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim
+[submodule "vim/.vim/bundle/zeavim"]
+	path = vim/.vim/bundle/zeavim
+	url = https://github.com/KabbAmine/zeavim.vim.git
