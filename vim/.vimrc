@@ -302,4 +302,7 @@ endfunction
 
 command! -bang -nargs=* AckRel call AckWordInProjectRoot(<q-args>)
 nmap <Leader>ag :AckRel<CR>
+nmap <Leader>vws :'<,'>s/[ \t]\+$//<CR>
+nmap <Leader>ws :%s/[ \t]\+$//<CR>
+
 
