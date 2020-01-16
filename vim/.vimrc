@@ -63,6 +63,7 @@ if has("mac")
     set nobackup
 end
 
+let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
 let g:syntastic_java_javac_config_file_enabled = 1
