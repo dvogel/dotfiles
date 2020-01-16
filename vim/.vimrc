@@ -76,6 +76,8 @@ let g:go_highlight_structs = 1
 
 com! W w
 com! Q q
+" Paste from system clipboard (instead of primary selection)
+nmap <Leader>cbp "+p
 
 let g:pep8_map = '<C-F5>'
 
@@ -86,6 +88,9 @@ au FileType clojure call Buffer_Init_Clojure()
 au! FileType taglist call SetTagListOptions()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+# Always open the quickfix window on the bottom (no vertical split)
+au FileType qf wincmd J
 
 nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
@@ -305,5 +310,8 @@ command! -bang -nargs=* AckRel call AckWordInProjectRoot(<q-args>)
 nmap <Leader>ag :AckRel<CR>
 nmap <Leader>vws :'<,'>s/[ \t]\+$//<CR>
 nmap <Leader>ws :%s/[ \t]\+$//<CR>
+nmap <Leader>gws :%s/[ \t]/  /<CR>
+nmap <Leader>rq' :s/"/'/g<CR>
+nmap <Leader>rq" :s/'/"/g<CR>
 
 
