@@ -101,6 +101,8 @@
 --type-add=json:ext:json
 --type-add=erb:ext:erb
 --type-add=haml:ext:haml
+--type-add=typescript:ext:ts[x]?
+--type-add=css:ext:(css|scss|sass)
 #--no-yaml
 #--no-haml
 --ignore-file=match:/[-.]min[.]js$/
@@ -114,22 +116,17 @@
 --ignore-file=match:/[.]pdf$/
 --ignore-file=is:bootstrap.css
 --ignore-directory=log
---ignore-directory=frontend
---ignore-directory=ember
---ignore-directory=testdata
---ignore-directory=node_modules
---ignore-directory=config/svg_icon_pack_sources
+--ignore-directory=is:node_modules
+--ignore-directory=is:config/svg_icon_pack_sources
 --ignore-directory=is:coverage
 --ignore-directory=is:.simplecov
 --ignore-directory=is:db/bootstrap/
 --ignore-directory=is:assets
---ignore-directory=public/assets/
---ignore-directory=public/tinymce/
---ignore-directory=vendor/
---ignore-directory=tmp
---ignore-directory=android/Bearing/
---ignore-directory=android/BearingUnitTest/
---ignore-directory=ios/Tumbleweed
+--ignore-directory=is:public/assets/
+--ignore-directory=is:public/tinymce/
+--ignore-directory=is:vendor/
+--ignore-directory=is:tmp
+--ignore-directory=is:build
 
 # Specific to OpenCongress
 --ignore-directory=tmp/openids/
