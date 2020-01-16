@@ -192,7 +192,8 @@ if has("gui")
     if has("mac")
         set guifont=Menlo\ Regular:h14
     else
-        set guifont=Consolas\ 13
+        " set guifont=Consolas\ 13
+		set guifont=Cascadia\ Code\ 12
     endif
 endif
 
