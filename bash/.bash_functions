@@ -117,7 +117,12 @@ function set_term_title_for_pwd () {
             return
         fi
     done
-    set_term_tab_title $(basename "$SHELL" | touppercase)
+    newtitle=${PWD##$HOME/}
+    if [[ -z "$newtitle" ]]; then
+        newtitle=$(basename "$SHELL" | touppercase)
+    fi
+    on_linux && set_term_window_title "$newtitle"
+    on_macos && set_term_tab_title "$newtitle"
 }
 
 function woodhouse_jobs () {

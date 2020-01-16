@@ -46,6 +46,7 @@ case "$TERM" in
     screen-256color) color_prompt=yes;;
     xterm-color) color_prompt=yes;;
     xterm-256color) color_prompt=yes;;
+    xterm-kitty) color_prompt=yes;;
 esac
 
 if [ -n "$force_color_prompt" ]; then
@@ -87,15 +88,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -127,8 +119,6 @@ PATH_DIRS=$(echo "/usr/local/bin"
             echo "${HOME}/.rbenv/bin"
             echo "${HOME}/Library/Android/sdk/tools"
             echo "${HOME}/Library/Android/sdk/platform-tools"
-            echo "${HOME}/Projects/development_tools/bin"
-            echo "${HOME}/Projects/muservices/bin"
             echo "/usr/local/git/bin")
 
 for d in $PATH_DIRS; do
@@ -138,6 +128,17 @@ done
 quiet_source "${HOME}/.git-completion.bash"
 quiet_source "${HOME}/.git-prompt.sh"
 quiet_source "${HOME}/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
+(which rbenv >/dev/null 2>&1) && eval "$(rbenv init -)"
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 function gut () {
     echo $1
@@ -153,14 +154,19 @@ export -f gut
 [[ -e "$(which vim)" ]] && export EDITOR=vim
 
 export -a term_title_for_pwd_whitelist
-term_title_for_pwd_whitelist=( "$HOME"/Projects/muservices/{apps,libraries,services}/* "$HOME/Projects/"* "$HOME/devel/"* )
+term_title_for_pwd_whitelist=( "$HOME/p/"* "$HOME/Projects/"* "$HOME/devel/"* )
 set_term_tab_title "BASH"
 set_term_title_for_pwd
 
 [[ -e /usr/local/rust ]] && prepend_to_path /usr/local/rust/bin && export LD_LIBRARY_PATH="/usr/local/rust/lib:$LD_LIBRARY_PATH"
 
-export -a chpwd_functions
-chpwd_functions=( "${chpwd_functions[@]}" set_term_title_for_pwd )
+if [[ -t 1 ]]; then
+    PROMPT_COMMAND=set_term_title_for_pwd
+fi
 
 quiet_source "${HOME}/.bashrc.local"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
