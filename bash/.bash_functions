@@ -104,25 +104,33 @@ function findfiles () {
 }
 
 function set_term_title_for_pwd () {
-    local e
-    local elen
-    local pwdprefix
-    for e in "${term_title_for_pwd_whitelist[@]}"; do
-        elen="${#e}"
-        pwdprefix="${PWD:0:$elen}"
-        if [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
-            newtitle=$(basename "$pwdprefix" | touppercase)
-            on_linux && set_term_window_title "$newtitle"
-            on_macos && set_term_tab_title "$newtitle"
-            return
+  newtitle=""
+  for e in "${term_title_base_dirs[@]}"; do
+    elen="${#e}"
+    pwdprefix="${PWD:0:$elen}"
+    if [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
+      cutpoint=$(($elen + 1))
+      pwdsuffix="${PWD:$cutpoint}"
+      part0="${pwdsuffix%%/*}"
+      partN="${pwdsuffix##*/}"
+      if [[ "${part0}" == "${pwdsuffix}" ]]; then
+        newtitle="${pwdsuffix}"
+      elif [[ -n "${part0}" && -n "${partN}" ]]; then
+        if [[ "${part0}/${partN}" == "${pwdsuffix}" ]]; then
+          newtitle="${pwdsuffix}"
+        else
+          newtitle="${part0}//${partN}"
         fi
-    done
-    newtitle=${PWD##$HOME/}
-    if [[ -z "$newtitle" ]]; then
-        newtitle=$(basename "$SHELL" | touppercase)
+      else
+        newtitle="${pwdsuffix}"
+      fi
     fi
+  done
+
+  if [[ -n "${newtitle}" ]]; then
     on_linux && set_term_window_title "$newtitle"
     on_macos && set_term_tab_title "$newtitle"
+  fi
 }
 
 function woodhouse_jobs () {
@@ -136,7 +144,7 @@ function woodhouse_jobs () {
 }
 
 function cdp () {
-    for entry in ${HOME}/Projects/${1}*; do
+    for entry in ${HOME}/{p,devel}/${1}*; do
       if [[ -d "$entry" ]]; then
         cd "$entry" && return
       fi

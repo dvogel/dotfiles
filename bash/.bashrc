@@ -154,11 +154,14 @@ export -f gut
 [[ -e "$(which vim)" ]] && export EDITOR=vim
 
 export -a term_title_for_pwd_whitelist
-term_title_for_pwd_whitelist=( "$HOME/p/"* "$HOME/Projects/"* "$HOME/devel/"* )
+term_title_for_pwd_whitelist=( "$HOME"/Projects/muservices/{apps,libraries,services}/* "$HOME/Projects/"* "$HOME/devel/"* )
+export -a term_title_base_dirs
+term_title_base_dirs=( "$HOME"/p "$HOME"/Projects "$HOME"/devel )
 set_term_tab_title "BASH"
 set_term_title_for_pwd
+PROMPT_COMMAND="set_term_title_for_pwd"
 
-[[ -e /usr/local/rust ]] && prepend_to_path /usr/local/rust/bin && export LD_LIBRARY_PATH="/usr/local/rust/lib:$LD_LIBRARY_PATH"
+[[ -e "$HOME/.cargo/bin" ]] && prepend_to_path "$HOME/.cargo/bin"
 
 if [[ -t 1 ]]; then
     PROMPT_COMMAND=set_term_title_for_pwd
