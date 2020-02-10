@@ -11,7 +11,7 @@
 " Only do this when not done yet for this buffer
 " 
 if exists("b:did_Make_ftplugin")
-  finish
+  " finish
 endif
 let b:did_Make_ftplugin = 1
 "
@@ -28,3 +28,9 @@ inoremap  <buffer>            <LocalLeader>rma  <C-C>:MakeCmdlineArgs<space>
  noremap  <buffer>            <LocalLeader>rcm       :MakeFile<space>
 inoremap  <buffer>            <LocalLeader>rcm  <C-C>:MakeFile<space>
 "
+
+setlocal nowrap
+setlocal noexpandtab
+setlocal shiftwidth=4
+setlocal tabstop=4
+setlocal autoindent
