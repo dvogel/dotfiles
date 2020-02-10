@@ -88,6 +88,7 @@ au FileType clojure call Buffer_Init_Clojure()
 au! FileType taglist call SetTagListOptions()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 
 # Always open the quickfix window on the bottom (no vertical split)
 au FileType qf wincmd J
