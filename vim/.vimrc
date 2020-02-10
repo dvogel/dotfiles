@@ -111,7 +111,7 @@ let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'b
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
-let g:ctrlp_custom_ignore = 'target/clover'
+let g:ctrlp_custom_ignore = 'node_modules|target/clover'
 
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')
