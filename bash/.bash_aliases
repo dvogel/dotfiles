@@ -10,11 +10,10 @@ alias va_mfa='source ~/p/devops/utilities/issue_mfa.sh Drew.Vogel'
 alias xclipin='xclip -in -selection secondary'
 alias urldecode='python -c "import sys, urllib as ul; enc=sys.stdin.read(); print ul.unquote_plus(enc)"'
 
+alias gdc='git diff --cached'
 alias githist='git log --graph --branches --oneline'
 alias gst='git status'
 alias glog='git log'; __git_complete glog _git_log
-alias gsh='git show'
-alias gdif='git diff'
 alias gpl='git pull'
 alias gcmt='git commit'
 alias gsu='git submodule update'
