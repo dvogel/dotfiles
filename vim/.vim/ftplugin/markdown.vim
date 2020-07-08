@@ -10,3 +10,13 @@ function! InsertMarkdownTableHeaderSeparator()
 endfunction
 nmap <Leader>mdth :call InsertMarkdownTableHeaderSeparator()<CR>
 
+function! MDSetWidth()
+	setlocal textwidth=110
+	setlocal nowrap
+endfunction
+
+function! MDUnsetWidth()
+	setlocal textwidth=10000
+	setlocal wrap
+endfunction
+
