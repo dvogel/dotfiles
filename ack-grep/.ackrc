@@ -35,6 +35,7 @@
 --type-add=make:is:makefile
 --type-add=make:is:Makefile
 --type-add=make:is:GNUmakefile
+--type-add=markdown:ext:md
 --type-add=rake:is:Rakefile
 --type-add=cmake:is:CMakeLists.txt
 --type-add=cmake:ext:cmake
