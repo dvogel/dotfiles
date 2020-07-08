@@ -130,3 +130,6 @@
 [submodule "syntastic"]
 	path = vim/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim-terraform"]
+	path = vim/.vim/bundle/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git

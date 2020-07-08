@@ -226,6 +226,11 @@ let g:indent_guides_auto_colors = 1
 let g:indent_guides_space_guides = 1
 let g:indent_guides_enable_on_vim_startup = 0
 
+" Global settings for vim-terraform
+let g:terraform_align = 1
+let g:terraform_fold_sections = 0
+let g:terraform_fmt_on_save = 1
+
 augroup filetype
   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex
   au BufRead,BufNewFile *.q               set filetype=Q
