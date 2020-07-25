@@ -202,3 +202,11 @@ function venv_find_and_activate () {
     fi
 }
 
+function slurp_urls () {
+    echo 'for x in $(cat urls.txt); do if [[ -n "$x" ]]; then xbase="$(basename $x)"; if [[ ! -r "$xbase" ]]; then easywget "$x"; fi; fi; done'
+}
+
+function mkcd {
+  mkdir -p "$1" && cd "$1" || return
+}
+

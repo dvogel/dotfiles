@@ -24,6 +24,7 @@ alias gchanges='git whatchanged HEAD^.. | cat'
 alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
 alias lastcommit='git log HEAD^.. | cat'
+alias mkurls='xclip -out | urlextract.py | tee urls.txt'
 
 
 alias bex='bundle exec'
