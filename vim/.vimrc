@@ -331,4 +331,11 @@ nmap <Leader>gws :%s/[ \t]/  /<CR>
 nmap <Leader>rq' :s/"/'/g<CR>
 nmap <Leader>rq" :s/'/"/g<CR>
 
+function! ReduceHTMLBufferToUrls()
+  let l:txt = system('cat ' . expand('%') . '| urlextract.py')
+  normal ggdG
+  call append(0, split(l:txt, '\r'))
+endfunction
+command! -bang ReduceHTMLBufferToUrls call ReduceHTMLBufferToUrls()
+nmap <Leader>urls :ReduceHTMLBufferToUrls<CR>
 
