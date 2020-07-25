@@ -106,7 +106,6 @@ export ANDROID_HOME=~/Library/Android/sdk
 # debian 'buster').
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-export GOROOT=$(first_existing "/media/bulk/opt/go" "/usr/local/go")
 export GOPATH="${HOME}/devel/golang"
 
 PATH_DIRS=$(echo "/usr/local/bin"
