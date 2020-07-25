@@ -67,12 +67,22 @@ let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
 let g:syntastic_java_javac_config_file_enabled = 1
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_javascript_checkers=['eslint']
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
+
+let g:lsc_auto_map = v:true
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {'javascript': 'javascript-typescript-stdio'}
+let g:LanguageClient_rootMarkers = {
+    \ 'javascript': ['jsconfig.json'],
+    \ 'typescript': ['tsconfig.json'],
+    \ }
 
 com! W w
 com! Q q
@@ -90,7 +100,7 @@ au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 
-# Always open the quickfix window on the bottom (no vertical split)
+" Always open the quickfix window on the bottom (no vertical split)
 au FileType qf wincmd J
 
 nmap <C-h> :wincmd h<CR>
@@ -188,14 +198,14 @@ function! DelicatelyDeleteBuffer()
   end
 endfunction
 
+" set guifont=Consolas\ 13
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 if has("gui")
-    if has("mac")
-        set guifont=Menlo\ Regular:h14
-    else
-        " set guifont=Consolas\ 13
-		set guifont=Cascadia\ Code\ 12
-    endif
+  if has("mac")
+    set guifont=Menlo\ Regular:h14
+  else
+    set guifont=Cascadia\ Code\ 12
+  endif
 endif
 
 " set viminfo='10,\"100,:20,%,n~/.viminfo
