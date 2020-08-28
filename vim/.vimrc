@@ -69,6 +69,12 @@ let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
 let g:syntastic_java_javac_config_file_enabled = 1
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_typescript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_typescript_checkers=['eslint']
+
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
@@ -121,7 +127,7 @@ let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'b
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
-let g:ctrlp_custom_ignore = 'node_modules|target/clover'
+let g:ctrlp_custom_ignore = '\v.*(build|node_modules|target/clover).*'
 
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')

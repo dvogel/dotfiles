@@ -6,3 +6,4 @@ setlocal expandtab
 setlocal smarttab
 setlocal nosmartindent
 setlocal nowrap
+au BufWrite *.ts :Autoformat
