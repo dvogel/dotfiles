@@ -187,6 +187,8 @@ hi javaScriptRegexpString guifg=#c77624 ctermfg=Brown
 hi javaScriptNumber guifg=#10b2c0 ctermfg=DarkCyan
 hi javaScriptFloat guifg=#10b2c0 ctermfg=DarkCyan
 
+hi typescriptStringB guifg=#cf2152 ctermfg=LightRed
+
 hi markdownH1 guifg=#e35c0f ctermfg=Yellow
 hi markdownH2 guifg=#ee1122 ctermfg=Yellow
 hi markdownH3 guifg=#c6d80e ctermfg=Yellow
