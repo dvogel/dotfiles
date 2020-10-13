@@ -15,6 +15,7 @@ packadd surround
 filetype plugin indent on
 syntax on
 set synmaxcol=5000
+syntax sync clear
 syntax sync fromstart
 colorscheme putty
 colorscheme drew
