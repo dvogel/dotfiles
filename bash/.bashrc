@@ -158,11 +158,8 @@ export -f gut
 [[ -e "$(which vi)" ]] && export EDITOR=vi
 [[ -e "$(which vim)" ]] && export EDITOR=vim
 
-export -a term_title_for_pwd_whitelist
-term_title_for_pwd_whitelist=( "$HOME"/Projects/muservices/{apps,libraries,services}/* "$HOME/Projects/"* "$HOME/devel/"* )
 export -a term_title_base_dirs
-term_title_base_dirs=( "$HOME"/p "$HOME"/Projects "$HOME"/devel )
-set_term_tab_title "BASH"
+TERM_TITLE_BASE_DIRS=( "$HOME"/p "$HOME"/Projects "$HOME"/devel )
 set_term_title_for_pwd
 PROMPT_COMMAND="set_term_title_for_pwd"
 

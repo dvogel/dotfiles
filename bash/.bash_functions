@@ -104,12 +104,15 @@ function findfiles () {
 }
 
 function set_term_title_for_pwd () {
-  newtitle=""
-  for e in "${term_title_base_dirs[@]}"; do
+  local newtitle="BASH"
+  for e in "${TERM_TITLE_BASE_DIRS[@]}"; do
     elen="${#e}"
     pwdprefix="${PWD:0:$elen}"
-    if [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
-      cutpoint=$(($elen + 1))
+	if [[ "$e" == "$PWD" ]]; then
+		# Retain default value.
+		continue
+    elif [[ "$e" == "$pwdprefix" && -d "$pwdprefix" ]]; then
+      cutpoint=$((elen + 1))
       pwdsuffix="${PWD:$cutpoint}"
       part0="${pwdsuffix%%/*}"
       partN="${pwdsuffix##*/}"
@@ -127,10 +130,8 @@ function set_term_title_for_pwd () {
     fi
   done
 
-  if [[ -n "${newtitle}" ]]; then
-    on_linux && set_term_window_title "$newtitle"
-    on_macos && set_term_tab_title "$newtitle"
-  fi
+  on_linux && set_term_window_title "$newtitle"
+  on_macos && set_term_tab_title "$newtitle"
 }
 
 function cdp () {
