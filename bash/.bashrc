@@ -141,6 +141,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_aliases.local ]; then
+    . ~/.bash_aliases.local
+fi
+
 function gut () {
     echo $1
     echo $2
