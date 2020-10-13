@@ -133,16 +133,6 @@ function set_term_title_for_pwd () {
   fi
 }
 
-function woodhouse_jobs () {
-    jobsdir="/tmp/woodhouse/$1/jobs"
-    for j in $(ls -1tr "$jobsdir" | tail -n5); do
-        jname=$(basename "$j")
-        echo "JOB: $jname -----------------------------------------------------------"
-        cat "$jobsdir/$j"
-        echo
-    done
-}
-
 function cdp () {
     for entry in ${HOME}/{p,devel}/${1}*; do
       if [[ -d "$entry" ]]; then
