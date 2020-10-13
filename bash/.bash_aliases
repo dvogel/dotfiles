@@ -7,7 +7,7 @@ alias gipython='python -m gevent.monkey $(which ipython)'
 alias reload_history='history -a && history -n'
 alias purge_vim_swap_files='find . -name ".*.swp" -print0 | xargs -0 -- rm'
 alias va_mfa='source ~/p/devops/utilities/issue_mfa.sh Drew.Vogel'
-alias xclipin='xclip -in -selection secondary'
+alias xclipin='xclip -in -selection clipboard'
 alias urldecode='python -c "import sys, urllib as ul; enc=sys.stdin.read(); print ul.unquote_plus(enc)"'
 alias pulseaudio-rescan='pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect'
 

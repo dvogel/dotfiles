@@ -151,3 +151,6 @@
 [submodule "asyncomplete-buffer"]
 	path = vim/.vim/pack/plugins/start/asyncomplete-buffer.vim
 	url = git@github.com:prabirshrestha/asyncomplete-buffer.vim.git
+[submodule "vim-swift"]
+	path = vim/.vim/bundle/swift.vim
+	url = https://github.com/keith/swift.vim.git
