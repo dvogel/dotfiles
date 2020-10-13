@@ -10,6 +10,8 @@ alias va_mfa='source ~/p/devops/utilities/issue_mfa.sh Drew.Vogel'
 alias xclipin='xclip -in -selection clipboard'
 alias urldecode='python -c "import sys, urllib as ul; enc=sys.stdin.read(); print ul.unquote_plus(enc)"'
 alias pulseaudio-rescan='pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect'
+alias purge_screenshots='find ~/Pictures -name "Screenshot*.png" -ctime +30 -print0 | xargs -n1 -0 -- rm'
+alias noblanklines="awk '/[^\s]/ { print \$0 }'"
 
 alias gdc='git diff --cached'
 alias githist='git log --graph --branches --oneline'
@@ -31,7 +33,7 @@ alias mkurls='xclip -out | urlextract.py | tee urls.txt'
 
 alias bex='bundle exec'
 alias binst='bundle install'
-alias locked_revisions="cat Gemfile.lock | egrep '^(GIT|\s+remote:|\s+revision:)'"
+alias locked_revisions="cat Gemfile.lock | grep -E '^(GIT|\s+remote:|\s+revision:)'"
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
