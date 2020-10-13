@@ -200,3 +200,14 @@ function mkcd {
   mkdir -p "$1" && cd "$1" || return
 }
 
+function __git_ps1_ext () {
+	# __git_ps1 should be a function provided by ~/.git-prompt.sh
+	if [[ $(type -t __git_ps1) == "function" ]]; then
+		local ps1_tmp
+		ps1_tmp=$(__git_ps1)
+		if [[ -n "${ps1_tmp}" ]]; then
+			echo -n "${ps1_tmp}($(git rev-parse HEAD 2>/dev/null))"
+		fi
+	fi
+}
+
