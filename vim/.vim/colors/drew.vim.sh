@@ -392,12 +392,13 @@ hi bashStatement ctermfg=DarkCyan
 hi bashBlock ctermfg=Yellow
 hi bashDo ctermfg=Yellow
 hi bashComment ctermfg=Gray
-hi bashDeref ctermfg=DarkMagenta
-hi bashIdentifier ctermfg=DarkGreen
+hi bashDeref guifg=_firebrick ctermfg=DarkMagenta
+hi link bashIdentifier Normal
 hi bashHereDoc ctermfg=DarkGray
 hi bashRedir ctermfg=Yellow
 hi link bashCommandOpts Normal
 hi bashOperator ctermfg=Brown
+hi bashIf guifg=_babyyellow ctermfg=Yellow
 
 hi link C89Identifier Normal
 hi link c89Function Normal
