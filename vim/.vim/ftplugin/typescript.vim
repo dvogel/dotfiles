@@ -6,4 +6,8 @@ setlocal expandtab
 setlocal smarttab
 setlocal nosmartindent
 setlocal nowrap
-au BufWrite *.ts :Autoformat
+
+augroup TypescriptAutocmds
+	autocmd!
+	autocmd BufWrite *.ts :Autoformat
+augroup END
