@@ -355,3 +355,43 @@ endfunction
 command! -bang ReduceHTMLBufferToUrls call ReduceHTMLBufferToUrls()
 nmap <Leader>urls :ReduceHTMLBufferToUrls<CR>
 
+" Thanks Herbert Sitz!
+" https://stackoverflow.com/a/4965113
+function! PrePad(s,amt,...)
+    if a:0 > 0
+        let char = a:1
+    else
+        let char = ' '
+    endif
+    return repeat(char,a:amt - len(a:s)) . a:s
+endfunction
+
+function! CreateNewCardYamlFile(basename)
+	let l:n = 0
+	let l:path = ""
+    while l:n < 1000
+		let l:filename = a:basename . PrePad(l:n, 3, "0") . ".yaml"
+		let l:path = "src/cards/" . l:filename
+		if filereadable(l:path)
+			echom "file already exists: " . l:path
+		else
+			let l:msg = "would load: " . l:path
+			echom l:msg
+			execute "e" l:path
+			execute "0r" "template_card.yaml"
+			execute "w"
+			return
+		endif	
+		let l:n += 1
+	endwhile
+	echom "All " . a:basename . " filenames are already used."
+endfunction
+command! -nargs=1 NewCardYamlFile :call CreateNewCardYamlFile(<q-args>)
+command! LoadCardYamlTemplate 0r template_card.yaml
+
+function! YamlReplaceCurrentArrayEntry()
+	normal ^
+	s/-.*/- /g
+	startinsert!
+endfunction
+nmap <Leader>-- :call YamlReplaceCurrentArrayEntry()<CR>
