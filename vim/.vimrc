@@ -63,6 +63,13 @@ if has("mac")
     set nobackup
 end
 
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 0
+let g:OmniSharp_start_server = 1
+let g:OmniSharp_highlighting = 0
+
+let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_html_checkers = ['htmlhint']
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
@@ -75,6 +82,9 @@ let g:syntastic_typescript_checkers=['eslint']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
+
+let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=1tbs -N --convert-tabs --keep-one-line-blocks --indent-continuation=2 -s".&shiftwidth'
+let g:formatters_cs = ['my_custom_cs']
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1

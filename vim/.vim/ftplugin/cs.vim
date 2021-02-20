@@ -4,3 +4,7 @@ setlocal expandtab
 setlocal smartindent
 setlocal nowrap
 
+augroup CSharpAutocmds
+	autocmd!
+	autocmd BufWrite *.cs :OmniSharpCodeFormat
+augroup END

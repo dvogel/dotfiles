@@ -133,3 +133,12 @@
 [submodule "vim-terraform"]
 	path = vim/.vim/bundle/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule "omnisharp-vim"]
+	path = vim/.vim/bundle/omnisharp-vim
+	url = git://github.com/OmniSharp/omnisharp-vim
+[submodule "rust.vim"]
+	path = vim/.vim/bundle/rust.vim
+	url = git@github.com:rust-lang/rust.vim.git
+[submodule "rbs"]
+	path = vim/.vim/bundle/rbs
+	url = git@github.com:pocke/rbs.vim.git
