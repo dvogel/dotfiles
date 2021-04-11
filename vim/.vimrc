@@ -4,6 +4,7 @@ let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
+packloadall
 execute pathogen#infect()
 
 filetype plugin indent on
@@ -63,6 +64,9 @@ if has("mac")
     set nobackup
 end
 
+let g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,preview
+
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_use_mono = 0
 let g:OmniSharp_start_server = 1
@@ -78,6 +82,7 @@ let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_typescript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_typescript_checkers=['eslint']
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["rust"] }
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -111,7 +116,6 @@ au FileType python source ~/.vim/scripts/python.vim
 au FileType php call Buffer_Init_PHP()
 au FileType cpp call Buffer_Init_CPP()
 au FileType clojure call Buffer_Init_Clojure()
-au! FileType taglist call SetTagListOptions()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
@@ -128,7 +132,8 @@ map <F3> :bnext<CR>
 map <F4> :call DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
 nmap <F9> :BufExplorer<CR>
-nmap <C-F9> :NERDTreeToggle<CR>
+nmap <F6> :NERDTreeToggle<CR>
+nmap <C-F6> :TagbarToggle<CR>
 " Depends on vim-surround from Tim Pope:
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
@@ -150,18 +155,6 @@ let g:DVB_TrimWS = 1
 
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++                                                                            
-
-map <F6> :TlistToggle<CR>
-function! SetTagListOptions()
-    highlight MyTagListFileName guibg=background guifg=#eeeeee gui=bold
-    highlight MyTagListTitle guibg=background guifg=#5555ee gui=bold
-    highlight MyTagListTagName gui=reverse
-    let g:Tlist_Display_Tag_Scope=1
-    let g:Tlist_Enable_Fold_Column=0
-    let g:Tlist_File_Fold_Auto_Close=1
-    autocmd! CursorHold * :TlistHighlightTag
-endfunction
-
 
 function! Buffer_Init_Clojure()
 	syn sync fromstart
@@ -395,3 +388,15 @@ function! YamlReplaceCurrentArrayEntry()
 	startinsert!
 endfunction
 nmap <Leader>-- :call YamlReplaceCurrentArrayEntry()<CR>
+
+let g:rustfmt_autosave = 1
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+

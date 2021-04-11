@@ -37,9 +37,6 @@
 [submodule "vim/.vim/bundle/vim-ruby"]
     path = vim/.vim/bundle/vim-ruby
     url = https://github.com/vim-ruby/vim-ruby.git
-[submodule "vim/.vim/bundle/vim-surround"]
-    path = vim/.vim/bundle/vim-surround
-    url = https://github.com/tpope/vim-surround.git
 [submodule "vim/.vim/bundle/vimroom"]
     path = vim/.vim/bundle/vimroom
     url = https://github.com/mikewest/vimroom.git
@@ -88,9 +85,6 @@
 [submodule "vim-elixir"]
 	path = vim/.vim/bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "vim-ack"]
-	path = vim/.vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim-projectroot"]
 	path = vim/.vim/bundle/vim-projectroot
 	url = git://github.com/dbakker/vim-projectroot.git
@@ -124,9 +118,6 @@
 [submodule "kotlin-vim"]
 	path = vim/.vim/bundle/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
-[submodule "vim/.vim/bundle/zeavim"]
-	path = vim/.vim/bundle/zeavim
-	url = https://github.com/KabbAmine/zeavim.vim.git
 [submodule "syntastic"]
 	path = vim/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -142,3 +133,27 @@
 [submodule "rbs"]
 	path = vim/.vim/bundle/rbs
 	url = git@github.com:pocke/rbs.vim.git
+[submodule "async.vim"]
+	path = vim/.vim/bundle/async.vim
+	url = https://github.com/prabirshrestha/async.vim
+[submodule "vim-lsp"]
+	path = vim/.vim/bundle/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "asyncomplete.vim"]
+	path = vim/.vim/bundle/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "asyncomplete-lsp.vim"]
+	path = vim/.vim/bundle/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "tagbar"]
+	path = vim/.vim/bundle/tagbar
+	url = git@github.com:preservim/tagbar.git
+[submodule "zeavim"]
+	path = vim/.vim/pack/plugins/start/zeavim
+	url = git@github.com:KabbAmine/zeavim.vim.git
+[submodule "vim-surround"]
+	path = vim/.vim/pack/plugins/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "ack"]
+	path = vim/.vim/pack/plugins/start/ack
+	url = git@github.com:mileszs/ack.vim.git
