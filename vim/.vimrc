@@ -5,7 +5,6 @@ let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
 packloadall
-execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
