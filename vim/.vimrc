@@ -4,7 +4,13 @@ let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
+# This loads plugins in pack/plugins/start
 packloadall
+
+# Some system-provided packs still need to be added though:
+packadd bufexplorer
+packadd matchit
+packadd surround
 
 filetype plugin indent on
 syntax on
@@ -64,7 +70,17 @@ if has("mac")
 end
 
 let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_auto_popup = 0
 set completeopt=menuone,preview
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': [],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
 
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_use_mono = 0

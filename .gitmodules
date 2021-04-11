@@ -136,9 +136,6 @@
 [submodule "zeavim"]
 	path = vim/.vim/pack/plugins/start/zeavim
 	url = git@github.com:KabbAmine/zeavim.vim.git
-[submodule "vim-surround"]
-	path = vim/.vim/pack/plugins/start/vim-surround
-	url = git@github.com:tpope/vim-surround.git
 [submodule "ack"]
 	path = vim/.vim/pack/plugins/start/ack
 	url = git@github.com:mileszs/ack.vim.git
@@ -151,3 +148,6 @@
 [submodule "vim-rails"]
 	path = vim/.vim/pack/plugins/start/vim-rails
 	url = git@github.com:tpope/vim-rails.git
+[submodule "asyncomplete-buffer"]
+	path = vim/.vim/pack/plugins/start/asyncomplete-buffer.vim
+	url = git@github.com:prabirshrestha/asyncomplete-buffer.vim.git
