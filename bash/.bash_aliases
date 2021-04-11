@@ -21,6 +21,7 @@ alias gsu='git submodule update'
 alias gsubs='git submodule init && git submodule sync && git submodule update'
 alias gco='git checkout'; __git_complete gco _git_checkout
 alias gmaster='git checkout master'
+alias gmain='git checkout main'
 alias gchanges='git whatchanged HEAD^.. | cat'
 alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
