@@ -47,7 +47,7 @@
 	path = vim/.vim/bundle/vim-coffee-script
 	url = git@github.com:dvogel/vim-coffee-script.git
 [submodule "vim/.vim/bundle/nerdtree"]
-	path = vim/.vim/bundle/nerdtree
+	path = vim/.vim/pack/plugins/start/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
 [submodule "vim/.vim/bundle/vim-haml"]
 	path = vim/.vim/bundle/vim-haml
@@ -134,8 +134,8 @@
 	path = vim/.vim/bundle/asyncomplete-lsp.vim
 	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
 [submodule "tagbar"]
-	path = vim/.vim/bundle/tagbar
-	url = git@github.com:preservim/tagbar.git
+	path = vim/.vim/pack/plugins/start/tagbar
+	url = git@github.com:dvogel/dotfiles.git
 [submodule "zeavim"]
 	path = vim/.vim/pack/plugins/start/zeavim
 	url = git@github.com:KabbAmine/zeavim.vim.git
