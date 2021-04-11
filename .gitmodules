@@ -148,9 +148,3 @@
 [submodule "ctrlp"]
 	path = vim/.vim/pack/plugins/start/ctrlp
 	url = git@github.com:kien/ctrlp.vim.git
-[submodule "vim-ruby"]
-	path = vim/.vim/pack/start/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule "vim-rails"]
-	path = vim/.vim/pack/start/vim-rails
-	url = https://github.com/tpope/vim-rails.git
