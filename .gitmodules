@@ -7,12 +7,6 @@
 [submodule "vim/.vim/bundle/vim-clojure-static"]
 	path = vim/.vim/bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
-[submodule "vim/.vim/bundle/ctrlp.vim"]
-	path = vim/.vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/.vim/bundle/vim-rails"]
-	path = vim/.vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
 [submodule "vim/.vim/bundle/vim-json"]
 	path = vim/.vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
@@ -34,9 +28,6 @@
 [submodule "vim/.vim/bundle/vim-indent-guides"]
     path = vim/.vim/bundle/vim-indent-guides
     url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "vim/.vim/bundle/vim-ruby"]
-    path = vim/.vim/bundle/vim-ruby
-    url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "vim/.vim/bundle/vimroom"]
     path = vim/.vim/bundle/vimroom
     url = https://github.com/mikewest/vimroom.git
@@ -88,9 +79,6 @@
 [submodule "vim-projectroot"]
 	path = vim/.vim/bundle/vim-projectroot
 	url = git://github.com/dbakker/vim-projectroot.git
-[submodule "vim-go"]
-	path = vim/.vim/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
 [submodule "vim-jsx-improve"]
 	path = vim/.vim/bundle/vim-jsx-improve
 	url = https://github.com/neoclide/vim-jsx-improve.git
@@ -157,3 +145,12 @@
 [submodule "ack"]
 	path = vim/.vim/pack/plugins/start/ack
 	url = git@github.com:mileszs/ack.vim.git
+[submodule "ctrlp"]
+	path = vim/.vim/pack/plugins/start/ctrlp
+	url = git@github.com:kien/ctrlp.vim.git
+[submodule "vim-ruby"]
+	path = vim/.vim/pack/start/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vim-rails"]
+	path = vim/.vim/pack/start/vim-rails
+	url = https://github.com/tpope/vim-rails.git
