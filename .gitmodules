@@ -154,3 +154,6 @@
 [submodule "vim-swift"]
 	path = vim/.vim/bundle/swift.vim
 	url = https://github.com/keith/swift.vim.git
+[submodule "editorconfig-vim"]
+	path = vim/.vim/bundle/editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
