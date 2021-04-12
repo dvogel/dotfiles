@@ -90,6 +90,11 @@ let g:OmniSharp_highlighting = 0
 
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_html_checkers = ['htmlhint']
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_disable_rules = []
+au FileType gitcommit let b:EditorConfig_disable = 1
+
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
