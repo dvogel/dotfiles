@@ -7,11 +7,13 @@ let b:autoformat_retab=0
 let b:autoformat_remove_trailing_spaces=1
 
 setlocal ruler
-setlocal tabstop=2
-setlocal shiftwidth=2
-setlocal expandtab
 setlocal nowrap
-setlocal textwidth=100
+setlocal textwidth=99
+if !exists('b:editorconfig_applied')
+	setlocal tabstop=2
+	setlocal shiftwidth=2
+	setlocal expandtab
+end
 
 function! SetRubyZealDocset()
 	if exists('b:rails_root')
