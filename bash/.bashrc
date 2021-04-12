@@ -118,6 +118,7 @@ PATH_DIRS=$(echo "/usr/local/bin"
             echo "${HOME}/.local/bin"
             echo "${HOME}/.rvm/bin"
             echo "${HOME}/.rbenv/bin"
+            echo "${HOME}/.tfenv/bin"
             echo "${HOME}/Library/Android/sdk/tools"
             echo "${HOME}/Library/Android/sdk/platform-tools"
             echo "/usr/local/git/bin")
