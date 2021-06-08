@@ -1,13 +1,14 @@
-filetype off
-
 let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
-# This loads plugins in pack/plugins/start
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/tmp/vim-lsp.log')
+
+" This loads plugins in pack/plugins/start
 packloadall
 
-# Some system-provided packs still need to be added though:
+" Some system-provided packs still need to be added though:
 packadd bufexplorer
 packadd matchit
 packadd surround
@@ -88,22 +89,23 @@ let g:OmniSharp_server_use_mono = 0
 let g:OmniSharp_start_server = 1
 let g:OmniSharp_highlighting = 0
 
-let g:syntastic_cs_checkers = ['code_checker']
-let g:syntastic_html_checkers = ['htmlhint']
-
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_disable_rules = []
 au FileType gitcommit let b:EditorConfig_disable = 1
 
-let g:syntastic_ruby_checkers=['rubocop']
-let g:syntastic_python_checkers=['pyflakes']
-let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
+let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_html_checkers = ['htmlhint']
+let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
+" let g:loaded_syntastic_java_javac_checker = 1
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_typescript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_typescript_checkers=['eslint']
-let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["rust"] }
+let g:syntastic_quiet_messages = { 'regex': 'parentheses after method name' }
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["rust", "java"] }
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -117,14 +119,6 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
-
-let g:lsc_auto_map = v:true
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_server_commands = {'javascript': 'javascript-typescript-stdio'}
-let g:LanguageClient_rootMarkers = {
-    \ 'javascript': ['jsconfig.json'],
-    \ 'typescript': ['tsconfig.json'],
-    \ }
 
 com! W w
 com! Q q
@@ -419,5 +413,14 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+
+let g:jdtls_path = expand('~/bin/jdtls')
+
+au User lsp_setup call lsp#register_server({
+			\ 'name': 'eclipse-jdtls-server',
+			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/devel/eclipse.jdt.ls")]},
+			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
+			\ 'allowlist': ['java'],
+			\ })
 
 
