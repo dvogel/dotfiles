@@ -121,6 +121,7 @@ PATH_DIRS=$(echo "/usr/local/bin"
             echo "${HOME}/.tfenv/bin"
             echo "${HOME}/Library/Android/sdk/tools"
             echo "${HOME}/Library/Android/sdk/platform-tools"
+            echo "${HOME}/opt/google-cloud-sdk/bin"
             echo "/usr/local/git/bin")
 
 for d in $PATH_DIRS; do
