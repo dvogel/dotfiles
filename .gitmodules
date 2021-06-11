@@ -160,3 +160,15 @@
 [submodule "vim-bufexplorer"]
 	path = vim/.vim/pack/plugins/opt/bufexplorer
 	url = git@github.com:jlanzarotta/bufexplorer.git
+[submodule "vim-javacomplete2"]
+	path = vim/.vim/pack/plugins/start/vim-javacomplete2
+	url = git@github.com:artur-shaik/vim-javacomplete2.git
+[submodule "vim-test"]
+	path = vim/.vim/pack/plugins/start/vim-test
+	url = git@github.com:vim-test/vim-test.git
+[submodule "vim-asyncrun"]
+	path = vim/.vim/pack/plugins/start/asyncrun.vim
+	url = git@github.com:skywind3000/asyncrun.vim.git
+[submodule "vim-dispatch"]
+	path = vim/.vim/pack/plugins/start/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git

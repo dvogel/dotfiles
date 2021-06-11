@@ -84,6 +84,9 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \  },
     \ }))
 
+let g:JavaComplete_ClosingBrace = 0
+let g:JavaComplete_StaticImportsAtTop = 1
+
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_use_mono = 0
 let g:OmniSharp_start_server = 1
@@ -414,13 +417,21 @@ if executable('rls')
         \ })
 endif
 
-let g:jdtls_path = expand('~/bin/jdtls')
+" let g:jdtls_path = expand('~/bin/jdtls')
+
+" au User lsp_setup call lsp#register_server({
+" 			\ 'name': 'eclipse-jdtls-server',
+" 			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/devel/eclipse.jdt.ls")]},
+" 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
+" 			\ 'allowlist': ['java'],
+" 			\ })
 
 au User lsp_setup call lsp#register_server({
-			\ 'name': 'eclipse-jdtls-server',
-			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/devel/eclipse.jdt.ls")]},
+            \ 'name': 'java-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, expand('~/devel/java-language-server/dist/lang_server_linux.sh')]},
 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
 			\ 'allowlist': ['java'],
 			\ })
+
 
 
