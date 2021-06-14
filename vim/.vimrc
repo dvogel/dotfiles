@@ -4,6 +4,12 @@ let g:ack_use_dispatch = 0
 
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/tmp/vim-lsp.log')
+let g:lsp_semantic_enabled = 0
+let g:lsp_document_highlight_enabled = 0
+
+let java_highlight_functions = 1
+let java_highlight_java_lang = 1
+" let java_highlight_all = 0
 
 " This loads plugins in pack/plugins/start
 packloadall

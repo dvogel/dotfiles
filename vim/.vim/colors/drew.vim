@@ -20,6 +20,8 @@ let g:color_scheme_file = expand('<sfile>')
 
 hi Normal guifg=#c5c8c6 guibg=#000000
 
+hi CursorLine guifg=#ffffff guibg=#444444
+
 hi Todo gui=REVERSE,BOLD guifg=#c53534 guibg=#fbe572
 
 hi ErrorMsg guibg=#cb3725 guifg=#c5c8c6
@@ -209,6 +211,17 @@ hi Exception gui=NONE guifg=#fbe572
 hi Repeat gui=NONE guifg=#fbe572
 hi Conditional gui=NONE guifg=#fbe572
 hi String gui=NONE guifg=#c53534
+
+hi javaParenT guifg=#d9cd94 ctermfg=Brown
+hi javaTypedef guifg=#b3e46f ctermfg=LightMagenta
+hi javaType guifg=#ee1122 ctermfg=LightGreen
+hi javaMethodDecl guifg=#b294bb ctermfg=LightRed
+hi javaString guifg=#c53534 ctermfg=DarkRed
+hi javaConstant guifg=#0e8f9b ctermfg=DarkCyan
+hi javaScopeDecl guifg=#ba99fa ctermfg=LightRed
+hi javaClassDecl guifg=#c6d80e ctermfg=LightGreen
+hi javaAnnotation guifg=#ebab6a ctermfg=Yellow
+hi javaExternal guifg=#bb00bb ctermfg=DarkMagenta
 
 hi jsonBoolean gui=NONE guifg=#9cd7eb ctermfg=LightBlue
 hi jsonEscape gui=NONE guifg=#9cd7eb ctermfg=LightBlue

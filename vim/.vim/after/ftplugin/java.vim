@@ -1,1 +1,1 @@
-
+setlocal keywordprg=:Zeavim
