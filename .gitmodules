@@ -158,7 +158,7 @@
 	path = vim/.vim/bundle/editorconfig-vim
 	url = git@github.com:editorconfig/editorconfig-vim.git
 [submodule "vim-bufexplorer"]
-	path = vim/.vim/pack/plugins/opt/bufexplorer
+	path = vim/.vim/pack/plugins/start/bufexplorer
 	url = git@github.com:jlanzarotta/bufexplorer.git
 [submodule "vim-javacomplete2"]
 	path = vim/.vim/pack/plugins/start/vim-javacomplete2
