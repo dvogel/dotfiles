@@ -102,6 +102,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_disable_rules = []
 au FileType gitcommit let b:EditorConfig_disable = 1
 
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_html_checkers = ['htmlhint']
 let g:syntastic_java_checkers = ['javac']
