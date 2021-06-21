@@ -39,3 +39,6 @@ noremap Id :IndentDialog<CR>
 noremap tn :ToggleNote<CR>
 
 
+if has("gui")
+	setlocal guifont=Luxi\ Mono\ 16
+endif

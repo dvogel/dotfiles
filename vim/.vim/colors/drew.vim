@@ -1,5 +1,3 @@
-
-
 " Vim color file
 " Maintainer:	Drew Vogel <drewpvogel@gmail.com>
 " Last Change:	June 14, 2013
@@ -16,32 +14,79 @@ if exists("syntax_on")
 endif
 
 let colors_name = "drew"
-let g:color_scheme_file = expand('<sfile>')
 
-hi Normal guifg=#c5c8c6 guibg=#000000
+" function! Hex2guicolor(hex)
+" 	let l:r = str2nr(a:hex[1:2], 16)
+" 	let l:g = str2nr(a:hex[3:4], 16)
+" 	let l:b = str2nr(a:hex[5:6], 16)
+" 	return ((l:r * 65536) + (l:g * 256) + l:b)
+" endfunction
+
+" function! Hex2guicolor(hex)
+" 	return a:hex
+" endfunction
+
+runtime colors/lists/csscolors.vim
+runtime colors/lists/pantone.vim
+call extend(v:colornames, {
+			\ 'drew_cyan': '#10b2c0',
+			\ 'drew_aqua': '#0e8f9b',
+			\ 'drew_blue': '#0e689d',
+			\ 'drew_peach': '#e39e58',
+			\ 'drew_puke': '#ebab6a',
+			\ 'drew_skin': '#e3b07d',
+			\ 'drew_red': '#cb3725',
+			\ 'drew_watermelon': '#ee1122',
+			\ 'drew_firebrick': '#c53534',
+			\ 'drew_pink': '#cf2152',
+			\ 'drew_palepurple': '#b294bb',
+			\ 'drew_purple': '#ba99fa',
+			\ 'drew_magenta': '#bb00bb',
+			\ 'drew_green': '#379f4d',
+			\ 'drew_neongreen': '#b3e46f',
+			\ 'drew_khaki': '#ad6d2b',
+			\ 'drew_brown': '#642e0e',
+			\ 'drew_orange': '#e35c0f',
+			\ 'drew_salmon': '#f37c2f',
+			\ 'drew_tan': '#c77624',
+			\ 'drew_teal': '#126d67',
+			\ 'drew_mtdew': '#c6d80e',
+			\ 'drew_ltblue': '#208ec8',
+			\ 'drew_skyblue': '#9cd7eb',
+			\ 'drew_babyyellow': '#fbe572',
+			\ 'drew_birchwood': '#d9cd94',
+			\ 'drew_white': '#dfdfdf',
+			\ 'drew_grayishblue': '#cacaf0',
+			\ 'drew_ltgray': '#c5c8c6',
+			\ 'drew_darkgray': '#5e6164',
+			\ 'drew_background': '#000000',
+			\ }, "keep")
+
+
+hi Normal guifg=drew_ltgray guibg=drew_background
 
 hi CursorLine guifg=#ffffff guibg=#444444
 
-hi Todo gui=REVERSE,BOLD guifg=#c53534 guibg=#fbe572
+hi Todo gui=REVERSE,BOLD guifg=drew_firebrick guibg=drew_babyyellow
 
-hi ErrorMsg guibg=#cb3725 guifg=#c5c8c6
-hi Error guibg=#cb3725 guifg=#c5c8c6
-hi IncSearch guibg=#c77624 guifg=#5e6164
+hi ErrorMsg guibg=drew_red guifg=drew_ltgray
+hi Error guibg=drew_red guifg=drew_ltgray
+hi IncSearch guibg=drew_tan guifg=drew_darkgray
 hi ModeMsg gui=bold
 hi StatusLine gui=reverse,bold
 hi StatusLineNC gui=reverse
-hi VertSplit guibg=#c5c8c6
+hi VertSplit guibg=drew_ltgray
 hi Visual gui=reverse guifg=NONE guibg=NONE
 hi VisualNOS gui=underline,bold
 hi DiffText gui=bold guibg=Red
 hi Cursor guibg=NONE guifg=NONE gui=inverse
-hi lCursor guibg=#10b2c0 guifg=NONE
+hi lCursor guibg=drew_cyan guifg=NONE
 hi Directory guifg=Blue
-hi LineNr guifg=#fbe572
+hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
 hi NonText gui=bold guifg=Blue guibg=Black
 hi Question gui=bold guifg=SeaGreen
-hi Search guibg=#c77624 guifg=#5e6164
+hi Search guibg=drew_tan guifg=drew_darkgray
 hi SpecialKey guifg=Blue
 hi Title gui=bold guifg=Magenta
 hi WarningMsg guifg=Red
@@ -53,14 +98,14 @@ hi DiffChange guibg=LightMagenta
 hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
 hi Search guifg=#bbbb00 guibg=#000000 gui=bold
 
-hi Comment guifg=#9cd7eb
-hi Constant guifg=#10b2c0
-hi PreProc guifg=#bb00bb guibg=Black ctermfg=DarkMagenta
-hi Statement gui=NONE guifg=#cb3725
+hi Comment guifg=drew_skyblue
+hi Constant guifg=drew_cyan
+hi PreProc guifg=drew_magenta guibg=Black ctermfg=DarkMagenta
+hi Statement gui=NONE guifg=drew_red
 hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
 hi Ignore guifg=Grey
-hi Identifier guifg=#0e689d
-hi Type guifg=#379f4d gui=NONE
+hi Identifier guifg=drew_blue
+hi Type guifg=drew_green gui=NONE
 
 hi link IncSearch		Visual
 hi link String			Constant
@@ -90,234 +135,235 @@ hi link Debug			Special
 
 " vim: sw=2
 
-hi vimHightlight guifg=#e35c0f
-hi vimGroup guifg=#0e689d
-hi vimHiGui guifg=#c6d80e
-hi vimHiGuiFgBg guifg=#c6d80e
-hi vimHiCterm guifg=#c6d80e
-hi vimHiCtermFgBg guifg=#c6d80e
-hi vimHiCtermColor guifg=#c53534
-hi vimHiAttrib guifg=#c53534
+hi vimLet guifg=css_teal
+hi vimHightlight guifg=drew_orange
+hi vimGroup guifg=drew_blue
+hi vimHiGui guifg=drew_mtdew
+hi vimHiGuiFgBg guifg=drew_mtdew
+hi vimHiCterm guifg=drew_mtdew
+hi vimHiCtermFgBg guifg=drew_mtdew
+hi vimHiCtermColor guifg=drew_firebrick
+hi vimHiAttrib guifg=drew_firebrick
 
-" hi pythonComment guifg=#9cd7eb
-" hi pythonFunction guifg=#0e689d
-" hi pythonNumber guifg=#10b2c0
+" hi pythonComment guifg=drew_skyblue
+" hi pythonFunction guifg=drew_blue
+" hi pythonNumber guifg=drew_cyan
 
-hi Function gui=NONE guifg=#10b2c0 cterm=NONE ctermfg=Blue
-hi pythonFunction gui=NONE guifg=#208ec8 ctermfg=LightBlue
-hi pythonStatement gui=NONE guifg=#e35c0f ctermfg=Brown
-hi pythonException gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi pythonRepeat gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi pythonConditional gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi pythonDecorator gui=NONE guifg=#e35c0f ctermfg=Brown
-hi pythonDottedName gui=NONE guifg=#208ec8 ctermfg=LightBlue
-hi pythonDot gui=NONE guifg=#e35c0f ctermfg=Brown
-hi pythonRawString guifg=#10b2c0
-hi pythonString gui=NONE guifg=#cf2152 ctermfg=DarkMagenta
-hi pythonUniString guifg=#c53534
-hi pythonUniEscape guifg=#0e8f9b
-hi pythonOperator gui=NONE guifg=#fbe572
-hi pythonOperatorSyms gui=bold guifg=#fbe572
+hi Function gui=NONE guifg=drew_cyan cterm=NONE ctermfg=Blue
+hi pythonFunction gui=NONE guifg=drew_ltblue ctermfg=LightBlue
+hi pythonStatement gui=NONE guifg=drew_orange ctermfg=Brown
+hi pythonException gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi pythonRepeat gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi pythonConditional gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi pythonDecorator gui=NONE guifg=drew_orange ctermfg=Brown
+hi pythonDottedName gui=NONE guifg=drew_ltblue ctermfg=LightBlue
+hi pythonDot gui=NONE guifg=drew_orange ctermfg=Brown
+hi pythonRawString guifg=drew_cyan
+hi pythonString gui=NONE guifg=drew_pink ctermfg=DarkMagenta
+hi pythonUniString guifg=drew_firebrick
+hi pythonUniEscape guifg=drew_aqua
+hi pythonOperator gui=NONE guifg=drew_babyyellow
+hi pythonOperatorSyms gui=bold guifg=drew_babyyellow
 hi foldcolumn guibg=NONE guifg=NONE
-hi SignColumn guibg=#5e6164 guifg=#cb3725
-hi pythonBuiltinFunc guifg=#fbe572
-hi pythonPreCondit guifg=#e35c0f
-hi pythonDocTest guifg=#9cd7eb
-hi pythonDocTest2 guifg=#9cd7eb
+hi SignColumn guibg=drew_darkgray guifg=drew_red
+hi pythonBuiltinFunc guifg=drew_babyyellow
+hi pythonPreCondit guifg=drew_orange
+hi pythonDocTest guifg=drew_skyblue
+hi pythonDocTest2 guifg=drew_skyblue
 
-hi rubyBoolean gui=NONE guifg=#ee1122 ctermfg=LightRed
-hi rubySymbol gui=NONE guifg=#ebab6a ctermfg=Brown
-hi rubyString gui=NONE guifg=#c53534 ctermfg=DarkRed
-hi rubyInteger gui=NONE guifg=#0e8f9b ctermfg=DarkCyan
-hi rubyConstant gui=NONE guifg=#208ec8 ctermfg=Blue
-hi rubyInterpolationDelimiter gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi rubyRailsUserClass gui=NONE guifg=#208ec8 ctermfg=LightBlue
-hi rubyPseudoVariable gui=NONE guifg=#c6d80e ctermfg=LightGreen
-hi rubyConditional guifg=#fbe572 ctermfg=Yellow
-hi rubyExceptional guifg=#e35c0f ctermfg=Brown
-hi rubyAccess guifg=#d9cd94 ctermfg=Brown
-hi rubyDefine guifg=#e35c0f ctermfg=Brown
-hi rubyClass guifg=#c6d80e ctermfg=LightGreen
-hi rubyModule guifg=#ee1122 ctermfg=LightRed
-hi rubyRailsTestMethod guifg=#ba99fa
+hi rubyBoolean gui=NONE guifg=drew_watermelon ctermfg=LightRed
+hi rubySymbol gui=NONE guifg=drew_puke ctermfg=Brown
+hi rubyString gui=NONE guifg=drew_firebrick ctermfg=DarkRed
+hi rubyInteger gui=NONE guifg=drew_aqua ctermfg=DarkCyan
+hi rubyConstant gui=NONE guifg=drew_ltblue ctermfg=Blue
+hi rubyInterpolationDelimiter gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi rubyRailsUserClass gui=NONE guifg=drew_ltblue ctermfg=LightBlue
+hi rubyPseudoVariable gui=NONE guifg=drew_mtdew ctermfg=LightGreen
+hi rubyConditional guifg=drew_babyyellow ctermfg=Yellow
+hi rubyExceptional guifg=drew_orange ctermfg=Brown
+hi rubyAccess guifg=drew_birchwood ctermfg=Brown
+hi rubyDefine guifg=drew_orange ctermfg=Brown
+hi rubyClass guifg=drew_mtdew ctermfg=LightGreen
+hi rubyModule guifg=drew_watermelon ctermfg=LightRed
+hi rubyRailsTestMethod guifg=drew_purple
 
-hi goBlock           guifg=#fbe572  ctermfg=Yellow
-hi goBoolean         guifg=#cf2152
-hi goDeclaration     guifg=#c6d80e       ctermfg=LightGreen
-hi goDeclType        guifg=#379f4d       ctermfg=LightGreen
-hi goDirective       guifg=#bb00bb     ctermfg=Magenta
-hi goFormatSpecifier guifg=#fbe572  ctermfg=Yellow
-hi goFunction        guifg=#208ec8      ctermfg=LightBlue
-hi goMethod          guifg=#c5c8c6
-hi goOperator        guifg=#ebab6a        ctermfg=Yellow
-hi goRepeat          guifg=#fbe572  ctermfg=Yellow
-hi goStatement       guifg=#e35c0f      ctermfg=Brown
-hi goString          guifg=#c53534   ctermfg=DarkRed
-hi goStructDef       guifg=#208ec8      ctermfg=LightBlue
-hi goType            guifg=#379f4d
-hi goUnsignedInts    guifg=#379f4d
+hi goBlock           guifg=drew_babyyellow  ctermfg=Yellow
+hi goBoolean         guifg=drew_pink
+hi goDeclaration     guifg=drew_mtdew       ctermfg=LightGreen
+hi goDeclType        guifg=drew_green       ctermfg=LightGreen
+hi goDirective       guifg=drew_magenta     ctermfg=Magenta
+hi goFormatSpecifier guifg=drew_babyyellow  ctermfg=Yellow
+hi goFunction        guifg=drew_ltblue      ctermfg=LightBlue
+hi goMethod          guifg=drew_ltgray
+hi goOperator        guifg=drew_puke        ctermfg=Yellow
+hi goRepeat          guifg=drew_babyyellow  ctermfg=Yellow
+hi goStatement       guifg=drew_orange      ctermfg=Brown
+hi goString          guifg=drew_firebrick   ctermfg=DarkRed
+hi goStructDef       guifg=drew_ltblue      ctermfg=LightBlue
+hi goType            guifg=drew_green
+hi goUnsignedInts    guifg=drew_green
 hi link goStruct Normal
 
 
 
-hi coffeeObject       guifg=#208ec8       ctermfg=LightBlue
-hi coffeeObjAssign    guifg=#208ec8       ctermfg=LightBlue
-hi coffeeSpecialOp    guifg=#c5c8c6       ctermfg=Yellow
-hi coffeeExtendedOp   guifg=#fbe572   ctermfg=Brown
-hi coffeeParensParen  guifg=#c77624          ctermfg=Brown
-hi coffeeBooleanTrue  guifg=#b3e46f    ctermfg=LightGreen
-hi coffeeBooleanFalse guifg=#ee1122   ctermfg=LightRed
-hi coffeeSpecialIdent guifg=#cacaf0  ctermfg=LightGray
-hi coffeeRegex        guifg=#c77624          ctermfg=Brown
+hi coffeeObject       guifg=drew_ltblue       ctermfg=LightBlue
+hi coffeeObjAssign    guifg=drew_ltblue       ctermfg=LightBlue
+hi coffeeSpecialOp    guifg=drew_ltgray       ctermfg=Yellow
+hi coffeeExtendedOp   guifg=drew_babyyellow   ctermfg=Brown
+hi coffeeParensParen  guifg=drew_tan          ctermfg=Brown
+hi coffeeBooleanTrue  guifg=drew_neongreen    ctermfg=LightGreen
+hi coffeeBooleanFalse guifg=drew_watermelon   ctermfg=LightRed
+hi coffeeSpecialIdent guifg=drew_grayishblue  ctermfg=LightGray
+hi coffeeRegex        guifg=drew_tan          ctermfg=Brown
 
-hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=#e35c0f
-hi javaScriptGlobalObjects guifg=#126d67
-hi javaScriptOpSymbols guifg=#fbe572
-hi javaScriptParens guifg=#c77624 ctermfg=Brown
-hi javaScriptBraces guifg=#e35c0f ctermfg=Yellow
-hi javaScriptEndColons guifg=#208ec8
+hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=drew_orange
+hi javaScriptGlobalObjects guifg=drew_teal
+hi javaScriptOpSymbols guifg=drew_babyyellow
+hi javaScriptParens guifg=drew_tan ctermfg=Brown
+hi javaScriptBraces guifg=drew_orange ctermfg=Yellow
+hi javaScriptEndColons guifg=drew_ltblue
 hi link javaScriptFuncArg Normal
-hi javaScriptFuncKeyword gui=NONE guifg=#0e689d cterm=NONE ctermfg=Blue
-hi javaScriptFuncDef gui=NONE guifg=#379f4d cterm=NONE ctermfg=LightGreen
-hi javaScriptFuncExp gui=NONE guifg=#379f4d cterm=NONE ctermfg=LightGreen
-hi javaScriptFuncComma guifg=#e35c0f
-hi javaScriptBoolean guifg=#9cd7eb ctermfg=Blue
-hi javaScriptString guifg=#c53534 ctermfg=Red
-hi javaScriptStringS guifg=#c53534 ctermfg=Red
-hi javaScriptStringD guifg=#c53534 ctermfg=Red
-hi javaScriptRegexpString guifg=#c77624 ctermfg=Brown
-hi javaScriptNumber guifg=#10b2c0 ctermfg=DarkCyan
-hi javaScriptFloat guifg=#10b2c0 ctermfg=DarkCyan
+hi javaScriptFuncKeyword gui=NONE guifg=drew_blue cterm=NONE ctermfg=Blue
+hi javaScriptFuncDef gui=NONE guifg=drew_green cterm=NONE ctermfg=LightGreen
+hi javaScriptFuncExp gui=NONE guifg=drew_green cterm=NONE ctermfg=LightGreen
+hi javaScriptFuncComma guifg=drew_orange
+hi javaScriptBoolean guifg=drew_skyblue ctermfg=Blue
+hi javaScriptString guifg=drew_firebrick ctermfg=Red
+hi javaScriptStringS guifg=drew_firebrick ctermfg=Red
+hi javaScriptStringD guifg=drew_firebrick ctermfg=Red
+hi javaScriptRegexpString guifg=drew_tan ctermfg=Brown
+hi javaScriptNumber guifg=drew_cyan ctermfg=DarkCyan
+hi javaScriptFloat guifg=drew_cyan ctermfg=DarkCyan
 
-hi typescriptStringB guifg=#cf2152 ctermfg=LightRed
+hi typescriptStringB guifg=drew_pink ctermfg=LightRed
 
-hi markdownH1 guifg=#e35c0f ctermfg=Yellow
-hi markdownH2 guifg=#ee1122 ctermfg=Yellow
-hi markdownH3 guifg=#c6d80e ctermfg=Yellow
-hi markdownH4 guifg=#cf2152 ctermfg=Yellow
-hi markdownH5 guifg=#10b2c0 ctermfg=Yellow
-hi markdownH6 guifg=#cacaf0 ctermfg=Yellow
-hi markdownCode guifg=#379f4d ctermfg=LightGray ctermbg=DarkBlue
-hi markdownCodeBlock guifg=#379f4d ctermfg=LightGray ctermbg=DarkBlue
-hi markdownHeadingDelimiter guifg=#5e6164 ctermfg=LightGray
-hi markdownHeadingRule guifg=#5e6164 ctermfg=LightGray
-hi markdownListMarker guifg=#ebab6a ctermfg=Brown
-hi markdownOrderedListMarker guifg=#ebab6a ctermfg=Brown
+hi markdownH1 guifg=drew_orange ctermfg=Yellow
+hi markdownH2 guifg=drew_watermelon ctermfg=Yellow
+hi markdownH3 guifg=drew_mtdew ctermfg=Yellow
+hi markdownH4 guifg=drew_pink ctermfg=Yellow
+hi markdownH5 guifg=drew_cyan ctermfg=Yellow
+hi markdownH6 guifg=drew_grayishblue ctermfg=Yellow
+hi markdownCode guifg=drew_green ctermfg=LightGray ctermbg=DarkBlue
+hi markdownCodeBlock guifg=drew_green ctermfg=LightGray ctermbg=DarkBlue
+hi markdownHeadingDelimiter guifg=drew_darkgray ctermfg=LightGray
+hi markdownHeadingRule guifg=drew_darkgray ctermfg=LightGray
+hi markdownListMarker guifg=drew_puke ctermfg=Brown
+hi markdownOrderedListMarker guifg=drew_puke ctermfg=Brown
 
 
-hi Function gui=NONE guifg=#208ec8
-hi Statement gui=NONE guifg=#e35c0f
-hi Exception gui=NONE guifg=#fbe572
-hi Repeat gui=NONE guifg=#fbe572
-hi Conditional gui=NONE guifg=#fbe572
-hi String gui=NONE guifg=#c53534
+hi Function gui=NONE guifg=drew_ltblue
+hi Statement gui=NONE guifg=drew_orange
+hi Exception gui=NONE guifg=drew_babyyellow
+hi Repeat gui=NONE guifg=drew_babyyellow
+hi Conditional gui=NONE guifg=drew_babyyellow
+hi String gui=NONE guifg=drew_firebrick
 
-hi javaParenT guifg=#d9cd94 ctermfg=Brown
-hi javaTypedef guifg=#b3e46f ctermfg=LightMagenta
-hi javaType guifg=#ee1122 ctermfg=LightGreen
-hi javaMethodDecl guifg=#b294bb ctermfg=LightRed
-hi javaString guifg=#c53534 ctermfg=DarkRed
-hi javaConstant guifg=#0e8f9b ctermfg=DarkCyan
-hi javaScopeDecl guifg=#ba99fa ctermfg=LightRed
-hi javaClassDecl guifg=#c6d80e ctermfg=LightGreen
-hi javaAnnotation guifg=#ebab6a ctermfg=Yellow
-hi javaExternal guifg=#bb00bb ctermfg=DarkMagenta
+hi javaParenT guifg=drew_birchwood ctermfg=Brown
+hi javaTypedef guifg=drew_neongreen ctermfg=LightMagenta
+hi javaType guifg=drew_watermelon ctermfg=LightGreen
+hi javaMethodDecl guifg=drew_palepurple ctermfg=LightRed
+hi javaString guifg=drew_firebrick ctermfg=DarkRed
+hi javaConstant guifg=drew_aqua ctermfg=DarkCyan
+hi javaScopeDecl guifg=drew_purple ctermfg=LightRed
+hi javaClassDecl guifg=drew_mtdew ctermfg=LightGreen
+hi javaAnnotation guifg=drew_puke ctermfg=Yellow
+hi javaExternal guifg=drew_magenta ctermfg=DarkMagenta
 
-hi jsonBoolean gui=NONE guifg=#9cd7eb ctermfg=LightBlue
-hi jsonEscape gui=NONE guifg=#9cd7eb ctermfg=LightBlue
-hi jsonKeywordMatch gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi jsonNoQuotes gui=reverse guifg=#cb3725 cterm=reverse ctermfg=Red
-hi jsonNull gui=NONE guifg=#c6d80e ctermfg=Yellow
-hi jsonNumber gui=NONE guifg=#379f4d ctermfg=Green
-hi jsonQuote gui=NONE guifg=#cb3725 ctermfg=LightRed
-hi jsonString gui=NONE guifg=#c53534 ctermfg=DarkRed
-hi jsonBraces gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi jsonFold gui=NONE guifg=#ba99fa ctermfg=Magenta
-hi jsonKeywordRegion gui=NONE guifg=#e35c0f ctermfg=Brown
-hi jsonNoise gui=NONE guifg=#fbe572 ctermfg=Yellow
-hi jsonPadding gui=NONE guifg=#ba99fa ctermfg=Magenta
-hi jsonStringSQ gui=NONE guifg=#cb3725 ctermfg=LightRed
-hi jsonCommaError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
-hi jsonCommentError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
-hi jsonNumError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
-hi jsonSemicolonError gui=reverse guifg=#cb3725 cterm=reverse ctermfg=LightRed
+hi jsonBoolean gui=NONE guifg=drew_skyblue ctermfg=LightBlue
+hi jsonEscape gui=NONE guifg=drew_skyblue ctermfg=LightBlue
+hi jsonKeywordMatch gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi jsonNoQuotes gui=reverse guifg=drew_red cterm=reverse ctermfg=Red
+hi jsonNull gui=NONE guifg=drew_mtdew ctermfg=Yellow
+hi jsonNumber gui=NONE guifg=drew_green ctermfg=Green
+hi jsonQuote gui=NONE guifg=drew_red ctermfg=LightRed
+hi jsonString gui=NONE guifg=drew_firebrick ctermfg=DarkRed
+hi jsonBraces gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi jsonFold gui=NONE guifg=drew_purple ctermfg=Magenta
+hi jsonKeywordRegion gui=NONE guifg=drew_orange ctermfg=Brown
+hi jsonNoise gui=NONE guifg=drew_babyyellow ctermfg=Yellow
+hi jsonPadding gui=NONE guifg=drew_purple ctermfg=Magenta
+hi jsonStringSQ gui=NONE guifg=drew_red ctermfg=LightRed
+hi jsonCommaError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
+hi jsonCommentError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
+hi jsonNumError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
+hi jsonSemicolonError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
 
-hi yamlKey gui=NONE guifg=#ebab6a ctermfg=Brown
-hi yamlDelimiter gui=NONE guifg=#ebab6a ctermfg=Brown
-hi yamlString gui=NONE guifg=#c53534 ctermfg=DarkRed
-hi yamlNumber gui=NONE guifg=#379f4d ctermfg=Green
-hi yamlComment gui=NONE guifg=#c5c8c6 ctermfg=Grey
+hi yamlKey gui=NONE guifg=drew_puke ctermfg=Brown
+hi yamlDelimiter gui=NONE guifg=drew_puke ctermfg=Brown
+hi yamlString gui=NONE guifg=drew_firebrick ctermfg=DarkRed
+hi yamlNumber gui=NONE guifg=drew_green ctermfg=Green
+hi yamlComment gui=NONE guifg=drew_ltgray ctermfg=Grey
 
 "hi groovyExternal                  xxx links to Include
 hi groovyError               gui=bold guifg=#fafafa guibg=#990000
 "hi groovyConditional               xxx links to Conditional
 "hi groovyRepeat                    xxx links to Repeat
-hi groovyBoolean             gui=NONE guifg=#208ec8
+hi groovyBoolean             gui=NONE guifg=drew_ltblue
 "hi groovyConstant                  xxx links to Constant
-hi groovyTypedef             gui=NONE guifg=#e35c0f
-hi groovyOperator            gui=NONE guifg=#fbe572  
-hi groovyType                gui=NONE guifg=#126d67
-hi groovyStatement           gui=NONE guifg=#e35c0f
-hi groovyStorageClass        gui=NONE guifg=#e35c0f
-hi groovyExceptions          gui=NONE guifg=#c6d80e
-hi groovyAssert              gui=NONE guifg=#e35c0f
-hi groovyMethodDecl          gui=NONE guifg=#e35c0f
-hi groovyClassDecl           gui=NONE guifg=#e35c0f
+hi groovyTypedef             gui=NONE guifg=drew_orange
+hi groovyOperator            gui=NONE guifg=drew_babyyellow  
+hi groovyType                gui=NONE guifg=drew_teal
+hi groovyStatement           gui=NONE guifg=drew_orange
+hi groovyStorageClass        gui=NONE guifg=drew_orange
+hi groovyExceptions          gui=NONE guifg=drew_mtdew
+hi groovyAssert              gui=NONE guifg=drew_orange
+hi groovyMethodDecl          gui=NONE guifg=drew_orange
+hi groovyClassDecl           gui=NONE guifg=drew_orange
 "hi groovyBranch                    xxx links to Conditional
 "hi groovyUserLabelRef              xxx links to groovyUserLabel
 "hi groovyScopeDecl                 xxx links to groovyStorageClass
-hi groovyLangClass           gui=NONE guifg=#ee1122
-hi groovyJavaLangClass       gui=NONE guifg=#cf2152
-hi groovyJavaLangObject      gui=NONE guifg=#cf2152
-hi groovyJDKBuiltin          gui=NONE guifg=#c6d80e
-hi groovyJDKOperOverl        gui=NONE guifg=#c6d80e
-hi groovyJDKMethods          gui=NONE guifg=#c6d80e
+hi groovyLangClass           gui=NONE guifg=drew_watermelon
+hi groovyJavaLangClass       gui=NONE guifg=drew_pink
+hi groovyJavaLangObject      gui=NONE guifg=drew_pink
+hi groovyJDKBuiltin          gui=NONE guifg=drew_mtdew
+hi groovyJDKOperOverl        gui=NONE guifg=drew_mtdew
+hi groovyJDKMethods          gui=NONE guifg=drew_mtdew
 "hi groovyLabel                     xxx links to Label
-hi groovyNumber              gui=NONE guifg=#0e8f9b
-hi groovyString              gui=NONE guifg=#c53534
+hi groovyNumber              gui=NONE guifg=drew_aqua
+hi groovyString              gui=NONE guifg=drew_firebrick
 "hi groovyLabelRegion               xxx cleared
 "hi groovyUserLabel                 xxx links to Label
 "hi groovyError2                    xxx cleared
 "hi groovyLangObject                xxx cleared
-hi groovyTodo                gui=bold guifg=#fbe572
+hi groovyTodo                gui=bold guifg=drew_babyyellow
 "hi groovySpecial                   xxx links to Special
 "hi groovySpecialChar               xxx links to SpecialChar
-hi groovyComment             gui=NONE guifg=#c5c8c6
-hi groovyStar                gui=NONE guifg=#c5c8c6
-hi groovyLineComment         gui=NONE guifg=#c5c8c6
-hi groovyCommentString       gui=NONE guifg=#c5c8c6
-hi groovyComment2String      gui=NONE guifg=#c5c8c6
-hi groovyCommentCharacter    gui=NONE guifg=#c5c8c6
+hi groovyComment             gui=NONE guifg=drew_ltgray
+hi groovyStar                gui=NONE guifg=drew_ltgray
+hi groovyLineComment         gui=NONE guifg=drew_ltgray
+hi groovyCommentString       gui=NONE guifg=drew_ltgray
+hi groovyComment2String      gui=NONE guifg=drew_ltgray
+hi groovyCommentCharacter    gui=NONE guifg=drew_ltgray
 "hi groovyCharacter                 xxx links to Character
 
 
-hi CSVColumnEven          gui=NONE   guifg=#c5c8c6       guibg=#000000
-hi CSVColumnOdd           gui=NONE   guifg=#5e6164     guibg=#000000
-hi CSVColumnHeaderEven    gui=NONE   guifg=#ee1122
-hi CSVColumnHeaderOdd     gui=NONE   guifg=#c53534
-hi CSVDelimiter           gui=NONE   guifg=#e35c0f       guibg=#0e689d
+hi CSVColumnEven          gui=NONE   guifg=drew_ltgray       guibg=drew_background
+hi CSVColumnOdd           gui=NONE   guifg=drew_darkgray     guibg=drew_background
+hi CSVColumnHeaderEven    gui=NONE   guifg=drew_watermelon
+hi CSVColumnHeaderOdd     gui=NONE   guifg=drew_firebrick
+hi CSVDelimiter           gui=NONE   guifg=drew_orange       guibg=drew_blue
 "hi CSVComment             gui=NONE
 "hi CSVHeaderLine          gui=NONE
 
-hi Delimiter     gui=NONE   guifg=#fbe572
-hi shSetList     gui=NONE   guifg=#208ec8
-hi shVariable    gui=NONE   guifg=#208ec8
-hi shExpr        gui=NONE   guifg=#9cd7eb
-hi shOption      gui=NONE   guifg=#c6d80e
-hi shCommandSub  gui=NONE   guifg=#fbe572
-hi shDerefSimple gui=NONE   guifg=#126d67
-hi shArithRegion gui=NONE   guifg=#126d67
+hi Delimiter     gui=NONE   guifg=drew_babyyellow
+hi shSetList     gui=NONE   guifg=drew_ltblue
+hi shVariable    gui=NONE   guifg=drew_ltblue
+hi shExpr        gui=NONE   guifg=drew_skyblue
+hi shOption      gui=NONE   guifg=drew_mtdew
+hi shCommandSub  gui=NONE   guifg=drew_babyyellow
+hi shDerefSimple gui=NONE   guifg=drew_teal
+hi shArithRegion gui=NONE   guifg=drew_teal
 
-hi cssComment               gui=italic   guifg=#5e6164
-hi cssIdentifier            gui=NONE   guifg=#0e689d
-hi cssBraces                gui=NONE   guifg=#c6d80e
-hi cssTagName               gui=NONE   guifg=#e35c0f
-hi cssClassNameDot          gui=NONE   guifg=#208ec8
-hi cssClassName             gui=NONE   guifg=#208ec8
-hi cssPseudoClassId         gui=NONE   guifg=#e39e58
-hi cssSelectorOp            gui=NONE   guifg=#c6d80e
-hi cssNoise                 gui=NONE   guifg=#b294bb
-hi cssDefinition            gui=NONE   guifg=#d9cd94
+hi cssComment               gui=italic   guifg=drew_darkgray
+hi cssIdentifier            gui=NONE   guifg=drew_blue
+hi cssBraces                gui=NONE   guifg=drew_mtdew
+hi cssTagName               gui=NONE   guifg=drew_orange
+hi cssClassNameDot          gui=NONE   guifg=drew_ltblue
+hi cssClassName             gui=NONE   guifg=drew_ltblue
+hi cssPseudoClassId         gui=NONE   guifg=drew_peach
+hi cssSelectorOp            gui=NONE   guifg=drew_mtdew
+hi cssNoise                 gui=NONE   guifg=drew_palepurple
+hi cssDefinition            gui=NONE   guifg=drew_birchwood
 hi link cssFontProp         cssDefinition
 hi link cssTextProp         cssDefinition
 hi link cssBoxProp          cssDefinition
@@ -327,60 +373,60 @@ hi link cssBackgroundProp   cssDefinition
 hi link cssUIProp           cssDefinition
 hi link cssDimensionProp    cssDefinition
 hi link cssPageProp         cssDefinition
-hi cssVendor                gui=NONE   guifg=#fbe572
+hi cssVendor                gui=NONE   guifg=drew_babyyellow
 " hi cssDimensionProp         gui=NONE   guifg=
-hi cssColor                 gui=NONE   guifg=#e35c0f
-hi cssImportant             gui=NONE   guifg=#cf2152
+hi cssColor                 gui=NONE   guifg=drew_orange
+hi cssImportant             gui=NONE   guifg=drew_pink
 " hi cssAttrRegion            gui=NONE   guifg=
 " hi cssCommonAttr            gui=NONE   guifg=
-hi cssBackgroundAttr        gui=NONE   guifg=#ee1122
-hi cssPositioningAttr       gui=NONE   guifg=#cb3725
-hi cssBoxAttr               gui=NONE   guifg=#cb3725
-hi cssUIAttr                gui=NONE   guifg=#cb3725
-hi cssGradientAttr          gui=NONE   guifg=#cb3725
-hi cssFunction              gui=NONE   guifg=#cb3725
-hi cssFunctionName          gui=NONE   guifg=#379f4d
-hi cssValueLength           gui=NONE   guifg=#ee1122
-hi cssValueNumber           gui=NONE   guifg=#ee1122
-hi cssUnitDecorators        gui=NONE   guifg=#cb3725
+hi cssBackgroundAttr        gui=NONE   guifg=drew_watermelon
+hi cssPositioningAttr       gui=NONE   guifg=drew_red
+hi cssBoxAttr               gui=NONE   guifg=drew_red
+hi cssUIAttr                gui=NONE   guifg=drew_red
+hi cssGradientAttr          gui=NONE   guifg=drew_red
+hi cssFunction              gui=NONE   guifg=drew_red
+hi cssFunctionName          gui=NONE   guifg=drew_green
+hi cssValueLength           gui=NONE   guifg=drew_watermelon
+hi cssValueNumber           gui=NONE   guifg=drew_watermelon
+hi cssUnitDecorators        gui=NONE   guifg=drew_red
 
-hi dosiniLabel     gui=NONE guifg=#0e689d
-hi dosiniHeader    gui=NONE guifg=#e35c0f
-hi dosiniNumber    gui=NONE guifg=#379f4d
-hi dosiniComment   gui=NONE guifg=#5e6164
+hi dosiniLabel     gui=NONE guifg=drew_blue
+hi dosiniHeader    gui=NONE guifg=drew_orange
+hi dosiniNumber    gui=NONE guifg=drew_green
+hi dosiniComment   gui=NONE guifg=drew_darkgray
 
 highlight Pmenu      ctermfg=7  ctermbg=0  guibg=#444444 guifg=#dddddd
 highlight PmenuSbar  ctermfg=7  ctermbg=7  guibg=#666666 guifg=#ffffff
 highlight PmenuSel   ctermfg=1  ctermbg=7  guibg=#888888 guifg=#dd0000
 highlight PmenuThumb ctermbg=14 ctermbg=14 guibg=#ffff00 guifg=#00ffff
 
-hi NERDTreeOpenable   gui=NONE   guifg=#9cd7eb
-hi NERDTreeClosable   gui=NONE   guifg=#9cd7eb
-hi NERDTreeDir        gui=NONE   guifg=#e39e58
+hi NERDTreeOpenable   gui=NONE   guifg=drew_skyblue
+hi NERDTreeClosable   gui=NONE   guifg=drew_skyblue
+hi NERDTreeDir        gui=NONE   guifg=drew_peach
 
-hi procProcName guifg=#f37c2f
-hi procComment guifg=#c5c8c6
+hi procProcName guifg=drew_salmon
+hi procComment guifg=drew_ltgray
 
 hi bashStatement ctermfg=DarkCyan
 hi bashBlock ctermfg=Yellow
 hi bashDo ctermfg=Yellow
 hi bashComment ctermfg=Gray
-hi bashDeref guifg=#c53534 ctermfg=DarkMagenta
+hi bashDeref guifg=drew_firebrick ctermfg=DarkMagenta
 hi link bashIdentifier Normal
 hi bashHereDoc ctermfg=DarkGray
 hi bashRedir ctermfg=Yellow
 hi link bashCommandOpts Normal
 hi bashOperator ctermfg=Brown
-hi bashIf guifg=#fbe572 ctermfg=Yellow
+hi bashIf guifg=drew_babyyellow ctermfg=Yellow
 
 hi link C89Identifier Normal
 hi link c89Function Normal
-hi c89Macro guifg=#c77624
-hi cCMacro guifg=#c77624
-hi c89Constant guifg=#0e8f9b
-hi cAnsiFunction guifg=#0e689d
-hi cUserFunction guifg=#208ec8
+hi c89Macro guifg=drew_tan
+hi cCMacro guifg=drew_tan
+hi c89Constant guifg=drew_aqua
+hi cAnsiFunction guifg=drew_blue
+hi cUserFunction guifg=drew_ltblue
 hi link cCommentError Comment
 
-hi CtrlPPrtCursor guifg=#c6d80e
+hi CtrlPPrtCursor guifg=drew_mtdew
 

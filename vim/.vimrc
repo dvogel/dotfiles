@@ -1,3 +1,6 @@
+set termguicolors
+let g:css_colors_load = 1
+
 let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
@@ -24,7 +27,7 @@ syntax on
 set synmaxcol=5000
 syntax sync clear
 syntax sync fromstart
-colorscheme putty
+" colorscheme putty
 colorscheme drew
 
 " highlight Comment ctermfg=gray
@@ -473,3 +476,11 @@ au User lsp_setup call lsp#register_server({
 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
 			\ 'allowlist': ['ruby'],
 			\ })
+
+function! ClearColornames()
+	for k in keys(v:colornames)
+		unlet v:colornames[k]
+	endfor
+endfunction
+
+" au ColorSchemePre * call ClearColornames()
