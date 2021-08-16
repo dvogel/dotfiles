@@ -444,5 +444,9 @@ au User lsp_setup call lsp#register_server({
 			\ 'allowlist': ['java'],
 			\ })
 
-
-
+au User lsp_setup call lsp#register_server({
+			\ 'name': 'ruby-solargraph',
+			\ 'cmd': ['nc', 'localhost', '7658'],
+			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
+			\ 'allowlist': ['ruby'],
+			\ })
