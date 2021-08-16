@@ -17,7 +17,6 @@ packloadall
 " Some system-provided packs still need to be added though:
 packadd bufexplorer
 packadd matchit
-packadd surround
 
 filetype plugin indent on
 syntax on
