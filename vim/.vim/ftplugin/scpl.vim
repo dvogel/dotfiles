@@ -1,12 +1,15 @@
 setlocal nolist
 setlocal nonumber
 setlocal wrap
-setlocal textwidth=10000
+setlocal textwidth=0
+setlocal wrapmargin=0
 setlocal nospell
 setlocal breakindent
 setlocal expandtab
 setlocal tabstop=12
 setlocal shiftwidth=4
+setlocal formatoptions="lM1j"
+setlocal nojoinspaces
 
 map j gj
 map k gk
