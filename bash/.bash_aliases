@@ -36,6 +36,7 @@ alias binst='bundle install'
 alias locked_revisions="cat Gemfile.lock | grep -E '^(GIT|\s+remote:|\s+revision:)'"
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
+alias retag-here='ctags -R -f TAGS .'
 
 [[ -e ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
 
