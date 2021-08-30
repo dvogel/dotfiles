@@ -137,6 +137,10 @@ com! W w
 com! Q q
 " Paste from system clipboard (instead of primary selection)
 nmap <Leader>cbp "+p
+if has("gui_running")
+    map  <silent>  <S-Insert>  "+p
+    imap <silent>  <S-Insert>  <Esc>"+pa
+endif
 
 let g:pep8_map = '<C-F5>'
 
