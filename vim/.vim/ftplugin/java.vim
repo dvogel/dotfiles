@@ -3,6 +3,7 @@ setlocal nowrap
 setlocal ruler
 setlocal shiftwidth=4
 setlocal tabstop=4
+setlocal textwidth=120
 compiler mvn
 
 " augroup javaTweaks
