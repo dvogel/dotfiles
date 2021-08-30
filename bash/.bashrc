@@ -123,6 +123,7 @@ PATH_DIRS=$(echo "/usr/local/bin"
             echo "${HOME}/Library/Android/sdk/platform-tools"
             echo "${HOME}/opt/google-cloud-sdk/bin"
             echo "${HOME}/opt/vim/bin"
+            echo "${HOME}/opt/maven/bin"
             echo "${HOME}/opt/java-language-server/dist"
             echo "/usr/local/git/bin")
 
