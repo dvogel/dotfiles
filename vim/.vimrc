@@ -298,8 +298,6 @@ highlight VertSplit guibg=background guifg=background gui=none term=none cterm=n
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
 
-let g:evalSelectionRubyDir = $HOME."/.vim/bundle/EvalSelection.vim/ruby/"
-
 function! SyntaxTrailAt(lnum, col)
     let l:stack = synstack(a:lnum, a:col)
 

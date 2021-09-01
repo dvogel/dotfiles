@@ -10,9 +10,6 @@
 [submodule "vim/.vim/bundle/vim-json"]
 	path = vim/.vim/pack/plugins/start/vim-json
 	url = https://github.com/elzr/vim-json.git
-[submodule "vim/.vim/bundle/EvalSelection.vim"]
-	path = vim/.vim/pack/plugins/start/EvalSelection.vim
-	url = https://github.com/vim-scripts/EvalSelection.vim.git
 [submodule "vim/.vim/bundle/colorizer"]
 	path = vim/.vim/pack/plugins/start/colorizer
 	url = https://github.com/lilydjwg/colorizer.git
