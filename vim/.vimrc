@@ -142,6 +142,7 @@ if has("gui_running")
     imap <silent>  <S-Insert>  <Esc>"+pa
 endif
 
+vmap <Leader>eve "ey:call EvalVimCode(@e)<CR>
 let g:pep8_map = '<C-F5>'
 
 au FileType python source ~/.vim/scripts/python.vim
