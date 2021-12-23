@@ -126,6 +126,8 @@ let g:autoformat_remove_trailing_spaces = 0
 
 let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=1tbs -N --convert-tabs --keep-one-line-blocks --indent-continuation=2 -s".&shiftwidth'
 let g:formatters_cs = ['my_custom_cs']
+let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")'
+let g:formatters_java = ['google_java_format']
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
@@ -175,7 +177,7 @@ let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'b
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
-let g:ctrlp_custom_ignore = '\v.*(build|node_modules|target/clover).*'
+let g:ctrlp_custom_ignore = '\v.*(build|node_modules|target).*'
 
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')
