@@ -3,7 +3,8 @@ let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
 let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/tmp/vim-lsp.log')
+" let g:lsp_log_file = expand('~/tmp/vim-lsp.log')
+let g:lsp_log_file = expand('~/tmp/vim-lsp.json')
 let g:lsp_semantic_enabled = 0
 let g:lsp_document_highlight_enabled = 0
 
@@ -439,6 +440,25 @@ au User lsp_setup call lsp#register_server({
 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
 			\ 'allowlist': ['java'],
 			\ })
+autocmd User lsp_setup call s:register_command()
+
+function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
+    let l:command = get(a:context, 'command', {})
+    call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
+endfunction
+
+function! s:register_command()
+  if s:initialized
+    return
+  endif
+  let s:initialized = 1
+  augroup vim_lsp_settings_eclipse_jdt_ls
+    au!
+  augroup END
+  if exists('*lsp#register_command')
+    call lsp#register_command('java.apply.workspaceEdit', function('s:eclipse_jdt_ls_java_apply_workspaceEdit'))
+  endif
+endfunction
 
 " au User lsp_setup call lsp#register_server({
 "             \ 'name': 'java-language-server',
