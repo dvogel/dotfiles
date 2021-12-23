@@ -212,3 +212,6 @@ function __git_ps1_ext () {
 	fi
 }
 
+function jdebug () {
+	rlwrap jdb -attach transport=dt_socket,port=5005 -sourcepath ./src/main/java:./src/test/java "$@"
+}
