@@ -1,5 +1,8 @@
-setlocal tabstop=2
-setlocal shiftwidth=2
-setlocal expandtab
 setlocal commentstring=<!--\ %s\ -->
+setlocal expandtab
+setlocal nowrap
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal textwidth=0
+setlocal wildignore+=*.class
 

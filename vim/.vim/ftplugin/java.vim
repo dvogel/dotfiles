@@ -1,9 +1,12 @@
-setlocal expandtab
+if get(b:, 'editorconfig_applied', 0) == 0
+    setlocal shiftwidth=4
+    setlocal tabstop=4
+    setlocal expandtab
+endif
 setlocal nowrap
 setlocal ruler
-setlocal shiftwidth=4
-setlocal tabstop=4
-setlocal textwidth=120
+setlocal textwidth=100
+setlocal wildignore+=*.class
 compiler mvn
 
 " augroup javaTweaks

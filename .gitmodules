@@ -152,7 +152,7 @@
 	path = vim/.vim/bundle/swift.vim
 	url = https://github.com/keith/swift.vim.git
 [submodule "editorconfig-vim"]
-	path = vim/.vim/bundle/editorconfig-vim
+	path = vim/.vim/pack/plugins/start/editorconfig-vim
 	url = git@github.com:editorconfig/editorconfig-vim.git
 [submodule "vim-bufexplorer"]
 	path = vim/.vim/pack/plugins/start/bufexplorer
@@ -169,3 +169,6 @@
 [submodule "vim-dispatch"]
 	path = vim/.vim/pack/plugins/start/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
+[submodule "vim-maven-plugin"]
+	path = vim/.vim/pack/plugins/start/vim-maven-plugin
+	url = git@github.com:mikelue/vim-maven-plugin.git
