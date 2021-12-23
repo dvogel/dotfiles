@@ -432,21 +432,20 @@ if executable('rls')
         \ })
 endif
 
-" let g:jdtls_path = expand('~/bin/jdtls')
-
-" au User lsp_setup call lsp#register_server({
-" 			\ 'name': 'eclipse-jdtls-server',
-" 			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/devel/eclipse.jdt.ls")]},
-" 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
-" 			\ 'allowlist': ['java'],
-" 			\ })
-
+let g:jdtls_path = expand('~/bin/jdtls')
 au User lsp_setup call lsp#register_server({
-            \ 'name': 'java-language-server',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, expand('lang_server_linux.sh')]},
+			\ 'name': 'eclipse-jdtls-server',
+			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/opt/eclipse.jdt.ls")]},
 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
 			\ 'allowlist': ['java'],
 			\ })
+
+" au User lsp_setup call lsp#register_server({
+"             \ 'name': 'java-language-server',
+"             \ 'cmd': {server_info->[&shell, &shellcmdflag, expand('lang_server_linux.sh')]},
+" 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
+" 			\ 'allowlist': ['java'],
+" 			\ })
 
 au User lsp_setup call lsp#register_server({
 			\ 'name': 'ruby-solargraph',
