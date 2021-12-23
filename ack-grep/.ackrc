@@ -128,6 +128,8 @@
 --ignore-directory=is:vendor/
 --ignore-directory=is:tmp
 --ignore-directory=is:build
+--ignore-directory=match:/jacoco.*/
+--ignore-directory=is:maven-status
 
 # Specific to OpenCongress
 --ignore-directory=tmp/openids/
