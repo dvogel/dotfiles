@@ -157,9 +157,6 @@
 [submodule "vim-bufexplorer"]
 	path = vim/.vim/pack/plugins/start/bufexplorer
 	url = git@github.com:jlanzarotta/bufexplorer.git
-[submodule "vim-javacomplete2"]
-	path = vim/.vim/pack/plugins/start/vim-javacomplete2
-	url = git@github.com:artur-shaik/vim-javacomplete2.git
 [submodule "vim-test"]
 	path = vim/.vim/pack/plugins/start/vim-test
 	url = git@github.com:vim-test/vim-test.git
