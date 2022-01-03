@@ -110,7 +110,6 @@ export GOPATH="${HOME}/devel/golang"
 
 PATH_DIRS=$(echo "/usr/local/bin"
             echo "/usr/local/node/bin"
-            echo "${GOROOT}/bin"
             echo "${HOME}/bin"
             echo "${HOME}/opt/bin"
             echo "${HOME}/opt/bats/bin"
@@ -130,6 +129,10 @@ PATH_DIRS=$(echo "/usr/local/bin"
 for d in $PATH_DIRS; do
     prepend_to_path "${d}"
 done
+
+if [[ -n "${GOROOT}" && -e "${GOROOT}/bin" ]]; then
+    prepend_to_path "${GOROOT}/bin"
+fi
 
 quiet_source "${HOME}/.git-completion.bash"
 quiet_source "${HOME}/.git-prompt.sh"
