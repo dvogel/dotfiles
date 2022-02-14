@@ -1,3 +1,4 @@
+vim9script
 syntax sync fromstart
 setlocal shiftwidth=4
 setlocal tabstop=4
@@ -5,49 +6,51 @@ setlocal expandtab
 setlocal textwidth=110
 setlocal nojoinspaces
 
-let b:wrapmode = "soft"
+b:wrapmode = "soft"
 
-function! InsertMarkdownTableHeaderSeparator()
+def InsertMarkdownTableHeaderSeparator()
 	normal yyp
 	execute "s/[^|]/-/g"
-endfunction
+enddef
 nmap <Leader>mdth :call InsertMarkdownTableHeaderSeparator()<CR>
 
 command! -nargs=1 -complete=customlist,MuServicesComplete Mu :call OpenMuServicesComponent(<q-args>)
-command! MDWrapToggle call MDWrapToggle()<CR>
-command! MDHardWrap call MDSetHardWrap()<CR>
-command! MDSoftWrap call MDSetSoftWrap()<CR>
+command! MDWrapToggle call MDWrapToggle()
+command! MDHardWrap call MDSetHardWrap()
+command! MDSoftWrap call MDSetSoftWrap()
 nmap <Leader>mdw :call MDWrapToggle()<CR>
 
-function! MDSetHardWrap()
-	" q = allow formatting with gq
-	" n = use formatlistpat to auto-indent numbered list items
-	" t = auto-wrap using textwidth
-	" j = remove comment leader when joining lines, if possible
-	setlocal formatoptions="qnjt"
+def MDSetHardWrap()
+	# q = allow formatting with gq
+	# n = use formatlistpat to auto-indent numbered list items
+	# t = auto-wrap using textwidth
+	# j = remove comment leader when joining lines, if possible
+	setlocal formatoptions=qnjt
 	setlocal textwidth=110
 	setlocal nowrap
-	let b:wrapmode = "hard"
+	b:wrapmode = "hard"
 	echo "Markdown hard wrap mode"
-endfunction
+enddef
 
-function! MDSetSoftWrap()
-	" q = allow formatting with gq
-	" n = use formatlistpat to auto-indent numbered list items
-	" l = long lines are not broken in insert mode
-	" j = remove comment leader when joining lines, if possible
-	setlocal formatoptions="qnjl"
+def MDSetSoftWrap()
+	# q = allow formatting with gq
+	# n = use formatlistpat to auto-indent numbered list items
+	# l = long lines are not broken in insert mode
+	# j = remove comment leader when joining lines, if possible
+	setlocal formatoptions=qnjl
 	setlocal textwidth=10000
 	setlocal wrap
-	let b:wrapmode = "soft"
+    b:wrapmode = "soft"
 	echo "Markdown soft wrap mode"
-endfunction
+enddef
 
-function! MDWrapToggle()
+def MDWrapToggle()
 	if b:wrapmode == "hard"
-		call MDSetSoftWrap()
+		MDSetSoftWrap()
 	else
-		call MDSetHardWrap()
+		MDSetHardWrap()
 	endif
-endfunction
+enddef
+
+defcompile
 
