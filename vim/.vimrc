@@ -5,12 +5,6 @@ let g:ackpreview = 0
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
-let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/tmp/vim-lsp.log')
-let g:lsp_log_file = expand('~/tmp/vim-lsp.json')
-let g:lsp_semantic_enabled = 0
-let g:lsp_document_highlight_enabled = 0
-
 let java_highlight_functions = 1
 let java_highlight_java_lang = 1
 " let java_highlight_all = 0
@@ -428,76 +422,6 @@ endfunction
 nmap <Leader>-- :call YamlReplaceCurrentArrayEntry()<CR>
 
 let g:rustfmt_autosave = 1
-
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
-let s:jdtls_initialized = 0
-function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
-    let l:command = get(a:context, 'command', {})
-    call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
-endfunction
-
-function! s:jdtls_register_command()
-  if s:jdtls_initialized == 1
-    return
-  endif
-  let s:jdtls_initialized = 1
-  augroup vim_lsp_settings_eclipse_jdt_ls
-    au!
-  augroup END
-  if exists('*lsp#register_command')
-    call lsp#register_command('java.apply.workspaceEdit', function('s:eclipse_jdt_ls_java_apply_workspaceEdit'))
-  endif
-endfunction
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> <leader>jrn <plug>(lsp-rename)
-    nmap <buffer> <A-D> <plug>(lsp-previous-diagnostic)
-    nmap <buffer> <A-d> <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> <A-c> <plug>(lsp-code-action)
-    nmap <buffer> <A-e> <plug>(lsp-document-diagnostics)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
-    " refer to doc to add more commands
-endfunction
-
-let g:jdtls_path = expand('~/bin/jdtls')
-if executable(g:jdtls_path)
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'eclipse-jdtls-server',
-                \ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/opt/eclipse.jdt.ls")]},
-                \ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
-                \ 'allowlist': ['java'],
-                \ })
-    autocmd User lsp_setup call s:jdtls_register_command()
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-endif
-
-" au User lsp_setup call lsp#register_server({
-"             \ 'name': 'java-language-server',
-"             \ 'cmd': {server_info->[&shell, &shellcmdflag, expand('lang_server_linux.sh')]},
-" 			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
-" 			\ 'allowlist': ['java'],
-" 			\ })
-
-au User lsp_setup call lsp#register_server({
-			\ 'name': 'ruby-solargraph',
-			\ 'cmd': ['nc', 'localhost', '7658'],
-			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
-			\ 'allowlist': ['ruby'],
-			\ })
 
 function! ClearColornames()
 	for k in keys(v:colornames)
