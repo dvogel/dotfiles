@@ -1,0 +1,17 @@
+@-moz-document domain(confluenceent.cms.gov) {
+    div.ia-fixed-sidebar {
+        font-size: 0.8em;
+    }
+    .plugin_pagetree .plugin_pagetree_children_list > li {
+        margin: 0 !important;
+    }
+
+    .plugin_pagetree .plugin_pagetree_children_list > li .plugin_pagetree_children_list {
+        padding-left: 10px;
+    }
+
+    div.plugin_pagetree ul.plugin_pagetree_children_list > li > div.plugin_pagetree_childtoggle_container {
+        width: auto !important;
+        min-width: 1.2em;
+    }
+}
