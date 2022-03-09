@@ -215,3 +215,19 @@ function __git_ps1_ext () {
 function jdebug () {
 	rlwrap jdb -attach transport=dt_socket,port=5005 -sourcepath ./src/main/java:./src/test/java "$@"
 }
+
+
+env_file_exec() {
+	(
+		set -o allexport
+		source <(grep -v '^#' "$1")
+		set +o allexport
+		shift
+		"$@"
+	)
+}
+
+compare_git_branches() {
+    diff --side-by-side <(git log $1 | head -n 100) <(git log "$2" | head -n 100) | less -SR
+}
+
