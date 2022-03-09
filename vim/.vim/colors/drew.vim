@@ -36,6 +36,7 @@ call extend(v:colornames, {
 			\ 'drew_puke': '#ebab6a',
 			\ 'drew_skin': '#e3b07d',
 			\ 'drew_red': '#cb3725',
+            \ 'drew_bloodred': '#770011',
 			\ 'drew_watermelon': '#ee1122',
 			\ 'drew_firebrick': '#c53534',
 			\ 'drew_pink': '#cf2152',
@@ -70,7 +71,7 @@ hi CursorLine guifg=#ffffff guibg=#444444
 hi Todo gui=REVERSE,BOLD guifg=drew_firebrick guibg=drew_babyyellow
 
 hi ErrorMsg guibg=drew_red guifg=drew_ltgray
-hi Error guibg=drew_red guifg=drew_ltgray
+hi Error guibg=drew_bloodred guifg=drew_ltgray
 hi IncSearch guibg=drew_tan guifg=drew_darkgray
 hi ModeMsg gui=bold
 hi StatusLine gui=reverse,bold
