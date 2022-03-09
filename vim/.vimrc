@@ -38,7 +38,7 @@ set paste
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set linespace=5
+set linespace=4
 set backspace=2
 set showmatch
 set mouse=n
@@ -301,6 +301,7 @@ autocmd BufNewFile,BufRead *.cup setf cup
 " number line has a trough that still appears
 set fillchars=
 highlight VertSplit guibg=background guifg=background gui=none term=none cterm=none
+highlight SignColumn guifg=background guifg=foreground gui=none term=none
 
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
@@ -436,25 +437,17 @@ if executable('rls')
         \ })
 endif
 
-let g:jdtls_path = expand('~/bin/jdtls')
-au User lsp_setup call lsp#register_server({
-			\ 'name': 'eclipse-jdtls-server',
-			\ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/opt/eclipse.jdt.ls")]},
-			\ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
-			\ 'allowlist': ['java'],
-			\ })
-autocmd User lsp_setup call s:register_command()
-
+let s:jdtls_initialized = 0
 function! s:eclipse_jdt_ls_java_apply_workspaceEdit(context)
     let l:command = get(a:context, 'command', {})
     call lsp#utils#workspace_edit#apply_workspace_edit(l:command['arguments'][0])
 endfunction
 
-function! s:register_command()
-  if s:initialized
+function! s:jdtls_register_command()
+  if s:jdtls_initialized == 1
     return
   endif
-  let s:initialized = 1
+  let s:jdtls_initialized = 1
   augroup vim_lsp_settings_eclipse_jdt_ls
     au!
   augroup END
@@ -462,6 +455,35 @@ function! s:register_command()
     call lsp#register_command('java.apply.workspaceEdit', function('s:eclipse_jdt_ls_java_apply_workspaceEdit'))
   endif
 endfunction
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <leader>jrn <plug>(lsp-rename)
+    nmap <buffer> <A-D> <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <A-d> <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <A-c> <plug>(lsp-code-action)
+    nmap <buffer> <A-e> <plug>(lsp-document-diagnostics)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
+endfunction
+
+let g:jdtls_path = expand('~/bin/jdtls')
+if executable(g:jdtls_path)
+    au User lsp_setup call lsp#register_server({
+                \ 'name': 'eclipse-jdtls-server',
+                \ 'cmd': {server_info->[&shell, &shellcmdflag, g:jdtls_path . " " . expand("~/opt/eclipse.jdt.ls")]},
+                \ 'root_uri': {server_info->lsp#utils#path_to_uri(ProjectRootGet())},
+                \ 'allowlist': ['java'],
+                \ })
+    autocmd User lsp_setup call s:jdtls_register_command()
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+endif
 
 " au User lsp_setup call lsp#register_server({
 "             \ 'name': 'java-language-server',
@@ -484,3 +506,4 @@ function! ClearColornames()
 endfunction
 
 " au ColorSchemePre * call ClearColornames()
+
