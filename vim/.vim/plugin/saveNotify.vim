@@ -26,24 +26,6 @@ vim9script
 #       make
 #     fi
 #   done
-#
-# sockname="${1:-buildsock}"
-#
-# trap 'rm -f $sockname' EXIT
-# mkfifo "$sockname"
-#
-# netcat -k -l -U -u "$sockname" \
-#   | \
-#   while true; do
-#     read -r ln
-#     if [[ $(readlink -f "$ln") = $(readlink -f "$0") ]]; then
-#       echo "Restarting $0"
-#       rm "$sockname"
-#       exec "$0"
-#     elif [[ $ln =~ [.](html|css|scss|js|jsx)$ ]]; then
-#       make
-#     fi
-#   done
 
 var sockName = "buildsock"
 if exists("g:saveNotifySockName")
