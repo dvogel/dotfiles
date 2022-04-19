@@ -124,7 +124,7 @@ let g:autoformat_remove_trailing_spaces = 0
 
 let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=1tbs -N --convert-tabs --keep-one-line-blocks --indent-continuation=2 -s".&shiftwidth'
 let g:formatters_cs = ['my_custom_cs']
-let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")'
+let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")." ".b:java_style_flag." -"'
 let g:formatters_java = ['google_java_format']
 
 let g:go_highlight_operators = 1

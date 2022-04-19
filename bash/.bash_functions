@@ -212,10 +212,13 @@ function __git_ps1_ext () {
 	fi
 }
 
+JAVA_DEBUG_PORT=5005
 function jdebug () {
-	rlwrap jdb -attach transport=dt_socket,port=5005 -sourcepath ./src/main/java:./src/test/java "$@"
+	rlwrap jdb -attach transport=dt_socket,port=$JAVA_DEBUG_PORT -sourcepath ./src/main/java:./src/test/java "$@"
 }
-
+function java-dbg () {
+    java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=$JAVA_DEBUG_PORT "$@"
+}
 
 env_file_exec() {
 	(
