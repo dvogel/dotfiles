@@ -96,7 +96,7 @@
 	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "vim-lsc"]
 	path = vim/.vim/pack/plugins/start/vim-lsc
-	url = https://github.com/natebosch/vim-lsc.git
+	url = git@github.com:natebosch/vim-lsc.git
 [submodule "kotlin-vim"]
 	path = vim/.vim/pack/plugins/start/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
