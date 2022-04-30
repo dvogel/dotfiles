@@ -108,27 +108,29 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export GOPATH="${HOME}/devel/golang"
 
-PATH_DIRS=$(echo "/usr/local/bin"
-            echo "/usr/local/node/bin"
-            echo "${HOME}/bin"
-            echo "${HOME}/opt/bin"
-            echo "${HOME}/opt/bats/bin"
-            echo "${HOME}/opt/dart/dart-sdk/bin"
-            echo "${HOME}/.local/bin"
-            echo "${HOME}/.rvm/bin"
-            echo "${HOME}/.rbenv/bin"
-            echo "${HOME}/.tfenv/bin"
-            echo "${HOME}/Library/Android/sdk/tools"
-            echo "${HOME}/Library/Android/sdk/platform-tools"
-            echo "${HOME}/opt/google-cloud-sdk/bin"
-            echo "${HOME}/opt/vim/bin"
-            echo "${HOME}/opt/git-secrets/bin"
-            echo "${HOME}/opt/maven/bin"
-            echo "${HOME}/opt/kafka/bin"
-            echo "${HOME}/opt/java-language-server/dist"
-            echo "/usr/local/git/bin")
+declare -a PATH_DIRS
+PATH_DIRS=("/usr/local/bin"
+            "/usr/local/node/bin"
+            "${HOME}/bin"
+            "${HOME}/opt/bin"
+            "${HOME}/opt/bats/bin"
+            "${HOME}/opt/dart/dart-sdk/bin"
+            "${HOME}/.local/bin"
+            "${HOME}/.rvm/bin"
+            "${HOME}/.rbenv/bin"
+            "${HOME}/.tfenv/bin"
+            "${HOME}/Library/Android/sdk/tools"
+            "${HOME}/Library/Android/sdk/platform-tools"
+            "${HOME}/opt/google-cloud-sdk/bin"
+            "${HOME}/opt/vim/bin"
+            "${HOME}/opt/git-secrets/bin"
+            "${HOME}/opt/maven/bin"
+            "${HOME}/opt/kafka/bin"
+            "${HOME}/opt/java-language-server/dist"
+            "${HOME}/opt/LibreSprite/bin"
+            "/usr/local/git/bin")
 
-for d in $PATH_DIRS; do
+for d in "${PATH_DIRS[@]}"; do
     prepend_to_path "${d}"
 done
 
