@@ -126,6 +126,7 @@ let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=1tbs -N --convert-tabs
 let g:formatters_cs = ['my_custom_cs']
 let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")." ".b:java_style_flag." -"'
 let g:formatters_java = ['google_java_format']
+let g:formatters_rust = ['rustfmt']
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
