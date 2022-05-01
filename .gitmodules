@@ -46,9 +46,6 @@
 [submodule "vim/.vim/bundle/vim-haml"]
 	path = vim/.vim/pack/plugins/start/vim-haml
 	url = git@github.com:tpope/vim-haml.git
-[submodule "vim-rust"]
-	path = vim/.vim/pack/plugins/start/vim-rust
-	url = https://github.com/wting/rust.vim.git
 [submodule "vim-dockerfile"]
 	path = vim/.vim/pack/plugins/start/vim-dockerfile
 	url = https://github.com/honza/dockerfile.vim.git
