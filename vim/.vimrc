@@ -431,3 +431,46 @@ endfunction
 
 " au ColorSchemePre * call ClearColornames()
 
+let g:lsc_server_commands = {}
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_auto_map = {
+            \ 'defaults': v:true,
+            \ 'GoToDefinition': 'C-S-]',
+            \ 'FindCodeActions': 'M-c',
+            \ 'NextReference': v:false,
+            \ 'PreviousReference': v:false,
+            \ }
+
+if executable('rls')
+    call extend(g:lsc_server_commands, {
+        \ 'rust': 'rls'
+        \ })
+endif
+
+" Turn the invalid java.apply.workspaceEdit commands into an edit
+" action which complies with the LSP spec
+function! s:fixEdits(actions) abort
+    return map(a:actions, function('<SID>fixEdit'))
+endfunction
+function! s:fixEdit(idx, maybeEdit) abort
+    if !has_key(a:maybeEdit, 'command') ||
+                \ !has_key(a:maybeEdit.command, 'command') ||
+                \ a:maybeEdit.command.command !=# 'java.apply.workspaceEdit'
+        return a:maybeEdit
+    endif
+    return {
+                \ 'edit': a:maybeEdit.command.arguments[0],
+                \ 'title': a:maybeEdit.command.title}
+endfunction
+let g:jdtls_path = expand('~/bin/jdtls')
+if executable(g:jdtls_path)
+    call extend(g:lsc_server_commands, {
+        \ 'java': {
+            \ 'command': g:jdtls_path ." ". expand("~/opt/eclipse.jdt.ls"),
+            \ 'response_hooks': {
+                \        'textDocument/codeAction': function('<SID>fixEdits'),
+                \    }
+            \ }
+        \ })
+endif
+
