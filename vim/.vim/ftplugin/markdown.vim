@@ -8,11 +8,11 @@ setlocal nojoinspaces
 
 b:wrapmode = "soft"
 
-def InsertMarkdownTableHeaderSeparator()
+export def InsertMarkdownTableHeaderSeparator()
     normal yyp
     execute "s/[^|]/-/g"
 enddef
-nmap <Leader>mdth :call InsertMarkdownTableHeaderSeparator()<CR>
+nmap <Leader>mdth <ScriptCmd>InsertMarkdownTableHeaderSeparator()<CR>
 
 command! -nargs=1 -complete=customlist,MuServicesComplete Mu :call OpenMuServicesComponent(<q-args>)
 command! MDWrapToggle call MDWrapToggle()
