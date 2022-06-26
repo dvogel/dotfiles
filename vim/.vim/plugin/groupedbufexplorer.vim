@@ -142,6 +142,7 @@ enddef
 command! GBEDebug DebugDump()
 
 export def GBufExplorerSetup(): void
+    allBuffers = CollectBufferInfo()
     Reset()
 
     # Now that the MRUList is created, add the other autocmds.
@@ -158,10 +159,9 @@ enddef
 def Reset()
     # Build initial MRU tables. This makes sure all the files specified on the
     # command line are picked up correctly.
-    for idx in range(1, bufnr('$'))
-        mruBuffers[idx] = NextMRUCounter()
-        var gk = GetBufGroupKey(idx)
-        mruGroups[gk] = NextMRUCounter()
+	for bufObj in allBuffers
+        mruBuffers[bufObj.bufnr] = NextMRUCounter()
+        mruGroups[bufObj.groupkey] = NextMRUCounter()
     endfor
 enddef
 
@@ -175,20 +175,33 @@ def DeactivateBuffer(): void
     MRUPop(bufnr)
 enddef
 
+def LookupBuf(bufnr: number): any
+    for bufObj in allBuffers
+        if bufObj.bufnr == bufnr
+            return bufObj
+        endif
+    endfor
+	return v:null
+enddef
+
 def MRUTick(bufnr: number): void
-    var gk = GetBufGroupKey(bufnr)
-    mruGroups[gk] = NextMRUCounter()
-    mruBuffers[bufnr] = NextMRUCounter()
+	var bufObj = LookupBuf(bufnr)
+	if bufObj != v:null
+		mruGroups[bufObj.groupkey] = NextMRUCounter()
+		mruBuffers[bufnr] = NextMRUCounter()
+	endif
 enddef
 
 def MRUPop(bufnr: number): void
-    var gk = GetBufGroupKey(bufnr)
-    if has_key(mruGroups, gk)
-        remove(mruGroups, gk)
-    endif
-    if has_key(mruBuffers, bufnr)
-        remove(mruBuffers, bufnr)
-    endif
+	var bufObj = LookupBuf(bufnr)
+	if bufObj != v:null
+		if has_key(mruGroups, bufObj.groupkey)
+			remove(mruGroups, bufObj.groupkey)
+		endif
+		if has_key(mruBuffers, bufnr)
+			remove(mruBuffers, bufnr)
+		endif
+	endif
 enddef
 
 def MRUPush(bufnr: number): void
@@ -320,7 +333,6 @@ def GBufExplorer(): void
 
     allBuffers = CollectBufferInfo()
     for bufObj in allBuffers
-        # var gk = GetBufGroupKeyOrDefault(bufObj.bufnr)
         var gk = bufObj.groupkey
         var grpList = []
         if has_key(fileGroups, gk)
@@ -488,12 +500,9 @@ def InferBufferGroupKey(bufObj: dict<any>): void
         return
     endif
 
-	# TODO: This plugin shouldn't have a hard dependency on projectroot.
-    #       Perhaps move this into a callback configure in .vimrc
-    var root = projectroot#guess(bufObj.name)
-    if slice(bufObj.name, 0, strcharlen(root)) == root
-        bufObj.listname = slice(bufObj.name, strcharlen(root) + 1)
-        bufObj.groupkey = root
+    var HookFunc = get(g:, 'GroupedBufExplorerGroupingHook')
+    if type(HookFunc) == 2 # 2 == Funcref
+        HookFunc(bufObj)
     else
         bufObj.listname = bufObj.name
         bufObj.groupkey = defaultGroupKey

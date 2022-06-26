@@ -482,3 +482,15 @@ if executable(g:jdtls_path)
         \ })
 endif
 
+function! GroupFilesByProjectRoot(bufObj)
+    let root = projectroot#guess(a:bufObj.name)
+    if slice(a:bufObj.name, 0, strcharlen(root)) == root
+        let a:bufObj.listname = slice(a:bufObj.name, strcharlen(root) + 1)
+        let a:bufObj.groupkey = root
+    else
+        let a:bufObj.listname = a:bufObj.name
+        let a:bufObj.groupkey = defaultGroupKey
+    endif
+endfunction
+let g:GroupedBufExplorerGroupingHook = function('GroupFilesByProjectRoot')
+
