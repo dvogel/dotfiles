@@ -12,8 +12,9 @@ highlight scplAction   guifg=#c0a0c0
 highlight scplDialog   guifg=#a0a020
 
 syn sync fromstart
-syn region scplDialog matchgroup=scplDialogHeader start="\[[a-zA-Z. ]\+\]" end="^\["me=s-1 contains=scplDialogTextItalic,scplDialogText,scplDirection
+syn region scplDialog matchgroup=scplDialogHeader start="\[[a-zA-Z. ]\+\]" end="^\["me=s-1 contains=scplDialogTextBold,scplDialogTextItalic,scplDialogText,scplDirection
 syn match scplDialogText "[^\[ ]\+" contained
+syn match scplDialogTextBold "\*\*[^*]\+\*\*" contained
 syn match scplDialogTextItalic "_[^_]\+_" contained
 
 syn region scplDirection start="^\w\+:" end="$"he=e+1 contains=scplTodo,scplDirPrefix,scplDirText
@@ -26,4 +27,5 @@ highlight scplDirPrefix guifg=#c05050 gui=bold
 highlight scplDirection guifg=css_dimgrey gui=NONE
 highlight scplDialogText guifg=css_lightgrey
 highlight scplDialogTextItalic guifg=css_lightgrey gui=italic
+highlight scplDialogTextBold guifg=css_lightgrey gui=bold
 highlight scplDialogHeader guifg=css_goldenrod
