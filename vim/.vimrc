@@ -166,6 +166,8 @@ map <F3> :bnext<CR>
 map <F4> :call DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
 nmap <F9> :BufExplorer<CR>
+nmap <S-F9> :GBufExplorer<CR>
+nmap <F12> :qall!<CR>
 nmap <F6> :NERDTreeToggle<CR>
 nmap <C-F6> :TagbarToggle<CR>
 " Depends on vim-surround from Tim Pope:

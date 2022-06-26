@@ -431,3 +431,7 @@ hi link cCommentError Comment
 
 hi CtrlPPrtCursor guifg=drew_mtdew
 
+highlight GBufExHeader guifg=drew_blue ctermfg=blue
+highlight GBufExHeaderGroupKey guifg=drew_orange ctermfg=lightred
+highlight GBufExBufNr guifg=drew_purple ctermfg=blue
+highlight GBufExFilename guifg=drew_birchwood ctermfg=brown
