@@ -128,6 +128,11 @@ let g:formatdef_google_java_format = '"google-java-format --assume-filename ".ex
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
 
+let g:lsc_server_commands = {'rust': 'rust-analyzer'}
+let g:lsc_auto_completeopt = 'menuone,popup'
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_autocomplete_length = v:false
+
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
