@@ -600,12 +600,12 @@ enddef
 
 def BuildGroupBufferLines(grpList: list<dict<any>>): list<string>
     var tmpGrpList = copy(grpList)
-    sort(tmpGrpList, (idx, bufObj) => get(mruBuffers, bufObj.bufnr, 0) - get(mruBuffers, bufObj.bufnr, 0))
+    sort(tmpGrpList, (a, b) => get(mruBuffers, b.bufnr, 0) - get(mruBuffers, a.bufnr, 0))
     var lines = []
 
     var widths = CalcFieldWidths(grpList)
 
-    for bufObj in grpList
+    for bufObj in tmpGrpList
         if !g:bufExplorerShowUnlisted && bufObj.listed == v:false
             continue
         endif
@@ -627,8 +627,7 @@ def BuildBufferLines(): list<string>
     var lines = []
 
     var groupKeys = keys(fileGroups)
-    sort(groupKeys, (a, b) => get(mruGroups, a, 0) - get(mruGroups, b, 0))
-    reverse(groupKeys)
+    sort(groupKeys, (a, b) => get(mruGroups, b, 0) - get(mruGroups, a, 0))
 
     for gk in groupKeys
         var grpLines = BuildGroupBufferLines(fileGroups[gk])
