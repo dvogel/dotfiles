@@ -230,6 +230,26 @@ env_file_exec() {
 	)
 }
 
+function jsonhead {
+	local cnt=1
+	while [[ -n "$1" ]]; do
+		if [[ "$1" =~ -n([0-9]+) ]]; then
+			cnt="${BASH_REMATCH[1]}"
+		elif [[ "$1" == "-n" ]] && [[ "$2" =~ [0-9]+ ]]; then
+			cnt="$2"
+			shift
+		elif [[ "$1" =~ [0-9]+ ]]; then
+			cnt="$1"
+		else
+			echo 1>&2 "Unknown argument: $1"
+			return 1
+		fi
+		shift
+	done
+
+	jq -nc "limit(${cnt}; inputs)"
+}
+
 compare_git_branches() {
     diff --side-by-side <(git log $1 | head -n 100) <(git log "$2" | head -n 100) | less -SR
 }
