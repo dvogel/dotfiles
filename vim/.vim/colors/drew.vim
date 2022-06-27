@@ -100,6 +100,7 @@ hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
 hi Search guifg=#bbbb00 guibg=#000000 gui=bold
 
 hi Comment guifg=drew_skyblue
+hi SpecialComment guifg=drew_cyan
 hi Constant guifg=drew_cyan
 hi PreProc guifg=drew_magenta guibg=Black ctermfg=DarkMagenta
 hi Statement gui=NONE guifg=drew_red
