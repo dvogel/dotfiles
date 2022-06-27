@@ -148,7 +148,10 @@ com! Q q
 " Paste from system clipboard (instead of primary selection)
 nmap <Leader>cbp "+p
 if has("gui_running")
-    map  <silent>  <S-Insert>  "+p
+    nmap <S-Insert> "+p
+    imap <S-Insert> <C-r>+
+    lmap <S-Insert> <C-r>+
+    cmap <S-Insert> <C-r>+
     imap <silent>  <S-Insert>  <Esc>"+pa
 endif
 
