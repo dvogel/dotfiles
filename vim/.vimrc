@@ -95,6 +95,10 @@ let g:OmniSharp_server_use_mono = 0
 let g:OmniSharp_start_server = 1
 let g:OmniSharp_highlighting = 0
 
+let g:tada_todo_styles = 'unicode'
+let g:tada_todo_statuses = ['planned', 'doing', 'complete']
+let g:tada_todo_symbols = {'planned': ' ' , 'doing': '🛠️', 'complete': '✅' }
+
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_disable_rules = []
 au FileType gitcommit let b:EditorConfig_disable = 1
@@ -292,6 +296,7 @@ let g:terraform_fold_sections = 0
 let g:terraform_fmt_on_save = 1
 
 augroup filetype
+  au!
   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex
   au BufRead,BufNewFile *.q               set filetype=Q
 augroup END
