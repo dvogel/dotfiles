@@ -159,9 +159,7 @@ vmap <Leader>eve "ey:call EvalVimCode(@e)<CR>
 let g:pep8_map = '<C-F5>'
 
 au FileType python source ~/.vim/scripts/python.vim
-au FileType php call Buffer_Init_PHP()
 au FileType cpp call Buffer_Init_CPP()
-au FileType clojure call Buffer_Init_Clojure()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
@@ -203,22 +201,6 @@ let g:DVB_TrimWS = 1
 
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++                                                                            
-
-function! Buffer_Init_Clojure()
-	syn sync fromstart
-	set expandtab
-    " nmap <F9> :w<CR>:!~/devel/clj/runscript %<CR>
-    " imap <F9> <ESC>:w<CR>:!~/devel/clj/runscript %<CR>
-	nmap <F10> :w<CR>:!~/devel/clj/runrepl<CR>
-	imap <F10> <ESC>:w<CR>:!~/devel/clj/runrepl<CR>
-	nmap <F11> :w<CR>:!ant<CR>
-	imap <F11> <ESC>:w<CR>:!ant<CR>
-endfunction
-
-function! Buffer_Init_PHP()
-	" map <F9> :call Show_PHP_Help_For_Word()<CR>
-	map <F10> :call Show_PHP_Declaration()<CR>
-endfunction
 
 function! Buffer_Init_CPP()
 "	let f = expand("%:r") . ".o"
