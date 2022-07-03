@@ -159,7 +159,6 @@ vmap <Leader>eve "ey:call EvalVimCode(@e)<CR>
 let g:pep8_map = '<C-F5>'
 
 au FileType python source ~/.vim/scripts/python.vim
-au FileType cpp call Buffer_Init_CPP()
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
@@ -203,14 +202,6 @@ let g:DVB_TrimWS = 1
 
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++                                                                            
-
-function! Buffer_Init_CPP()
-"	let f = expand("%:r") . ".o"
-"	map <F9> :!make '' . f <CR>
-"	map <F10> :!make<CR>
-	nmap [ :cprev<CR>
-	nmap ] :cnext<CR>
-endfunction
 
 " set guifont=Consolas\ 13
 " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
