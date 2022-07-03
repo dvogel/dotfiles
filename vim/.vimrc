@@ -173,7 +173,7 @@ nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-map <F4> :call DelicatelyDeleteBuffer()<CR>
+map <F4> :call delbufdel#DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
 nmap <F9> :GBufExplorer<CR>
 nmap <C-S-F9> :GBufExplorerHorizontalSplit<CR>
@@ -210,33 +210,6 @@ function! Buffer_Init_CPP()
 "	map <F10> :!make<CR>
 	nmap [ :cprev<CR>
 	nmap ] :cnext<CR>
-endfunction
-
-function! Mosh_Tab_Or_Complete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-N>"
-    else
-        return "\<Tab>"
-endfunction
-" :inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
-
-
-function! ListedBuffers()
-  return filter(range(1, bufnr('$')), 'buflisted(v:val)')
-endfunction
-
-function! DelicatelyDeleteBuffer()
-  let l:bufcount = len(ListedBuffers())
-  if l:bufcount == 0
-    " there is no current buffer
-  elseif l:bufcount == 1
-    bdelete
-  else
-    execute "bnext"
-    if bufnr('#') >= 0 && buflisted(bufnr('#')) == 1
-      execute "bdelete" "#"
-    end
-  end
 endfunction
 
 " set guifont=Consolas\ 13
