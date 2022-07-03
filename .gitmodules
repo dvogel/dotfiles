@@ -169,3 +169,6 @@
 [submodule "vim-tada"]
 	path = vim/.vim/pack/plugins/start/vim-tada
 	url = git@github.com:dewyze/vim-tada.git
+[submodule "vim-groupedbufexplorer"]
+	path = vim/.vim/pack/plugins/start/vim-groupedbufexplorer
+	url = git@github.com:dvogel/vim-groupedbufexplorer.git

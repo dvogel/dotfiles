@@ -175,8 +175,10 @@ map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <F4> :call DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
-nmap <F9> :BufExplorer<CR>
-nmap <S-F9> :GBufExplorer<CR>
+nmap <F9> :GBufExplorer<CR>
+nmap <C-S-F9> :GBufExplorerHorizontalSplit<CR>
+nmap <S-F9> :GToggleBufExplorer<CR>
+nmap <F10> :BufExplorer<CR>
 nmap <F12> :qall!<CR>
 nmap <F6> :NERDTreeToggle<CR>
 nmap <C-F6> :TagbarToggle<CR>
