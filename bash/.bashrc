@@ -127,6 +127,7 @@ PATH_DIRS=("/usr/local/bin"
             "${HOME}/opt/glow/bin"
             "${HOME}/opt/maven/bin"
             "${HOME}/opt/kafka/bin"
+            "${HOME}/opt/visualvm/bin"
             "${HOME}/opt/java-language-server/dist"
             "${HOME}/opt/LibreSprite/bin"
             "/usr/local/git/bin")
