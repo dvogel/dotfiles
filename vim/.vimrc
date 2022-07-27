@@ -132,10 +132,20 @@ let g:formatdef_google_java_format = '"google-java-format --assume-filename ".ex
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
 
-let g:lsc_server_commands = {'rust': 'rust-analyzer'}
+let g:lsc_server_commands = {}
 let g:lsc_auto_completeopt = 'menuone,popup'
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_autocomplete_length = v:false
+
+if executable('rust-analyzer')
+    call extend(g:lsc_server_commands, {
+        \ 'rust': 'rust-analyzer'
+        \ })
+elseif executable('rls')
+    call extend(g:lsc_server_commands, {
+        \ 'rust': 'rls'
+        \ })
+endif
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
@@ -357,7 +367,6 @@ endfunction
 
 " au ColorSchemePre * call ClearColornames()
 
-let g:lsc_server_commands = {}
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_auto_map = {
             \ 'defaults': v:true,
@@ -366,12 +375,6 @@ let g:lsc_auto_map = {
             \ 'NextReference': v:false,
             \ 'PreviousReference': v:false,
             \ }
-
-if executable('rls')
-    call extend(g:lsc_server_commands, {
-        \ 'rust': 'rls'
-        \ })
-endif
 
 " Turn the invalid java.apply.workspaceEdit commands into an edit
 " action which complies with the LSP spec
