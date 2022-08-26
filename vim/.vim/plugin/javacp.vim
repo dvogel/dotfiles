@@ -4,6 +4,6 @@ import autoload "javacp.vim"
 
 augroup CpidJavaLoading
     autocmd!
-    autocmd BufRead *.java b:pomXmlPath = javacp.FindPomXml(expand("%:p"))
+    autocmd BufRead *.java javacp.InitializeJavaBuffer()
 augroup END
 

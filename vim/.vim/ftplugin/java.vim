@@ -87,9 +87,20 @@ endfunction
 command! CheckForMissingImports :call javacp#CheckBuffer()
 nmap <S-F11> <ScriptCmd>:call javacp#CheckBuffer()<CR>
 command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
+command! ReindexClasspath :call javacp#ReindexClasspath()
+command! FixMissingImports :call javacp#FixMissingImports()
+command! PrintPomAttrs :call pomutil#PrintPomAttrs(b:pomXmlPath)
 
 augroup CpidJavaTemp
 	autocmd!
 	autocmd BufWrite *.java CheckForMissingImports
+    " autocmd CursorMoved,CursorMovedI,TextChangedI *.java :call javacp#RecordCursorMovement()
+    autocmd InsertLeave *.java :call javacp#UpdateBufferShadow()
+    autocmd TextChanged *.java :call javacp#UpdateBufferShadow()
+    autocmd QuickFixCmdPost *.java :call javacp#UpdateBufferShadow()
 augroup END
+
+setlocal statusline=%-f%=%{%javacp#StatusLineExpr()%}%l,%c\ %p%%\ 
+highlight CpidStatus guifg=drew_orange  guibg=drew_skyblue
+nmap <leader>fix :call javacp#FixMissingImports()<CR>
 
