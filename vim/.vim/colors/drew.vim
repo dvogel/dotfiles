@@ -29,39 +29,46 @@ let colors_name = "drew"
 runtime colors/lists/csscolors.vim
 runtime colors/lists/pantone.vim
 call extend(v:colornames, {
-			\ 'drew_cyan': '#10b2c0',
-			\ 'drew_aqua': '#0e8f9b',
-			\ 'drew_blue': '#0e689d',
-			\ 'drew_peach': '#e39e58',
-			\ 'drew_puke': '#ebab6a',
-			\ 'drew_skin': '#e3b07d',
-			\ 'drew_red': '#cb3725',
+            \ 'drew_cyan': '#10b2c0',
+            \ 'drew_aqua': '#0e8f9b',
+            \ 'drew_blue': '#0e689d',
+            \ 'drew_peach': '#e39e58',
+            \ 'drew_puke': '#ebab6a',
+            \ 'drew_skin': '#e3b07d',
+            \ 'drew_red': '#cb3725',
             \ 'drew_bloodred': '#770011',
-			\ 'drew_watermelon': '#ee1122',
-			\ 'drew_firebrick': '#c53534',
-			\ 'drew_pink': '#cf2152',
-			\ 'drew_palepurple': '#b294bb',
-			\ 'drew_purple': '#ba99fa',
-			\ 'drew_magenta': '#bb00bb',
-			\ 'drew_green': '#379f4d',
-			\ 'drew_neongreen': '#b3e46f',
-			\ 'drew_khaki': '#ad6d2b',
-			\ 'drew_brown': '#642e0e',
-			\ 'drew_orange': '#e35c0f',
-			\ 'drew_salmon': '#f37c2f',
-			\ 'drew_tan': '#c77624',
-			\ 'drew_teal': '#126d67',
-			\ 'drew_mtdew': '#c6d80e',
-			\ 'drew_ltblue': '#208ec8',
-			\ 'drew_skyblue': '#9cd7eb',
-			\ 'drew_babyyellow': '#fbe572',
-			\ 'drew_birchwood': '#d9cd94',
-			\ 'drew_white': '#dfdfdf',
-			\ 'drew_grayishblue': '#cacaf0',
-			\ 'drew_ltgray': '#c5c8c6',
-			\ 'drew_darkgray': '#5e6164',
-			\ 'drew_background': '#000000',
-			\ }, "keep")
+            \ 'drew_watermelon': '#ee1122',
+            \ 'drew_firebrick': '#c53534',
+            \ 'drew_pink': '#cf2152',
+            \ 'drew_palepurple': '#b294bb',
+            \ 'drew_purple': '#ba99fa',
+            \ 'drew_magenta': '#bb00bb',
+            \ 'drew_green': '#379f4d',
+            \ 'drew_camogreen': '#90ac96',
+            \ 'drew_darkgreen': '#276f44',
+            \ 'drew_mint': '#d5ffe6',
+            \ 'drew_picklegreen': '#b8e238',
+            \ 'drew_eastergreen': '#acffcd',
+            \ 'drew_neongreen': '#b3e46f',
+            \ 'drew_khaki': '#ad6d2b',
+            \ 'drew_brown': '#642e0e',
+            \ 'drew_orange': '#e35c0f',
+            \ 'drew_salmon': '#f37c2f',
+            \ 'drew_tan': '#c77624',
+            \ 'drew_teal': '#126d67',
+            \ 'drew_mtdew': '#c6d80e',
+            \ 'drew_ltblue': '#208ec8',
+            \ 'drew_skyblue': '#9cd7eb',
+            \ 'drew_slateblue': '#7799bb',
+            \ 'drew_slategreen': '#77bb99',
+            \ 'drew_babyyellow': '#fbe572',
+            \ 'drew_birchwood': '#d9cd94',
+            \ 'drew_white': '#dfdfdf',
+            \ 'drew_grayishblue': '#cacaf0',
+            \ 'drew_ltgray': '#c5c8c6',
+            \ 'drew_darkgray': '#5e6164',
+            \ 'drew_background': '#000000',
+            \ }, "keep")
 
 
 hi Normal guifg=drew_ltgray guibg=drew_background
@@ -436,3 +443,26 @@ highlight GBufExHeader guifg=drew_blue ctermfg=blue
 highlight GBufExHeaderGroupKey guifg=drew_orange ctermfg=lightred
 highlight GBufExBufNr guifg=drew_purple ctermfg=blue
 highlight GBufExFilename guifg=drew_birchwood ctermfg=brown
+
+
+highlight rustModPath guifg=drew_slateblue ctermfg=DarkGray
+highlight rustTypeScope guifg=drew_slateblue ctermfg=DarkGray
+highlight rustConstant guifg=drew_green ctermfg=LightGreen
+highlight rustQuestionMark guifg=drew_salmon ctermfg=Brown gui=bold
+highlight rustSigil guifg=drew_watermelon ctermfg=LightRed gui=none
+highlight rustOperator guifg=drew_babyyellow ctermfg=Yellow
+
+
+highlight rustIdentifierTypeLevel guifg=drew_green ctermfg=Green
+highlight rustIdentifierValueLevel guifg=drew_ltgray ctermfg=Blue
+highlight rustPathIdentifierTypeLevel guifg=drew_slategreen ctermfg=LightBlue
+highlight rustPathIdentifierValueLevel guifg=drew_slateblue ctermfg=DarkGreen
+highlight rustPathSpecialSegment guifg=drew_darkgray ctermfg=brown gui=italic
+
+highlight rustEnumVariantDecl guifg=drew_slateblue ctermfg=Gray
+highlight rustEnumVariantArgsDecl guifg=drew_darkgray ctermfg=DarkGray
+
+highlight rustStructMemberValueLevel guifg=drew_slateblue ctermfg=LightBlue
+highlight rustStructMemberTypeLevel guifg=drew_slategreen ctermfg=LightBlue
+highlight rustStructMemberType guifg=drew_slategreen ctermfg=LightBlue
+
