@@ -415,3 +415,5 @@ function! GroupFilesByProjectRoot(bufObj)
 endfunction
 let g:GroupedBufExplorerGroupingHook = function('GroupFilesByProjectRoot')
 
+command! -nargs=1 ColorGrep :echo filter(copy(v:colornames), "v:key =~ '.*<args>.*'")
+
