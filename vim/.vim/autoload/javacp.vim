@@ -5,8 +5,6 @@ import autoload "pomutil.vim"
 var outstandingCpidRequests: dict<func> = {}
 var channel: channel
 
-# TODO: Need to be sure that javaUtilClasses is complete.
-var javaUtilClasses = ['ArrayList', 'HashSet', 'LinkedHashSet', 'TreeSet', 'Set', 'List', 'Map', 'Collections']
 var preludeClasses = [
     'Boolean', 'Byte', 'Character', 'Class', 'Double', 'Float', 'Integer',
     'Long', 'Math', 'Number', 'Object', 'String', 'StringBuffer',
@@ -168,50 +166,88 @@ export def CheckBuffer(): void
 	var classesNeedingImport = ListSubtraction(usedClasses, knownClasses)
 
     b:cpidClassesNeedingImport = classesNeedingImport
+    ShowMissingImports()
+enddef
+
+export def ShowMissingImports(): void
+    var accum = []
+    for cls in b:cpidClassesNeedingImport
+        add(accum, {
+            "bufnr": bufnr(),
+            "text": "Missing import for " .. cls,
+            "pattern": '\W' .. cls .. '\W',
+            "type": 'E',
+            })
+    endfor
+    setloclist(bufwinid(bufnr()), accum, 'r')
+enddef
+
+def FixSingleMissingImport(cls: string): void
+    var resp = CpidSendSync("ClassQueryResponse", {
+        type: "ClassQuery",
+        index_name: b:pomXmlPath,
+        class_name: cls,
+        })
+
+    if empty(resp)
+        return
+    endif
+
+    if !has_key(resp["results"], cls)
+        echoerr "response from cpid lacked results for class " .. cls
+        return
+    endif
+
+    # TODO: Now that jimage indexing works javaUtilClasses should be dealt
+    # with like any other class.
+    var choices = resp["results"][cls]
+    if index(javaUtilClasses, cls) >= 0
+        insert(choices, "java.util")
+    endif
+
+    if len(choices) == 0
+        echomsg "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty."
+        return
+    endif
+
+    popup_menu(choices, {
+        "padding": [1, 1, 1, 1],
+        "border": [1, 0, 0, 0],
+        "title": " Package for class " .. cls .. ": ",
+        "callback": (winid: number, result: number) => {
+            if result >= 1
+                RecvImportChoice(winid, choices[result - 1], cls)
+            endif
+            },
+        })
 enddef
 
 export def FixMissingImports(): void
+    # TODO: Since popup_menu() in FixSingleMissingImport() is async, this loop
+    # draws each window over the top of the previous one in the list before
+    # accepting input.
     for cls in b:cpidClassesNeedingImport
-        var resp = CpidSendSync("ClassQueryResponse", {
-            type: "ClassQuery",
-            index_name: b:pomXmlPath,
-            class_name: cls,
-            })
-
-        if empty(resp)
-            continue
-        endif
-
-        if !has_key(resp["results"], cls)
-            echoerr "response from cpid lacked results for class " .. cls
-            continue
-        endif
-
-        var choices = resp["results"][cls]
-        if index(javaUtilClasses, cls) >= 0
-            insert(choices, "java.util")
-        endif
-
-        if len(choices) == 0
-            echomsg "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty."
-            return
-        endif
-
-        popup_menu(choices, {
-            "padding": [1, 1, 1, 1],
-            "border": [1, 0, 0, 0],
-            "title": " Package for class " .. cls .. ": ",
-            "callback": (winid: number, result: number) => {
-                if result >= 1
-                    RecvImportChoice(winid, choices[result - 1], cls)
-                endif
-                },
-            })
+        FixSingleMissingImport(cls)
     endfor
 enddef
 
+export def ReindexJdkModules(): void
+    if has_key(b:, "pomXmlPath")
+        var jdkVersion = pomutil.FetchJdkVersion(b:pomXmlPath)
+        if jdkVersion == v:null
+            echo "Cannot index JDK because the version is unknown."
+            return
+        endif
+
+        var resp = ch_evalexpr(channel, {
+            type: "ReindexPathCmd",
+            index_name: b:pomXmlPath,
+            archive_source: cpText,
+            })
+    enddef
+enddef
+
 export def ReindexClasspath(): void
-    echo b:pomXmlPath
     if has_key(b:, "pomXmlPath")
         var cpText = pomutil.FetchClasspath(b:pomXmlPath)
         if cpText == v:null

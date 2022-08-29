@@ -6,6 +6,14 @@ var pomXmlJdkVersionPaths = [
     '/*[local-name()="project"]/*[local-name()="properties"]/*[local-name()="maven.compiler.source"]'
     ]
 
+export def FetchJdkVersion(path: string): any
+    if has_key(pomJdkVersionCache, path)
+        return pomJdkVersionCache[path]
+    endif
+
+    return v:null
+enddef
+
 export def ForgetPomJdkVersion(path: string): void
     if has_key(pomJdkVersionCache, path)
         remove(pomJdkVersionCache, path)

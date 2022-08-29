@@ -102,5 +102,6 @@ augroup END
 
 setlocal statusline=%-f%=%{%javacp#StatusLineExpr()%}%l,%c\ %p%%\ 
 highlight CpidStatus guifg=drew_orange  guibg=drew_skyblue
-nmap <leader>fix :call javacp#FixMissingImports()<CR>
+nmap <buffer> <leader>fix :call javacp#FixMissingImports()<CR>
+nmap <buffer> <leader>imp :call javacp#ShowMissingImports()<CR>:lopen<CR>
 
