@@ -92,7 +92,7 @@ hi lCursor guibg=drew_cyan guifg=NONE
 hi Directory guifg=Blue
 hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
-hi NonText gui=bold guifg=Blue guibg=Black
+hi NonText gui=bold guifg=grey10 guibg=Black
 hi Question gui=bold guifg=SeaGreen
 hi Search guibg=drew_tan guifg=drew_darkgray
 hi SpecialKey guifg=Blue

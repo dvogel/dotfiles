@@ -39,6 +39,9 @@ def MDSetSoftWrap()
     # j = remove comment leader when joining lines, if possible
     setlocal formatoptions=qnjl
     setlocal textwidth=10000
+    setlocal showbreak=█
+    setlocal breakindent
+    setlocal breakindentopt=sbr,shift:2
     setlocal wrap
     b:wrapmode = "soft"
     echo "Markdown soft wrap mode"
