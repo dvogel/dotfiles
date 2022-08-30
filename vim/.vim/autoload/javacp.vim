@@ -5,12 +5,53 @@ import autoload "pomutil.vim"
 var outstandingCpidRequests: dict<func> = {}
 var channel: channel
 
+# These classes come from java.lang, which is automatically imported. These
+# would be returned be returned by a PackageEnumerateQuery. In fact this list
+# was built with:
+#   cpid pkgenum jdk11 java.lang | jq -r '.["java.lang"][]'
+# However there is no need to import these so they are added to the known
+# classes list for every buffer. Could potentially save some memory by
+# removing these from the b:classesNeedingImport list instead.
 var preludeClasses = [
-    'Boolean', 'Byte', 'Character', 'Class', 'Double', 'Float', 'Integer',
-    'Long', 'Math', 'Number', 'Object', 'String', 'StringBuffer',
-    'StringBuilder', 'System', 'Thread', 'ThreadGroup', 'ThreadLocal',
-    'Throwable', 'Void'
-    ]
+    'AbstractMethodError', 'AbstractStringBuilder',
+    'Appendable', 'ApplicationShutdownHooks', 'ArithmeticException',
+    'ArrayIndexOutOfBoundsException', 'ArrayStoreException', 'AssertionError',
+    'AssertionStatusDirectives', 'AutoCloseable', 'Boolean',
+    'BootstrapMethodError', 'Byte', 'Character', 'CharacterData',
+    'CharacterData00', 'CharacterData01', 'CharacterData02', 'CharacterData03',
+    'CharacterData0E', 'CharacterDataLatin1', 'CharacterDataPrivateUse',
+    'CharacterDataUndefined', 'CharacterName', 'CharSequence', 'Class',
+    'ClassCastException', 'ClassCircularityError', 'ClassFormatError',
+    'ClassLoader', 'ClassLoaderHelper', 'ClassNotFoundException', 'ClassValue',
+    'Cloneable', 'CloneNotSupportedException', 'Comparable', 'Compiler',
+    'CompoundEnumeration', 'ConditionalSpecialCasing', 'Deprecated', 'Double',
+    'Enum', 'EnumConstantNotPresentException', 'Error', 'Exception',
+    'ExceptionInInitializerError', 'FdLibm', 'Float', 'FunctionalInterface',
+    'IllegalAccessError', 'IllegalAccessException', 'IllegalArgumentException',
+    'IllegalCallerException', 'IllegalMonitorStateException',
+    'IllegalStateException', 'IllegalThreadStateException',
+    'IncompatibleClassChangeError', 'IndexOutOfBoundsException',
+    'InheritableThreadLocal', 'InstantiationError', 'InstantiationException',
+    'Integer', 'InternalError', 'InterruptedException', 'Iterable',
+    'LayerInstantiationException', 'LinkageError', 'LiveStackFrame',
+    'LiveStackFrameInfo', 'Long', 'Math', 'Module', 'ModuleLayer', 'NamedPackage',
+    'NegativeArraySizeException', 'NoClassDefFoundError', 'NoSuchFieldError',
+    'NoSuchFieldException', 'NoSuchMethodError', 'NoSuchMethodException',
+    'NullPointerException', 'Number', 'NumberFormatException', 'Object',
+    'OutOfMemoryError', 'Override', 'Package', 'Process', 'ProcessBuilder',
+    'ProcessEnvironment', 'ProcessHandle', 'ProcessHandleImpl', 'ProcessImpl',
+    'PublicMethods', 'Readable', 'Record', 'ReflectiveOperationException',
+    'Runnable', 'Runtime', 'RuntimeException', 'RuntimePermission', 'SafeVarargs',
+    'SecurityException', 'SecurityManager', 'Short', 'Shutdown', 'StackFrameInfo',
+    'StackOverflowError', 'StackStreamFactory', 'StackTraceElement',
+    'StackWalker', 'StrictMath', 'String', 'StringBuffer', 'StringBuilder',
+    'StringCoding', 'StringConcatHelper', 'StringIndexOutOfBoundsException',
+    'StringLatin1', 'StringUTF16', 'SuppressWarnings', 'System', 'Terminator',
+    'Thread', 'ThreadDeath', 'ThreadGroup', 'ThreadLocal', 'Throwable',
+    'TypeNotPresentException', 'UnknownError', 'UnsatisfiedLinkError',
+    'UnsupportedClassVersionError', 'UnsupportedOperationException',
+    'VerifyError', 'VersionProps', 'VirtualMachineError', 'Void', 'WeakPairMap',
+]
 
 # Return a list of all of the values in `xs` that are not in `ys`
 export def ListSubtraction(xs: list<any>, ys: list<any>): list<any>
@@ -66,7 +107,7 @@ export def FindPackageDecl(lines: list<string>): number
 enddef
 
 var stringLiteralPattern = '"\([\]["]\|[^"]\)*"'
-var classDerefPattern = '[^.@A-Za-z0-9]\zs[A-Z][A-Za-z0-9_]*'
+var classDerefPattern = '[^._@A-Za-z0-9]\zs[A-Z][A-Za-z0-9_]*'
 export def CollectUsedClassNames(lines: list<string>): list<string>
     var usedClassNames = []
     var inComment = v:false
@@ -110,12 +151,29 @@ export def CollectUsedClassNames(lines: list<string>): list<string>
     return uniq(usedClassNames)
 enddef
 
+def GetBufferIndexNames(): list<string>
+    var indexNames = [b:pomXmlPath]
+    var jdkIndexName: any = pomutil.FetchJdkVersion(b:pomXmlPath)
+    if jdkIndexName != v:null
+        add(indexNames, jdkIndexName)
+    endif
+    return indexNames
+enddef
+
+# TODO: This needs to enumerate all of the classes in the current package.
 export def CollectKnownClassNames(lines: list<string>): list<string>
 	var classPat = '[A-Z][A-Za-z0-9_]*'
 	var importPat = '^import \([a-z0-9]\+\%([.][a-z0-9]\+\)*\)[.]\([*]\|' .. classPat .. '\);'
-    var declPat = '\Wclass\s\+' .. classPat .. '\(\s\|$\)'
+    var declPat = '\(\W\|^\)class\s\+' .. classPat .. '\(\s\|$\)'
+
+    # Since class patterns are also unfortunately also valid variable patterns
+    # we need to identify declared variables to avoid reporting them as
+    # classes needing import. This is especially true for static class
+    # members that often have all-caps names. e.g. LOGGER.
+    var memberDeclPat = '\(\W\|^\)\%\(public\|private\)\?\%\(\s\+final\)\?\%\(\s\+var\|char\|byte\|int\|long\|float\|double\|' .. classPat .. '\)\s\+\(' .. classPat .. '\)'
 	var knownClassNames = []
     var classMatch: any
+    var indexNames = GetBufferIndexNames()
 	for ln in lines
 		var importMatches = matchlist(ln, importPat)
 		if len(importMatches) > 0
@@ -127,7 +185,7 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
                 else
                     var resp = ch_evalexpr(channel, {
                         type: "PackageEnumerateQuery",
-                        index_name: b:pomXmlPath,
+                        index_names: indexNames,
                         package_name: packageName,
                         })
                     if resp["type"] == "PackageEnumerateQueryResponse"
@@ -135,7 +193,7 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
                     endif
                 endif
             elseif importMatches[2] != ""
-                extend(knownClassNames, [importMatches[2]])
+                add(knownClassNames, importMatches[2])
                 continue
 			endif
 		endif
@@ -144,9 +202,14 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
         if declMatch != ""
             classMatch = matchstr(ln, classPat)
             if classMatch != ""
-                extend(knownClassNames, [classMatch])
+                add(knownClassNames, classMatch)
                 continue
             endif
+        endif
+
+        var memberDeclMatches = matchlist(ln, memberDeclPat)
+        if memberDeclMatches != []
+            add(knownClassNames, memberDeclMatches[1])
         endif
 	endfor
 	sort(knownClassNames)
@@ -183,9 +246,10 @@ export def ShowMissingImports(): void
 enddef
 
 def FixSingleMissingImport(cls: string): void
+    var indexNames = GetBufferIndexNames()
     var resp = CpidSendSync("ClassQueryResponse", {
         type: "ClassQuery",
-        index_name: b:pomXmlPath,
+        index_names: indexNames,
         class_name: cls,
         })
 
@@ -198,13 +262,7 @@ def FixSingleMissingImport(cls: string): void
         return
     endif
 
-    # TODO: Now that jimage indexing works javaUtilClasses should be dealt
-    # with like any other class.
     var choices = resp["results"][cls]
-    if index(javaUtilClasses, cls) >= 0
-        insert(choices, "java.util")
-    endif
-
     if len(choices) == 0
         echomsg "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty."
         return
@@ -229,22 +287,6 @@ export def FixMissingImports(): void
     for cls in b:cpidClassesNeedingImport
         FixSingleMissingImport(cls)
     endfor
-enddef
-
-export def ReindexJdkModules(): void
-    if has_key(b:, "pomXmlPath")
-        var jdkVersion = pomutil.FetchJdkVersion(b:pomXmlPath)
-        if jdkVersion == v:null
-            echo "Cannot index JDK because the version is unknown."
-            return
-        endif
-
-        var resp = ch_evalexpr(channel, {
-            type: "ReindexPathCmd",
-            index_name: b:pomXmlPath,
-            archive_source: cpText,
-            })
-    enddef
 enddef
 
 export def ReindexClasspath(): void
