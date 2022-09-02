@@ -184,7 +184,7 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
                     echomsg "Skipping package wildcard query to cpid because b:pomXmlPath is empty."
                 else
                     var resp = ch_evalexpr(channel, {
-                        type: "PackageEnumerateQuery",
+                        type: "PackageMultiEnumerateQuery",
                         index_names: indexNames,
                         package_name: packageName,
                         })
@@ -248,7 +248,7 @@ enddef
 def FixSingleMissingImport(cls: string): void
     var indexNames = GetBufferIndexNames()
     var resp = CpidSendSync("ClassQueryResponse", {
-        type: "ClassQuery",
+        type: "ClassMultiQuery",
         index_names: indexNames,
         class_name: cls,
         })

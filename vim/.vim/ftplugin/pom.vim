@@ -1,8 +1,9 @@
 setlocal commentstring=<!--\ %s\ -->
-setlocal expandtab
 setlocal nowrap
-setlocal shiftwidth=2
-setlocal tabstop=2
 setlocal textwidth=0
 setlocal wildignore+=*.class
-
+if get(b:, 'editorconfig_applied', 0) == 0
+    setlocal shiftwidth=2
+    setlocal tabstop=2
+    setlocal expandtab
+endif

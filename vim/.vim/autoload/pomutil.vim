@@ -3,7 +3,9 @@ vim9script
 var pomJdkVersionCache = {}
 var classpathCache = {}
 var pomXmlJdkVersionPaths = [
-    '/*[local-name()="project"]/*[local-name()="properties"]/*[local-name()="maven.compiler.source"]'
+    '/pom:project/pom:properties/pom:maven.compiler.source',
+    '/pom:project/pom:properties/pom:java.version',
+    '/pom:project/pom:build/pom:plugins//pom:plugin[./pom:artifactId/text()="maven-compiler-plugin"]/pom:configuration/pom:source',
     ]
 
 export def FetchJdkVersion(path: string): any
@@ -26,10 +28,11 @@ export def IdentifyPomJdkVersion(path: string): void
     endif
 
     for xmlpath in pomXmlJdkVersionPaths
-        var cmd = "xmlstarlet sel -t -v " .. shellescape(xmlpath) .. " " .. shellescape(path)
-        var versionText = system(cmd)
-        if len(versionText) > 0
+        var cmd = "xmlstarlet sel -N 'pom=http://maven.apache.org/POM/4.0.0' -t -v " .. shellescape(xmlpath) .. " " .. shellescape(path)
+        var versionText = trim(system(cmd))
+        if len(versionText) > 0 && matchstr(versionText, '^[0-9]\+[.0-9]*$') != ""
             pomJdkVersionCache[path] = versionText
+            break
         endif
     endfor
 enddef
