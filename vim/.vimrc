@@ -176,13 +176,15 @@ au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 " Always open the quickfix window on the bottom (no vertical split)
 au FileType qf wincmd J
 
+import "delbufdel.vim" as delbufdel
+
 nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
 nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-map <F4> :call delbufdel#DelicatelyDeleteBuffer()<CR>
+map <F4> <ScriptCmd>:call delbufdel.DelicatelyDeleteBuffer()<CR>
 map <F5> :w<CR>
 nmap <F9> :GBufExplorer<CR>
 nmap <C-S-F9> :GBufExplorerHorizontalSplit<CR>
