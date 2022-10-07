@@ -207,7 +207,7 @@ function __git_ps1_ext () {
 		local ps1_tmp
 		ps1_tmp=$(__git_ps1)
 		if [[ -n "${ps1_tmp}" ]]; then
-			echo -n "${ps1_tmp}($(git rev-parse HEAD 2>/dev/null))"
+			echo -n "${ps1_tmp}($(git rev-parse --short=8 HEAD 2>/dev/null))"
 		fi
 	fi
 }
