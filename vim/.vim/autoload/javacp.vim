@@ -152,11 +152,18 @@ export def CollectUsedClassNames(lines: list<string>): list<string>
 enddef
 
 def GetBufferIndexNames(): list<string>
-    var indexNames = [b:pomXmlPath]
-    var jdkIndexName: any = pomutil.FetchJdkVersion(b:pomXmlPath)
-    if jdkIndexName != v:null
-        add(indexNames, jdkIndexName)
+    var indexNames = []
+
+    if exists('b:jdkVersion')
+        add(indexNames, "jdk" .. b:jdkVersion)
+    elseif exists('b:pomXmlPath')
+        add(indexNames, b:pomXmlPath)
+        var jdkIndexName: any = pomutil.FetchJdkVersion(b:pomXmlPath)
+        if jdkIndexName != v:null
+            add(indexNames, jdkIndexName)
+        endif
     endif
+
     return indexNames
 enddef
 
@@ -382,7 +389,11 @@ enddef
 
 export def InitializeJavaBuffer(): void
     b:pomXmlPath = pomutil.FindPomXml(expand("%:p"))
-    pomutil.IdentifyPomJdkVersion(b:pomXmlPath)
+    if b:pomXmlPath !=
+        pomutil.IdentifyPomJdkVersion(b:pomXmlPath)
+    else
+        return
+    endif
 
     if !CheckCpidConnection()
         ConnectToCpid()
