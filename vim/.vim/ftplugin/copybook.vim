@@ -1,5 +1,7 @@
 vim9script
 
+setlocal nowrap
+
 command! CopybookGoToFirstSegment normal gg<CR>/^\s\+\01\s<CR>
 nnoremap gs :CopybookGoToFirstSegment<CR>
 
