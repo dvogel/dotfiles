@@ -9,3 +9,5 @@ setlocal nosmartindent
 map <F10> <ESC>:w<CR>:!ddd --pydb %<CR>
 vmap <C-e><C-c> :s/^/#/<CR>
 vmap <C-e><C-u> :s/^#\+//<CR>
+nnoremap <F8> oimport ipdb; ipdb.set_trace()<Esc>==
+
