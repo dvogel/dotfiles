@@ -172,3 +172,6 @@
 [submodule "vim-groupedbufexplorer"]
 	path = vim/.vim/pack/plugins/start/vim-groupedbufexplorer
 	url = git@github.com:dvogel/vim-groupedbufexplorer.git
+[submodule "vim-go"]
+	path = vim/.vim/pack/plugins/start/vim-go
+	url = git@github.com:fatih/vim-go.git
