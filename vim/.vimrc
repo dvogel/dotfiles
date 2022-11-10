@@ -420,3 +420,22 @@ let g:GroupedBufExplorerGroupingHook = function('GroupFilesByProjectRoot')
 
 command! -nargs=1 ColorGrep :echo filter(copy(v:colornames), "v:key =~ '.*<args>.*'")
 
+function! TadaComplete(arg_lead, cmd_line, cursor_pos) abort
+    let l:prefix = resolve($HOME . "/Documents/Tada/")
+    let l:prefixLen = len(l:prefix)
+    let l:entries = split(globpath(l:prefix, "" . a:arg_lead . "*"), "\n")
+    let l:names = map(l:entries, "v:val[" . (l:prefixLen + 1) . ":]")
+    return l:names
+endfunction
+
+function! OpenTada(filename) abort
+    let l:entries = split(globpath("$HOME/Documents/Tada", a:filename), "\n")
+    if len(l:entries) == 0
+        return
+    endif
+
+    execute "edit " . l:entries[0]
+endfunction
+
+command! -nargs=1 -complete=customlist,TadaComplete Tada :call OpenTada(<q-args>)
+
