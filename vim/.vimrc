@@ -376,6 +376,7 @@ let g:lsc_auto_map = {
             \ 'FindCodeActions': 'M-c',
             \ 'NextReference': v:false,
             \ 'PreviousReference': v:false,
+            \ 'ShowHover': v:true,
             \ }
 
 " Turn the invalid java.apply.workspaceEdit commands into an edit

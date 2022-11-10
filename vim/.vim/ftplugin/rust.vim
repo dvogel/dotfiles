@@ -11,6 +11,7 @@ setlocal tabstop=4
 nmap t ?(\zs.<CR>
 nmap T /)<CR>
 nmap <S-F9> :make<CR>
+nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 
 b:autoformat_remove_trailing_spaces = 1
 
