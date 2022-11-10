@@ -466,3 +466,7 @@ highlight rustStructMemberValueLevel guifg=drew_slateblue ctermfg=LightBlue
 highlight rustStructMemberTypeLevel guifg=drew_slategreen ctermfg=LightBlue
 highlight rustStructMemberType guifg=drew_slategreen ctermfg=LightBlue
 
+highlight brsKeyword guifg=drew_orange
+highlight brsType guifg=drew_green
+highlight brsComment guifg=darkgray
+highlight brsOperator guifg=drew_babyyellow
