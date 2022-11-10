@@ -177,6 +177,7 @@ au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 au FileType qf wincmd J
 
 import "delbufdel.vim" as delbufdel
+command! -nargs=1 BufDelMatching :call delbufdel.DeleteBuffersMatching("<args>")
 
 nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>

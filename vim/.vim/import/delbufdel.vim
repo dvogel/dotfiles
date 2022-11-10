@@ -22,5 +22,19 @@ export def DelicatelyDeleteBuffer(): void
     endif
 enddef
 
+export def DeleteBuffersMatching(globPat: string): void
+    var pattern = glob2regpat(globPat)
+	var count = 0
+    for bufObj in getbufinfo()
+        if match(bufObj.name, pattern) >= 0
+			execute "bdelete " .. bufObj.bufnr
+			count = count + 1
+        endif
+    endfor
+	if count > 0
+		echomsg "Deleted " .. count .. " buffers matching " .. globPat
+	endif
+enddef
+
 defcompile
 
