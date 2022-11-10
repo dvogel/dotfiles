@@ -389,8 +389,10 @@ enddef
 
 export def InitializeJavaBuffer(): void
     b:pomXmlPath = pomutil.FindPomXml(expand("%:p"))
-    if b:pomXmlPath !=
+    if b:pomXmlPath != ""
         pomutil.IdentifyPomJdkVersion(b:pomXmlPath)
+    elseif exists('b:jdkVersion')
+        # no-op
     else
         return
     endif
