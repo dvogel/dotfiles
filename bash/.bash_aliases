@@ -1,4 +1,5 @@
 alias ll='ls -ltr'
+alias my-term-pstree='pstree -C age -l -a -U -T -p $PPID'
 alias mgmtcmds='find . -type f -wholename "***/management/commands/*.py" | sed -r -e "/__init__.py/d" -e "s/(.*\/([^ /]+).py)/\2 \1/" | column -t'
 alias tolowercase='tr "[A-Z]" "[a-z]"'
 alias touppercase='tr "[a-z]" "[A-Z]"'
