@@ -160,7 +160,7 @@ def GetBufferIndexNames(): list<string>
         add(indexNames, b:pomXmlPath)
         var jdkIndexName: any = pomutil.FetchJdkVersion(b:pomXmlPath)
         if jdkIndexName != v:null
-            add(indexNames, jdkIndexName)
+            add(indexNames, "jdk" .. jdkIndexName)
         endif
     endif
 
