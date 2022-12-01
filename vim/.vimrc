@@ -414,7 +414,7 @@ function! GroupFilesByProjectRoot(bufObj)
         let a:bufObj.groupkey = root
     else
         let a:bufObj.listname = a:bufObj.name
-        let a:bufObj.groupkey = defaultGroupKey
+        " leave the bufObj.groupkey alone to accept default
     endif
 endfunction
 let g:GroupedBufExplorerGroupingHook = function('GroupFilesByProjectRoot')
