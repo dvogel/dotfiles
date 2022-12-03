@@ -72,15 +72,15 @@ export def ListSubtraction(xs: list<any>, ys: list<any>): list<any>
 enddef
 
 export def FindImportLineIndexes(lines: list<string>): list<number>
-	var importPat = '^import\s'
+    var importPrefixPat = '^import\s'
     var emptyLinePat = '^\s*$'
-    var packagePat = '^package\s'
+    var packagePrefixPat = '^package\s'
     var accum: list<number> = []
     var idx = 0
     for ln in lines
-        if match(ln, importPat) >= 0
+        if match(ln, importPrefixPat) >= 0
             extend(accum, [idx])
-        elseif len(accum) == 0 && match(ln, packagePat) >= 0
+        elseif len(accum) == 0 && match(ln, packagePrefixPat) >= 0
             # No-op
         elseif match(ln, emptyLinePat) >= 0
             # No-op
@@ -102,8 +102,18 @@ export def FindFinalImport(lines: list<string>): number
 enddef
 
 export def FindPackageDecl(lines: list<string>): number
-    var packagePat = '^package\s'
-    return match(lines, packagePat)
+    var packagePrefixPat = '^package\s'
+    return match(lines, packagePrefixPat)
+enddef
+
+export def ExtractDeclPackageName(lines: list<string>): string
+    var packageDeclCapturePat = '^package\s\+\([a-z0-9]\+\%([.][a-z0-9]\+\)*\)\s*;'
+    var packageDeclMatch = matchlist(lines, packageDeclCapturePat)
+    if packageDeclMatch == []
+        return ""
+    else
+        return packageDeclMatch[1]
+    endif
 enddef
 
 var stringLiteralPattern = '"\([\]["]\|[^"]\)*"'
@@ -167,17 +177,23 @@ def GetBufferIndexNames(): list<string>
     return indexNames
 enddef
 
+var classIdentPat = '[A-Z][A-Za-z0-9_]*'
+var importPat = '^import \([a-z0-9]\+\%([.][a-z0-9]\+\)*\)[.]\([*]\|' .. classIdentPat .. '\);'
+var declPat = '\(\W\|^\)class\s\+' .. classIdentPat .. '\(\s\|$\)'
+
+# Since class patterns are also unfortunately also valid variable patterns
+# we need to identify declared variables to avoid reporting them as
+# classes needing import. This is especially true for static class
+# members that often have all-caps names. e.g. LOGGER.
+var memberDeclPat = '\%(\W\|^\)\%(public\|private\|protected\)\?\%(\s\+final\)\?\%(\s\+\%(var\|char\|byte\|int\|long\|float\|double\|' .. classIdentPat .. '\)\)\s\+\(' .. classIdentPat .. '\)'
+
+export def SelfTestCollectKnownClassNames(): void
+    var memberDeclMatches = matchlist("protected final int DEFAULT_BATCH_SIZE = 1000L;", memberDeclPat)
+    assert_equal("DEFAULT_BATCH_SIZE", memberDeclMatches[1])
+enddef
+
 # TODO: This needs to enumerate all of the classes in the current package.
 export def CollectKnownClassNames(lines: list<string>): list<string>
-	var classPat = '[A-Z][A-Za-z0-9_]*'
-	var importPat = '^import \([a-z0-9]\+\%([.][a-z0-9]\+\)*\)[.]\([*]\|' .. classPat .. '\);'
-    var declPat = '\(\W\|^\)class\s\+' .. classPat .. '\(\s\|$\)'
-
-    # Since class patterns are also unfortunately also valid variable patterns
-    # we need to identify declared variables to avoid reporting them as
-    # classes needing import. This is especially true for static class
-    # members that often have all-caps names. e.g. LOGGER.
-    var memberDeclPat = '\(\W\|^\)\%\(public\|private\)\?\%\(\s\+final\)\?\%\(\s\+var\|char\|byte\|int\|long\|float\|double\|' .. classPat .. '\)\s\+\(' .. classPat .. '\)'
 	var knownClassNames = []
     var classMatch: any
     var indexNames = GetBufferIndexNames()
@@ -207,7 +223,7 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
 
         var declMatch = matchstr(ln, declPat)
         if declMatch != ""
-            classMatch = matchstr(ln, classPat)
+            classMatch = matchstr(ln, classIdentPat)
             if classMatch != ""
                 add(knownClassNames, classMatch)
                 continue
@@ -314,6 +330,7 @@ enddef
 
 export def UpdateBufferShadow(): void
 	var lines = getline(1, '$')
+    b:cpidPackageName = ExtractDeclPackageName(lines)
     b:cpidKnownClassNames = CollectKnownClassNames(lines)
     b:cpidUsedClassNames = CollectUsedClassNames(lines)
 enddef
