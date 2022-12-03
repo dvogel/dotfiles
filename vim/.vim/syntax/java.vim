@@ -23,6 +23,12 @@ syn match javaOK "\.\.\."
 syn match   javaError2 "#\|=<"
 hi def link javaError2 javaError
 
+" While 'identifier' is a more generic term in the java language spec, this
+" syntax file uses it to mean any bare word (surrounded by whitespace) that
+" starts with a lowercase letter. These are usually local variables or
+" function parameters.
+syn match javaIdentifier        "\s\zs[a-z][A-Za-z0-9_]\+\ze"
+
 " keyword definitions
 syn keyword javaExternal	native package
 syn match javaExternal		"\<import\>\(\s\+static\>\)\?"
@@ -46,13 +52,14 @@ syn keyword javaClassDecl	extends implements interface
 syn match   javaTypedef		"\.\s*\<class\>"ms=s+1
 syn keyword javaClassDecl	enum
 syn match   javaClassDecl	"^class\>"
-syn match   javaClassDecl	"[^.]\s*\<class\>"ms=s+1
+" syn match   javaClassDecl	"[^.]\s*\<class\>"ms=s+1
+syn match   javaClassDecl   "[^.]\s*\zsclass"
 syn match   javaAnnotation	"@\([_$a-zA-Z][_$a-zA-Z0-9]*\.\)*[_$a-zA-Z][_$a-zA-Z0-9]*\>" contains=javaString
 syn match   javaClassDecl	"@interface\>"
 syn keyword javaBranch		break continue nextgroup=javaUserLabelRef skipwhite
 syn match   javaUserLabelRef	"\k\+" contained
 syn match   javaVarArg		"\.\.\."
-syn keyword javaScopeDecl	public protected private abstract
+syn keyword javaScopeDecl	public protected private abstract nextgroup=javaClassDecl,javaType
 
 " Package names are assumed tegin with a lowercase letter and never directly
 " follow a word character:
@@ -61,12 +68,6 @@ syn match javaPackageName       "\W\zs[a-z][a-z0-9]*\([.][a-z][a-z0-9]\+\)\+\ze"
 " Class names are assumed to begin with an uppercase letter and never directly
 " follow a word character:
 syn match javaClassName         "\W\zs[A-Z][A-Za-z0-9_$]\+\ze"
-
-" While 'identifier' is a more generic term in the java language spec, this
-" syntax file uses it to mean any bare word (surrounded by whitespace) that
-" starts with a lowercase letter. These are usually local variables or
-" function parameters.
-syn match javaIdentifier        "\s\zs[a-z][A-Za-z0-9_]\+\ze"
 
 " A method call must follow a dot character. It is assumed to start with a
 " lowercase letter, re-using the same match pattern as javaIdentifier.
@@ -205,6 +206,7 @@ syn match   javaSpecialError	 contained "\\."
 syn match   javaSpecialCharError contained "[^']"
 syn match   javaSpecialChar	 contained "\\\([4-9]\d\|[0-3]\d\d\|[\"\\'ntbrf]\|u\x\{4\}\)"
 syn region  javaString		start=+"+ end=+"+ end=+$+ contains=javaSpecialChar,javaSpecialError,@Spell
+syn region  javaString		start=+"""+ end=+"""+ contains=javaSpecialChar,javaSpecialError,@Spell
 " next line disabled, it can cause a crash for a long line
 "syn match   javaStringError	  +"\([^"\\]\|\\.\)*$+
 syn match   javaCharacter	 "'[^']*'" contains=javaSpecialChar,javaSpecialCharError
