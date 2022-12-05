@@ -82,7 +82,7 @@ syn region javaImportStmt start="^import" end=";$" contains=javaExternal,javaPac
 
 " syn match javaClassName         "\([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\(<[^>]*>\)"
 " syn match javaGenericExtends    "\([?]|extends\)"
-" syn region javaGeneric           start="<" end=">" contains=javaType,javaGenericExtends,javaClassName
+syn region javaGeneric           start="<" end=">" contains=javaType,javaGenericExtends,javaClassName
 " syn match javaFuncDef
 " 	    \(\(void\|boolean\|char\|byte\|short\|int\|long\|float\|double\|
 " 	    \([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\)\(<[^>]*>\)
@@ -223,7 +223,7 @@ syn match   javaSpecial "\\u\d\{4\}"
 syn cluster javaTop add=javaString,javaCharacter,javaNumber,javaSpecial,javaStringError
 
 if exists("java_highlight_functions")
-    syn region javaFuncDef start="^\s\+\(\(public\|protected\|private\|static\|abstract\|final\|native\|synchronized\)\s\+\)*\(\(void\|boolean\|char\|byte\|short\|int\|long\|float\|double\|\([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\)\(<[^>]*>\)\=\(\[\]\)*\s\+[a-z][A-Za-z0-9_$]*\|[A-Z][A-Za-z0-9_$]*\)\s*\ze(" end="\ze(" contains=javaClassName,javaScopeDecl,javaType,javaStorageClass,javaComment,javaLineComment,@javaClasses,javaAnnotation
+    syn region javaFuncDef start="^\s\+\(\(public\|protected\|private\|static\|abstract\|final\|native\|synchronized\)\s\+\)*\(<[^>]*>\s\+\)\?\(\(void\|boolean\|char\|byte\|short\|int\|long\|float\|double\|\([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\)\(<[^>]*>\)\=\(\[\]\)*\s\+[a-z][A-Za-z0-9_$]*\|[A-Z][A-Za-z0-9_$]*\)\s*\ze(" end="\ze(" contains=javaClassName,javaScopeDecl,javaType,javaStorageClass,javaComment,javaLineComment,@javaClasses,javaAnnotation,javaGeneric
     syn match javaLambdaDef "[a-zA-Z_][a-zA-Z0-9_]*\s*->"
     syn match  javaBraces  "[{}]"
     syn cluster javaTop add=javaFuncDef,javaBraces,javaLambdaDef

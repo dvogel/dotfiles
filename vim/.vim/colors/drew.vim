@@ -275,6 +275,10 @@ hi javaString guifg=drew_firebrick ctermfg=DarkRed
 hi javaConstant guifg=drew_aqua ctermfg=DarkCyan
 hi javaScopeDecl guifg=drew_purple ctermfg=LightRed
 hi javaClassDecl guifg=drew_mtdew ctermfg=LightGreen
+hi javaClassName guifg=drew_birchwood ctermfg=Gray
+hi javaIdentifier guifg=drew_skyblue ctermfg=LightBlue
+hi javaGeneric guifg=drew_neongreen ctermfg=LightGreen
+hi javaLangClass guifg=drew_birchwood ctermfg=Gray
 hi javaAnnotation guifg=drew_puke ctermfg=Yellow
 hi javaExternal guifg=drew_magenta ctermfg=DarkMagenta
 
