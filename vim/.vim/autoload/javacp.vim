@@ -268,7 +268,15 @@ export def ShowMissingImports(): void
     setloclist(bufwinid(bufnr()), accum, 'r')
 enddef
 
-def FixSingleMissingImport(cls: string): void
+def FixFirstMissingImport(classNames: list<string>): void
+    if len(classNames) == 0
+        return
+    endif
+
+    var cls = classNames[0]
+    var rest = slice(classNames, 1)
+    echomsg "cls: " .. cls .. "  ::  " .. string(rest)
+
     var indexNames = GetBufferIndexNames()
     var resp = CpidSendSync("ClassQueryResponse", {
         type: "ClassMultiQuery",
@@ -277,17 +285,20 @@ def FixSingleMissingImport(cls: string): void
         })
 
     if empty(resp)
+        FixFirstMissingImport(rest)
         return
     endif
 
     if !has_key(resp["results"], cls)
         echoerr "response from cpid lacked results for class " .. cls
+        FixFirstMissingImport(rest)
         return
     endif
 
     var choices = resp["results"][cls]
     if len(choices) == 0
         echomsg "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty."
+        FixFirstMissingImport(rest)
         return
     endif
 
@@ -296,20 +307,19 @@ def FixSingleMissingImport(cls: string): void
         "border": [1, 0, 0, 0],
         "title": " Package for class " .. cls .. ": ",
         "callback": (winid: number, result: number) => {
+            echomsg "callback with rest: " .. string(rest)
             if result >= 1
                 RecvImportChoice(winid, choices[result - 1], cls)
+            endif
+            if len(rest) > 0
+                FixFirstMissingImport(rest)
             endif
             },
         })
 enddef
 
 export def FixMissingImports(): void
-    # TODO: Since popup_menu() in FixSingleMissingImport() is async, this loop
-    # draws each window over the top of the previous one in the list before
-    # accepting input.
-    for cls in b:cpidClassesNeedingImport
-        FixSingleMissingImport(cls)
-    endfor
+    FixFirstMissingImport(b:cpidClassesNeedingImport)
 enddef
 
 export def ReindexClasspath(): void
