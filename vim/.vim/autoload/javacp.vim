@@ -4,6 +4,32 @@ import autoload "pomutil.vim"
 
 var outstandingCpidRequests: dict<func> = {}
 var channel: channel
+var debugMode: bool = v:false
+
+command! CpidDebugOn debugMode = v:true
+command! CpidDebugOff debugMode = v:false
+
+def DebugMsg(msg: any): void
+    if debugMode == v:true
+        if type(msg) == v:t_func
+            var MsgFunc = msg
+            echomsg MsgFunc()
+        else
+            echomsg msg
+        endif
+    endif
+enddef
+
+def DebugErr(msg: any): void
+    if debugMode == v:true
+        if type(msg) == v:t_func
+            var MsgFunc = msg
+            echoerr MsgFunc()
+        else
+            echoerr msg
+        endif
+    endif
+enddef
 
 # These classes come from java.lang, which is automatically imported. These
 # would be returned be returned by a PackageEnumerateQuery. In fact this list
@@ -117,7 +143,7 @@ export def ExtractDeclPackageName(lines: list<string>): string
 enddef
 
 var stringLiteralPattern = '"\([\]["]\|[^"]\)*"'
-var classDerefPattern = '[^._@A-Za-z0-9]\zs[A-Z][A-Za-z0-9_]*'
+var classDerefPattern = '[^._A-Za-z0-9]\zs[A-Z][A-Za-z0-9_]*'
 export def CollectUsedClassNames(lines: list<string>): list<string>
     var usedClassNames = []
     var inComment = v:false
@@ -275,7 +301,6 @@ def FixFirstMissingImport(classNames: list<string>): void
 
     var cls = classNames[0]
     var rest = slice(classNames, 1)
-    echomsg "cls: " .. cls .. "  ::  " .. string(rest)
 
     var indexNames = GetBufferIndexNames()
     var resp = CpidSendSync("ClassQueryResponse", {
@@ -297,7 +322,7 @@ def FixFirstMissingImport(classNames: list<string>): void
 
     var choices = resp["results"][cls]
     if len(choices) == 0
-        echomsg "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty."
+        DebugMsg(() => "Squelching fix for class " .. cls .. " because the list of potential namespaces is empty.")
         FixFirstMissingImport(rest)
         return
     endif
@@ -427,8 +452,12 @@ export def InitializeJavaBuffer(): void
     if !CheckCpidConnection()
         ConnectToCpid()
     endif
-    UpdateBufferShadow()
-    CheckBuffer()
+    if CheckCpidConnection()
+        UpdateBufferShadow()
+        CheckBuffer()
+    else
+        echo "cpid connection failed :("
+    endif
 enddef
 
 export def StatusLineExpr(): string
