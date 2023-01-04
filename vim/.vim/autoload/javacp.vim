@@ -261,6 +261,18 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
             add(knownClassNames, memberDeclMatches[1])
         endif
 	endfor
+
+    if exists("b:cpidPackageName")
+        var resp = ch_evalexpr(channel, {
+            type: "PackageEnumerateQuery",
+            index_name: b:pomXmlPath,
+            package_name: b:cpidPackageName,
+        })
+        if resp["type"] == "PackageEnumerateQueryResponse"
+            extend(knownClassNames, resp["results"][b:cpidPackageName])
+        endif
+    endif
+
 	sort(knownClassNames)
 	return uniq(knownClassNames)
 enddef
