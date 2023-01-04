@@ -10,9 +10,6 @@
 [submodule "vim/.vim/bundle/vim-json"]
 	path = vim/.vim/pack/plugins/start/vim-json
 	url = https://github.com/elzr/vim-json.git
-[submodule "vim/.vim/bundle/colorizer"]
-	path = vim/.vim/pack/plugins/start/colorizer
-	url = https://github.com/lilydjwg/colorizer.git
 [submodule "vim/.vim/bundle/syntastic"]
 	path = vim/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -175,3 +172,6 @@
 [submodule "vim-go"]
 	path = vim/.vim/pack/plugins/start/vim-go
 	url = git@github.com:fatih/vim-go.git
+[submodule "vim-clrzr"]
+	path = vim/.vim/pack/plugins/start/clrzr
+	url = git@github.com:BourgeoisBear/clrzr.git
