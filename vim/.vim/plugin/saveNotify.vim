@@ -41,7 +41,20 @@ def TestNotifySockPath(path: string): bool
     endif
 enddef
 
+def BufferPathIsUrl(path: string): bool
+    const urlSchemePat = '^[A-Za-z0-9]\+://'
+    if match(path, urlSchemePat) >= 0
+        return v:true
+    else
+        return v:false
+    endif
+enddef
+
 def FindNotifySock(): void
+    if BufferPathIsUrl(expand("%"))
+        return
+    endif
+
     if exists("b:saveNotifySockPath")
         if filewritable(b:saveNotifySockPath)
             return
@@ -50,7 +63,8 @@ def FindNotifySock(): void
         endif
     endif
 
-    var stopRoot = "/"
+    const absRootPath = "/"
+    var stopRoot = absRootPath
     if exists("*ProjectRootGet")
         var projectRoot = g:ProjectRootGet()
         if projectRoot != ""
@@ -60,15 +74,22 @@ def FindNotifySock(): void
 
     var searchPrefix = expand("%:p:h")
     while TestNotifySockPath(searchPrefix .. "/" .. sockName) == v:false
+        var oldPrefix = searchPrefix
         searchPrefix = fnamemodify(searchPrefix, ":h")
-        if searchPrefix == stopRoot || searchPrefix == ""
+        if oldPrefix == searchPrefix
+            # This is a safety valve to prevent an infinite loop in corner
+            # cases. e.g. without the explicit URL buffer path detection this
+            # prevented cases like fnamemodify("fugitive:", ":h") == "."
+            break
+        endif
+        if searchPrefix == absRootPath || searchPrefix == stopRoot || searchPrefix == ""
             break
         endif
     endwhile
 enddef
 
 def NotifyOfSave(): void
-    if exists("b:saveNotifySockPath") && filewritable(b:saveNotifySockPath)
+    if exists("b:saveNotifySockPath") && b:saveNotifySockPath != "" && filewritable(b:saveNotifySockPath)
         system("echo \"" .. expand("%") .. "\" | nc -U -u -N -w0 \"" .. b:saveNotifySockPath .. "\"")
     endif
 enddef
