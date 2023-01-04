@@ -59,10 +59,12 @@ call extend(v:colornames, {
             \ 'drew_mtdew': '#c6d80e',
             \ 'drew_ltblue': '#208ec8',
             \ 'drew_skyblue': '#9cd7eb',
+            \ 'drew_graysky': '#aabbdd',
             \ 'drew_slateblue': '#7799bb',
             \ 'drew_slategreen': '#77bb99',
             \ 'drew_babyyellow': '#fbe572',
             \ 'drew_birchwood': '#d9cd94',
+            \ 'drew_graywood': '#d9d0b4',
             \ 'drew_white': '#dfdfdf',
             \ 'drew_grayishblue': '#cacaf0',
             \ 'drew_ltgray': '#c5c8c6',
@@ -267,7 +269,9 @@ hi Repeat gui=NONE guifg=drew_babyyellow
 hi Conditional gui=NONE guifg=drew_babyyellow
 hi String gui=NONE guifg=drew_firebrick
 
-hi javaParenT guifg=drew_birchwood ctermfg=Brown
+hi javaParen guifg=drew_neongreen
+hi javaParen1 guifg=drew_skyblue
+hi javaParen2 guifg=drew_watermelon
 hi javaTypedef guifg=drew_neongreen ctermfg=LightMagenta
 hi javaType guifg=drew_watermelon ctermfg=LightGreen
 hi javaMethodDecl guifg=drew_palepurple ctermfg=LightRed
@@ -275,10 +279,10 @@ hi javaString guifg=drew_firebrick ctermfg=DarkRed
 hi javaConstant guifg=drew_aqua ctermfg=DarkCyan
 hi javaScopeDecl guifg=drew_purple ctermfg=LightRed
 hi javaClassDecl guifg=drew_mtdew ctermfg=LightGreen
-hi javaClassName guifg=drew_birchwood ctermfg=Gray
-hi javaIdentifier guifg=drew_skyblue ctermfg=LightBlue
+hi javaClassName guifg=drew_graywood ctermfg=LightGray
+hi javaIdentifier guifg=drew_graysky ctermfg=LightBlue
 hi javaGeneric guifg=drew_neongreen ctermfg=LightGreen
-hi javaLangClass guifg=drew_birchwood ctermfg=Gray
+hi javaLangClass guifg=drew_graywood ctermfg=Gray
 hi javaAnnotation guifg=drew_puke ctermfg=Yellow
 hi javaExternal guifg=drew_magenta ctermfg=DarkMagenta
 

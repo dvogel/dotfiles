@@ -278,9 +278,9 @@ if exists("java_mark_braces_in_parens_as_errors")
 endif
 
 " catch errors caused by wrong parenthesis
-syn region  javaParenT	matchgroup=javaParen  start="(" end=")" contains=javaIdentifier,javaClassName,@javaTop,javaParenT1
-syn region  javaParenT1 matchgroup=javaParen1 start="(" end=")" contains=@javaTop,javaParenT2 contained
-syn region  javaParenT2 matchgroup=javaParen2 start="(" end=")" contains=@javaTop,javaParenT  contained
+syn region  javaParenT  transparent	matchgroup=javaParen  start="(" skip="[^)]\+" end=")" contains=@javaTop,javaParenT1
+syn region  javaParenT1 transparent matchgroup=javaParen1 start="(" end=")" contains=@javaTop,javaParenT2 contained
+syn region  javaParenT2 transparent matchgroup=javaParen2 start="(" end=")" contains=@javaTop,javaParenT  contained
 syn match   javaParenError	 ")"
 " catch errors caused by wrong square parenthesis
 syn region  javaParenT	matchgroup=javaParen  start="\[" end="\]" contains=@javaTop,javaParenT1
