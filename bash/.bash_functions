@@ -254,3 +254,12 @@ compare_git_branches() {
     diff --side-by-side <(git log $1 | head -n 100) <(git log "$2" | head -n 100) | less -SR
 }
 
+cargo-ex() {
+		echo -n -e "$(bare_ansi_color 36)"
+		for _ in $(seq 3 "${COLUMNS}"); do
+				echo -n "#"
+		done
+		echo -e "${bare_color_rst}"
+    mold -run cargo --color=always "$@" |& less -RFX
+}
+
