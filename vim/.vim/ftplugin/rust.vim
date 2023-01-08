@@ -44,3 +44,5 @@ defcompile
 
 command! CargoEdit EditCargoToml()
 
+nmap <leader>rb viwo<Esc>i&<Esc>
+nmap <leader>rB ?&<CR>dl

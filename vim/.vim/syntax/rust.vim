@@ -62,9 +62,9 @@ syn region    rustEnumStructEntry matchgroup=rustEnumVariantDecl skip="[^}]" sta
 syn match     rustEnumVariantArgsDecl "[A-Z]\w*" contained
 
 syn region    rustStructBlock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\s*{" end="}" keepend 
-            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator
+            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+(" end=")" keepend 
-            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator
+            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 
 syn match     rustStructMemberValueLevel "_*[a-z]\w*" contained
 syn match     rustStructMemberTypeLevel  "\(_*[A-Z]\+[_a-z0-9]*\)\+" contained
