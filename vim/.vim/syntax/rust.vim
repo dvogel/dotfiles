@@ -61,9 +61,11 @@ syn region    rustEnumStructEntry matchgroup=rustEnumVariantDecl skip="[^}]" sta
             \ keepend contained contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator
 syn match     rustEnumVariantArgsDecl "[A-Z]\w*" contained
 
-syn region    rustStructBlock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\s*{" end="}" keepend 
+syn match     rustStructBlock "struct\s\+\w\+\(<[^>]\+>\)\?\s*;"
             \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
-syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+(" end=")" keepend 
+syn region    ruststructblock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\_\s*\(where\_[^{]\+\)\?{" end="}" keepend 
+            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
+syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+\(<[^>]\+>\)\?(" end=")" keepend 
             \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 
 syn match     rustStructMemberValueLevel "_*[a-z]\w*" contained
@@ -252,8 +254,8 @@ syn match     rustFloat       display "\<[0-9][0-9_]*\%(\.[0-9][0-9_]*\)\=\%([eE
 
 " For the benefit of delimitMate
 syn region rustLifetimeCandidate display start=/&'\%(\([^'\\]\|\\\(['nrt0\\\"]\|x\x\{2}\|u{\%(\x_*\)\{1,6}}\)\)'\)\@!/ end=/[[:cntrl:][:space:][:punct:]]\@=\|$/ contains=rustSigil,rustLifetime
-" syn region rustGenericRegion display start=/<\%('\|[^[:cntrl:][:space:][:punct:]]\)\@=')\S\@=/ end=/>/ contains=rustGenericLifetimeCandidate,rustStructMemberType,rustStructMemberTypeLevel
-syn region rustGenericRegion display start=/</ end=/>/ contains=rustGenericRegion,rustGenericLifetimeCandidate,rustStructMemberType,rustStructMemberTypeLevel keepend
+syn region rustGenericRegion display start=/<\%('\|[^[:cntrl:][:space:][:punct:]]\)\@=')\S\@=/ end=/>/ contains=rustGenericLifetimeCandidate,rustStructMemberType,rustStructMemberTypeLevel
+" syn region rustGenericRegion display start=/</ end=/>/ contains=rustGenericRegion,rustGenericLifetimeCandidate,rustStructMemberType,rustStructMemberTypeLevel keepend
 syn region rustGenericLifetimeCandidate display start=/\%(<\|,\s*\)\@<='/ end=/[[:cntrl:][:space:][:punct:]]\@=\|$/ contains=rustSigil,rustLifetime
 
 "rustLifetime must appear before rustCharacter, or chars will get the lifetime highlighting
