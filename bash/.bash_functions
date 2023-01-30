@@ -255,11 +255,11 @@ compare_git_branches() {
 }
 
 cargo-ex() {
-		echo -n -e "$(bare_ansi_color 36)"
-		for _ in $(seq 3 "${COLUMNS}"); do
-				echo -n "#"
-		done
-		echo -e "${bare_color_rst}"
+	echo -n -e "$(bare_ansi_color 36)"
+	for _ in $(seq 3 "${COLUMNS}"); do
+		echo -n "#"
+	done
+	echo -e "${bare_color_rst}"
     mold -run cargo --color=always "$@" |& less -RFX
 }
 
