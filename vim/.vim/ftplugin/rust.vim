@@ -6,6 +6,8 @@ setlocal ruler
 setlocal shiftwidth=4
 setlocal tabstop=4
 
+# setlocal omnifunc=lsc#complete#complete
+# setlocal completefunc='lsc#complete#complete'
 
 # Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
 nmap t ?(\zs.<CR>

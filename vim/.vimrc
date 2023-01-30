@@ -9,6 +9,23 @@ let java_highlight_functions = 1
 let java_highlight_java_lang = 1
 " let java_highlight_all = 0
 
+let g:lsc_server_commands = {}
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_auto_completeopt = 'menuone,popup'
+let g:lsc_enable_popup_syntax = v:true
+let g:lsc_enable_highlights = v:true
+" let g:lsc_autocomplete_length = v:false
+" let g:lsc_block_complete_triggers = ['.', ':']
+let g:lsc_auto_map = {'Completion': 'completefunc'}
+" let g:lsc_auto_map = {
+"             \ 'defaults': v:true,
+"             \ 'GoToDefinition': 'C-}',
+"             \ 'NextReference': v:false,
+"             \ 'PreviousReference': v:false,
+"             \ 'ShowHover': v:true,
+"             \ 'Completion': 'completefunc',
+"             \ }
+
 " This loads plugins in pack/plugins/start
 packloadall
 
@@ -33,7 +50,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set linespace=4
-set backspace=2
+set backspace=indent,eol,start
 set showmatch
 set mouse=n
 set smartindent
@@ -73,19 +90,6 @@ if has("mac")
     " open in another buffer.
     set nobackup
 end
-
-let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_auto_popup = 0
-set completeopt=menuone,preview
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': [],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': {
-    \    'max_buffer_size': 5000000,
-    \  },
-    \ }))
 
 let g:JavaComplete_ClosingBrace = 0
 let g:JavaComplete_StaticImportsAtTop = 1
@@ -132,18 +136,12 @@ let g:formatdef_google_java_format = '"google-java-format --assume-filename ".ex
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
 
-let g:lsc_server_commands = {}
-let g:lsc_auto_completeopt = 'menuone,popup'
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_autocomplete_length = v:false
-
 if executable('rust-analyzer')
     call extend(g:lsc_server_commands, {
-        \ 'rust': 'rust-analyzer'
-        \ })
-elseif executable('rls')
-    call extend(g:lsc_server_commands, {
-        \ 'rust': 'rls'
+        \ 'rust': {
+        \   'command': 'rust-analyzer',
+        \   'enabled': v:true,
+        \   }
         \ })
 endif
 
@@ -197,6 +195,12 @@ nmap <C-F6> :TagbarToggle<CR>
 " Depends on vim-surround from Tim Pope:
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
+nmap <leader>L :LSClientWindowDiagnostics<CR>
+nmap <leader>G :LSClientGoToDefinition<CR>
+nmap <C-}> :LSClientGoToDefinition<CR>
+nmap <leader>R :LSClientFindReferences<CR>
+" Remaps C-n from the 'complete' sources to 'completefunc'
+inoremap <C-n> <C-x><C-u>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
@@ -370,15 +374,6 @@ endfunction
 
 " au ColorSchemePre * call ClearColornames()
 
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_auto_map = {
-            \ 'defaults': v:true,
-            \ 'GoToDefinition': 'C-S-]',
-            \ 'FindCodeActions': 'M-c',
-            \ 'NextReference': v:false,
-            \ 'PreviousReference': v:false,
-            \ 'ShowHover': v:true,
-            \ }
 
 " Turn the invalid java.apply.workspaceEdit commands into an edit
 " action which complies with the LSP spec
