@@ -13,6 +13,7 @@ alias urldecode='python -c "import sys, urllib as ul; enc=sys.stdin.read(); prin
 alias pulseaudio-rescan='pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect'
 alias purge_screenshots='find ~/Pictures -name "Screenshot*.png" -ctime +30 -print0 | xargs -n1 -0 -- rm'
 alias noblanklines="awk '/[^\s]/ { print \$0 }'"
+alias jsoncount="jq -n 'reduce inputs as \$i (0; . + 1)'"
 
 alias gdc='git diff --cached'
 alias githist='git log --graph --branches --oneline'
