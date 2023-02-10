@@ -450,7 +450,8 @@ hi CtrlPPrtCursor guifg=drew_mtdew
 highlight GBufExHeader guifg=drew_blue ctermfg=blue
 highlight GBufExHeaderGroupKey guifg=drew_orange ctermfg=lightred
 highlight GBufExBufNr guifg=drew_purple ctermfg=blue
-highlight GBufExFilename guifg=drew_birchwood ctermfg=brown
+highlight GBufExDirname guifg=drew_birchwood ctermfg=brown
+highlight GBufExBasename guifg=drew_tan ctermfg=yellow
 
 
 highlight rustModPath guifg=drew_slateblue ctermfg=DarkGray
