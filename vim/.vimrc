@@ -216,16 +216,6 @@ let g:DVB_TrimWS = 1
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++                                                                            
 
-" set guifont=Consolas\ 13
-" set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
-if has("gui")
-  if has("mac")
-    set guifont=Menlo\ Regular:h14
-  else
-    set guifont=Cascadia\ Code\ 12
-  endif
-endif
-
 " set viminfo='10,\"100,:20,%,n~/.viminfo
 " au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
