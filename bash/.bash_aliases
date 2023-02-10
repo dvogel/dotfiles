@@ -31,7 +31,7 @@ alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
 alias lastcommit='git log HEAD^.. | cat'
 alias mkurls='xclip -out | urlextract.py | tee urls.txt'
-
+alias shell-in-docker='docker run --rm -it --entrypoint /bin/bash'
 
 alias bex='bundle exec'
 alias binst='bundle install'
