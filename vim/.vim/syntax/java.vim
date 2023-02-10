@@ -27,7 +27,7 @@ hi def link javaError2 javaError
 " syntax file uses it to mean any bare word (surrounded by whitespace) that
 " starts with a lowercase letter. These are usually local variables or
 " function parameters.
-syn match javaIdentifier        "\s\zs[a-z][A-Za-z0-9_]\+\ze"
+syn match javaIdentifier        "\(^\|[ (.]\)\zs[a-z][A-Za-z0-9_]\+"
 
 " keyword definitions
 syn keyword javaExternal	native package
@@ -63,7 +63,7 @@ syn keyword javaScopeDecl	public protected private abstract nextgroup=javaClassD
 
 " Package names are assumed tegin with a lowercase letter and never directly
 " follow a word character:
-syn match javaPackageName       "\W\zs[a-z][a-z0-9]*\([.][a-z][a-z0-9]\+\)\+\ze"
+syn match javaPackageName       "\W\zs[a-z][a-z0-9]*\([.][a-z][a-z0-9]\+\)\+\ze[.;]"
 
 " Class names are assumed to begin with an uppercase letter and never directly
 " follow a word character:
@@ -82,7 +82,7 @@ syn region javaImportStmt start="^import" end=";$" contains=javaExternal,javaPac
 
 " syn match javaClassName         "\([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\(<[^>]*>\)"
 " syn match javaGenericExtends    "\([?]|extends\)"
-syn region javaGeneric           start="<" end=">" contains=javaType,javaGenericExtends,javaClassName
+syn region javaGeneric           start="<\ze[^ =<]" end=">" contains=javaType,javaGenericExtends,javaClassName
 " syn match javaFuncDef
 " 	    \(\(void\|boolean\|char\|byte\|short\|int\|long\|float\|double\|
 " 	    \([A-Za-z_][A-Za-z0-9_$]*\.\)*[A-Z][A-Za-z0-9_$]*\)\(<[^>]*>\)
@@ -149,7 +149,7 @@ syn match   javaUserLabel	"^\s*[_$a-zA-Z][_$a-zA-Z0-9_]*\s*:"he=e-1 contains=jav
 syn keyword javaLabel		default
 
 " The following cluster contains all java groups except the contained ones
-syn cluster javaTop add=javaExternal,javaError,javaError,javaBranch,javaLabelRegion,javaLabel,javaConditional,javaRepeat,javaBoolean,javaConstant,javaTypedef,javaOperator,javaType,javaStatement,javaStorageClass,javaAssert,javaExceptions,javaMethodDecl,javaClassDecl,javaClassDecl,javaClassDecl,javaScopeDecl,javaError,javaError2,javaUserLabel,javaLangObject,javaAnnotation,javaVarArg,javaClassName,javaGeneric,javaMethodCall
+syn cluster javaTop add=javaExternal,javaError,javaError,javaBranch,javaLabelRegion,javaLabel,javaConditional,javaRepeat,javaBoolean,javaConstant,javaTypedef,javaOperator,javaType,javaStatement,javaStorageClass,javaAssert,javaExceptions,javaMethodDecl,javaClassDecl,javaClassDecl,javaClassDecl,javaScopeDecl,javaError,javaError2,javaUserLabel,javaLangObject,javaAnnotation,javaVarArg,javaClassName,javaGeneric,javaMethodCall,javaIdentifier
 
 
 " Comments
@@ -279,8 +279,8 @@ endif
 
 " catch errors caused by wrong parenthesis
 syn region  javaParenT  transparent	matchgroup=javaParen  start="(" skip="[^)]\+" end=")" contains=@javaTop,javaParenT1
-syn region  javaParenT1 transparent matchgroup=javaParen1 start="(" end=")" contains=@javaTop,javaParenT2 contained
-syn region  javaParenT2 transparent matchgroup=javaParen2 start="(" end=")" contains=@javaTop,javaParenT  contained
+syn region  javaParenT1 transparent matchgroup=javaParen1 start="(" skip="[^)]\+" end=")" contains=@javaTop,javaParenT2 contained
+syn region  javaParenT2 transparent matchgroup=javaParen2 start="(" skip="[^)]\+" end=")" contains=@javaTop,javaParenT  contained
 syn match   javaParenError	 ")"
 " catch errors caused by wrong square parenthesis
 syn region  javaParenT	matchgroup=javaParen  start="\[" end="\]" contains=@javaTop,javaParenT1

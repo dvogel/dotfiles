@@ -30,6 +30,10 @@ endfunction
 command! GoogleJavaImport call GoogleJavaImport()
 nmap <Leader>goog :GoogleJavaImport<CR>
 
+" Remaps C-n from the 'complete' sources to 'completefunc'. This is because
+inoremap <buffer> <C-S-N> <C-x><C-u>
+setlocal completefunc=lsc#complete#complete
+
 augroup JavaAutocmds
     autocmd!
     autocmd BufWrite *.java :Autoformat

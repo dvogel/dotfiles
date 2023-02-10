@@ -16,15 +16,13 @@ let g:lsc_enable_popup_syntax = v:true
 let g:lsc_enable_highlights = v:true
 " let g:lsc_autocomplete_length = v:false
 " let g:lsc_block_complete_triggers = ['.', ':']
-let g:lsc_auto_map = {'Completion': 'completefunc'}
-" let g:lsc_auto_map = {
-"             \ 'defaults': v:true,
-"             \ 'GoToDefinition': 'C-}',
-"             \ 'NextReference': v:false,
-"             \ 'PreviousReference': v:false,
-"             \ 'ShowHover': v:true,
-"             \ 'Completion': 'completefunc',
-"             \ }
+let g:lsc_auto_map = {
+            \ 'GoToDefinition': 'C-}',
+            \ 'NextReference': 'gN',
+            \ 'PreviousReference': 'gP',
+            \ 'ShowHover': v:true,
+            \ 'Completion': 'completefunc',
+            \ }
 
 " This loads plugins in pack/plugins/start
 packloadall
@@ -199,8 +197,6 @@ nmap <leader>L :LSClientWindowDiagnostics<CR>
 nmap <leader>G :LSClientGoToDefinition<CR>
 nmap <C-}> :LSClientGoToDefinition<CR>
 nmap <leader>R :LSClientFindReferences<CR>
-" Remaps C-n from the 'complete' sources to 'completefunc'
-inoremap <C-n> <C-x><C-u>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
