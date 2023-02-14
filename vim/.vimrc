@@ -179,6 +179,8 @@ nmap <C-h> :wincmd h<CR>
 nmap <C-j> :wincmd j<CR>
 nmap <C-k> :wincmd k<CR>
 nmap <C-l> :wincmd l<CR>
+nmap Ej :cnext<CR>
+nmap Ek :cprev<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <F4> <ScriptCmd>:call delbufdel.DelicatelyDeleteBuffer()<CR>
@@ -197,6 +199,9 @@ nmap <leader>L :LSClientWindowDiagnostics<CR>
 nmap <leader>G :LSClientGoToDefinition<CR>
 nmap <C-}> :LSClientGoToDefinition<CR>
 nmap <leader>R :LSClientFindReferences<CR>
+" Remaps C-n from the 'complete' sources to 'completefunc'
+" inoremap <C-n> <C-x><C-u>
+inoremap <C-S-n> <C-x><C-u>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
