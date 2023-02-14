@@ -194,6 +194,7 @@ def GetBufferIndexNames(): list<string>
         add(indexNames, "jdk" .. b:jdkVersion)
     elseif exists('b:pomXmlPath')
         add(indexNames, b:pomXmlPath)
+        add(indexNames, fnamemodify(b:pomXmlPath, ":p:h"))
         var jdkIndexName: any = pomutil.FetchJdkVersion(b:pomXmlPath)
         if jdkIndexName != v:null
             add(indexNames, "jdk" .. jdkIndexName)
@@ -204,7 +205,7 @@ def GetBufferIndexNames(): list<string>
 enddef
 
 var classIdentPat = '[A-Z][A-Za-z0-9_]*'
-var importPat = '^import \([a-z0-9]\+\%([.][a-z0-9]\+\)*\)[.]\([*]\|' .. classIdentPat .. '\);'
+var importPat = '^import \%(static \)\?\([a-z0-9]\+\%([.][A-Za-z0-9]\+\)*\)[.]\([*]\|' .. classIdentPat .. '\);'
 var declPat = '\(\W\|^\)class\s\+' .. classIdentPat .. '\(\s\|$\)'
 
 # Since class patterns are also unfortunately also valid variable patterns
@@ -264,8 +265,8 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
 
     if exists("b:cpidPackageName")
         var resp = ch_evalexpr(channel, {
-            type: "PackageEnumerateQuery",
-            index_name: b:pomXmlPath,
+            type: "PackageMultiEnumerateQuery",
+            index_names: indexNames,
             package_name: b:cpidPackageName,
         })
         if resp["type"] == "PackageEnumerateQueryResponse"
@@ -278,6 +279,10 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
 enddef
 
 export def CheckBuffer(): void
+    if !exists("b:cpidUsedClassNames") || !exists("b:cpidKnownClassNames")
+        return
+    endif
+
 	var lines = getline(1, '$')
 	# var usedClasses = CollectUsedClassNames(lines)
 	# var knownClasses = CollectKnownClassNames(lines)
@@ -357,6 +362,18 @@ enddef
 
 export def FixMissingImports(): void
     FixFirstMissingImport(b:cpidClassesNeedingImport)
+enddef
+
+export def ReindexProject(): void
+    if has_key(b:, "pomXmlPath")
+        var projectPath = fnamemodify(b:pomXmlPath, ":p:h")
+        DebugMsg(() => "Requesting reindexing of project path " .. projectPath)
+        var resp = ch_evalexpr(channel, {
+            "type": "ReindexProjectCmd",
+            index_name: projectPath,
+            archive_source: projectPath,
+            })
+    endif
 enddef
 
 export def ReindexClasspath(): void

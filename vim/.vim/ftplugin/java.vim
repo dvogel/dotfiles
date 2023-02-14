@@ -92,8 +92,10 @@ command! CheckForMissingImports :call javacp#CheckBuffer()
 nmap <S-F11> <ScriptCmd>:call javacp#CheckBuffer()<CR>
 command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
 command! ReindexClasspath :call javacp#ReindexClasspath()
+command! ReindexProject :call javacp#ReindexProject()
 command! FixMissingImports :call javacp#FixMissingImports()
 command! PrintPomAttrs :call pomutil#PrintPomAttrs(b:pomXmlPath)
+command! CpidReconnect :call javacp#ConnectToCpid()
 
 augroup CpidJavaTemp
 	autocmd!
