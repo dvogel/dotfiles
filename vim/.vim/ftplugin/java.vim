@@ -66,14 +66,14 @@ nmap <Leader>import :call FixJavaImport()<CR>
 " TODO: Replace this with vim-cpid once it is more than a prototype.
 
 
-import autoload "javacp.vim"
+import "javacp.vim"
 
 function! DetermineClasspathMaven(bang)
     let l:pomPath = ""
     if expand("%:p") =~ '.*/pom.xml$'
         let l:pomPath = expand("%:p")
     elseif expand("%:p") =~ '.*/.*[.]java'
-        let l:pomPath = javacp#FindPomXml(expand("%:p"))
+        let l:pomPath = s:javacp.FindPomXml(expand("%:p"))
     endif
 
     if l:pomPath == ""
@@ -82,32 +82,36 @@ function! DetermineClasspathMaven(bang)
     endif
 
     if a:bang
-        call javacp#RegenerateClasspathMaven(l:pomPath)
+        call s:javacp.RegenerateClasspathMaven(l:pomPath)
     else
-        call javacp#GenerateClasspathMaven(l:pomPath)
+        call s:javacp.GenerateClasspathMaven(l:pomPath)
     endif
 endfunction
 
-command! CheckForMissingImports :call javacp#CheckBuffer()
-nmap <S-F11> <ScriptCmd>:call javacp#CheckBuffer()<CR>
+command! CheckForMissingImports :call s:javacp.CheckBuffer()
+nmap <S-F11> <ScriptCmd>:call s:javacp.CheckBuffer()<CR>
 command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
-command! ReindexClasspath :call javacp#ReindexClasspath()
-command! ReindexProject :call javacp#ReindexProject()
-command! FixMissingImports :call javacp#FixMissingImports()
+command! ReindexClasspath :call s:javacp.ReindexClasspath()
+command! ReindexProject :call s:javacp.ReindexProject()
+command! FixMissingImports :call s:javacp.FixMissingImports()
 command! PrintPomAttrs :call pomutil#PrintPomAttrs(b:pomXmlPath)
-command! CpidReconnect :call javacp#ConnectToCpid()
+command! CpidReconnect :call s:javacp.ConnectToCpid()
 
 augroup CpidJavaTemp
 	autocmd!
 	autocmd BufWrite *.java CheckForMissingImports
-    " autocmd CursorMoved,CursorMovedI,TextChangedI *.java :call javacp#RecordCursorMovement()
-    autocmd InsertLeave *.java :call javacp#UpdateBufferShadow()
-    autocmd TextChanged *.java :call javacp#UpdateBufferShadow()
-    autocmd QuickFixCmdPost *.java :call javacp#UpdateBufferShadow()
+    " autocmd CursorMoved,CursorMovedI,TextChangedI *.java :call s:javacp.RecordCursorMovement()
+    autocmd InsertLeave *.java :call s:javacp.UpdateBufferShadow()
+    autocmd TextChanged *.java :call s:javacp.UpdateBufferShadow()
+    autocmd QuickFixCmdPost *.java :call s:javacp.UpdateBufferShadow()
 augroup END
 
-setlocal statusline=%-f%=%{%javacp#StatusLineExpr()%}%l,%c\ %p%%\ 
+function! JavaStatusLineExpr()
+    return s:javacp.StatusLineExpr()
+endfunction
+
+setlocal statusline=%-f%=%{%JavaStatusLineExpr()%}%l,%c\ %p%%\ 
 highlight CpidStatus guifg=drew_orange  guibg=drew_skyblue
-nmap <buffer> <leader>fix :call javacp#FixMissingImports()<CR>
-nmap <buffer> <leader>imp :call javacp#ShowMissingImports()<CR>:lopen<CR>
+nmap <buffer> <leader>fix :call s:javacp.FixMissingImports()<CR>
+nmap <buffer> <leader>imp :call s:javacp.ShowMissingImports()<CR>:lopen<CR>
 

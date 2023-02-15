@@ -1,6 +1,6 @@
 vim9script
 
-import autoload "pomutil.vim"
+import "pomutil.vim"
 
 var outstandingCpidRequests: dict<func> = {}
 var channel: channel

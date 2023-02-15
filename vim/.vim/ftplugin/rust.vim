@@ -15,8 +15,8 @@ nmap T /)<CR>
 nmap <S-F9> :make<CR>
 nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 
-" Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
-inoremap <buffer> <C-S-N> <C-x><C-u>
+# Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
+# inoremap <buffer> <C-S-N> <C-x><C-u>
 setlocal completefunc=lsc#complete#complete
 
 b:autoformat_remove_trailing_spaces = 1
