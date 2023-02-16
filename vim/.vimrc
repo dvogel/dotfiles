@@ -47,7 +47,7 @@ set paste
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set linespace=4
+set linespace=6
 set backspace=indent,eol,start
 set showmatch
 set mouse=n
