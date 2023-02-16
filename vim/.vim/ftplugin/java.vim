@@ -88,14 +88,14 @@ function! DetermineClasspathMaven(bang)
     endif
 endfunction
 
-command! CheckForMissingImports :call s:javacp.CheckBuffer()
+command! CheckForMissingImports :call javacp.CheckBuffer()
 nmap <S-F11> <ScriptCmd>:call s:javacp.CheckBuffer()<CR>
 command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
-command! ReindexClasspath :call s:javacp.ReindexClasspath()
-command! ReindexProject :call s:javacp.ReindexProject()
-command! FixMissingImports :call s:javacp.FixMissingImports()
+command! ReindexClasspath :call javacp.ReindexClasspath()
+command! ReindexProject :call javacp.ReindexProject()
+command! FixMissingImports :call javacp.FixMissingImports()
 command! PrintPomAttrs :call pomutil#PrintPomAttrs(b:pomXmlPath)
-command! CpidReconnect :call s:javacp.ConnectToCpid()
+command! CpidReconnect :call javacp.ConnectToCpid()
 
 augroup CpidJavaTemp
 	autocmd!
@@ -112,6 +112,6 @@ endfunction
 
 setlocal statusline=%-f%=%{%JavaStatusLineExpr()%}%l,%c\ %p%%\ 
 highlight CpidStatus guifg=drew_orange  guibg=drew_skyblue
-nmap <buffer> <leader>fix :call s:javacp.FixMissingImports()<CR>
-nmap <buffer> <leader>imp :call s:javacp.ShowMissingImports()<CR>:lopen<CR>
+nmap <buffer> <leader>fix <scriptcmd> :call javacp.FixMissingImports()<CR>
+nmap <buffer> <leader>imp <scriptcmd> :call javacp.ShowMissingImports()<CR>:lopen<CR>
 

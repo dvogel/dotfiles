@@ -299,6 +299,11 @@ export def CheckBuffer(): void
 enddef
 
 export def ShowMissingImports(): void
+    if !exists("b:cpidClassesNeedingImport")
+        echo "No missing imports for " .. expand("%:t")
+        return
+    endif
+
     var accum = []
     for cls in b:cpidClassesNeedingImport
         add(accum, {
@@ -361,6 +366,11 @@ def FixFirstMissingImport(classNames: list<string>): void
 enddef
 
 export def FixMissingImports(): void
+    if !exists("b:cpidClassesNeedingImport")
+        echo "No missing imports for " .. expand("%:t")
+        return
+    endif
+
     FixFirstMissingImport(b:cpidClassesNeedingImport)
 enddef
 
