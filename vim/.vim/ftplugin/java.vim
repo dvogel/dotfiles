@@ -89,7 +89,7 @@ function! DetermineClasspathMaven(bang)
 endfunction
 
 command! CheckForMissingImports :call javacp.CheckBuffer()
-nmap <S-F11> <ScriptCmd>:call s:javacp.CheckBuffer()<CR>
+nmap <S-F11> <ScriptCmd>:call javacp.CheckBuffer()<CR>
 command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
 command! ReindexClasspath :call javacp.ReindexClasspath()
 command! ReindexProject :call javacp.ReindexProject()
@@ -101,9 +101,9 @@ augroup CpidJavaTemp
 	autocmd!
 	autocmd BufWrite *.java CheckForMissingImports
     " autocmd CursorMoved,CursorMovedI,TextChangedI *.java :call s:javacp.RecordCursorMovement()
-    autocmd InsertLeave *.java :call s:javacp.UpdateBufferShadow()
-    autocmd TextChanged *.java :call s:javacp.UpdateBufferShadow()
-    autocmd QuickFixCmdPost *.java :call s:javacp.UpdateBufferShadow()
+    autocmd InsertLeave *.java :call javacp.UpdateBufferShadow()
+    autocmd TextChanged *.java :call javacp.UpdateBufferShadow()
+    autocmd QuickFixCmdPost *.java :call javacp.UpdateBufferShadow()
 augroup END
 
 function! JavaStatusLineExpr()

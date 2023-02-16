@@ -270,7 +270,11 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
             package_name: b:cpidPackageName,
         })
         if resp["type"] == "PackageEnumerateQueryResponse"
-            extend(knownClassNames, resp["results"][b:cpidPackageName])
+            if has_key(resp["results"], b:cpidPackageName)
+                extend(knownClassNames, resp["results"][b:cpidPackageName])
+            else
+                DebugMsg(() => "No cpid results for package " .. string(b:cpidPackageName))
+            endif
         endif
     endif
 
