@@ -283,6 +283,10 @@ export def CollectKnownClassNames(lines: list<string>): list<string>
 enddef
 
 export def CheckBuffer(): void
+    if exists("b:cpidIgnore")
+        return
+    endif
+
     if !exists("b:cpidUsedClassNames") || !exists("b:cpidKnownClassNames")
         return
     endif
@@ -407,6 +411,10 @@ export def ReindexClasspath(): void
 enddef
 
 export def UpdateBufferShadow(): void
+    if exists("b:cpidIgnore")
+        return
+    endif
+
 	var lines = getline(1, '$')
     b:cpidPackageName = ExtractDeclPackageName(lines)
     b:cpidKnownClassNames = CollectKnownClassNames(lines)
@@ -483,6 +491,10 @@ export def CheckCpidConnection(): bool
 enddef
 
 export def InitializeJavaBuffer(): void
+    if exists("b:cpidIgnore")
+        return
+    endif
+
     b:pomXmlPath = pomutil.FindPomXml(expand("%:p"))
     if b:pomXmlPath != ""
         pomutil.IdentifyPomJdkVersion(b:pomXmlPath)

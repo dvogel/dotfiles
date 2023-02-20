@@ -67,13 +67,14 @@ nmap <Leader>import :call FixJavaImport()<CR>
 
 
 import "javacp.vim"
+import "pomutil.vim"
 
 function! DetermineClasspathMaven(bang)
     let l:pomPath = ""
     if expand("%:p") =~ '.*/pom.xml$'
         let l:pomPath = expand("%:p")
     elseif expand("%:p") =~ '.*/.*[.]java'
-        let l:pomPath = s:javacp.FindPomXml(expand("%:p"))
+        let l:pomPath = s:pomutil.FindPomXml(expand("%:p"))
     endif
 
     if l:pomPath == ""
@@ -81,24 +82,22 @@ function! DetermineClasspathMaven(bang)
         return
     endif
 
-    if a:bang
-        call s:javacp.RegenerateClasspathMaven(l:pomPath)
-    else
-        call s:javacp.GenerateClasspathMaven(l:pomPath)
-    endif
+    call pomutil.RegenerateClasspathMaven(l:pomPath)
 endfunction
 
 command! CheckForMissingImports :call javacp.CheckBuffer()
 nmap <S-F11> <ScriptCmd>:call javacp.CheckBuffer()<CR>
-command! DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
+command! -bang DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)
 command! ReindexClasspath :call javacp.ReindexClasspath()
 command! ReindexProject :call javacp.ReindexProject()
 command! FixMissingImports :call javacp.FixMissingImports()
 command! PrintPomAttrs :call pomutil#PrintPomAttrs(b:pomXmlPath)
 command! CpidReconnect :call javacp.ConnectToCpid()
+command! CpidBufInit :call javacp.InitializeJavaBuffer()
 
 augroup CpidJavaTemp
 	autocmd!
+	autocmd BufRead *.java :call javacp.InitializeJavaBuffer()
 	autocmd BufWrite *.java CheckForMissingImports
     " autocmd CursorMoved,CursorMovedI,TextChangedI *.java :call s:javacp.RecordCursorMovement()
     autocmd InsertLeave *.java :call javacp.UpdateBufferShadow()
