@@ -175,3 +175,6 @@
 [submodule "vim-clrzr"]
 	path = vim/.vim/pack/plugins/start/clrzr
 	url = git@github.com:BourgeoisBear/clrzr.git
+[submodule "vim-cpid"]
+	path = vim/.vim/pack/plugins/start/vim-cpid
+	url = git@github.com:dvogel/vim-cpid.git
