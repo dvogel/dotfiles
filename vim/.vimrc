@@ -272,23 +272,6 @@ highlight SignColumn guifg=background guifg=foreground gui=none term=none
 let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
 
-function! SyntaxTrailAt(lnum, col)
-    let l:stack = synstack(a:lnum, a:col)
-
-    let l:trail = []
-    for syn_id in l:stack
-        let l:name = synIDattr(syn_id, "name")
-        if l:name != ""
-            call add(l:trail, l:name)
-        end
-    endfor
-    return join(l:trail, ' -> ')
-endfunction
-
-function! SyntaxTrailUnderCursor()
-    return SyntaxTrailAt(line("."), col("."))
-endfunction
-
 nnoremap <leader>sy :echo SyntaxTrailUnderCursor()<CR>
 
 function! AckWordInProjectRoot (word)
