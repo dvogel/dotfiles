@@ -106,8 +106,6 @@ export ANDROID_HOME=~/Library/Android/sdk
 # debian 'buster').
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-export GOPATH="${HOME}/devel/golang"
-
 declare -a PATH_DIRS
 PATH_DIRS=("/usr/local/bin"
             "/usr/local/node/bin"
@@ -131,8 +129,8 @@ PATH_DIRS=("/usr/local/bin"
             "${HOME}/opt/maven/bin"
             "${HOME}/opt/kafka/bin"
             "${HOME}/opt/visualvm/bin"
-            "${HOME}/opt/java-language-server/dist"
             "${HOME}/opt/LibreSprite/bin"
+            "${HOME}/go/bin"
             "/usr/local/git/bin")
 
 for d in "${PATH_DIRS[@]}"; do
