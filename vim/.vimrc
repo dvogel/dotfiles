@@ -68,6 +68,7 @@ set guioptions=Pegit
 set splitbelow
 set splitright
 set conceallevel=2
+set hlsearch
 
 set noerrorbells
 set visualbell
@@ -202,6 +203,7 @@ nmap <leader>R :LSClientFindReferences<CR>
 " Remaps C-n from the 'complete' sources to 'completefunc'
 " inoremap <C-n> <C-x><C-u>
 inoremap <C-S-n> <C-x><C-u>
+nmap <leader>H :nohlsearch<CR>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 

@@ -69,8 +69,9 @@ call extend(v:colornames, {
             \ 'drew_grayishblue': '#cacaf0',
             \ 'drew_ltgray': '#c5c8c6',
             \ 'drew_darkgray': '#5e6164',
+            \ 'drew_almostblack': '#1e2124',
             \ 'drew_background': '#000000',
-            \ }, "keep")
+            \ }, "force")
 
 
 hi Normal guifg=drew_ltgray guibg=drew_background
@@ -96,7 +97,8 @@ hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
 hi NonText gui=bold guifg=grey10 guibg=Black
 hi Question gui=bold guifg=SeaGreen
-hi Search guibg=drew_tan guifg=drew_darkgray
+hi Search guibg=drew_babyyellow guifg=drew_darkgray gui=none
+hi CurSearch guibg=drew_babyyellow guifg=drew_almostblack gui=bold
 hi SpecialKey guifg=Blue
 hi Title gui=bold guifg=Magenta
 hi WarningMsg guifg=Red
@@ -106,7 +108,6 @@ hi FoldColumn guibg=Grey guifg=DarkBlue
 hi DiffAdd guibg=LightBlue
 hi DiffChange guibg=LightMagenta
 hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
-hi Search guifg=#bbbb00 guibg=#000000 gui=bold
 
 hi Comment guifg=drew_skyblue
 hi SpecialComment guifg=drew_cyan
