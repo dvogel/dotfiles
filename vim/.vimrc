@@ -134,6 +134,16 @@ let g:formatters_cs = ['my_custom_cs']
 let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")." ".b:java_style_flag." -"'
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
+let g:formatters_go = ['donotrunthis']
+
+if executable('gopls')
+    call extend(g:lsc_server_commands, {
+        \ 'go': {
+        \   'command': 'gopls',
+        \   'enabled': v:true,
+        \   }
+        \ })
+endif
 
 if executable('rust-analyzer')
     call extend(g:lsc_server_commands, {
