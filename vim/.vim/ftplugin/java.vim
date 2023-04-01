@@ -1,5 +1,6 @@
 vim9script
 
+b:manualDocset = "java17"
 if get(b:, 'editorconfig_applied', 0) == 0
     setlocal shiftwidth=4
     setlocal tabstop=4
@@ -80,6 +81,19 @@ def DetermineClasspathMaven(bang: any): void
 
     pomutil.RegenerateClasspathMaven(pomPath)
 enddef
+
+def ReplaceCursorWordInFiles(): void
+    var newWord = input("Enter replacement: ", "")
+    if newWord == ""
+        echo "(cancelled)"
+    else
+        var cmd = "find . -name '*.java' -print0 | xargs -n1 -0 -- sed -i 's/\\b" .. expand("<cword>") .. "\\b/" .. newWord .. "/g'"
+        echo cmd
+        system(cmd)
+    endif
+enddef
+
+command! JavaRenameWord :call ReplaceCursorWordInFiles()
 
 nmap <S-F11> <ScriptCmd>:call javacp.CheckBuffer()<CR>
 command! -bang DetermineClasspathMaven :call DetermineClasspathMaven(<bang>0)

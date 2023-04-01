@@ -350,33 +350,8 @@ endfunction
 
 " au ColorSchemePre * call ClearColornames()
 
-
-" Turn the invalid java.apply.workspaceEdit commands into an edit
-" action which complies with the LSP spec
-function! s:fixEdits(actions) abort
-    return map(a:actions, function('<SID>fixEdit'))
-endfunction
-function! s:fixEdit(idx, maybeEdit) abort
-    if !has_key(a:maybeEdit, 'command') ||
-                \ !has_key(a:maybeEdit.command, 'command') ||
-                \ a:maybeEdit.command.command !=# 'java.apply.workspaceEdit'
-        return a:maybeEdit
-    endif
-    return {
-                \ 'edit': a:maybeEdit.command.arguments[0],
-                \ 'title': a:maybeEdit.command.title}
-endfunction
-let g:jdtls_path = expand('~/bin/jdtls')
-if executable(g:jdtls_path)
-    call extend(g:lsc_server_commands, {
-        \ 'java': {
-            \ 'command': g:jdtls_path ." ". expand("~/opt/eclipse.jdt.ls"),
-            \ 'response_hooks': {
-                \        'textDocument/codeAction': function('<SID>fixEdits'),
-                \    }
-            \ }
-        \ })
-endif
+import "lsc-jdtls.vim" as LscJdtls
+call LscJdtls.ReinitializeJdtlsLscIntegration()
 
 function! GroupFilesByProjectRoot(bufObj)
     let root = projectroot#guess(a:bufObj.name)
