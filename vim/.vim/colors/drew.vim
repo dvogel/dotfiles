@@ -68,9 +68,10 @@ call extend(v:colornames, {
             \ 'drew_white': '#dfdfdf',
             \ 'drew_grayishblue': '#cacaf0',
             \ 'drew_ltgray': '#c5c8c6',
+            \ 'drew_midgray': '#8e9194',
             \ 'drew_darkgray': '#5e6164',
             \ 'drew_almostblack': '#1e2124',
-            \ 'drew_background': '#000000',
+            \ 'drew_background': '#111111',
             \ }, "force")
 
 
@@ -84,9 +85,9 @@ hi ErrorMsg guibg=drew_red guifg=drew_ltgray
 hi Error guibg=drew_bloodred guifg=drew_ltgray
 hi IncSearch guibg=drew_tan guifg=drew_darkgray
 hi ModeMsg gui=bold
-hi StatusLine gui=reverse,bold
-hi StatusLineNC gui=reverse
-hi VertSplit guibg=drew_ltgray
+hi StatusLine gui=bold guibg=drew_midgray guifg=drew_almostblack
+hi StatusLineNC gui=none guibg=drew_midgray guifg=drew_almostblack
+hi VertSplit gui=none guibg=drew_midgray
 hi Visual gui=reverse guifg=NONE guibg=NONE
 hi VisualNOS gui=underline,bold
 hi DiffText gui=bold guibg=Red
@@ -95,7 +96,7 @@ hi lCursor guibg=drew_cyan guifg=NONE
 hi Directory guifg=Blue
 hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
-hi NonText gui=bold guifg=grey10 guibg=Black
+hi NonText gui=bold guifg=grey10 guibg=drew_background
 hi Question gui=bold guifg=SeaGreen
 hi Search guibg=drew_babyyellow guifg=drew_darkgray gui=none
 hi CurSearch guibg=drew_babyyellow guifg=drew_almostblack gui=bold
@@ -147,6 +148,7 @@ hi link Debug			Special
 
 " vim: sw=2
 
+hi link vimContinue Normal
 hi vimLet guifg=css_teal
 hi vimHightlight guifg=drew_orange
 hi vimGroup guifg=drew_blue
@@ -207,7 +209,7 @@ hi goDirective       guifg=drew_magenta     ctermfg=Magenta
 hi goFormatSpecifier guifg=drew_babyyellow  ctermfg=Yellow
 hi goFunction        guifg=drew_ltblue      ctermfg=LightBlue
 hi goMethod          guifg=drew_ltgray
-hi goOperator        guifg=drew_puke        ctermfg=Yellow
+hi goOperator        guifg=drew_babyyellow        ctermfg=Yellow
 hi goRepeat          guifg=drew_babyyellow  ctermfg=Yellow
 hi goStatement       guifg=drew_orange      ctermfg=Brown
 hi goString          guifg=drew_firebrick   ctermfg=DarkRed
