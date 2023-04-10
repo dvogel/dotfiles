@@ -83,7 +83,6 @@ hi Todo gui=REVERSE,BOLD guifg=drew_firebrick guibg=drew_babyyellow
 
 hi ErrorMsg guibg=drew_red guifg=drew_ltgray
 hi Error guibg=drew_bloodred guifg=drew_ltgray
-hi IncSearch guibg=drew_tan guifg=drew_darkgray
 hi ModeMsg gui=bold
 hi StatusLine gui=bold guibg=drew_midgray guifg=drew_almostblack
 hi StatusLineNC gui=none guibg=drew_midgray guifg=drew_almostblack
@@ -98,8 +97,9 @@ hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
 hi NonText gui=bold guifg=grey10 guibg=drew_background
 hi Question gui=bold guifg=SeaGreen
-hi Search guibg=drew_babyyellow guifg=drew_darkgray gui=none
-hi CurSearch guibg=drew_babyyellow guifg=drew_almostblack gui=bold
+hi Search gui=undercurl guisp=drew_mtdew guibg=NONE guifg=NONE
+hi CurSearch gui=undercurl guisp=drew_mtdew guibg=NONE guifg=NONE
+hi IncSearch gui=undercurl guisp=drew_mtdew guibg=NONE guifg=NONE
 hi SpecialKey guifg=Blue
 hi Title gui=bold guifg=Magenta
 hi WarningMsg guifg=Red
