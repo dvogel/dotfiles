@@ -263,3 +263,11 @@ cargo-ex() {
     mold -run cargo --color=always "$@" |& less -RFX
 }
 
+retag-here() {
+	if [[ -x ./bin/retag ]]; then
+		./bin/retag
+	else
+		ctags -R -f TAGS .
+	fi
+}
+
