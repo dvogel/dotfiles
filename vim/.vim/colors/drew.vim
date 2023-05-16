@@ -482,3 +482,16 @@ highlight brsKeyword guifg=drew_orange
 highlight brsType guifg=drew_green
 highlight brsComment guifg=darkgray
 highlight brsOperator guifg=drew_babyyellow
+
+highlight tadaDescription guifg=drew_slateblue
+highlight tadaTodoItemComplete guifg=drew_darkgray
+highlight tadaTodoItemDoing guifg=drew_babyyellow
+highlight tadaTodoItemPlanned guifg=drew_ltgray
+highlight tadaTopicTitle1 guifg=drew_ltblue
+highlight tadaTopicTitle2 guifg=drew_ltblue
+highlight tadaTopicTitle3 guifg=drew_ltblue
+highlight tadaTopicTitle4 guifg=drew_ltblue
+highlight tadaTopicTitle5 guifg=drew_ltblue
+highlight tadaTopicTitle6 guifg=drew_ltblue
+highlight tadaDelimiter guifg=drew_orange
+
