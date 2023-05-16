@@ -271,3 +271,17 @@ retag-here() {
 	fi
 }
 
+loud-banner() {
+	echo -n -e "$(bare_ansi_color 36)"
+  local ln="█"
+  cols="${COLUMNS:-40}"
+  cols=$((cols - 1))
+  for idx in $(seq 1 "$cols"); do
+    ln="${ln}█"
+  done
+  echo
+  echo "$ln"
+  echo
+	echo -e "${bare_color_rst}"
+}
+
