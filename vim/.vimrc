@@ -67,6 +67,7 @@ set wildignore=*.o,*.hi
 set guioptions=Pegit
 set splitbelow
 set splitright
+set switchbuf=useopen,uselast
 set conceallevel=2
 set hlsearch
 
@@ -181,7 +182,16 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 
 " Always open the quickfix window on the bottom (no vertical split)
-au FileType qf wincmd J
+map <C-S-?> :copen<CR>
+function! OpenQuickfixIfNeeded() abort
+    if len(getqflist()) > 0
+        copen
+    endif
+endfunction
+augroup qfTweaks
+    autocmd FileType qf wincmd J
+    autocmd QuickFixCmdPost make call OpenQuickfixIfNeeded()
+augroup END
 
 import "delbufdel.vim" as delbufdel
 command! -nargs=1 BufDelMatching :call delbufdel.DeleteBuffersMatching("<args>")

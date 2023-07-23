@@ -43,6 +43,7 @@ call extend(v:colornames, {
             \ 'drew_palepurple': '#b294bb',
             \ 'drew_purple': '#ba99fa',
             \ 'drew_magenta': '#bb00bb',
+            \ 'drew_grape': '#883388',
             \ 'drew_green': '#379f4d',
             \ 'drew_camogreen': '#90ac96',
             \ 'drew_darkgreen': '#276f44',
@@ -457,12 +458,17 @@ highlight GBufExDirname guifg=drew_birchwood ctermfg=brown
 highlight GBufExBasename guifg=drew_tan ctermfg=yellow
 
 
+highlight link rustStorage rustKeyword
+highlight rustAttribute guifg=drew_grape ctermfg=Magenta
+highlight rustLifetime guifg=drew_grape ctermfg=Magenta
 highlight rustModPath guifg=drew_slateblue ctermfg=DarkGray
 highlight rustTypeScope guifg=drew_slateblue ctermfg=DarkGray
 highlight rustConstant guifg=drew_green ctermfg=LightGreen
 highlight rustQuestionMark guifg=drew_salmon ctermfg=Brown gui=bold
 highlight rustSigil guifg=drew_watermelon ctermfg=LightRed gui=none
 highlight rustOperator guifg=drew_babyyellow ctermfg=Yellow
+highlight link rustSelf rustLifetime
+highlight link rustMacro Function
 
 
 highlight rustIdentifierTypeLevel guifg=drew_green ctermfg=Green

@@ -11,6 +11,13 @@ setlocal tabstop=4
 
 # Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
 nmap t ?(\zs.<CR>
+compiler cargo
+setlocal makeprg=cargo\ rustc\ --message-format=short\ $*\ --\ -Awarnings
+
+
+# The vim-lsc and vim-rust plugins trash completeopt so reset it to my liking:
+setlocal completeopt=menuone,popup
+
 nmap T /)<CR>
 nmap <S-F9> :make<CR>
 nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
@@ -52,3 +59,5 @@ command! CargoEdit EditCargoToml()
 
 nmap <leader>rb viwo<Esc>i&<Esc>
 nmap <leader>rB ?&<CR>dl
+nmap <C-;> A;<Esc>
+
