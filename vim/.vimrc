@@ -70,6 +70,7 @@ set splitright
 set switchbuf=useopen,uselast
 set conceallevel=2
 set hlsearch
+set switchbuf=useopen
 
 set noerrorbells
 set visualbell

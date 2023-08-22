@@ -515,3 +515,5 @@ highlight tadaTopicTitle5 guifg=drew_ltblue
 highlight tadaTopicTitle6 guifg=drew_ltblue
 highlight tadaDelimiter guifg=drew_orange
 
+highlight qfFileName guifg=drew_ltblue
+
