@@ -68,10 +68,10 @@ function __rails_env () {
     fi
 }
 
-if [ "$color_prompt" = yes ]; then
-    PS1="╰──$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1_ext)$(ansi_bold_color 31)>${color_rst} "
+if [[ "$color_prompt" = yes ]]; then
+    PS1="╰──$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1_ext)$(ansi_bold_color 31)${PS1_EXTRA}>${color_rst} "
 else
-    PS1="╰──$\u@\h:\w\$(__git_ps1)\$ "
+    PS1="╰──$\u@\h:\w\$(__git_ps1)${PS1_EXTRA}\$ "
 fi
 unset color_prompt force_color_prompt
 
