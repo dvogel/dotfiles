@@ -137,6 +137,9 @@ let g:formatdef_google_java_format = '"google-java-format --assume-filename ".ex
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
 let g:formatters_go = ['donotrunthis']
+let g:formatters_javascript = ['prettier']
+let g:formatdef_prettier = '"./node_modules/.bin/prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
+let g:run_all_formatters_javascript = v:false
 
 if executable('gopls')
     call extend(g:lsc_server_commands, {
