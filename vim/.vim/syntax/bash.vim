@@ -43,16 +43,18 @@ syn match	bashComment		"#.*$" contains=bashTodo
 
 " String and Character constants
 "===============================
+syn match   bashHashBang     "^#!.*"
 syn match   bashNumber       "-\=\<\d\+\>"
+
 syn match   bashSpecial      contained "\\\d\d\d\|\\[abcfnrtv]"
 syn region  bashSinglequote matchgroup=bashOperator start=+'+ end=+'+ 
-syn region  bashDoubleQuote      matchgroup=bashOperator start=+"+ skip=+\\"+ end=+"+ contains=bashDeref,bashCommandSub,bashSpecialShellVar,bashSpecial
+syn region  bashDoubleQuote      matchgroup=bashDoubleQuoteOperator start=+"+ skip=+\\"+ end=+"+ contains=bashDeref,bashCommandSub,bashSpecialShellVar,bashSpecial extend
 syn match  bashSpecial  "\\[\\\"\'`$]"
 	" This must be after the strings, so that bla \" be correct
 syn region bashEmbeddedEcho contained matchgroup=bashStatement start="\<echo\>" skip="\\$" matchgroup=bashOperator end="$" matchgroup=NONE end="[<>;&|`)]"me=e-1 end="\d[<>]"me=e-2 end="#"me=e-1 contains=bashNumber,bashSinglequote,bashDeref,bashSpecialVar,bashSpecial,bashOperator,bashDoubleQuote
  	" This one is needed INSIDE a CommandSub, so that
  	" `echo bla` be correct
-syn region bashEcho matchgroup=bashStatement start="\<echo\>" skip="\\$" matchgroup=bashOperator end="$" matchgroup=NONE end="[<>;&|]"me=e-1 end="\d[<>]"me=e-2 end="#"me=e-1 contains=bashNumber,bashCommandSub,bashSinglequote,bashDeref,bashSpecialVar,bashSpecial,bashOperator,bashDoubleQuote,bashDotStrings,bashFileNames
+syn region bashEcho matchgroup=bashStatement start="\<echo\>" skip="\\$" matchgroup=bashOperator end="$\|)"me=e-1 matchgroup=NONE end="[<>;&|]"me=e-1 end="\d[<>]"me=e-2 end="#"me=e-1 contains=bashNumber,bashCommandSub,bashSinglequote,bashDeref,bashSpecialVar,bashSpecial,bashOperator,bashDoubleQuote,bashDotStrings,bashFileNames
 
 "Error Codes
 syn match   bashDoError "\<done\>"
@@ -75,21 +77,21 @@ syn match   bashTestOpr contained "[!=]\|-.\>\|-\(nt\|ot\|ef\|eq\|ne\|lt\|le\|gt
 
 " DO/IF/FOR/CASE : Repitition operaters
 " ======================================
-syn region  bashDo transparent matchgroup=bashBlock start="\<do\>" end="\<done\>" contains=ALLBUT,bashFunction,bashDoError,bashCase,bashDerefOperator,@bashSedStuff
-syn region  bashIf transparent matchgroup=bashBlock start="\<if\>" end="\<fi\>" contains=ALLBUT,bashFunction,bashIfError,bashCase,bashDerefOperator,@bashSedStuff
-syn region  bashFor  matchgroup=bashStatement start="\<for\>" end="\<in\>" contains=ALLBUT,bashFunction,bashInError,bashCase,bashDerefOperator,@bashSedStuff
+syn region  bashDo transparent matchgroup=bashBlock start="\<do\>" end="\<done\>" contains=ALLBUT,bashFunction,bashDoError,bashCase,bashDerefOperator,@bashSedStuff extend
+syn region  bashIf transparent matchgroup=bashBlock start="\<if\>" end="\<fi\>" contains=ALLBUT,bashFunction,bashIf,bashIfError,bashCase,bashDerefOperator,@bashSedStuff extend
+syn region  bashFor  matchgroup=bashStatement start="\<for\>" end="\<in\>" contains=ALLBUT,bashFunction,bashInError,bashCase,bashDerefOperator,@bashSedStuff extend
 syn region bashCaseEsac transparent matchgroup=bashBlock start="\<case\>" matchgroup=NONE end="\<in\>"me=s-1 contains=ALLBUT,bashFunction,bashCaseError nextgroup=bashCaseEsac,bashDerefOperator,@bashSedStuff
 syn region bashCaseEsac matchgroup=bashBlock start="\<in\>" end="\<esac\>" contains=ALLBUT,bashFunction,bashCaseError,bashDerefOperator,@bashSedStuff
 syn region bashCase matchgroup=bashBlock contained start=")"  end=";;" contains=ALLBUT,bashFunction,bashCaseError,bashCase,bashDerefOperator,@bashSedStuff
 syn region  bashNone transparent matchgroup=bashOperator start="{" end="}" contains=ALLBUT,bashCurlyError,bashCase,bashDerefOperator,@bashSedStuff
-syn region  bashSubSh transparent matchgroup=bashOperator start="(" end=")" contains=ALLBUT,bashParenError,bashCase,bashDerefOperator,@bashSedStuff
+syn region  bashSubSh transparent matchgroup=bashSubShOperator start="(" end=")" contains=ALLBUT,bashParenError,bashCase,bashDerefOperator,@bashSedStuff extend
 
 " Misc
 "=====
 syn match   bashOperator		"[!&;|=]"
 syn match   bashWrapLineOperator	"\\$"
 syn region  bashCommandSub   matchGroup=bashSpecial start="`" skip="\\`" end="`" contains=ALLBUT,bashFunction,bashCommandSub,bashTestOpr,bashCase,bashEcho,bashDerefOperator,@bashSedStuff
-syn region  bashCommandSub matchgroup=bashOperator start="$(" end=")" contains=ALLBUT,bashFunction,bashCommandSub,bashTestOpr,bashCase,bashEcho,bashDerefOperator,@bashSedStuff
+syn region  bashCommandSub matchgroup=bashSubSh start="$(" end=")" contains=ALLBUT,bashFunction,bashCommandSub,bashTestOpr,bashCase,bashEcho,bashDerefOperator,@bashSedStuff
 syn match   bashSource	"^\.\s"
 syn match   bashSource	"\s\.\s"
 syn region  bashColon	start="^\s*:" end="$\|" end="#"me=e-1 contains=ALLBUT,bashFunction,bashTestOpr,bashCase,bashDerefOperator,@bashSedStuff
@@ -113,14 +115,14 @@ syn region bashIdentifier matchgroup=bashStatement start="\<\(declare\|typeset\|
 		" The [^/] in the start pattern is a kludge to avoid bad
 		" highlighting with cd /usr/local/lib...
 
-syn region  bashFunction transparent matchgroup=bashFunctionName 	start="^\s*\<[a-zA-Z_][a-zA-Z0-9_]*\>\s*()\s*{" end="}" contains=ALLBUT,bashFunction,bashCurlyError,bashCase,bashDerefOperator,@bashSedStuff
+syn region  bashFunction transparent matchgroup=bashFunctionName 	start="^\s*\<[a-zA-Z_][a-zA-Z0-9_]*\>\s*()\s*{" end="}" contains=ALLBUT,bashFunction,bashCurlyError,bashCase,bashDerefOperator,@bashSedStuff extend
 
 " CHanged this
 syn region bashDeref	     start="\${" end="}" contains=bashDerefOperator,bashSpecialVariables
-syn match  bashDeref	     "\$\<[a-zA-Z_][a-zA-Z0-9_]*\>" contains=bashSpecialVariables
+syn match  bashDeref	     "\$\<[0-9a-zA-Z_][a-zA-Z0-9_]*\>" contains=bashSpecialVariables
 
 " A bunch of useful bash keywords
-syn keyword bashStatement    break cd chdir continue eval exec exit kill newgrp pwd read readonly return shift test trap ulimit umask wait bg fg jobs stop suspend alias fc getopts hash history let print time times type whence unalias source bind builtin dirs disown enable help history logout popd pushd shopt login newgrp gnugrep grep egrep fgrep du find gnufind expr tail sort clear less sleep ls rm install chmod mkdir rmdir strip rpm mv touch sed
+syn keyword bashBuiltin    break cd chdir continue eval exec exit kill newgrp pwd read readonly return shift test trap ulimit umask wait bg fg jobs stop suspend alias fc getopts hash history let print time times type whence unalias source bind builtin dirs disown enable help history logout popd pushd shopt login newgrp gnugrep grep egrep fgrep du find gnufind expr tail sort clear less sleep ls rm install chmod mkdir rmdir strip rpm mv touch sed
 syn keyword bashAdminStatement killproc daemon start stop restart reload status killall nice
 syn keyword bashConditional  else then elif while
 syn keyword bashRepeat       select until
@@ -147,7 +149,7 @@ syn match bashDerefOperator contained  +##\=\|%%\=+
 
 " command line options
 
-syn match bashCommandOpts "\(--\=\|+\)\([a-zA-Z]\)\=\([a-zA-Z0-9]\)*"
+syn match bashCommandOpts "[ \t]\zs\(--\=\|+\)\([a-zA-Z]\)\=\([a-zA-Z0-9]\)*"
 
 " special variables
 if exists("is_bash")

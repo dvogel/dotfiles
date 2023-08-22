@@ -59,6 +59,8 @@ call extend(v:colornames, {
             \ 'drew_teal': '#126d67',
             \ 'drew_mtdew': '#c6d80e',
             \ 'drew_ltblue': '#208ec8',
+            \ 'drew_barbiepink': '#eb9cd7',
+            \ 'drew_barelyred': '#fbccc7',
             \ 'drew_skyblue': '#9cd7eb',
             \ 'drew_graysky': '#aabbdd',
             \ 'drew_slateblue': '#7799bb',
@@ -428,17 +430,26 @@ hi NERDTreeDir        gui=NONE   guifg=drew_peach
 hi procProcName guifg=drew_salmon
 hi procComment guifg=drew_ltgray
 
+hi bashHashBang guifg=drew_ltblue
+hi bashComment guifg=drew_skin
+hi bashBuiltin guifg=drew_barelyred
 hi bashStatement ctermfg=DarkCyan
-hi bashBlock ctermfg=Yellow
-hi bashDo ctermfg=Yellow
+hi bashBlock guifg=drew_babyyellow ctermfg=Yellow
+hi bashDo guifg=drew_babyyellow ctermfg=Yellow
+hi bashIf guifg=drew_babyyellow
+hi bashConditional guifg=drew_babyyellow
 hi bashComment ctermfg=Gray
-hi bashDeref guifg=drew_firebrick ctermfg=DarkMagenta
+hi bashDoubleQuoteOperator guifg=drew_red
+hi bashDoubleQuote guifg=drew_firebrick
+hi bashDeref guifg=drew_green ctermfg=DarkMagenta
 hi link bashIdentifier Normal
 hi bashHereDoc ctermfg=DarkGray
 hi bashRedir ctermfg=Yellow
-hi link bashCommandOpts Normal
-hi bashOperator ctermfg=Brown
+hi bashCommandOpts guifg=drew_slateblue
+hi bashOperator guifg=drew_grape ctermfg=LightBlue
 hi bashIf guifg=drew_babyyellow ctermfg=Yellow
+hi bashSubShOperator guifg=drew_orange
+hi bashSubSh guifg=NONE
 
 hi link C89Identifier Normal
 hi link c89Function Normal
