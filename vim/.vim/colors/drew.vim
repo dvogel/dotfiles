@@ -312,10 +312,13 @@ hi jsonNumError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
 hi jsonSemicolonError gui=reverse guifg=drew_red cterm=reverse ctermfg=LightRed
 
 hi yamlKey gui=NONE guifg=drew_puke ctermfg=Brown
-hi yamlDelimiter gui=NONE guifg=drew_puke ctermfg=Brown
+hi yamlDelimiter gui=NONE guifg=drew_puke guibg=NONE ctermfg=Magenta
+hi yamlKeyValueDelimiter gui=NONE guifg=drew_orange guibg=NONE ctermfg=Magenta
 hi yamlString gui=NONE guifg=drew_firebrick ctermfg=DarkRed
 hi yamlNumber gui=NONE guifg=drew_green ctermfg=Green
 hi yamlComment gui=NONE guifg=drew_ltgray ctermfg=Grey
+hi yamlFlowCollection gui=NONE guifg=drew_orange guibg=NONE ctermfg=Magenta
+hi yamlFlowIndicator gui=NONE guifg=drew_orange guibg=NONE ctermfg=Magenta
 
 "hi groovyExternal                  xxx links to Include
 hi groovyError               gui=bold guifg=#fafafa guibg=#990000
