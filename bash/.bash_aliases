@@ -3,6 +3,7 @@ alias my-term-pstree='pstree -C age -l -a -U -T -p $PPID'
 alias mgmtcmds='find . -type f -wholename "***/management/commands/*.py" | sed -r -e "/__init__.py/d" -e "s/(.*\/([^ /]+).py)/\2 \1/" | column -t'
 alias tolowercase='tr "[A-Z]" "[a-z]"'
 alias touppercase='tr "[a-z]" "[A-Z]"'
+alias sorted-counts='sort | uniq -c | sort -n'
 alias ffdev='firefox -no-remote -profile /home/dvogel/.mozilla/firefox/enw0f079.dev -purgecaches -jsconsole &'
 alias gipython='python -m gevent.monkey $(which ipython)'
 alias reload_history='history -a && history -n'
@@ -27,6 +28,7 @@ alias gco='git checkout'; __git_complete gco _git_checkout
 alias gmaster='git checkout master'
 alias gmain='git checkout main'
 alias gchanges='git whatchanged HEAD^.. | cat'
+alias git-root='git rev-parse --show-toplevel'
 alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
 alias lastcommit='git log HEAD^.. | cat'
@@ -36,6 +38,8 @@ alias shell-in-docker='docker run --rm -it --entrypoint /bin/bash'
 alias bex='bundle exec'
 alias binst='bundle install'
 alias locked_revisions="cat Gemfile.lock | grep -E '^(GIT|\s+remote:|\s+revision:)'"
+
+alias aws-usage="sed -e '/O\x08OP\x08PT\x08TI\x08IO\x08ON\x08NS\x08S/ Q'"
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
