@@ -68,6 +68,12 @@ syn region    ruststructblock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\_\
 syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+\(<[^>]\+>\)\?(" end=")" keepend 
             \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 
+syn match     rustUseKeyword "use" contained
+syn region    rustUseDecl matchgroup=rustUseDeclDelims start="use" end=";" keepend contains=rustUseKeyword,rustPathSep,rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
+syn region    rustUseBlock1 matchgroup=rustUseBlock1Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock2,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
+syn region    rustUseBlock2 matchgroup=rustUseBlock2Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock3,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
+syn region    rustUseBlock3 matchgroup=rustUseBlock3Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
+
 syn match     rustStructMemberValueLevel "_*[a-z]\w*" contained
 syn match     rustStructMemberTypeLevel  "\(_*[A-Z]\+[_a-z0-9]*\)\+" contained
 
@@ -110,7 +116,7 @@ syn keyword   rustKeyword     yield
 syn keyword   rustSuper       super
 syn keyword   rustKeyword     where
 syn keyword   rustUnsafeKeyword unsafe
-syn keyword   rustKeyword     use nextgroup=rustPath skipwhite skipempty
+" syn keyword   rustKeyword     use nextgroup=rustPath skipwhite skipempty
 " FIXME: Scoped impl's name is also fallen in this category
 syn keyword   rustKeyword     mod trait nextgroup=rustIdentifier skipwhite skipempty
 syn keyword   rustStorage     move mut ref static const

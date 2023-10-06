@@ -491,6 +491,12 @@ highlight rustPathIdentifierTypeLevel guifg=drew_slategreen ctermfg=LightBlue
 highlight rustPathIdentifierValueLevel guifg=drew_slateblue ctermfg=DarkGreen
 highlight rustPathSpecialSegment guifg=drew_darkgray ctermfg=brown gui=italic
 
+highlight rustUseKeyword guifg=drew_orange
+highlight rustUseDeclDelims guifg=drew_orange
+highlight rustUseBlock1Delims guifg=drew_babyyellow
+highlight rustUseBlock2Delims guifg=drew_babyyellow
+highlight rustUseBlock3Delims guifg=drew_babyyellow
+
 highlight rustEnumVariantDecl guifg=drew_slateblue ctermfg=Gray
 highlight rustEnumVariantArgsDecl guifg=drew_darkgray ctermfg=DarkGray
 
