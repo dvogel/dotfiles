@@ -10,7 +10,7 @@ alias reload_history='history -a && history -n'
 alias purge_vim_swap_files='find . -name ".*.swp" -print0 | xargs -0 -- rm'
 alias va_mfa='source ~/p/devops/utilities/issue_mfa.sh Drew.Vogel'
 alias xclipin='xclip -in -selection clipboard'
-alias urldecode='python -c "import sys, urllib as ul; enc=sys.stdin.read(); print ul.unquote_plus(enc)"'
+alias urldecode='python -c "import sys, urllib.parse; enc=sys.stdin.buffer.read(); print(urllib.parse.unquote(enc))"'
 alias pulseaudio-rescan='pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect'
 alias purge_screenshots='find ~/Pictures -name "Screenshot*.png" -ctime +30 -print0 | xargs -n1 -0 -- rm'
 alias noblanklines="awk '/[^\s]/ { print \$0 }'"
