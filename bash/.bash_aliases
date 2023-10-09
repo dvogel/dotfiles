@@ -40,6 +40,7 @@ alias binst='bundle install'
 alias locked_revisions="cat Gemfile.lock | grep -E '^(GIT|\s+remote:|\s+revision:)'"
 
 alias aws-usage="sed -e '/O\x08OP\x08PT\x08TI\x08IO\x08ON\x08NS\x08S/ Q'"
+alias ssm-to="awsv2 ssm start-session --target"
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
