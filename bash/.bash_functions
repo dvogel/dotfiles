@@ -36,6 +36,16 @@ function __virtualenv_name () {
     [[ -n "$VIRTUAL_ENV" ]] && echo "($(basename "$VIRTUAL_ENV"))"
 }
 
+function within_line_boundary {
+  if [[ -z "$1" ]]; then
+    echo "USAGE: within_line_boundary <line boundary text>" >&2
+    echo "Expects lines to process on stdin." >&2
+  else
+    awk -v output=-1 "/$1/ { output = output * -1 } { if (output > 0) { print \$0 } }"
+  fi
+}
+
+
 function myip () {
     curl_bin="$(which curl)"
     if [[ -z "${curl_bin}" ]]; then
