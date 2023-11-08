@@ -110,7 +110,7 @@ syn region bashHereDoc matchgroup=bashRedir start="<<-\=\s*\**EOF\**" matchgroup
 " Identifiers
 "============
 syn match  bashIdentifier "\<[a-zA-Z_][a-zA-Z0-9_]*\>="me=e-1
-syn region bashIdentifier matchgroup=bashStatement start="\<\(declare\|typeset\|local\|export\|set\|unset\)\>[^/]"me=e-1 matchgroup=bashOperator skip="\\$" end="$\|[;&]" matchgroup=NONE end="#\|="me=e-1 contains=bashTestError,bashCurlyError,bashWrapLineOperator,bashDeref
+syn region bashIdentifier matchgroup=bashStatement start="\<\(declare\|typeset\|local\|export\|set\|unset\)\>[ \t]"me=e-1 matchgroup=bashOperator skip="\\$" end="$\|[;&]" matchgroup=NONE end="#\|="me=e-1 contains=bashTestError,bashCurlyError,bashWrapLineOperator,bashDeref
 
 		" The [^/] in the start pattern is a kludge to avoid bad
 		" highlighting with cd /usr/local/lib...
