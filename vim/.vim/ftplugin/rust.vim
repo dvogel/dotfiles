@@ -12,7 +12,6 @@ setlocal tabstop=4
 # Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
 nmap t ?(\zs.<CR>
 compiler cargo
-setlocal makeprg=cargo\ rustc\ --message-format=short\ $*\ --\ -Awarnings
 
 
 # The vim-lsc and vim-rust plugins trash completeopt so reset it to my liking:
@@ -60,4 +59,12 @@ command! CargoEdit EditCargoToml()
 nmap <leader>rb viwo<Esc>i&<Esc>
 nmap <leader>rB ?&<CR>dl
 nmap <C-;> A;<Esc>
+nmap <leader>some ciwSome(<C-r>-)<Esc>
+nmap <leader>Some ciWSome(<C-r>-)<Esc>
+nmap <leader>err ciwErr(<C-r>-)<Esc>
+nmap <leader>Err ciWErr(<C-r>-)<Esc>
+nmap <leader>ok ciwOk(<C-r>-)<Esc>
+nmap <leader>Ok ciWOk(<C-r>-)<Esc>
+nmap <leader>u "uyiwciW<C-r>u
+
 

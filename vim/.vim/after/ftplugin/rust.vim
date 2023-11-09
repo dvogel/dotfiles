@@ -3,7 +3,7 @@ vim9script
 compiler cargo
 setlocal makeprg=cargo\ --quiet\ rustc\ --message-format=short\ $*\ --\ -Awarnings
 # src/ui/task_list.rs:85:33: error[E0599]: the method `add` exists for reference `&ListBox`, but its trait bounds were not satisfied
-setlocal errorformat=%f:%l:%c:\ error\[%s\]:\ %m
+setlocal errorformat=%f:%l:%c:\ error\[%s\]:\ %m,error:\ %r
 
 # The vim-lsc and vim-rust plugins trash completeopt so reset it to my liking:
 setlocal completeopt=menuone,popup
