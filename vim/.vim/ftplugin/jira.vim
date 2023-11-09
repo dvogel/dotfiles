@@ -1,0 +1,9 @@
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal expandtab
+setlocal nojoinspaces
+setlocal autoindent
+setlocal breakindent
+setlocal breakindentopt=list:-1
+setlocal formatlistpat=^\\*\\+
+setlocal formatoptions=qnjl
