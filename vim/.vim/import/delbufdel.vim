@@ -10,7 +10,7 @@ export def DelicatelyDeleteBuffer(): void
     else
         var buflist = getbufinfo({'buflisted': true})
         filter(buflist, (idx, bufObj) => len(bufObj.windows) == 0)
-        sort(buflist, (a, b) => a.lastused - b.lastused)
+        sort(buflist, (a, b) => b.lastused - a.lastused)
         if len(buflist) == 0
             echo "No buffers to switch to."
         else
