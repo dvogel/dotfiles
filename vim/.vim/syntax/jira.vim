@@ -2,6 +2,7 @@
 syn case ignore
 syn sync fromstart
 
+syn match jiraTODO "TODO:"
 syn region jiraQuoteBlock matchgroup=jiraQuoteBlockTags start="{quote}" end="{quote}"
 syn region jiraNoFormatBlock matchgroup=jiraNoFormatBlockTags start="{noformat}" end="{noformat}"
 syn region jiraMonoSpan matchgroup=jiraMonoSpanTags start="{{" end="}}"
@@ -27,4 +28,5 @@ highlight jiraHeader guifg=drew_slategreen gui=bold
 highlight jiraHeaderDecl guifg=drew_barbiepink gui=bold
 highlight jiraBlockQuote guifg=drew_midgray gui=italic
 highlight jiraBlockQuoteDecl guifg=drew_barbiepink gui=bold
+highlight jiraTODO guifg=drew_watermelon gui=bold
 
