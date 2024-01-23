@@ -88,9 +88,6 @@
 [submodule "vim-easy-align"]
 	path = vim/.vim/pack/plugins/start/easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "vim-lsc"]
-	path = vim/.vim/pack/plugins/start/vim-lsc
-	url = git@github.com:natebosch/vim-lsc.git
 [submodule "kotlin-vim"]
 	path = vim/.vim/pack/plugins/start/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
@@ -178,3 +175,6 @@
 [submodule "vim-cpid"]
 	path = vim/.vim/pack/plugins/start/vim-cpid
 	url = git@github.com:dvogel/vim-cpid.git
+[submodule "vim-lsp9"]
+	path = vim/.vim/pack/plugins/start/lsp9
+	url = git@github.com:yegappan/lsp.git

@@ -9,21 +9,6 @@ let java_highlight_functions = 1
 let java_highlight_java_lang = 1
 " let java_highlight_all = 0
 
-let g:lsc_server_commands = {}
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_auto_completeopt = 'menuone,popup'
-let g:lsc_enable_popup_syntax = v:true
-let g:lsc_enable_highlights = v:true
-" let g:lsc_autocomplete_length = v:false
-" let g:lsc_block_complete_triggers = ['.', ':']
-let g:lsc_auto_map = {
-            \ 'GoToDefinition': 'C-}',
-            \ 'NextReference': 'gN',
-            \ 'PreviousReference': 'gP',
-            \ 'ShowHover': v:true,
-            \ 'Completion': 'completefunc',
-            \ }
-
 " This loads plugins in pack/plugins/start
 packloadall
 
@@ -141,23 +126,71 @@ let g:formatters_javascript = ['prettier']
 let g:formatdef_prettier = '"./node_modules/.bin/prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:run_all_formatters_javascript = v:false
 
+" Wraps our options to make them easier to update.
+function SetLspOptionsAgain() abort
+    call LspOptionsSet(#{
+                \   aleSupport: v:false,
+                \   autoComplete: v:false,
+                \   autoHighlight: v:false,
+                \   autoHighlightDiags: v:true,
+                \   autoPopulateDiags: v:true,
+                \   completionMatcher: 'case',
+                \   completionTextEdit: v:true,
+                \   completionKinds: {},
+                \   customCompletionKinds: v:false,
+                \   diagSignErrorText: 'E>',
+                \   diagSignInfoText: 'I>',
+                \   diagSignHintText: 'H>',
+                \   diagSignWarningText: 'W>',
+                \   diagVirtualTextAlign: 'above',
+                \   echoSignature: v:true,
+                \   hideDisabledCodeActions: v:false,
+                \   highlightDiagInline: v:true,
+                \   hoverInPreview: v:false,
+                \   ignoreMissingServer: v:false,
+                \   keepFocusInReferences: v:false,
+                \   noNewlineInCompletion: v:false,
+                \   outlineOnRight: v:false,
+                \   outlineWinSize: 20,
+                \   showDiagInBalloon: v:true,
+                \   showDiagInPopup: v:true,
+                \   showDiagOnStatusLine: v:false,
+                \   showDiagWithSign: v:true,
+                \   showDiagWithVirtualText: v:false,
+                \   showInlayHints: v:false,
+                \   showSignature: v:true,
+                \   snippetSupport: v:false,
+                \   ultisnipsSupport: v:false,
+                \   usePopupInCodeAction: v:true,
+                \   useQuickfixForLocations: v:true,
+                \   useBufferCompletion: v:true,
+                \ })
+endfunction
+augroup LspInit
+    autocmd VimEnter * call SetLspOptionsAgain()
+augroup END
+
 if executable('gopls')
-    call extend(g:lsc_server_commands, {
-        \ 'go': {
-        \   'command': 'gopls',
-        \   'enabled': v:true,
-        \   }
-        \ })
+    call LspAddServer([#{
+                \    name: 'go',
+                \    filetype: ['go'],
+                \    path: exepath('gopls'),
+                \    args: [],
+                \    syncInit: v:true
+                \  }])
 endif
 
 if executable('rust-analyzer')
-    call extend(g:lsc_server_commands, {
-        \ 'rust': {
-        \   'command': 'rust-analyzer',
-        \   'enabled': v:true,
-        \   }
-        \ })
+    call LspAddServer([#{
+                \    name: 'rustlang',
+                \    filetype: ['rust'],
+                \    path: exepath('rust-analyzer'),
+                \    args: [],
+                \    syncInit: v:true
+                \  }])
 endif
+nmap <M-d> :LspDiagCurrent<CR>
+nmap <M-c> :LspCodeAction<CR>
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
@@ -220,10 +253,6 @@ nmap <C-F6> :TagbarToggle<CR>
 " Depends on vim-surround from Tim Pope:
 " ^S' will quote the word under the cursor with a single quote
 nmap <C-S> ysiw
-nmap <leader>L :LSClientWindowDiagnostics<CR>
-nmap <leader>G :LSClientGoToDefinition<CR>
-nmap <C-}> :LSClientGoToDefinition<CR>
-nmap <leader>R :LSClientFindReferences<CR>
 " Remaps C-n from the 'complete' sources to 'completefunc'
 " inoremap <C-n> <C-x><C-u>
 inoremap <C-S-n> <C-x><C-u>
@@ -373,9 +402,6 @@ function! ClearColornames()
 endfunction
 
 " au ColorSchemePre * call ClearColornames()
-
-import "lsc-jdtls.vim" as LscJdtls
-call LscJdtls.ReinitializeJdtlsLscIntegration()
 
 function! GroupFilesByProjectRoot(bufObj)
     let root = projectroot#guess(a:bufObj.name)
