@@ -132,6 +132,4 @@
 --ignore-directory=match:/jacoco.*/
 --ignore-directory=is:maven-status
 
-# Specific to OpenCongress
---ignore-directory=tmp/openids/
-
+--ignore-file=is:TAGGED_FILES
