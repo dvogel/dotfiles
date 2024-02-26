@@ -188,6 +188,12 @@ fi
 
 quiet_source "${HOME}/.bashrc.local"
 
+for aws_completer_path in "${HOME}/.local/bin/aws_completer"; do
+  if [[ -f "$aws_completer_path" ]]; then
+    complete -C "$aws_completer_path" aws
+    complete -C "$aws_completer_path" awsv2
+  fi
+done
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
