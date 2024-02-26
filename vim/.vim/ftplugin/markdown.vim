@@ -55,5 +55,15 @@ def MDWrapToggle()
     endif
 enddef
 
+def MDDefaultToSoftMode()
+    if !exists("b:wrapmode")
+        MDSetSoftWrap()
+    endif
+enddef
+
+augroup MarkdownWrapMode
+    autocmd BufRead *.md MDDefaultToSoftMode()
+augroup END
+
 defcompile
 
