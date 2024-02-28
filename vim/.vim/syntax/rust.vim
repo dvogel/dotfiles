@@ -68,8 +68,8 @@ syn region    ruststructblock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\_\
 syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+\(<[^>]\+>\)\?(" end=")" keepend 
             \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 
-syn match     rustUseKeyword "use" contained
-syn region    rustUseDecl matchgroup=rustUseDeclDelims start="use" end=";" keepend contains=rustUseKeyword,rustPathSep,rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
+syn match     rustUseKeyword "use\ze[ \t]" contained
+syn region    rustUseDecl matchgroup=rustUseDeclDelims start="use\ze[ \t]" end=";" keepend contains=rustUseKeyword,rustPathSep,rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
 syn region    rustUseBlock1 matchgroup=rustUseBlock1Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock2,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
 syn region    rustUseBlock2 matchgroup=rustUseBlock2Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock3,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
 syn region    rustUseBlock3 matchgroup=rustUseBlock3Delims start="::{" skip="[^}]\+" end="}" extend contained contains=rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
