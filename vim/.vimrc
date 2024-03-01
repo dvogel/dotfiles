@@ -48,6 +48,7 @@ set wildmenu
 set wildmode=longest:list
 set title
 set scrolloff=1
+set wildcharm=<Tab>
 set wildignore=*.o,*.hi
 set guioptions=Pegit
 set splitbelow
@@ -257,6 +258,7 @@ nmap <C-S> ysiw
 " inoremap <C-n> <C-x><C-u>
 inoremap <C-S-n> <C-x><C-u>
 nmap <leader>H :nohlsearch<CR>
+nnoremap <C-S-E> :e %:h<Tab>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
