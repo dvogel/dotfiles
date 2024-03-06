@@ -31,4 +31,4 @@
 #root.root {--tabs-font: 1.2375rem sans-serif;}
 #root.root div.Tab[data-discarded="true"] &gt; .body &gt; .t-box { opacity: 0.6	; }
 #root.root div.Tab div.close { background: rgb(240, 100, 100); }
-#root.root div.Tab svg.close-icon { margin: 10px; }
+#root.root div.Tab svg.close-icon { display: none; }
