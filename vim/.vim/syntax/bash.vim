@@ -39,7 +39,7 @@ syn region bashAwkBlockSingle matchgroup=bashStatement start=+g\=awk[ \t]*-[^ \t
 syn case match
 
 syn keyword	bashTodo		contained TODO
-syn match	bashComment		"#.*$" contains=bashTodo
+syn match	bashComment		"\(^\|[^\\]\)\zs#.*$" contains=bashTodo
 
 " String and Character constants
 "===============================
