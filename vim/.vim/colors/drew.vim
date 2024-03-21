@@ -31,7 +31,7 @@ runtime colors/lists/pantone.vim
 call extend(v:colornames, {
             \ 'drew_cyan': '#10b2c0',
             \ 'drew_aqua': '#0e8f9b',
-            \ 'drew_blue': '#0e689d',
+            \ 'drew_blue': '#1e78ad',
             \ 'drew_peach': '#e39e58',
             \ 'drew_puke': '#ebab6a',
             \ 'drew_skin': '#e3b07d',
