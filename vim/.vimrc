@@ -234,10 +234,10 @@ augroup END
 import "delbufdel.vim" as delbufdel
 command! -nargs=1 BufDelMatching :call delbufdel.DeleteBuffersMatching("<args>")
 
-nmap <C-h> :wincmd h<CR>
-nmap <C-j> :wincmd j<CR>
-nmap <C-k> :wincmd k<CR>
-nmap <C-l> :wincmd l<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 nmap Ej :cnext<CR>
 nmap Ek :cprev<CR>
 map <F2> :bprevious<CR>
