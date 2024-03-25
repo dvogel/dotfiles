@@ -187,7 +187,11 @@ if executable('rust-analyzer')
                 \    filetype: ['rust'],
                 \    path: exepath('rust-analyzer'),
                 \    args: [],
-                \    syncInit: v:true
+                \    syncInit: v:true,
+                \    initializationOptions: {
+                \        "rust-analyzer.completion.autoimport.enable": v:true,
+                \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"]
+                \    }
                 \  }])
 endif
 nmap <M-d> :LspDiagCurrent<CR>
