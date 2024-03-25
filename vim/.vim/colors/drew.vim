@@ -525,3 +525,16 @@ highlight tadaDelimiter guifg=drew_orange
 
 highlight qfFileName guifg=drew_ltblue
 
+highlight LspDiagSignErrorText guifg=drew_red
+highlight LspDiagSignHintText guifg=drew_graysky
+highlight LspDiagSignInfoText guifg=drew_graysky
+highlight LspDiagSignWarningText guifg=drew_firebrick
+
+highlight LspDiagInlineError guisp=drew_red gui=undercurl
+highlight LspDiagInlineHint guisp=drew_graysky gui=NONE
+highlight LspDiagInlineInfo guisp=drew_graysky gui=NONE
+highlight LspDiagInlineWarning guisp=drew_firebrick gui=NONE
+
+highlight LspInlayHintsParam gui=italic guifg=drew_darkgray
+highlight LspInlayHintsType gui=italic guifg=drew_darkgray
+
