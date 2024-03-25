@@ -464,6 +464,8 @@ hi cUserFunction guifg=drew_ltblue
 hi link cCommentError Comment
 
 hi CtrlPPrtCursor guifg=drew_mtdew
+hi CtrlPLinePre guifg=drew_mtdew
+hi CtrlPMatch guifg=drew_green gui=none
 
 highlight GBufExHeader guifg=drew_blue ctermfg=blue
 highlight GBufExHeaderGroupKey guifg=drew_orange ctermfg=lightred
