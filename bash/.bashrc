@@ -107,10 +107,7 @@ export ANDROID_HOME=~/Library/Android/sdk
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 declare -a PATH_DIRS
-PATH_DIRS=("/usr/local/bin"
-            "/usr/local/node/bin"
-            "${HOME}/bin"
-            "${HOME}/opt/bin"
+PATH_DIRS=(
             "${HOME}/opt/bats/bin"
             "${HOME}/opt/dashing/bin"
             "${HOME}/opt/dart/dart-sdk/bin"
@@ -133,7 +130,11 @@ PATH_DIRS=("/usr/local/bin"
             "${HOME}/opt/visualvm/bin"
             "${HOME}/opt/LibreSprite/bin"
             "${HOME}/go/bin"
-            "/usr/local/git/bin")
+            "/usr/local/git/bin"
+            "/usr/local/node/bin"
+            "/usr/local/bin"
+            "${HOME}/opt/bin"
+            "${HOME}/bin")
 
 for d in "${PATH_DIRS[@]}"; do
     prepend_to_path "${d}"
