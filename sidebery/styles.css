@@ -4,16 +4,16 @@
 #root.root {--ctx-menu-min-width: 128pt;}
 #root.root {--ctx-menu-text-opt-inner-gap: 4pt;}
 #root.root {--bookmarks-inner-gap: 0.5em;}
-#root.root {--tabs-inner-gap: 8pt;}
+#root.root {--tabs-inner-gap: 12px;}
 #root.root {--frame-fg: rgb(20, 20, 20);}
 #root.root {--bottom-bar-height: 2rem;}
 
 
 #root.root {--ctx-menu-max-width: 1024pt;}
 #root.root {--nav-btn-fg: rgb(20, 20, 20);}
-#root.root {--nav-btn-width: 36pt;}
-#root.root {--nav-btn-height: 36pt;}
-#root.root {--nav-btn-margin: 2pt;}
+#root.root {--nav-btn-width: 48px;}
+#root.root {--nav-btn-height: 48px;}
+#root.root {--nav-btn-margin: 3px;}
 
 #root.root {--nav-btn-border-radius: 8pt;}
 
@@ -26,15 +26,16 @@
 #root.root {--tabs-activated-bg: rgb(220, 220, 255);}
 #root.root {--tabs-activated-fg: rgb(30, 30, 30);}
 #root.root {--tabs-normal-fg: rgb(30, 30, 30);}
-#root.root {--tabs-pinned-height: 36pt;}
-#root.root {--tabs-pinned-width: 36pt;}
+#root.root {--tabs-pinned-height: 42px;}
+#root.root {--tabs-pinned-width: 42px;}
 #root.root {--tabs-border-radius: 0;}
 #root.root {--tabs-audio-btn-width: 36pt;}
 #root.root {--tabs-close-btn-margin: 3pt;}
-#root.root {--tabs-height: 28pt;}
-#root.root {--tabs-indent: 24pt;}
-#root.root {--tabs-margin: 6pt;}
+#root.root {--tabs-height: 36px;}
+#root.root {--tabs-indent: 36px;}
+#root.root {--tabs-margin: 8px;}
 #root.root {--tabs-font: 14pt sans-serif;}
-#root.root div.Tab[data-discarded="true"] > .body > .t-box { opacity: 0.6	; }
+#root.root div.Tab[data-discarded="true"] > .body > .t-box { opacity: 0.6   ; }
 #root.root div.Tab div.close { background: rgb(240, 100, 100); content: "X"; }
 #root.root div.Tab svg.close-icon { display: none; }
+
