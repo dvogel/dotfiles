@@ -178,3 +178,9 @@
 [submodule "vim-lsp9"]
 	path = vim/.vim/pack/plugins/start/lsp9
 	url = git@github.com:yegappan/lsp.git
+[submodule "gnome-shell-activate-window-by-title"]
+	path = gnome-shell/extensions/activate-window-by-title
+	url = git@github.com:lucaswerkmeister/activate-window-by-title.git
+[submodule "gnome-shell-argos"]
+	path = gnome-shell/extensions/argos
+	url = git@github.com:p-e-w/argos.git

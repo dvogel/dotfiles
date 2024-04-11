@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# vim: ts=2 sw=2 expandtab
+
+selfpath="$(readlink -f "$0")"
+selfdir="$(dirname "$selfpath")"
+
+set -o pipefail
+set -o errexit
+shopt -s inherit_errexit
+
+rsync_extension() {
+  rsync --mkpath --itemize-changes --archive --exclude=.git "$1/" "$HOME/.local/share/gnome-shell/extensions/$2/"
+}
+
+(
+  cd "$selfdir/extensions"
+  rsync_extension "activate-window-by-title" "activate-window-by-title"
+  rsync_extension "argos/argos@pew.worldwidemann.com" "argos@pew.worldwidemann.com"
+)
