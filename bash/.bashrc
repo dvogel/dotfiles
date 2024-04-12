@@ -100,6 +100,7 @@ on_macos && set_utf8_locale
 export LESS="-S -R"
 export MAKEFLAGS="-j -l2"
 export ANDROID_HOME=~/Library/Android/sdk
+export JQ_COLORS="2;31:0;32:0;32:0;36:2;31:0;37:0;37"
 
 # Turn off dotnet core telemetry because SSL version conflicts cause a
 # segfault on debian. Consider removing after this is fixed (presumable in
