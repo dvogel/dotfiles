@@ -253,6 +253,8 @@ hi javaScriptNumber guifg=drew_cyan ctermfg=DarkCyan
 hi javaScriptFloat guifg=drew_cyan ctermfg=DarkCyan
 
 hi typescriptStringB guifg=drew_pink ctermfg=LightRed
+hi typescriptReserved guifg=drew_grape ctermfg=LightRed
+hi typescriptStringB guifg=drew_firebrick ctermfg=Red
 
 hi markdownH1 guifg=drew_orange ctermfg=Yellow
 hi markdownH2 guifg=drew_watermelon ctermfg=Yellow
