@@ -461,6 +461,13 @@ hi cCMacro guifg=drew_tan
 hi c89Constant guifg=drew_aqua
 hi cAnsiFunction guifg=drew_blue
 hi cUserFunction guifg=drew_ltblue
+hi cDefine guifg=drew_grape
+hi cInclude guifg=drew_grape
+hi cIncluded guifg=drew_khaki
+hi cPreCondit guifg=drew_grape
+hi cComment guifg=drew_darkgray
+hi cCommentL guifg=drew_darkgray
+hi link cParen Normal
 hi link cCommentError Comment
 
 hi CtrlPPrtCursor guifg=drew_mtdew
