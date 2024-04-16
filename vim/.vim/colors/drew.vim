@@ -95,7 +95,7 @@ hi VisualNOS gui=underline,bold
 hi DiffText gui=bold guibg=Red
 hi Cursor guibg=NONE guifg=NONE gui=inverse
 hi lCursor guibg=drew_cyan guifg=NONE
-hi Directory guifg=Blue
+hi Directory guifg=drew_blue
 hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
 hi NonText gui=bold guifg=grey10 guibg=drew_background
@@ -423,9 +423,9 @@ hi dosiniHeader    gui=NONE guifg=drew_orange
 hi dosiniNumber    gui=NONE guifg=drew_green
 hi dosiniComment   gui=NONE guifg=drew_darkgray
 
-highlight Pmenu      ctermfg=7  ctermbg=0  guibg=#444444 guifg=#dddddd
-highlight PmenuSbar  ctermfg=7  ctermbg=7  guibg=#666666 guifg=#ffffff
-highlight PmenuSel   ctermfg=1  ctermbg=7  guibg=#888888 guifg=#dd0000
+highlight Pmenu      ctermfg=7  ctermbg=0  guibg=#333333 guifg=#dddddd
+highlight PmenuSbar  ctermfg=7  ctermbg=7  guibg=#555555 guifg=#ffffff
+highlight PmenuSel   ctermfg=1  ctermbg=7  guibg=#555555 guifg=drew_puke gui=bold
 highlight PmenuThumb ctermbg=14 ctermbg=14 guibg=#ffff00 guifg=#00ffff
 
 hi NERDTreeOpenable   gui=NONE   guifg=drew_skyblue
