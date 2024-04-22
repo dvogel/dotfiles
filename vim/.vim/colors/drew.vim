@@ -98,7 +98,7 @@ hi lCursor guibg=drew_cyan guifg=NONE
 hi Directory guifg=drew_blue
 hi LineNr guifg=drew_babyyellow
 hi MoreMsg gui=bold guifg=SeaGreen
-hi NonText gui=bold guifg=grey10 guibg=drew_background
+hi NonText gui=bold guifg=darkgray guibg=drew_background
 hi Question gui=bold guifg=SeaGreen
 hi Search gui=undercurl guisp=drew_mtdew guibg=NONE guifg=NONE
 hi CurSearch gui=undercurl guisp=drew_mtdew guibg=NONE guifg=NONE
@@ -152,7 +152,7 @@ hi link Debug			Special
 " vim: sw=2
 
 hi link vimContinue Normal
-hi vimLet guifg=css_teal
+hi vimLet guifg=drew_teal
 hi vimHightlight guifg=drew_orange
 hi vimGroup guifg=drew_blue
 hi vimHiGui guifg=drew_mtdew
