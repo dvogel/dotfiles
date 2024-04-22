@@ -1,3 +1,4 @@
 .*.swp
 vim/.vim/.netrwhist
 vim/.vim/spell/
+vim/.vim/doc/tags
