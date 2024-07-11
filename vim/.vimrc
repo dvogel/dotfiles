@@ -127,6 +127,9 @@ let g:formatters_javascript = ['prettier']
 let g:formatdef_prettier = '"./node_modules/.bin/prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:run_all_formatters_javascript = v:false
 
+let g:cpp_function_highlight = 1
+let g:cpp_member_highlight = 1
+let g:cpp_attributes_highlight = 1
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1

@@ -120,7 +120,8 @@ hi PreProc guifg=drew_magenta guibg=Black ctermfg=DarkMagenta
 hi Statement gui=NONE guifg=drew_red
 hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
 hi Ignore guifg=Grey
-hi Identifier guifg=drew_blue
+hi Identifier guifg=drew_ltblue
+hi Title guifg=drew_slateblue
 hi Type guifg=drew_green gui=NONE
 
 hi link IncSearch		Visual
@@ -463,10 +464,10 @@ hi cCMacro guifg=drew_tan
 hi c89Constant guifg=drew_aqua
 hi cAnsiFunction guifg=drew_blue
 hi cUserFunction guifg=drew_ltblue
-hi cDefine guifg=drew_grape
-hi cInclude guifg=drew_grape
+hi cDefine guifg=drew_palepurple
+hi cInclude guifg=drew_palepurple
 hi cIncluded guifg=drew_khaki
-hi cPreCondit guifg=drew_grape
+hi cPreCondit guifg=drew_palepurple
 hi cComment guifg=drew_darkgray
 hi cCommentL guifg=drew_darkgray
 hi link cParen Normal
