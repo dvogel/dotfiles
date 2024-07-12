@@ -79,9 +79,6 @@
 [submodule "vim-csharp"]
 	path = vim/.vim/pack/plugins/start/vim-csharp
 	url = git://github.com/OrangeT/vim-csharp.git
-[submodule "maven-compiler"]
-	path = vim/.vim/pack/plugins/start/maven-compiler
-	url = https://github.com/JalaiAmitahl/maven-compiler.vim.git
 [submodule "vim-ruby-refactoring"]
 	path = vim/.vim/pack/plugins/start/vim-ruby-refactoring
 	url = https://github.com/ecomba/vim-ruby-refactoring.git
