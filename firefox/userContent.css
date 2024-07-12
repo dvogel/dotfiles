@@ -1,4 +1,4 @@
-@-moz-document domain(confluenceent.cms.gov) {
+@-moz-document domain(confluenceent.cms.gov), domain(confluence.cms.gov) {
     div.ia-fixed-sidebar {
         font-size: 0.8em;
     }
@@ -15,3 +15,22 @@
         min-width: 1.2em;
     }
 }
+
+@-moz-document domain(artifactory.cms.gov) {
+  html:root {
+    --secondary: #000000;
+  }
+
+  body {
+    color: #000000 !important;
+  }
+
+  .ag-theme-alpine .ag-cell-value, .main-routes-wrapper .jf-link, .pagination .showing-text {
+    color: #000000 !important;
+  }
+
+  .key-value-container .value_[data-v-5cf52d74] {
+    color: #000000 !important;
+  }
+}
+
