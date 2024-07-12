@@ -31,9 +31,6 @@
 [submodule "vim/.vim/bundle/vim-commentary"]
 	path = vim/.vim/pack/plugins/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
-[submodule "vim/.vim/bundle/vim-coffee-script"]
-	path = vim/.vim/pack/plugins/start/vim-coffee-script
-	url = git@github.com:dvogel/vim-coffee-script.git
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/pack/plugins/start/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
