@@ -222,6 +222,14 @@ function __git_ps1_ext () {
 	fi
 }
 
+js_scripts() {
+  cat package.json | jq .scripts
+}
+
+npm_scripts() {
+  js_scripts
+}
+
 JAVA_DEBUG_PORT=5005
 function jdebug () {
 	rlwrap jdb -attach transport=dt_socket,port=$JAVA_DEBUG_PORT -sourcepath ./src/main/java:./src/test/java "$@"
