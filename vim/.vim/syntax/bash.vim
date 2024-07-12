@@ -78,7 +78,7 @@ syn match   bashTestOpr contained "[!=]\|-.\>\|-\(nt\|ot\|ef\|eq\|ne\|lt\|le\|gt
 " DO/IF/FOR/CASE : Repitition operaters
 " ======================================
 syn region  bashDo transparent matchgroup=bashBlock start="\<do\>" end="\<done\>" contains=ALLBUT,bashFunction,bashDoError,bashCase,bashDerefOperator,@bashSedStuff extend
-syn region  bashIf transparent matchgroup=bashBlock start="\<if\>" end="\<fi\>" contains=ALLBUT,bashFunction,bashIf,bashIfError,bashCase,bashDerefOperator,@bashSedStuff extend
+syn region  bashIf transparent matchgroup=bashBlock start="\<if\>" end="\<fi\>" contains=ALLBUT,bashFunction,bashCase,bashDerefOperator,@bashSedStuff extend
 syn region  bashFor  matchgroup=bashStatement start="\<for\>" end="\<in\>" contains=ALLBUT,bashFunction,bashInError,bashCase,bashDerefOperator,@bashSedStuff extend
 syn region bashCaseEsac transparent matchgroup=bashBlock start="\<case\>" matchgroup=NONE end="\<in\>"me=s-1 contains=ALLBUT,bashFunction,bashCaseError nextgroup=bashCaseEsac,bashDerefOperator,@bashSedStuff
 syn region bashCaseEsac matchgroup=bashBlock start="\<in\>" end="\<esac\>" contains=ALLBUT,bashFunction,bashCaseError,bashDerefOperator,@bashSedStuff
@@ -106,6 +106,7 @@ syn match	bashRedir	"\d<<-\="
 " Shell Input Redirection (Here Documents)
 syn region bashHereDoc matchgroup=bashRedir start="<<-\=\s*\**END[a-zA-Z_0-9]*\**" matchgroup=bashRedir end="^END[a-zA-Z_0-9]*$"
 syn region bashHereDoc matchgroup=bashRedir start="<<-\=\s*\**EOF\**" matchgroup=bashRedir end="^EOF$"
+syn region bashHereDoc matchgroup=bashRedir start="<<[<-]\?[ ]\?['"]\?[A-Z][A-Z0-9]\+['"]\?" matchgroup=bashRedir end="^[A-Z][A-Z0-9]\+"
 
 " Identifiers
 "============
