@@ -1,6 +1,3 @@
-[submodule "vim/.vim/bundle/vim-fireplace"]
-	path = vim/.vim/pack/plugins/start/vim-fireplace
-	url = https://github.com/tpope/vim-fireplace.git
 [submodule "vim/.vim/bundle/vim-classpath"]
 	path = vim/.vim/pack/plugins/start/vim-classpath
 	url = git://github.com/tpope/vim-classpath.git
