@@ -249,7 +249,7 @@ env_file_exec() {
 		source <(grep -v '^#' "$1")
 		set +o allexport
 		shift
-		"$@"
+		eval "$@"
 	)
 }
 
