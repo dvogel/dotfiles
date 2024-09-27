@@ -4,3 +4,5 @@ if get(b:, 'editorconfig_applied', 0) == 0
     setlocal expandtab
 endif
 
+syntax sync fromstart
+
