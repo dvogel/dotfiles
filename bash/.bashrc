@@ -60,16 +60,29 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-function __rails_env () {
+__rails_env () {
     if [ -z "$RAILS_ENV" ]; then
-        echo ""
+        echo -n ""
     else
-        echo " (rails:${RAILS_ENV})"
+        echo -n " (rails:${RAILS_ENV})"
     fi
 }
 
+__cgroup_slice() {
+    read -r shell_cgroup < /proc/self/cgroup
+    if [[ -z "$shell_cgroup" ]]; then
+        return
+    fi
+    local nosuffix_cgroup="${shell_cgroup%.slice*}"
+    if [[ ${#nosuffix_cgroup} -eq ${#shell_cgroup} ]]; then
+      return
+    fi
+    local slice_name="${nosuffix_cgroup##*/}"
+    echo -n " slice:${slice_name}"
+}
+
 if [[ "$color_prompt" = yes ]]; then
-    PS1="╰──$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}\$(__git_ps1_ext)$(ansi_bold_color 31)${PS1_EXTRA}>${color_rst} "
+    PS1="╰──$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}$(ansi_color 35)\$(__cgroup_slice)${color_rst}\$(__git_ps1_ext)$(ansi_bold_color 31)${PS1_EXTRA}>${color_rst} "
 else
     PS1="╰──$\u@\h:\w\$(__git_ps1)${PS1_EXTRA}\$ "
 fi
