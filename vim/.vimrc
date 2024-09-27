@@ -160,7 +160,7 @@ au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
 " Always open the quickfix window on the bottom (no vertical split)
 map <C-S-?> :copen<CR>
 function! OpenQuickfixIfNeeded() abort
-    if len(getqflist()) > 0
+    if getqflist({'size': v:true}).size > 0
         copen
     endif
 endfunction

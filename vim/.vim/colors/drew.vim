@@ -163,6 +163,8 @@ hi vimHiCtermFgBg guifg=drew_mtdew
 hi vimHiCtermColor guifg=drew_firebrick
 hi vimHiAttrib guifg=drew_firebrick
 
+hi TagbarSignature guifg=drew_ltblue
+
 " hi pythonComment guifg=drew_skyblue
 " hi pythonFunction guifg=drew_blue
 " hi pythonNumber guifg=drew_cyan
