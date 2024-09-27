@@ -203,6 +203,11 @@ function venv_find_and_activate () {
     fi
 }
 
+function port_listener () {
+    local port="${1:?USAGE: port_listener <port>}"
+    sudo netstat -l -Ainet,inet6 -n -p | grep "$port"
+}
+
 function slurp_urls () {
     echo 'for x in $(cat urls.txt); do if [[ -n "$x" ]]; then xbase="$(basename $x)"; if [[ ! -r "$xbase" ]]; then easywget "$x"; fi; fi; done'
 }
