@@ -213,12 +213,6 @@ vmap <expr> D DVB_Duplicate()
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++                                                                            
-
-" set viminfo='10,\"100,:20,%,n~/.viminfo
-" au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
 " These are mapped for the plugin feraltogglecommentify.vim
 nmap <C-c> <Plug>FtcTc
 vmap <C-c> <Plug>FtcTc
