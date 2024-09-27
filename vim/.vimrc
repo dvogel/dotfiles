@@ -376,3 +376,33 @@ endfunction
 
 command! -nargs=1 -complete=customlist,TadaComplete Tada :call OpenTada(<q-args>)
 
+function! AutoformatBufferDisable() abort
+    if exists('b:autoformat_autoindent')
+        let b:bak_autoformat_autoindent = b:autoformat_autoindent
+    endif
+    if exists('b:autoformat_retab')
+        let b:bak_autoformat_retab = b:autoformat_retab
+    endif
+    if exists('b:autoformat_remove_trailing_spaces')
+        let b:bak_autoformat_remove_trailing_spaces = b:autoformat_remove_trailing_spaces
+    endif
+    let b:autoformat_autoindent = v:false
+    let b:autoformat_retab = v:false
+    let b:autoformat_remove_trailing_spaces = v:false
+endfunction
+
+function! AutoformatBufferReenable() abort
+    if exists('b:bak_autoformat_autoindent')
+        let b:autoformat_autoindent = b:bak_autoformat_autoindent
+    endif
+    if exists('b:bak_autoformat_retab')
+        let b:autoformat_retab = b:bak_autoformat_retab
+    endif
+    if exists('b:bak_autoformat_remove_trailing_spaces')
+        let b:autoformat_remove_trailing_spaces = b:bak_autoformat_remove_trailing_spaces
+    endif
+endfunction
+
+command! AutoformatBufferDisable :call AutoformatBufferDisable()
+command! AutoformatBufferReenable :call AutoformatBufferReenable()
+
