@@ -1,6 +1,6 @@
 [submodule "vim/.vim/bundle/vim-classpath"]
 	path = vim/.vim/pack/plugins/start/vim-classpath
-	url = git://github.com/tpope/vim-classpath.git
+	url = git@github.com:tpope/vim-classpath.git
 [submodule "vim/.vim/bundle/vim-clojure-static"]
 	path = vim/.vim/pack/plugins/start/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
@@ -42,7 +42,7 @@
 	url = https://github.com/honza/dockerfile.vim.git
 [submodule "vim/.vim/bundle/vim-bats"]
 	path = vim/.vim/pack/plugins/start/vim-bats
-	url = git://github.com/markcornick/vim-bats.git
+	url = git@github.com:markcornick/vim-bats.git
 [submodule "dart-vim-plugin"]
 	path = vim/.vim/pack/plugins/start/dart-vim-plugin
 	url = git@github.com:dart-lang/dart-vim-plugin.git
@@ -60,7 +60,7 @@
 	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule "vim-projectroot"]
 	path = vim/.vim/pack/plugins/start/vim-projectroot
-	url = git://github.com/dbakker/vim-projectroot.git
+	url = git@github.com:dbakker/vim-projectroot.git
 [submodule "vim-jsx-improve"]
 	path = vim/.vim/pack/plugins/start/vim-jsx-improve
 	url = https://github.com/neoclide/vim-jsx-improve.git
@@ -72,7 +72,7 @@
 	url = https://github.com/Chiel92/vim-autoformat.git
 [submodule "vim-csharp"]
 	path = vim/.vim/pack/plugins/start/vim-csharp
-	url = git://github.com/OrangeT/vim-csharp.git
+	url = git@github.com:OrangeT/vim-csharp.git
 [submodule "vim-ruby-refactoring"]
 	path = vim/.vim/pack/plugins/start/vim-ruby-refactoring
 	url = https://github.com/ecomba/vim-ruby-refactoring.git
@@ -90,7 +90,7 @@
 	url = https://github.com/hashivim/vim-terraform.git
 [submodule "omnisharp-vim"]
 	path = vim/.vim/pack/plugins/start/omnisharp-vim
-	url = git://github.com/OmniSharp/omnisharp-vim
+	url = git@github.com:OmniSharp/omnisharp-vim
 [submodule "rust.vim"]
 	path = vim/.vim/pack/plugins/start/rust.vim
 	url = git@github.com:rust-lang/rust.vim.git
