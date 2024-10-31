@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+directoryUrl="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html"
+
+extract_actions() {
+  sed -r -e '/API_[A-Z]\w+.html/!d' -e 's/.*https:.*API_([A-Z]\w+).html/\1/'
+}
+
+extract_service_prefix() {
+  sed -r -e '/service prefix:/!d' -e 's/^.*service prefix: (\w+).*/\1/' | head -n1
+}
+
+scrape_service() {
+  serviceHtml="$(lynx --dump --width=200 "$1")"
+  servicePrefix="$(echo "$serviceHtml" | extract_service_prefix)"
+  echo "$serviceHtml" | extract_actions | while read -r actionName; do
+    echo "$servicePrefix:$actionName"
+  done
+}
+
+list_service_urls() {
+  lynx --dump --listonly "$directoryUrl" | sed -r -e '/list_\w+.html$/!d' -e 's/^.*(https:)/\1/'
+}
+
+if [[ "$#" -eq 1 ]]; then
+  scrape_service "$1"
+else
+  list_service_urls | while read -r serviceUrl; do
+    scrape_service "$serviceUrl"
+  done
+fi
+
