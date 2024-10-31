@@ -210,6 +210,8 @@ for aws_completer_path in "${HOME}/.local/bin/aws_completer"; do
   fi
 done
 
+quiet_source "/usr/share/doc/fzf/examples/key-bindings.bash"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
