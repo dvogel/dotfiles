@@ -10,7 +10,7 @@ setlocal nowrap
 setlocal ruler
 setlocal textwidth=100
 setlocal wildignore+=*.class
-compiler mvn
+compiler maven
 
 def GoogleJavaImport(): void
     var ln = getline(".")
