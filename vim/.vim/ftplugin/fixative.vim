@@ -108,8 +108,10 @@ def ParseQueryString(qs: string): dict<string>
     var parts = split(substitute(qs, '^?', '', ''), '&')
     var accum = {}
     for part in parts
-        var [k, v] = split(part, '=', 1)
-        accum[k] = v
+        # var kvrest = split(part, '=')
+        # accum[kvrest[0]] = kvrest[1]
+        var [k, v] = split(part, '=')
+        accum[k] = PercentDecode(v)
     endfor
     return accum
 enddef
@@ -142,7 +144,7 @@ def FormatUrlLines(url: dict<string>): list<string>
     add(lines, "{query}:       " .. get(url, "query", "<missing>"))
     add(lines, "╰─{decquery}:  " .. PercentDecode(get(url, "query", "")))
 
-    var queryParams = ParseQueryString(PercentDecode(get(url, "query", "")))
+    var queryParams = ParseQueryString(get(url, "query", ""))
     for k in keys(queryParams)
         add(lines, "               ╰─{" .. k .. "}: " .. queryParams[k])
     endfor
@@ -231,6 +233,14 @@ def HyperAction(): void
     endif
 enddef
 
+def UpdateBufferFromClipboard(): void
+    normal ggdG
+    normal O
+    normal "+P
+    normal o---
+    UpdateBuffer()
+enddef
+
 def EchoHyper()
     echo "HYPER"
 enddef
@@ -258,6 +268,7 @@ augroup Fixative
 augroup END
 
 nmap <C-S-f> :e!<CR>
+nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
 nmap <S-Return> :call <SID>HyperAction()<CR>
 
 UpdateBuffer()
