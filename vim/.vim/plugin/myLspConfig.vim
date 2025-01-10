@@ -53,7 +53,7 @@ function! SetLspOptionsAgain() abort
 endfunction
 augroup LspInit
     autocmd VimEnter * call SetLspOptionsAgain()
-    autocmd BufReadPre *.go,*.rs call AddLspServerForBuffer()
+    autocmd BufReadPre *.go,*.rs,*.js,*.ts call AddLspServerForBuffer()
 augroup END
 nmap <silent> <C-S-i> :call ToggleLspOption("highlightDiagInline") \| :echo "Inline type hints will change after the next save."<CR>
 
@@ -83,6 +83,20 @@ function! AddLspServerForBuffer()
                         \    initializationOptions: {
                         \        "rust-analyzer.completion.autoimport.enable": v:true,
                         \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"]
+                        \    }
+                        \  }])
+        endif
+    endif
+
+    if expand("%:e") == "js" || expand("%:e") == "ts"
+        if executable('typescript-language-server')
+            call LspAddServer([#{
+                        \    name: 'typescript-language-server',
+                        \    filetype: ['javascript', 'typescript'],
+                        \    path: exepath('typescript-language-server'),
+                        \    args: ['--stdio'],
+                        \    syncInit: v:true,
+                        \    initializationOptions: {
                         \    }
                         \  }])
         endif
