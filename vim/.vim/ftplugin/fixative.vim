@@ -153,6 +153,53 @@ def FormatUrlLines(url: dict<string>): list<string>
     return lines
 enddef
 
+def TakeJwtSegment(input: string): list<string>
+    return TakePattern(input, '[^.]\+', 0, 0)
+enddef
+
+def PadBase64String(input: string): string
+    var rem = len(input) % 4
+    if rem == 3
+        return input .. "="
+    elseif rem == 2
+        return input .. "=="
+    else
+        return input
+    endif
+enddef
+
+def DecodeBase64String(input: string): string
+    return system('echo "' .. PadBase64String(input) .. '" | base64 -d -')
+enddef
+
+def ParseJwt(input: string): list<string>
+    var accum = []
+    var subject = input
+
+    while true
+        if len(subject) == 0
+            break
+        endif
+
+        var [_, rest] = TakePattern(subject, '[.]\+', 0, 0)
+        var [segment64, rest1] = TakeJwtSegment(rest)
+        add(accum, segment64)
+        var segmentJson = DecodeBase64String(segment64)
+        try
+            var segmentData = json_decode(segmentJson)
+            if type(segmentData) == v:t_dict
+                add(accum, segmentJson)
+            endif
+        catch /E491/
+            add(accum, "WARNING: non-JSON segment")
+        endtry
+
+        subject = rest1
+    endwhile
+
+    return accum
+enddef
+
 def SlurpInput(): string
     var slurped = []
     var sepLineNum = FindBufferSeparatorLine()
@@ -204,15 +251,27 @@ def UpdateBuffer()
 
     var input = SlurpInput()
     var parsedUrl = ParseUrl(input)
-    var urlLines = FormatUrlLines(parsedUrl)
+    if get(parsedUrl, "scheme") != ""
+        var urlLines = FormatUrlLines(parsedUrl)
 
-    add(urlLines, "^^^")
-    add(urlLines, "Updated: " .. strftime("%c", localtime()))
+        add(urlLines, "^^^")
+        add(urlLines, "Updated: " .. strftime("%c", localtime()))
 
-    UpdateBufferWith(sepLineNum + 1, urlLines)
+        UpdateBufferWith(sepLineNum + 1, urlLines)
+        return
+    endif
+
+    if strcharpart(input, 0, 3) == "eyJ"
+        var parsedJwt = ParseJwt(input)
+        UpdateBufferWith(sepLineNum + 1, parsedJwt)
+        return
+    endif
 enddef
 
 def MaybeUpdateBuffer()
+    if BufferIsEmpty()
+        return
+    endif
     if optFixativeAuto
         UpdateBuffer()
     endif
@@ -231,6 +290,14 @@ def HyperAction(): void
             echo "Copyied '" .. val .. "' to clipboard."
         endif
     endif
+enddef
+
+def BufferIsEmpty(): bool
+    if getline('$') > 1 && line(1) == ""
+        return v:true
+    endif
+
+    return v:false
 enddef
 
 def UpdateBufferFromClipboard(): void
@@ -264,7 +331,7 @@ command! -nargs=1 -complete=customlist,ComplOptFixativeAuto FixativeAuto :call S
 
 augroup Fixative
     autocmd!
-    autocmd BufEnter,WinEnter fixative[0-9] call MaybeUpdateBuffer()
+    autocmd BufEnter,WinEnter [Fixative Buffer] call MaybeUpdateBuffer()
 augroup END
 
 nmap <C-S-f> :e!<CR>
