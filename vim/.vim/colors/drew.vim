@@ -116,9 +116,9 @@ hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
 hi Comment guifg=drew_skyblue
 hi SpecialComment guifg=drew_cyan
 hi Constant guifg=drew_cyan
-hi PreProc guifg=drew_magenta guibg=Black ctermfg=DarkMagenta
+hi PreProc guifg=drew_magenta ctermfg=DarkMagenta
 hi Statement gui=NONE guifg=drew_red
-hi Special guifg=#BB00BB guibg=Black ctermfg=Yellow
+hi Special guifg=#BB00BB ctermfg=Yellow
 hi Ignore guifg=Grey
 hi Identifier guifg=drew_ltblue
 hi Title guifg=drew_slateblue
@@ -141,7 +141,7 @@ hi link Include			PreProc
 hi link Define			PreProc
 hi link Macro			PreProc
 hi link PreCondit		PreProc
-hi link StorageClass	Type
+hi StorageClass guifg=drew_green ctermfg=LightGreen
 hi link Structure		Type
 hi link Typedef			Type
 hi link Tag				Special
@@ -235,6 +235,15 @@ hi coffeeBooleanTrue  guifg=drew_neongreen    ctermfg=LightGreen
 hi coffeeBooleanFalse guifg=drew_watermelon   ctermfg=LightRed
 hi coffeeSpecialIdent guifg=drew_grayishblue  ctermfg=LightGray
 hi coffeeRegex        guifg=drew_tan          ctermfg=Brown
+
+hi jsOperator guifg=drew_babyyellow ctermfg=LightYellow
+hi link jsSpreadOperator jsOperator
+hi jsArrowFunction guifg=drew_orange ctermfg=Brown
+hi jsFunction guifg=drew_orange ctermfg=Brown
+hi jsTemplateBraces guifg=drew_darkgreen ctermfg=Green
+hi jsTemplateExpression guifg=drew_darkgreen ctermfg=Green
+hi link jsTemplateString String
+hi jsObjectKey guifg=drew_ltgray gui=italic
 
 hi javaScriptStatement cterm=NONE ctermfg=Brown gui=NONE guifg=drew_orange
 hi javaScriptGlobalObjects guifg=drew_teal
@@ -488,7 +497,7 @@ highlight GBufExDirname guifg=drew_birchwood ctermfg=brown
 highlight GBufExBasename guifg=drew_tan ctermfg=yellow
 
 
-highlight link rustStorage rustKeyword
+highlight link rustStorage StorageClass
 highlight rustAttribute guifg=drew_grape ctermfg=Magenta
 highlight rustLifetime guifg=drew_grape ctermfg=Magenta
 highlight rustModPath guifg=drew_slateblue ctermfg=DarkGray
