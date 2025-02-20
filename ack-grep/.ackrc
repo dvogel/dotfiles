@@ -20,6 +20,7 @@
 --ignore-directory=is:_build
 --ignore-directory=is:cover_db
 --ignore-directory=is:.terraform
+--ignore-directory=match:venv.*
 --ignore-file=ext:bak
 --ignore-file=match:/~$/
 --ignore-file=match:/^#.+#$/
