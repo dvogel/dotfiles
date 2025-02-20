@@ -1,0 +1,2 @@
+setlocal noeol
+setlocal nofixeol
