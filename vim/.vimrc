@@ -50,7 +50,7 @@ set title
 set scrolloff=1
 set wildcharm=<Tab>
 set wildignore=*.o,*.hi
-set guioptions=Pegit
+set guioptions=Pegitk
 set splitbelow
 set splitright
 set switchbuf=useopen,uselast
