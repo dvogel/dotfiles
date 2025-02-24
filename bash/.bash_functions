@@ -308,3 +308,13 @@ loud-banner() {
 	echo -e "${bare_color_rst}"
 }
 
+vim-dumps() {
+  for dirname in dumps failed; do
+    filename="${1}.dump"
+    echo
+    echo "### $filename ###";
+    cat "${dirname}/${filename}"
+    echo
+  done
+}
+
