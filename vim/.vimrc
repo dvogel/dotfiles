@@ -1,7 +1,7 @@
 set termguicolors
 let g:css_colors_load = 1
 
-let g:ackpreview = 0
+unlet! g:ackpreview
 let g:ackhighlight = 1
 let g:ack_use_dispatch = 0
 
@@ -202,7 +202,7 @@ let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'b
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
-let g:ctrlp_custom_ignore = '\v.*(build|node_modules|target).*'
+let g:ctrlp_custom_ignore = '\v.*((build|node_modules|target)/|bundle.min.browser.js).*'
 
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')

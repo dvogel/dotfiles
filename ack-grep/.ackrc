@@ -109,6 +109,7 @@
 #--no-yaml
 #--no-haml
 --ignore-file=match:/[-.]min[.]js$/
+--ignore-file=match:/[-.]min[.]browser[.]js$/
 --ignore-file=match:/[.]src[.]js$/
 --ignore-file=match:/[.]map$/
 --ignore-file=match:/[.]log$/
