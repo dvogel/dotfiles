@@ -19,6 +19,8 @@ setlocal completeopt=menuone,popup
 
 nmap T /)<CR>
 nmap <S-F9> :make<CR>
+nmap <buffer> <F7> :make build<CR>
+nmap <buffer> <C-F7> :make clippy<CR>
 nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 
 # Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
@@ -67,4 +69,6 @@ nmap <leader>ok ciwOk(<C-r>-)<Esc>
 nmap <leader>Ok ciWOk(<C-r>-)<Esc>
 nmap <leader>u "uyiwciW<C-r>u
 
+# For compatibility with cargo-quickfix
+setlocal errorfile=.errors.txt
 

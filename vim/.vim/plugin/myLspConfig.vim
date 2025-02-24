@@ -53,55 +53,48 @@ function! SetLspOptionsAgain() abort
 endfunction
 augroup LspInit
     autocmd VimEnter * call SetLspOptionsAgain()
-    autocmd BufReadPre *.go,*.rs,*.js,*.ts call AddLspServerForBuffer()
+    autocmd BufReadPre *.go,*.rs,*.js,*.ts call SetLspOptionsAgain()
 augroup END
 nmap <silent> <C-S-i> :call ToggleLspOption("highlightDiagInline") \| :echo "Inline type hints will change after the next save."<CR>
 
-function! AddLspServerForBuffer()
-    call SetLspOptionsAgain()
+if executable('gopls')
+    call LspAddServer([#{
+                \    name: 'go',
+                \    filetype: ['go'],
+                \    path: exepath('gopls'),
+                \    args: [],
+                \    syncInit: v:true
+                \  }])
+endif
 
-    if expand("%:e") == "go"
-        if executable('gopls')
-            call LspAddServer([#{
-                        \    name: 'go',
-                        \    filetype: ['go'],
-                        \    path: exepath('gopls'),
-                        \    args: [],
-                        \    syncInit: v:true
-                        \  }])
-        endif
-    endif
+if executable('rust-analyzer')
+    call LspAddServer([#{
+                \    name: 'rustlang',
+                \    filetype: ['rust'],
+                \    path: exepath('rust-analyzer'),
+                \    args: [],
+                \    syncInit: v:true,
+                \    initializationOptions: {
+                \        "rust-analyzer.completion.autoimport.enable": v:true,
+                \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"]
+                \    }
+                \  }])
+endif
 
-    if expand("%:e") == "rs"
-        if executable('rust-analyzer')
-            call LspAddServer([#{
-                        \    name: 'rustlang',
-                        \    filetype: ['rust'],
-                        \    path: exepath('rust-analyzer'),
-                        \    args: [],
-                        \    syncInit: v:true,
-                        \    initializationOptions: {
-                        \        "rust-analyzer.completion.autoimport.enable": v:true,
-                        \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"]
-                        \    }
-                        \  }])
-        endif
-    endif
+if executable('start-typescript-language-server')
+    call LspAddServer([#{
+                \    name: 'typescript-language-server',
+                \    filetype: ['typescript'],
+                \    path: exepath('start-typescript-language-server'),
+                \    args: [],
+                \    syncInit: v:true,
+                \    initializationOptions: {
+                \    }
+                \  }])
+endif
 
-    if expand("%:e") == "js" || expand("%:e") == "ts"
-        if executable('typescript-language-server')
-            call LspAddServer([#{
-                        \    name: 'typescript-language-server',
-                        \    filetype: ['javascript', 'typescript'],
-                        \    path: exepath('typescript-language-server'),
-                        \    args: ['--stdio'],
-                        \    syncInit: v:true,
-                        \    initializationOptions: {
-                        \    }
-                        \  }])
-        endif
-    endif
-endfunction
-
-nmap <M-d> :LspDiagCurrent<CR>
 nmap <M-c> :LspCodeAction<CR>
+nmap <M-d> :LspDiagCurrent<CR>
+nmap <M-h> :LspHover<CR>
+nmap <M-r> :LspRename<CR>
+nmap <M-s> :LspShowSignature<CR>
