@@ -52,8 +52,8 @@ syn match     rustPathFinalIdentifierValueLevel "_*[a-z]\w*;" contained
 
 " These regions exist only to scope matches to the block-specific identifier
 " patterns.
-syn region    rustEnumBlock skip="[^}]" start="enum\s\+\w\+\s\+{" end="}" keepend
-            \ contains=rustStructure,rustKeyword,rustOperator,rustType,rustEnumTupleStructEntry,rustEnumStructEntry,rustEnumVariantDecl
+syn region    rustEnumBlock skip="[^}]" start="enum\s\+\w\+\s\+{" end="}"
+            \ contains=rustAttribute,rustStructure,rustKeyword,rustOperator,rustType,rustEnumTupleStructEntry,rustEnumStructEntry,rustEnumVariantDecl
 syn match     rustEnumVariantDecl "[A-Z]\w*\ze," contained
 syn region    rustEnumTupleStructEntry matchgroup=rustEnumVariantDecl skip="[^)]" start="_*[A-Z]\w*(" end=")" keepend contained
             \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator
