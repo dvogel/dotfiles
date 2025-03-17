@@ -30,7 +30,7 @@ function! SetLspOptionsAgain() abort
                 \   echoSignature: v:true,
                 \   hideDisabledCodeActions: v:false,
                 \   highlightDiagInline: v:false,
-                \   hoverInPreview: v:false,
+                \   hoverInPreview: v:true,
                 \   ignoreMissingServer: v:false,
                 \   keepFocusInReferences: v:false,
                 \   noNewlineInCompletion: v:true,
@@ -57,6 +57,7 @@ augroup LspInit
 augroup END
 nmap <silent> <C-S-i> :call ToggleLspOption("highlightDiagInline") \| :echo "Inline type hints will change after the next save."<CR>
 
+call SetLspOptionsAgain()
 if executable('gopls')
     call LspAddServer([#{
                 \    name: 'go',
