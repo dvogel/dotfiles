@@ -122,6 +122,7 @@ let g:formatters_cs = ['my_custom_cs']
 let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")." ".b:java_style_flag." -"'
 let g:formatters_java = ['google_java_format']
 let g:formatters_rust = ['rustfmt']
+let g:formatdef_rustfmt = '"rustfmt --style-edition=2024 --edition=2024"'
 let g:formatters_go = ['donotrunthis']
 let g:formatters_javascript = ['prettier']
 let g:formatdef_prettier = '"./node_modules/.bin/prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
@@ -156,6 +157,10 @@ au FileType python source ~/.vim/scripts/python.vim
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
+augroup RustCmds
+  autocmd!
+  autocmd BufRead *.rs UseCargoWorkspaceTags
+augroup END
 
 " Always open the quickfix window on the bottom (no vertical split)
 map <C-S-?> :copen<CR>

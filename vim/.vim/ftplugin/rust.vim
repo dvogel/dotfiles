@@ -54,9 +54,29 @@ def EditCargoToml(): void
     endif
 enddef
 
+def IsCargoWorkspace(path: string): bool
+    var lines = readfile(path .. "/Cargo.toml", "", 1000)
+    var workspaceLineNum = indexof(lines, (idx, ln) => ln == "[workspace]")
+    return workspaceLineNum >= 0
+enddef
+
+def UseCargoWorkspaceTags(): void
+    var projectRoot = g:ProjectRootGet()
+    if projectRoot == getcwd()
+        if IsCargoWorkspace(getcwd()) == v:false
+            echomsg "Skipping cargo workspace tags because current directory is not a workspace"
+            return
+        endif
+    endif
+
+    var projectTagsPattern = projectRoot .. "/**/TAGS"
+    execute "setlocal tags+=" .. projectTagsPattern
+enddef
+
 defcompile
 
 command! CargoEdit EditCargoToml()
+command! UseCargoWorkspaceTags UseCargoWorkspaceTags()
 
 nmap <leader>rb viwo<Esc>i&<Esc>
 nmap <leader>rB ?&<CR>dl
