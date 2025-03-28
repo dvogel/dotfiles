@@ -68,6 +68,11 @@ __rails_env () {
     fi
 }
 
+if on_macos; then
+__cgroup_slice() {
+  return
+}
+else
 __cgroup_slice() {
     read -r shell_cgroup < /proc/self/cgroup
     if [[ -z "$shell_cgroup" ]]; then
@@ -80,6 +85,7 @@ __cgroup_slice() {
     local slice_name="${nosuffix_cgroup##*/}"
     echo -n " slice:${slice_name}"
 }
+fi
 
 if [[ "$color_prompt" = yes ]]; then
     PS1="╰──$(ansi_color 32)\u$(ansi_bold_color 31)@$(ansi_color 32)\h$(ansi_bold_color 31):$(ansi_bold_color 34)\w${color_rst}$(ansi_color 35)\$(__cgroup_slice)${color_rst}\$(__git_ps1_ext)$(ansi_bold_color 31)${PS1_EXTRA}>${color_rst} "
@@ -216,3 +222,7 @@ quiet_source "/usr/share/doc/fzf/examples/key-bindings.bash"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [[ -e /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
