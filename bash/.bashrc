@@ -132,6 +132,7 @@ PATH_DIRS=(
             "${HOME}/.rvm/bin"
             "${HOME}/.rbenv/bin"
             "${HOME}/.tfenv/bin"
+            "${HOME}/opt/tfenv/bin"
             "${HOME}/Library/Android/sdk/tools"
             "${HOME}/Library/Android/sdk/platform-tools"
             "${HOME}/opt/crgrep/bin"

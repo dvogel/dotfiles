@@ -318,3 +318,37 @@ vim-dumps() {
   done
 }
 
+shell_in_docker() {
+  docker run --rm -it -e ROWS -e COLS --network host --entrypoint /bin/bash "$@"
+}
+
+base64_convert_from_url() {
+  tr '-' '+' | tr '_' '/'
+}
+
+base64_convert_to_url() {
+  tr '+' '-' | tr '/' '_'
+}
+
+base64_pad() {
+  local input
+  read -r input
+
+  local input_length="${#input}"
+
+  local input_len_rem=$(($input_length % 4))
+  local padding
+  case "${#input}" in
+    2)
+      padding="=="
+      ;;
+    3)
+      padding="="
+      ;;
+    *)
+      padding=""
+      ;;
+  esac
+  echo -n "${input}${padding}"
+}
+

@@ -34,7 +34,6 @@ alias ffmerge='git merge --ff-only'
 alias shaof='git rev-parse'
 alias lastcommit='git log HEAD^.. | cat'
 alias mkurls='xclip -out | urlextract.py | tee urls.txt'
-alias shell-in-docker='docker run --rm -it -e ROWS -e COLS --entrypoint /bin/bash'
 alias shell-in-podman='podman run --rm -it -e ROWS -e COLS --entrypoint /bin/bash'
 
 alias bex='bundle exec'
@@ -45,6 +44,10 @@ alias aws-usage="sed -e '/O\x08OP\x08PT\x08TI\x08IO\x08ON\x08NS\x08S/ Q'"
 alias ssm-to="awsv2 ssm start-session --target"
 alias debian-releases='lynx -dump https://www.debian.org/releases/ | grep -A12 "Index of releases"'
 alias debian-versions=debian-releases
+
+alias rtags='rusty-tags --omit-deps --output TAGS vi'
+
+alias miniktl='minikube kubectl --'
 
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
