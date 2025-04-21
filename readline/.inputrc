@@ -6,6 +6,14 @@
 "^N": history-search-forward
 "\C-[[A": history-search-backward
 "\C-[[B": history-search-forward
+# MacOS, kitty:
+#   Cmd-d
+"\C-[OA": history-search-backward
+"\C-[OB": history-search-forward
+"\C-[[100;9u": backward-kill-word
+#   Alt-d (not working)
+"\M-d": backward-kill-word
+"∂": backward-kill-wrd
 # MacOS, iTerm2:
 "\C-[\C-[[C": forward-word
 "\C-[\C-[[D": backward-word
