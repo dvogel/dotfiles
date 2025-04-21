@@ -6,9 +6,6 @@ setlocal ruler
 setlocal shiftwidth=4
 setlocal tabstop=4
 
-# setlocal omnifunc=lsc#complete#complete
-# setlocal completefunc='lsc#complete#complete'
-
 # Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
 nmap t ?(\zs.<CR>
 compiler cargo
@@ -25,9 +22,15 @@ nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 
 # Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
 # inoremap <buffer> <C-S-N> <C-x><C-u>
-setlocal completefunc=lsc#complete#complete
+# setlocal completefunc=
 
 b:autoformat_remove_trailing_spaces = 1
+
+# TODO: The 'cargo metadata --no-deps' command should give us the edition for
+# a package being editing in an object like:
+#     { packages: { ... .edition = "...", .manifest_path = "..." } }
+# And the .manifest_path member should match the Cargo.toml file findable with
+# the EditCargoToml() logic.
 
 def EditCargoToml(): void
     var stopRoot = expand("%:p:h")
