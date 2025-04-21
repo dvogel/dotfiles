@@ -32,6 +32,7 @@
 --ignore-file=match:/[.]css[.]min$/
 --type-add=perl:ext:pl,pm,pod,t
 --type-add=perl:firstlinematch:/^#!.*\bperl/
+--type-add=wix:ext:wxs
 --type-add=make:ext:mk
 --type-add=make:ext:mak
 --type-add=make:is:makefile
@@ -133,5 +134,7 @@
 --ignore-directory=is:build
 --ignore-directory=match:/jacoco.*/
 --ignore-directory=is:maven-status
-
+--ignore-directory=is:target/
 --ignore-file=is:TAGGED_FILES
+--ignore-file=is:llvm-cov.info
+--ignore-file=is:lcov.info
