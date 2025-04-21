@@ -286,12 +286,14 @@ cargo-ex() {
     mold -run cargo --color=always "$@" |& less -RFX
 }
 
-retag-here() {
-	if [[ -x ./bin/retag ]]; then
-		./bin/retag
-	else
-		ctags -R -f TAGS .
-	fi
+retag_here() {
+  if [[ -x ./bin/retag ]]; then
+    ./bin/retag
+  elif [[ -e Cargo.toml ]]; then
+    rusty-tags -O TAGS vi
+  else
+    ctags -R -f TAGS .
+  fi
 }
 
 loud-banner() {
@@ -320,6 +322,13 @@ vim-dumps() {
 
 shell_in_docker() {
   docker run --rm -it -e ROWS -e COLS --network host --entrypoint /bin/bash "$@"
+}
+
+minikube_docker() {
+  (
+    eval $(minikube docker-env);
+    docker "$@"
+  )
 }
 
 base64_convert_from_url() {

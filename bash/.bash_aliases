@@ -15,6 +15,9 @@ alias pulseaudio-rescan='pacmd unload-module module-udev-detect && pacmd load-mo
 alias purge_screenshots='find ~/Pictures -name "Screenshot*.png" -ctime +30 -print0 | xargs -n1 -0 -- rm'
 alias noblanklines="awk '/[^\s]/ { print \$0 }'"
 alias jsoncount="jq -n 'reduce inputs as \$i (0; . + 1)'"
+alias certtext="openssl x509 -noout -text"
+alias certattrs="openssl x509 -noout -subject -issuer -startdate -enddate"
+alias vy="view --cmd 'set ft=yaml' -"
 
 alias gdc='git diff --cached'
 alias githist='git log --graph --branches --oneline'
