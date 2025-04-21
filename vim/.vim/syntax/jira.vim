@@ -6,6 +6,7 @@ syn match jiraTODO "TODO:"
 syn region jiraQuoteBlock matchgroup=jiraQuoteBlockTags start="{quote}" end="{quote}"
 syn region jiraNoFormatBlock matchgroup=jiraNoFormatBlockTags start="{noformat}" end="{noformat}"
 syn region jiraMonoSpan matchgroup=jiraMonoSpanTags start="{{" end="}}"
+syn region jiraMonoSpanMarkdown matchgroup=jiraMonoSpanTags start="`" end="`"
 syn region jiraEmphasisSpan matchgroup=jiraEmphasisSpanTags start="_" end="_"
 syn region jiraStrongSpan matchgroup=jiraStrongSpanTags start="*" end="*"
 syn match jiraListLine "^\([*]\+\|[-]\+\).*$" contains=jiraListBullet
@@ -18,6 +19,7 @@ highlight jiraQuoteBlockTags guifg=drew_orange
 highlight jiraNoFormatBlock guifg=drew_birchwood
 highlight jiraNoFormatBlockTags guifg=drew_orange
 highlight jiraMonoSpan guifg=drew_birchwood
+highlight jiraMonoSpanMarkdown guifg=drew_birchwood
 highlight jiraMonoSpanTags guifg=drew_orange
 highlight jiraEmphasisSpan gui=italic
 highlight jiraEmphasisSpanTags guifg=drew_orange
