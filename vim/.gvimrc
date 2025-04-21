@@ -12,3 +12,11 @@ command! DecreaseGuiFontSize :call fontsize.DecreaseGuiFontSize()
 noremap <C-S-+> <ScriptCmd>:call fontsize.IncreaseGuiFontSize()<CR>
 noremap <C-S-_> <ScriptCmd>:call fontsize.DecreaseGuiFontSize()<CR>
 
+if has("mac")
+    imap <silent> <S-Help> <C-r>+
+    cmap <S-Help> <C-r>+
+
+    " For some reason on MacVim (only in the GUI) <C-n> by default
+    " triggers <C-x><C-u> (for 'completefunc' based completions).
+    imap <C-n> <C-x><C-n>
+endif

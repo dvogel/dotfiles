@@ -94,8 +94,28 @@ if executable('start-typescript-language-server')
                 \  }])
 endif
 
+if executable('omnisharp-lsp')
+    call LspAddServer([#{
+                \    name: 'omnisharp',
+                \    filetype: ['cs'],
+                \    path: exepath('omnisharp-lsp'),
+                \    args: [],
+                \    syncInit: v:true
+                \  }])
+endif
+
+
 nmap <M-c> :LspCodeAction<CR>
 nmap <M-d> :LspDiagCurrent<CR>
 nmap <M-h> :LspHover<CR>
 nmap <M-r> :LspRename<CR>
 nmap <M-s> :LspShowSignature<CR>
+nmap <C-\> :LspGotoDefinition<CR>
+nmap <C-g> :LspHover<CR>
+
+if has("mac")
+    nmap <D-d> :LspDiagCurrent<CR>
+    nmap <D-c> :LspCodeAction<CR>
+    nmap <D-D> :LspGotoDefinition<CR>
+    nmap <D-r> :LspShowReferences<CR>
+endif

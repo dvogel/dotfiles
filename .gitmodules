@@ -85,9 +85,6 @@
 [submodule "vim-terraform"]
 	path = vim/.vim/pack/plugins/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
-[submodule "omnisharp-vim"]
-	path = vim/.vim/pack/plugins/start/omnisharp-vim
-	url = git@github.com:OmniSharp/omnisharp-vim
 [submodule "rust.vim"]
 	path = vim/.vim/pack/plugins/start/rust.vim
 	url = git@github.com:rust-lang/rust.vim.git

@@ -205,7 +205,10 @@ nnoremap <C-S-E> :e %:h<Tab>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
-let g:ctrlp_working_path_mode = 'ra'
+" Most compatible with my AutoProjectRootCD
+let g:ctrlp_working_path_mode = ''
+" The default:
+" let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
 let g:ctrlp_custom_ignore = '\v.*((build|node_modules|target)/|bundle.min.browser.js).*'
 
@@ -267,6 +270,29 @@ let python_highlight_all = 1
 let g:vim_json_syntax_conceal = 0
 
 nnoremap <leader>sy :echo SyntaxTrailUnderCursor()<CR>
+
+if has("mac")
+    function! s:ImportPathsFromShell() abort
+        " let l:macos_homebrew_bin = "/opt/homebrew/bin"
+        let l:shell_path_lines = systemlist("$SHELL -i -c 'echo; echo $PATH'")
+        if len(l:shell_path_lines) == 0
+            echoerr "Could not obtain PATH from $SHELL"
+            return
+        endif
+        let l:shell_path_parts = split(l:shell_path_lines[-1], ":")
+        let l:path_parts = split(getenv("PATH"), ":")
+        for l:p in l:shell_path_parts
+            if index(l:path_parts, l:p) == -1
+                if isdirectory(l:p)
+                    call add(l:path_parts, l:p)
+                endif
+            endif
+        endfor
+        call setenv("PATH", join(l:path_parts, ":"))
+    endfunction
+
+    call s:ImportPathsFromShell()
+endif
 
 function! AckWordInProjectRoot (word)
     let l:word = empty(a:word) ? expand('<cword>') : a:word
