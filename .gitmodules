@@ -64,9 +64,6 @@
 [submodule "vim-raml"]
 	path = vim/.vim/pack/plugins/start/vim-raml
 	url = https://github.com/IN3D/vim-raml.git
-[submodule "vim-autoformat"]
-	path = vim/.vim/pack/plugins/start/vim-autoformat
-	url = https://github.com/Chiel92/vim-autoformat.git
 [submodule "vim-csharp"]
 	path = vim/.vim/pack/plugins/start/vim-csharp
 	url = git@github.com:OrangeT/vim-csharp.git
@@ -169,3 +166,6 @@
 [submodule "gnome-shell-argos"]
 	path = gnome-shell/extensions/argos
 	url = git@github.com:p-e-w/argos.git
+[submodule "vim-autofmt9"]
+	path = vim/.vim/pack/plugins/start/vim-autofmt9
+	url = git@github.com:dvogel/vim-autofmt9.git
