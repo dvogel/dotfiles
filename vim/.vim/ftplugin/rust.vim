@@ -6,14 +6,13 @@ setlocal ruler
 setlocal shiftwidth=4
 setlocal tabstop=4
 
-# Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
-nmap t ?(\zs.<CR>
 compiler cargo
-
 
 # The vim-lsc and vim-rust plugins trash completeopt so reset it to my liking:
 setlocal completeopt=menuone,popup
 
+# Consider: ?(\zs. <bar>:call histdel('search', -1)<cr>
+nmap t ?(\zs.<CR>
 nmap T /)<CR>
 nmap <S-F9> :make<CR>
 nmap <buffer> <F7> :make build<CR>
@@ -95,3 +94,7 @@ nmap <leader>u "uyiwciW<C-r>u
 # For compatibility with cargo-quickfix
 setlocal errorfile=.errors.txt
 
+augroup RustBufferCmds
+    autocmd!
+    autocmd BufReadPost *.rs UseCargoWorkspaceTags
+augroup END

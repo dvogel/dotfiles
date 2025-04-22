@@ -157,10 +157,6 @@ au FileType python source ~/.vim/scripts/python.vim
 au BufNewFile,BufRead templates/*.html setlocal filetype=htmldjango
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead,BufFilePre *.scpl setlocal filetype=scpl
-augroup RustCmds
-  autocmd!
-  autocmd BufRead *.rs UseCargoWorkspaceTags
-augroup END
 
 " Always open the quickfix window on the bottom (no vertical split)
 map <C-S-?> :copen<CR>
