@@ -427,3 +427,7 @@ endfunction
 command! AutoformatBufferDisable :call AutoformatBufferDisable()
 command! AutoformatBufferReenable :call AutoformatBufferReenable()
 
+import "prettyprint.vim"
+let g:PrettyFormat = function("prettyprint.PrettyFormat")
+let g:PrettyPrint = function("prettyprint.PrettyPrint")
+
