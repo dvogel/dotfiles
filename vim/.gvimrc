@@ -16,6 +16,8 @@ if has("mac")
     imap <silent> <S-Help> <C-r>+
     cmap <S-Help> <C-r>+
 
+    nmap <leader>yp "+yiw
+
     " For some reason on MacVim (only in the GUI) <C-n> by default
     " triggers <C-x><C-u> (for 'completefunc' based completions).
     imap <C-n> <C-x><C-n>
