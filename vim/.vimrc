@@ -295,6 +295,8 @@ function! AckWordInProjectRoot (word)
     call ack#Ack('grep', join([l:word, l:root], ' '))
 endfunction
 
+nmap <leader>gm /\v[<>=]{4,}<CR>
+command! CopyFilenameToClipboard call setreg('+', expand("%"))
 command! -bang -nargs=* AckRel call AckWordInProjectRoot(<q-args>)
 nmap <Leader>ag :AckRel<CR>
 nmap <Leader>vws :'<,'>s/[ \t]\+$//<CR>
