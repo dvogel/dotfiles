@@ -314,7 +314,7 @@ vim-dumps() {
   for dirname in dumps failed; do
     filename="${1}.dump"
     echo
-    echo "### $filename ###";
+    echo "### $dirname/$filename ###";
     cat "${dirname}/${filename}"
     echo
   done
