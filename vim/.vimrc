@@ -119,10 +119,14 @@ let g:formatdef_my_custom_cs = '"astyle --mode=cs --style=1tbs -N --convert-tabs
 let g:formatters_cs = ['my_custom_cs']
 let g:formatdef_google_java_format = '"google-java-format --assume-filename ".expand("%")." ".b:java_style_flag." -"'
 let g:formatters_java = ['google_java_format']
-let g:formatters_rust = ['rustfmt']
-let g:formatdef_rustfmt = '"rustfmt --style-edition=2024 --edition=2024"'
+" let g:formatters_rust = ['rustfmt']
+" let g:formatdef_rustfmt = '"rustfmt --style-edition=2024 --edition=2024"'
+" let g:formatters_rust = ['rustfmt']
+let g:formatters_rust = ['donotrunthis']
 let g:formatters_go = ['donotrunthis']
-let g:formatters_javascript = ['prettier']
+" let g:formatters_javascript = ['prettier']
+let g:formatters_javascript = ['donotrunthis']
+let g:formatters_typescript = ['donotrunthis']
 let g:formatdef_prettier = '"./node_modules/.bin/prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'
 let g:run_all_formatters_javascript = v:false
 

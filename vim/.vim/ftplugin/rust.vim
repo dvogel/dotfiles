@@ -22,6 +22,7 @@ nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 # Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
 # inoremap <buffer> <C-S-N> <C-x><C-u>
 # setlocal completefunc=
+# setlocal completefunc=lsc#complete#complete
 
 b:autoformat_remove_trailing_spaces = 1
 
@@ -98,3 +99,11 @@ augroup RustBufferCmds
     autocmd!
     autocmd BufReadPost *.rs UseCargoWorkspaceTags
 augroup END
+
+def AutofmtCommandHook(bufnr: number): dict<any>
+    return {
+        "command": "rustfmt",
+        "options": {},
+    }
+enddef
+b:autofmt_command_hook = function('AutofmtCommandHook')
