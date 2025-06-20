@@ -1,0 +1,10 @@
+// Actions take the same names as the methods defined here:
+// https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
+{
+    "\UF729"   = (moveToBeginningOfLine:);                   // home
+    "\UF72B"   = (moveToEndOfLine:);                         // end
+    "$\UF729"  = (moveToBeginningOfLineAndModifySelection:); // shift-home
+    "$\UF72B"  = (moveToEndOfLineAndModifySelection:);       // shift-end
+    "^a"       = (selectAll:);
+    "^e"       = (moveToEndOfDocumentAndModifySelection:);
+}
