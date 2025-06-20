@@ -1,7 +1,7 @@
 vim9script
 
 def InvertDict(subj: dict<any>): dict<any>
-    var newSubj: dict<any> = {}
+    var newSubj = {}
     for k in keys(subj)
         newSubj[subj[k]] = k
     endfor
@@ -213,6 +213,23 @@ def SlurpInput(): string
     return join(slurped, "\n")
 enddef
 
+def SlurpOutput(): list<string>
+    var sepLineNum = FindBufferSeparatorLine()
+    if sepLineNum == -1
+        return []
+    endif
+    return getline(sepLineNum + 3, '$')
+enddef
+
+def ReplaceInputWithLines(newInputLines: list<string>): void
+    var sepLineNum = FindBufferSeparatorLine()
+    if sepLineNum == -1
+        return
+    endif
+    deletebufline(bufnr(), 1, sepLineNum - 1)
+    append(0, newInputLines)
+enddef
+
 def FindBufferSeparatorLine(): number
     var lineNum = 1
     var lastLineNum = line("$")
@@ -227,12 +244,94 @@ def FindBufferSeparatorLine(): number
     return -1
 enddef
 
+def RedrawActionBar(lineNum: number, inputTypes: list<string>): void
+    var actions = []
+
+    for type in inputTypes
+        if type == "jwt"
+            add(actions, "[Decode As Jwt]")
+        endif
+    endfor
+
+    extend(actions, [
+        "[From Clipboard]",
+        "[To Clipboard]",
+        "[Promote Output]"
+    ])
+
+    setline(lineNum, join(actions, " / "))
+    setline(lineNum + 1, "---")
+enddef
+
 def UpdateBufferWith(startLineNum: number, newLines: list<string>)
     var lineNum = startLineNum 
     for ln in newLines
         setline(lineNum, ln)
         lineNum += 1
     endfor
+enddef
+
+def IdentifyInputTypes(input: string): list<string>
+    var accum = []
+
+    if matchstr(input, '\v[a-z]+://', 0) != ""
+        add(accum, "url")
+    endif
+
+    if strcharpart(input, 0, 3) == "eyJ"
+        add(accum, "jwt")
+    endif
+
+    if matchstr(input, '\v([-_A-Za-z0-9]{76}\n)+([-_A-Za-z0-9]{0,76})[=]{0,3}') != ""
+        add(accum, "base64")
+    endif
+
+    return accum
+enddef
+
+def UpdateBufferAsUrl(input: string, firstLine: number): void
+    var parsedUrl = ParseUrl(input)
+    if get(parsedUrl, "scheme") != ""
+        var urlLines = FormatUrlLines(parsedUrl)
+
+        add(urlLines, "^^^")
+        add(urlLines, "Updated: " .. strftime("%c", localtime()))
+
+        UpdateBufferWith(firstLine, urlLines)
+        return
+    endif
+enddef
+
+def UpdateBufferAsJwt(input: string, firstLine: number): void
+    var parsedJwt = ParseJwt(input)
+    UpdateBufferWith(firstLine, parsedJwt)
+enddef
+
+def UpdateBufferAsBase64(input: string, firstLine: number): void
+    var accum = []
+    var chan = job_start(['base64', '-d'], {
+        'in_io': 'buffer',
+        'in_buf': bufnr(),
+        'in_top': 1,
+        'in_bot': firstLine - 2,
+        'out_io': 'pipe',
+        'out_cb': (chan1, msg) => {
+            extend(accum, [msg])
+        },
+        'close_cb': (chan1) => {
+            ReplaceInputWithLines(accum)
+        }
+    })
+enddef
+
+def UpdateBufferByType(input: string, firstLine: number, type: string): void
+    if type == "url"
+        UpdateBufferAsUrl(input, firstLine)
+    elseif type == "jwt"
+        UpdateBufferAsJwt(input, firstLine)
+    elseif type == "base64"
+        UpdateBufferAsBase64(input, firstLine)
+    endif
 enddef
 
 def UpdateBuffer()
@@ -250,21 +349,12 @@ def UpdateBuffer()
     endif
 
     var input = SlurpInput()
-    var parsedUrl = ParseUrl(input)
-    if get(parsedUrl, "scheme") != ""
-        var urlLines = FormatUrlLines(parsedUrl)
-
-        add(urlLines, "^^^")
-        add(urlLines, "Updated: " .. strftime("%c", localtime()))
-
-        UpdateBufferWith(sepLineNum + 1, urlLines)
-        return
-    endif
-
-    if strcharpart(input, 0, 3) == "eyJ"
-        var parsedJwt = ParseJwt(input)
-        UpdateBufferWith(sepLineNum + 1, parsedJwt)
-        return
+    var inputTypes = IdentifyInputTypes(input)
+    RedrawActionBar(sepLineNum + 1, inputTypes)
+    if len(inputTypes) > 0
+        UpdateBufferByType(input, sepLineNum + 3, inputTypes[0])
+    else
+        UpdateBufferWith(sepLineNum + 3, ["Could not identify input type."])
     endif
 enddef
 
@@ -289,6 +379,43 @@ def HyperAction(): void
             @+ = val
             echo "Copyied '" .. val .. "' to clipboard."
         endif
+    elseif synName == "fixativeHyperAction"
+        var actionName = ActionNameUnderCursor()
+        if actionName == "[From Clipboard]"
+            ReplaceInputWithLines(getreg('+', 1, v:true))
+        elseif actionName == "[To Clipboard]"
+            setreg('+', SlurpInput())
+        elseif actionName == "[Promote Output]"
+            var output = SlurpOutput()
+            if output == []
+                echomsg "No output found in the current buffer."
+            else
+                ReplaceInputWithLines(output)
+            endif
+        endif
+    endif
+enddef
+
+def ActionNameUnderCursor(): string
+    var lineText = getline('.')
+    var cursorPos = getpos('.')
+    var cursorCol = cursorPos[2]
+
+    var beginOffset = cursorCol
+    while beginOffset > 0 && lineText[beginOffset] != "["
+        beginOffset -= 1
+    endwhile
+
+    var endOffset = cursorCol
+    while endOffset < len(lineText) && lineText[endOffset] != "]"
+        endOffset += 1
+    endwhile
+
+    if lineText[beginOffset] == "[" && lineText[endOffset] == "]"
+        return strcharpart(lineText, beginOffset, endOffset - beginOffset + 1)
+    else
+        echomsg "Could not find hyper action text markers '[' and ']'"
+        return ""
     endif
 enddef
 
@@ -337,6 +464,7 @@ augroup END
 nmap <C-S-f> :e!<CR>
 nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
 nmap <S-Return> :call <SID>HyperAction()<CR>
+nmap <Tab> /\[\zs.\{-1,\}\ze\]<CR>
 
 UpdateBuffer()
 
