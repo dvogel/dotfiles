@@ -546,6 +546,10 @@ highlight tadaTopicTitle5 guifg=drew_ltblue
 highlight tadaTopicTitle6 guifg=drew_ltblue
 highlight tadaDelimiter guifg=drew_orange
 
+highlight terraNamespace guifg=drew_palepurple
+highlight terraResourceTypeBI guifg=drew_palepurple
+highlight terraDataTypeBI guifg=drew_palepurple
+
 highlight qfFileName guifg=drew_ltblue
 
 highlight LspDiagSignErrorText guifg=drew_red
