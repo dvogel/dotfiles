@@ -81,11 +81,6 @@ end
 let g:JavaComplete_ClosingBrace = 0
 let g:JavaComplete_StaticImportsAtTop = 1
 
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 0
-let g:OmniSharp_start_server = 1
-let g:OmniSharp_highlighting = 0
-
 let g:tada_todo_styles = 'unicode'
 let g:tada_todo_statuses = ['planned', 'doing', 'complete']
 let g:tada_todo_symbols = {'planned': ' ' , 'doing': '🛠️', 'complete': '✅' }
@@ -100,6 +95,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
 let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_bash_checkers = ['shellcheck']
+let g:syntastic_bash_shellcheck_exe = '/opt/homebrew/bin/shellcheck'
+let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_html_checkers = ['htmlhint']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
