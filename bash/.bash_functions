@@ -347,7 +347,7 @@ base64_pad() {
 
   local input_len_rem=$(($input_length % 4))
   local padding
-  case "${#input}" in
+  case "${input_len_rem}" in
     2)
       padding="=="
       ;;
@@ -359,5 +359,11 @@ base64_pad() {
       ;;
   esac
   echo -n "${input}${padding}"
+}
+
+jwt_decode() {
+  local token="$(cat)"
+  echo "$token" | awk -F. '{ print $1 }' | base64_pad | base64 -d | jq .
+  echo "$token" | awk -F. '{ print $2 }' | base64_pad | base64 -d | jq .
 }
 
