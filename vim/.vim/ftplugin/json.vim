@@ -21,3 +21,11 @@ map <leader>jf <Esc>:FormatJSON<CR>
 com! PPJSON %!json_pp
 map <leader>jpp <Esc>:PPJSON<CR>
 
+function! AutofmtCommandHook(bufnr) abort
+    return {
+                \ "command": "jq -r .",
+                \ "options": {},
+                \ }
+endfunction
+
+let b:autofmt_command_hook = function('AutofmtCommandHook')
