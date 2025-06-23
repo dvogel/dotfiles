@@ -1,5 +1,7 @@
 vim9script
 
+import "base64.vim"
+
 def InvertDict(subj: dict<any>): dict<any>
     var newSubj = {}
     for k in keys(subj)
@@ -168,10 +170,6 @@ def PadBase64String(input: string): string
     endif
 enddef
 
-def DecodeBase64String(input: string): string
-    return system('echo "' .. PadBase64String(input) .. '" | base64 -d -')
-enddef
-
 def ParseJwt(input: string): list<string>
     var accum = []
     var subject = input
@@ -184,7 +182,7 @@ def ParseJwt(input: string): list<string>
         var [_, rest] = TakePattern(subject, '[.]\+', 0, 0)
         var [segment64, rest1] = TakeJwtSegment(rest)
         add(accum, segment64)
-        var segmentJson = DecodeBase64String(segment64)
+        var segmentJson = base64.Base64Decode(segment64)
         try
             var segmentData = json_decode(segmentJson)
             if type(segmentData) == v:t_dict
@@ -250,6 +248,7 @@ def RedrawActionBar(lineNum: number, inputTypes: list<string>): void
     for type in inputTypes
         if type == "jwt"
             add(actions, "[Decode As Jwt]")
+            add(actions, "[Encode As Base64]")
         endif
     endfor
 
@@ -282,7 +281,9 @@ def IdentifyInputTypes(input: string): list<string>
         add(accum, "jwt")
     endif
 
-    if matchstr(input, '\v([-_A-Za-z0-9]{76}\n)+([-_A-Za-z0-9]{0,76})[=]{0,3}') != ""
+    if matchstr(input, '\v^[-_A-Za-z0-9]+[=]{0,3}$') != ""
+        add(accum, "base64")
+    elseif matchstr(input, '\v([-_A-Za-z0-9]{76}\n)+([-_A-Za-z0-9]{0,76})[=]{0,3}') != ""
         add(accum, "base64")
     endif
 
@@ -308,20 +309,7 @@ def UpdateBufferAsJwt(input: string, firstLine: number): void
 enddef
 
 def UpdateBufferAsBase64(input: string, firstLine: number): void
-    var accum = []
-    var chan = job_start(['base64', '-d'], {
-        'in_io': 'buffer',
-        'in_buf': bufnr(),
-        'in_top': 1,
-        'in_bot': firstLine - 2,
-        'out_io': 'pipe',
-        'out_cb': (chan1, msg) => {
-            extend(accum, [msg])
-        },
-        'close_cb': (chan1) => {
-            ReplaceInputWithLines(accum)
-        }
-    })
+    UpdateBufferWith(firstLine, [base64.Base64Decode(input)])
 enddef
 
 def UpdateBufferByType(input: string, firstLine: number, type: string): void
@@ -353,6 +341,8 @@ def UpdateBuffer()
     RedrawActionBar(sepLineNum + 1, inputTypes)
     if len(inputTypes) > 0
         UpdateBufferByType(input, sepLineNum + 3, inputTypes[0])
+    elseif input == ""
+        UpdateBufferWith(sepLineNum + 3, ["Input is empty."])
     else
         UpdateBufferWith(sepLineNum + 3, ["Could not identify input type."])
     endif
@@ -360,6 +350,8 @@ enddef
 
 def MaybeUpdateBuffer()
     if BufferIsEmpty()
+        setline(1, "---")
+        UpdateBuffer()
         return
     endif
     if optFixativeAuto
@@ -383,15 +375,23 @@ def HyperAction(): void
         var actionName = ActionNameUnderCursor()
         if actionName == "[From Clipboard]"
             ReplaceInputWithLines(getreg('+', 1, v:true))
+            UpdateBuffer()
         elseif actionName == "[To Clipboard]"
             setreg('+', SlurpInput())
+            echo "Copied to clipboard"
         elseif actionName == "[Promote Output]"
             var output = SlurpOutput()
             if output == []
                 echomsg "No output found in the current buffer."
             else
                 ReplaceInputWithLines(output)
+                UpdateBuffer()
             endif
+        elseif actionName == "[Encode As Base64]"
+            var input = SlurpInput()
+            var newInput = base64.Base64Encode(input)
+            ReplaceInputWithLines([newInput])
+            UpdateBuffer()
         endif
     endif
 enddef
@@ -420,7 +420,7 @@ def ActionNameUnderCursor(): string
 enddef
 
 def BufferIsEmpty(): bool
-    if getline('$') > 1 && line(1) == ""
+    if line('$') == 1 && getline(1) == ""
         return v:true
     endif
 
@@ -453,7 +453,7 @@ def SetOptFixativeAuto(newSetting: string)
     endif
 enddef
 
-command! FixativeBuffer :call UpdateBuffer()
+command! -buffer FixativeUpdateBuffer :call UpdateBuffer()
 command! -nargs=1 -complete=customlist,ComplOptFixativeAuto FixativeAuto :call SetOptFixativeAuto(<q-args>)
 
 augroup Fixative
@@ -461,10 +461,10 @@ augroup Fixative
     autocmd BufEnter,WinEnter [Fixative Buffer] call MaybeUpdateBuffer()
 augroup END
 
-nmap <C-S-f> :e!<CR>
+nmap <C-S-f> :set filetype=fixative<CR>
 nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
 nmap <S-Return> :call <SID>HyperAction()<CR>
 nmap <Tab> /\[\zs.\{-1,\}\ze\]<CR>
 
-UpdateBuffer()
+MaybeUpdateBuffer()
 
