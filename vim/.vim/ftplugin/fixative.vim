@@ -461,6 +461,18 @@ augroup Fixative
     autocmd BufEnter,WinEnter [Fixative Buffer] call MaybeUpdateBuffer()
 augroup END
 
+def MarkInput(): void
+    var sepLineNum = FindBufferSeparatorLine()
+    if sepLineNum > 1
+        var lastLineLen = len(getline(sepLineNum - 1))
+        setpos("'<", [bufnr(), 1, 1, 0])
+        setpos("'>", [bufnr(), sepLineNum - 1, lastLineLen, 0])
+        normal gv
+    endif
+enddef
+
+nmap <buffer> I :call <SID>MarkInput()<CR>
+omap <buffer> I :<C-U>call <SID>MarkInput()<CR>
 nmap <C-S-f> :set filetype=fixative<CR>
 nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
 nmap <S-Return> :call <SID>HyperAction()<CR>
