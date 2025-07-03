@@ -2,6 +2,15 @@ import re
 
 from operator import itemgetter
 
+def append_matches(accum, results, group):
+    for match in results:
+        captured = (
+            match.start(group),
+            match.end(group),
+            match.group(group)
+        )
+        accum.append(captured)
+
 def mark(text, args, Mark, extra_cli_args, *a):
     matches = []
 
@@ -18,6 +27,9 @@ def mark(text, args, Mark, extra_cli_args, *a):
     git_match = re.search(git_pattern, text)
     if git_match:
         matches.append((git_match.start(), git_match.end(), git_match.group(0)))
+
+    git_merge_conflict_pattern = 'both modified:\s+([-_/.\w]+)'
+    append_matches(matches, re.finditer(git_merge_conflict_pattern, text), 1)
 
     for (idx, (start, end, text)) in enumerate(sorted(matches, key=itemgetter(0))):
         yield Mark(idx, start, end, text, {})
