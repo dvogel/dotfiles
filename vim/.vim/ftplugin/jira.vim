@@ -9,6 +9,7 @@ setlocal breakindent
 setlocal breakindentopt=list:-1
 setlocal formatlistpat=^\\*\\+
 setlocal formatoptions=qnjl
+setlocal nowrap
 
 def JiraNoformatRange(firstLine: number, lastLine: number): void
     append(firstLine - 1, "{noformat}")
