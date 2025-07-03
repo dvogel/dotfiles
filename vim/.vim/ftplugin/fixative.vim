@@ -188,6 +188,8 @@ def ParseJwt(input: string): list<string>
             if type(segmentData) == v:t_dict
                 add(accum, segmentJson)
             endif
+        catch /E488/
+            add(accum, "WARNING: non-JSON segment")
         catch /E491/
             add(accum, "WARNING: non-JSON segment")
         endtry
@@ -226,6 +228,15 @@ def ReplaceInputWithLines(newInputLines: list<string>): void
     endif
     deletebufline(bufnr(), 1, sepLineNum - 1)
     append(0, newInputLines)
+enddef
+
+def ReplaceOutputWithLines(newOutputLines: list<string>): void
+    var sepLineNum = FindBufferSeparatorLine()
+    if sepLineNum == -1
+        return
+    endif
+    deletebufline(bufnr(), sepLineNum + 3, '$')
+    append(sepLineNum + 2, newOutputLines)
 enddef
 
 def FindBufferSeparatorLine(): number
@@ -309,14 +320,14 @@ def UpdateBufferAsJwt(input: string, firstLine: number): void
 enddef
 
 def UpdateBufferAsBase64(input: string, firstLine: number): void
-    UpdateBufferWith(firstLine, [base64.Base64Decode(input)])
+    UpdateBufferWith(firstLine, [base64.Base64Decode(trim(input))])
 enddef
 
 def UpdateBufferByType(input: string, firstLine: number, type: string): void
     if type == "url"
         UpdateBufferAsUrl(input, firstLine)
     elseif type == "jwt"
-        UpdateBufferAsJwt(input, firstLine)
+        UpdateBufferAsJwt(trim(input), firstLine)
     elseif type == "base64"
         UpdateBufferAsBase64(input, firstLine)
     endif
@@ -392,6 +403,9 @@ def HyperAction(): void
             var newInput = base64.Base64Encode(input)
             ReplaceInputWithLines([newInput])
             UpdateBuffer()
+        elseif actionName == "[Decode As Jwt]"
+            UpdateBuffer()
+            ReplaceOutputWithLines(ParseJwt(trim(SlurpInput())))
         endif
     endif
 enddef
@@ -473,10 +487,16 @@ enddef
 
 nmap <buffer> I :call <SID>MarkInput()<CR>
 omap <buffer> I :<C-U>call <SID>MarkInput()<CR>
-nmap <C-S-f> :set filetype=fixative<CR>
-nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
-nmap <S-Return> :call <SID>HyperAction()<CR>
-nmap <Tab> /\[\zs.\{-1,\}\ze\]<CR>
+
+if has("mac")
+    nmap <M-f> :FixativeUpdateBuffer<CR>
+    nmap <M-c> :call <SID>UpdateBufferFromClipboard()<CR>
+else
+    nmap <C-S-f> :FixativeUpdateBuffer<CR>
+    nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
+endif
+nmap <buffer> <S-Return> :call <SID>HyperAction()<CR>
+nmap <buffer> <Tab> /\[\zs.\{-1,\}\ze\]<CR>
 
 MaybeUpdateBuffer()
 

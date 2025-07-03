@@ -1,10 +1,11 @@
 vim9script
 
 def OpenFixativeBuffer()
-    silent edit [Fixative Buffer]
+    enew
     setlocal noswapfile
     setlocal buftype=nofile
     setlocal bufhidden=
+    silent file [Fixative Buffer]
     setlocal filetype=fixative
 enddef
 
