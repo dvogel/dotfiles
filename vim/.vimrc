@@ -140,8 +140,6 @@ let g:go_highlight_methods = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
 
-com! W w
-com! Q q
 " Paste from system clipboard (instead of primary selection)
 nmap <Leader>cbp "+p
 if has("gui_running")
@@ -200,6 +198,8 @@ nmap <C-S> ysiw
 inoremap <C-S-n> <C-x><C-u>
 nmap <leader>H :nohlsearch<CR>
 nnoremap <C-S-E> :e %:h<Tab>
+nmap L :LspMenu<CR>
+imap <C-S-L> <Esc>:LspMenu<CR>
 
 let g:rootmarkers = ['.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml', 'pom.xml']
 
