@@ -49,6 +49,7 @@ function! SetLspOptionsAgain() abort
                 \   usePopupInCodeAction: v:true,
                 \   useQuickfixForLocations: v:true,
                 \   useBufferCompletion: v:true,
+                \   bufferCompletionTimeout: 200,
                 \ })
 endfunction
 augroup LspInit
@@ -77,7 +78,9 @@ if executable('rust-analyzer')
                 \    syncInit: v:true,
                 \    initializationOptions: {
                 \        "rust-analyzer.completion.autoimport.enable": v:true,
-                \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"]
+                \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"],
+                \        "rust-analyzer.references.excludeImports": v:true,
+                \        "rust-analyzer.references.excludeTests": v:true,
                 \    }
                 \  }])
 endif
