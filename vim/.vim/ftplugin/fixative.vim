@@ -489,8 +489,8 @@ nmap <buffer> I :call <SID>MarkInput()<CR>
 omap <buffer> I :<C-U>call <SID>MarkInput()<CR>
 
 if has("mac")
-    nmap <M-f> :FixativeUpdateBuffer<CR>
-    nmap <M-c> :call <SID>UpdateBufferFromClipboard()<CR>
+    nmap <buffer> <M-f> :FixativeUpdateBuffer<CR>
+    nmap <buffer> <M-c> :call <SID>UpdateBufferFromClipboard()<CR>
 else
     nmap <C-S-f> :FixativeUpdateBuffer<CR>
     nmap <C-S-c> :call <SID>UpdateBufferFromClipboard()<CR>
