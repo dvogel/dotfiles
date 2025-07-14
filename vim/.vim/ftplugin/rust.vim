@@ -119,4 +119,5 @@ def AutofmtCommandHook(bufnr: number): dict<any>
         "options": {},
     }
 enddef
-b:autofmt_command_hook = function('AutofmtCommandHook')
+# b:autofmt_command_hook = function('AutofmtCommandHook')
+unlet! b:autofmt_command_hook
