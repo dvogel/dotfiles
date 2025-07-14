@@ -81,16 +81,29 @@ defcompile
 command! CargoEdit EditCargoToml()
 command! UseCargoWorkspaceTags UseCargoWorkspaceTags()
 
-nmap <leader>rb viwo<Esc>i&<Esc>
-nmap <leader>rB ?&<CR>dl
-nmap <C-;> A;<Esc>
-nmap <leader>some ciwSome(<C-r>-)<Esc>
-nmap <leader>Some ciWSome(<C-r>-)<Esc>
-nmap <leader>err ciwErr(<C-r>-)<Esc>
-nmap <leader>Err ciWErr(<C-r>-)<Esc>
-nmap <leader>ok ciwOk(<C-r>-)<Esc>
-nmap <leader>Ok ciWOk(<C-r>-)<Esc>
-nmap <leader>u "uyiwciW<C-r>u
+def BrowseDocsForCrate(crateName: string): void
+    var url = $"https://docs.rs/{crateName}/latest/"
+    var openCmd = "xdg-open"
+    if has("mac")
+        openCmd = "open"
+    endif
+    system($'{openCmd} "{url}"')
+enddef
+
+
+omap <buffer> S :<C-U>call <SID>MarkSome()<CR>
+nmap <buffer> <leader>rb viwo<Esc>i&<Esc>
+nmap <buffer> <leader>rB ?&<CR>dl
+nmap <buffer> <C-;> A;<Esc>
+nmap <buffer> <leader>some ciwSome(<C-r>-)<Esc>
+nmap <buffer> <leader>Some ciWSome(<C-r>-)<Esc>
+nmap <buffer> <leader>err ciwErr(<C-r>-)<Esc>
+nmap <buffer> <leader>Err ciWErr(<C-r>-)<Esc>
+nmap <buffer> <leader>ok ciwOk(<C-r>-)<Esc>
+nmap <buffer> <leader>Ok ciWOk(<C-r>-)<Esc>
+nmap <buffer> <leader>u "uyiwciW<C-r>u
+
+command! -buffer -nargs=1 BrowserDocsForCrate call BrowseDocsForCrate(<q-args>)
 
 # For compatibility with cargo-quickfix
 setlocal errorfile=.errors.txt
