@@ -81,6 +81,15 @@ end
 
 let g:lsp_use_event_queue = 0
 
+let g:sign_column_error_signs = [
+            \ 'LspDiagError',
+            \ 'SyntasticError'
+            \ ]
+let g:sign_column_warning_signs = [
+            \ 'LspDiagWarning',
+            \ 'SyntasticWarning'
+            \ ]
+
 let g:JavaComplete_ClosingBrace = 0
 let g:JavaComplete_StaticImportsAtTop = 1
 

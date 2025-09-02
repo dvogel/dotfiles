@@ -53,6 +53,7 @@ call extend(v:colornames, {
             \ 'drew_neongreen': '#b3e46f',
             \ 'drew_khaki': '#ad6d2b',
             \ 'drew_brown': '#642e0e',
+            \ 'drew_bloodorange': '#a52c0f',
             \ 'drew_orange': '#e35c0f',
             \ 'drew_salmon': '#f37c2f',
             \ 'drew_tan': '#c77624',
@@ -108,10 +109,15 @@ hi Title gui=bold guifg=Magenta
 hi WarningMsg guifg=Red
 hi WildMenu guibg=Cyan guifg=Black
 hi Folded guibg=DarkBlue guifg=Grey
-hi FoldColumn guibg=Grey guifg=DarkBlue
 hi DiffAdd guibg=LightBlue
 hi DiffChange guibg=LightMagenta
 hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
+hi Foldcolumn guibg=NONE guifg=NONE
+hi SignColumn guibg=drew_darkgray guifg=drew_red
+
+" see plugin/signColumnHighlight.vim
+hi LspSignAlarmError guibg=drew_midgray guifg=drew_bloodred
+hi LspSignAlarmWarning guibg=drew_midgray guifg=drew_bloodorange
 
 hi Comment guifg=drew_skyblue
 hi SpecialComment guifg=drew_cyan
@@ -184,8 +190,6 @@ hi pythonUniString guifg=drew_firebrick
 hi pythonUniEscape guifg=drew_aqua
 hi pythonOperator gui=NONE guifg=drew_babyyellow
 hi pythonOperatorSyms gui=bold guifg=drew_babyyellow
-hi foldcolumn guibg=NONE guifg=NONE
-hi SignColumn guibg=drew_darkgray guifg=drew_red
 hi pythonBuiltinFunc guifg=drew_babyyellow
 hi pythonPreCondit guifg=drew_orange
 hi pythonDocTest guifg=drew_skyblue
