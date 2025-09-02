@@ -57,6 +57,7 @@ set switchbuf=useopen,uselast
 set conceallevel=2
 set hlsearch
 set switchbuf=useopen
+set noswapfile
 
 set noerrorbells
 set visualbell
@@ -77,6 +78,8 @@ if has("mac")
     " open in another buffer.
     set nobackup
 end
+
+let g:lsp_use_event_queue = 0
 
 let g:JavaComplete_ClosingBrace = 0
 let g:JavaComplete_StaticImportsAtTop = 1

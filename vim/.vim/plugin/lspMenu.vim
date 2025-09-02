@@ -6,6 +6,9 @@ var menuChoices = [
     ["Show References", "LspShowReferences"],
     ["Show Incoming Calls", "LspIncomingCalls"],
     ["Show Diagnostics", "LspDiagHere"],
+    ["Format", "LspFormat"],
+    ["Rename", "LspRename"],
+    ["Show Signature", "LspShowSignature"],
 ]
 
 def MoveOptionToTop(idx: number): void

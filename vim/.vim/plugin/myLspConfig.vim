@@ -74,11 +74,11 @@ if executable('rust-analyzer')
                 \    name: 'rustlang',
                 \    filetype: ['rust'],
                 \    path: exepath('rust-analyzer'),
-                \    args: [],
                 \    syncInit: v:true,
                 \    initializationOptions: {
                 \        "rust-analyzer.completion.autoimport.enable": v:true,
                 \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"],
+                \        "rust-analyzer.imports.granularity.group": "module",
                 \        "rust-analyzer.references.excludeImports": v:true,
                 \        "rust-analyzer.references.excludeTests": v:true,
                 \    }
