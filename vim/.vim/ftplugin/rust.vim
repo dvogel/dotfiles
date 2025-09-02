@@ -90,6 +90,19 @@ def BrowseDocsForCrate(crateName: string): void
     system($'{openCmd} "{url}"')
 enddef
 
+def g:BuildRustStatusLine(): string
+    var accum = ""
+    if has_key(b:, "sign_alarm_level")
+        if b:sign_alarm_level == 2
+            accum ..= "%#LspSignAlarmError#[ERROR]%#StatusLine#"
+        elseif b:sign_alarm_level == 1
+            accum ..= "%#LspSignAlarmWarning#[WARNING]%#StatusLine#"
+        endif
+    endif
+    return accum
+enddef
+
+setlocal statusline=%f\ %h%r\ %{%g:BuildRustStatusLine()%}%=%l,%c\ \ 
 
 omap <buffer> S :<C-U>call <SID>MarkSome()<CR>
 nmap <buffer> <leader>rb viwo<Esc>i&<Esc>
