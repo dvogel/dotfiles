@@ -220,7 +220,7 @@ let g:ctrlp_working_path_mode = ''
 " The default:
 " let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.projectroot', '.git', 'tags', 'TAGS', 'pom.xml']
-let g:ctrlp_custom_ignore = '\v.*((build|coverage|node_modules|target)/|bundle.min.browser.js).*'
+let g:ctrlp_custom_ignore = '\v.*((build|coverage|dist|node_modules|target)/|bundle.min.browser.js).*'
 
 " These mappings are for the dragvisuals plugin
 vmap <expr> <LEFT> DVB_Drag('left')
