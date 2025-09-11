@@ -7,4 +7,5 @@
     "$\UF72B"  = (moveToEndOfLineAndModifySelection:);       // shift-end
     "^a"       = (selectAll:);
     "^e"       = (moveToEndOfDocumentAndModifySelection:);
+    "^v"       = (paste:);
 }
