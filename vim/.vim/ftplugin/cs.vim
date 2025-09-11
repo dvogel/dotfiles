@@ -5,11 +5,12 @@ setlocal shiftwidth=4
 setlocal expandtab
 setlocal smartindent
 setlocal nowrap
-setlocal fileformat=dos
+setlocal fileformat=unix
 setlocal nofixeol
 setlocal noendofline
 setlocal nobomb
 setlocal commentstring=//\ %s
+setlocal noswapfile
 
 augroup CSharpAutocmds
     autocmd!
