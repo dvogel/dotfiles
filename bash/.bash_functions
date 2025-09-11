@@ -290,7 +290,7 @@ retag_here() {
   if [[ -x ./bin/retag ]]; then
     ./bin/retag
   elif [[ -e Cargo.toml ]]; then
-    rusty-tags -O TAGS vi
+    rusty-tags -o -O TAGS vi
   else
     ctags -R -f TAGS .
   fi
