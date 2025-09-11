@@ -207,7 +207,9 @@ nmap <C-F6> :TagbarToggle<CR>
 nmap <C-S> ysiw
 " Remaps C-n from the 'complete' sources to 'completefunc'
 " inoremap <C-n> <C-x><C-u>
-inoremap <C-S-n> <C-x><C-u>
+if !has("mac")
+    inoremap <C-S-n> <C-x><C-u>
+endif
 nmap <leader>H :nohlsearch<CR>
 nnoremap <C-S-E> :e %:h<Tab>
 nmap L :LspMenu<CR>
