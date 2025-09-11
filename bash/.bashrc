@@ -129,6 +129,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 declare -a PATH_DIRS
 PATH_DIRS=(
             "${HOME}/opt/bats/bin"
+            "${HOME}/opt/d2/bin"
             "${HOME}/opt/dashing/bin"
             "${HOME}/opt/dart/dart-sdk/bin"
             "${HOME}/opt/firefox"
