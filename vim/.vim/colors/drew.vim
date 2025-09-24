@@ -569,3 +569,4 @@ highlight LspDiagInlineWarning guisp=drew_firebrick gui=NONE
 highlight LspInlayHintsParam gui=italic guifg=drew_darkgray
 highlight LspInlayHintsType gui=italic guifg=drew_darkgray
 
+highlight csObjectAccessOp guifg=drew_babyyellow
