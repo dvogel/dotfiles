@@ -9,6 +9,9 @@ var menuChoices = [
     ["Format", "LspFormat"],
     ["Rename", "LspRename"],
     ["Show Signature", "LspShowSignature"],
+    ["Goto Declaration", "LspGotoDeclaration"],
+    ["Goto Impl", "LspGotoImpl"],
+    ["Goto Definition", "LspGotoDefinition"],
 ]
 
 def MoveOptionToTop(idx: number): void
