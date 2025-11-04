@@ -74,8 +74,10 @@ if executable('rust-analyzer')
                 \    name: 'rustlang',
                 \    filetype: ['rust'],
                 \    path: exepath('rust-analyzer'),
+                \    args: ['--log-file', getenv('HOME') . "/tmp/rust-analyzer.log"],
                 \    syncInit: v:true,
                 \    initializationOptions: {
+                \        "rust-analyzer.cargo.targetDir": v:true,
                 \        "rust-analyzer.completion.autoimport.enable": v:true,
                 \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"],
                 \        "rust-analyzer.imports.granularity.group": "module",
