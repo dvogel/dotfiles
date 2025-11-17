@@ -45,6 +45,10 @@ function within_line_boundary {
   fi
 }
 
+function asciidoc_stdout () {
+  asciidoc --no-header-footer -o - - < "$1" | lynx -stdin -dump
+}
+
 
 function myip () {
     curl_bin="$(which curl)"
