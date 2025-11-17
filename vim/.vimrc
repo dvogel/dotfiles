@@ -28,7 +28,8 @@ colorscheme drew
 " highlight Folded ctermbg=4 ctermfg=10
 " highlight LineNr ctermbg=0 ctermfg=6
 
-set paste
+set nopaste
+set pastetoggle=<F12>
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -199,7 +200,6 @@ nmap <F9> :GBufExplorer<CR>
 nmap <C-S-F9> :GBufExplorerHorizontalSplit<CR>
 nmap <S-F9> :GToggleBufExplorer<CR>
 nmap <F10> :BufExplorer<CR>
-nmap <F12> :qall!<CR>
 nmap <F6> :NERDTreeToggle<CR>
 nmap <C-F6> :TagbarToggle<CR>
 " Depends on vim-surround from Tim Pope:
