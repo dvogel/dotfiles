@@ -321,7 +321,20 @@ vim-dumps() {
 }
 
 shell_in_docker() {
-  docker run --rm -it -e ROWS -e COLS --network host --entrypoint /bin/bash "$@"
+  local shell="/bin/sh"
+  while [[ "$1" =~ ^-- ]]; do
+    case "$1" in
+      --bash)
+        shell="/bin/bash"
+        ;;
+      *)
+        echo "Unknown option: $1"
+        ;;
+    esac
+    shift
+  done
+
+  docker run --rm -it -e ROWS -e COLS --network host --entrypoint "$shell" "$@"
 }
 
 minikube_docker() {
