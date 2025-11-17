@@ -28,7 +28,7 @@ def mark(text, args, Mark, extra_cli_args, *a):
     if git_match:
         matches.append((git_match.start(), git_match.end(), git_match.group(0)))
 
-    git_merge_conflict_pattern = 'both modified:\s+([-_/.\w]+)'
+    git_merge_conflict_pattern = 'both (?:added|modified):\s+([-_/.\w]+)'
     append_matches(matches, re.finditer(git_merge_conflict_pattern, text), 1)
 
     for (idx, (start, end, text)) in enumerate(sorted(matches, key=itemgetter(0))):
