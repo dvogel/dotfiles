@@ -139,9 +139,6 @@
 [submodule "vim-maven-plugin"]
 	path = vim/.vim/pack/plugins/start/vim-maven-plugin
 	url = git@github.com:mikelue/vim-maven-plugin.git
-[submodule "vim-rust"]
-	path = vim/.vim/pack/plugins/start/vim-rust
-	url = git@github.com:rust-lang/rust.vim.git
 [submodule "vim-tada"]
 	path = vim/.vim/pack/plugins/start/vim-tada
 	url = git@github.com:dewyze/vim-tada.git
