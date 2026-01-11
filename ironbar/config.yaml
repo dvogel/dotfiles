@@ -1,0 +1,85 @@
+---
+monitors:
+  DP-1: 
+    name: "DP-1"
+    position: "top"
+    height: 42
+    start:
+      - type: "workspaces"
+        orientation: "horizontal"
+      - type: "custom"
+        name: "app-quicklaunch"
+        class: "app-quicklaunch"
+        bar:
+          - type: "button"
+            name: "launch-kitty"
+            widgets:
+              - type: "image"
+                src: "/usr/share/icons/hicolor/256x256/apps/kitty.png"
+            on_click: "!kitty"
+          - type: "button"
+            name: "launch-firefox"
+            widgets:
+              - type: "image"
+                src: "/usr/share/icons/hicolor/48x48/apps/firefox-esr.png"
+            on_click: "!/home/dvogel/firefox/firefox -ProfileManager"
+          - type: "button"
+            name: "launch-nautilus"
+            widgets:
+              - type: "image"
+                src: "/usr/share/icons/gnome-human/32x32/apps/nautilus.png"
+            on_click: "!nautilus"
+          - type: "button"
+            name: "launch-rustfolio"
+            widgets:
+              - type: "image"
+                src: "/home/dvogel/devel/rustfolio/icons/folder-icon.png"
+            on_click: "!"
+          - type: "button"
+            name: "launch-steam"
+            widgets:
+              - type: "image"
+                src: "/home/dvogel/.local/share/icons/hicolor/256x256/apps/steam.png"
+            on_click: "!/home/dvogel/bin/steamwrapper"
+    center:
+      - type: "clock"
+        format: "%a, %d. %b  %I:%M %p"
+        orientation: "horizontal"
+        justify: "center"
+    end:
+      - type: "volume"
+      - type: "custom"
+        name: power-menu
+        class: power-menu
+        bar:
+        - type: button
+          name: power-btn
+          label: "⏻"
+          on_click: "popup:toggle"
+        popup:
+        - type: box
+          name: power-menu-popup
+          orientation: vertical
+          widgets:
+          - type: label
+            name: header
+            class: header
+            label: Power menu
+          - type: box
+            name: buttons
+            orientation: vertical
+            widgets:
+            - type: button
+              label: <span>🔒 Lock</span>
+              on_click: '!ironbar bar DP-1 hide-popup; swaylock'
+            - type: button
+              label: <span>💤 Suspend</span>
+              on_click: '!ironbar bar DP-1 hide-popup; systemctl suspend'
+            - type: button
+              label: <span>⥮ Reboot</span>
+              on_click: '!ironbar bar DP-1 hide-popup; systemctl reboot'
+            - type: button
+              label: <span>⏻ Shutdown</span>
+              on_click: '!shutdown now'
+position: "top"
+height: 42

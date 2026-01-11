@@ -1,0 +1,118 @@
+@define-color bar_bg #444444;
+
+.workspaces button {
+	background-image: none;
+	border-width: 0;
+}
+
+.container, .widget {
+	background-color: @bar_bg;
+}
+
+#bar {
+	border-color: #444444;
+	border-width: 3mm 0 0 0;
+	/* background-color: @theme_bg_color; */
+	background-color: #444444;
+}
+
+.clock {
+	color: #cccccc;
+	letter-spacing: 1px;
+	font-size: 10pt;
+	font-weight: bold;
+	border-width: 0;
+}
+
+button.clock {
+	background-image: none;
+	border-width: 0;
+}
+
+.workspaces {
+	margin: 0 0 0 1em;
+	font-size: 10pt;
+}
+
+.workspaces .item {
+	padding: 0 0.6em 0 0.6em;
+	margin: 0.3em;
+	border-width: 1pt;
+}
+
+.workspaces .button {
+	background-color: transparent;
+}
+
+.workspaces .item:nth-child(1) { background-color: #cc2222; }
+.workspaces .item:nth-child(2) { background-color: #bb7700; }
+.workspaces .item:nth-child(3) { background-color: #cccc00; }
+.workspaces .item:nth-child(4) { background-color: #008800; }
+.workspaces .item:nth-child(5) { background-color: #2299cc; }
+.workspaces .item:nth-child(6) { background-color: #2222cc; }
+.workspaces .item:nth-child(7) { background-color: #cc22cc; }
+.workspaces .item:nth-child(8) { background-color: #990099; }
+
+.app-quicklaunch {
+	border-radius: 1em;
+	background-color: lighter(lighter(@bar_bg));
+	margin: 0 0 0 1em;
+	padding: 0 1em 0 1em;
+}
+
+.app-quicklaunch button {
+	background-image: none;
+	background-color: transparent;
+	border-width: 1pt;
+	border-color: transparent;
+}
+
+.app-quicklaunch button:hover {
+	background-color: lighter(lighter(lighter(@bar_bg)));
+	border-width: 1pt;
+	border-color: lighter(lighter(@bar_bg));
+	border-radius: 1em;
+}
+
+.volume {
+	border-radius: 1em;
+	background-color: lighter(lighter(@bar_bg));
+	font-size: 10pt;
+	padding: 0 1em 0 1em;
+	margin: 0 1em 0 1em;
+	color: #000000;
+}
+
+button.volume {
+	background-image: none;
+	border-width: 0;
+}
+
+button.volume:hover {
+	background-color: lighter(lighter(lighter(@bar_bg)));
+}
+
+.power-menu {
+	border-width: 0;
+	margin: 0 1em 0 0;
+}
+
+.power-menu button#power-btn {
+	background-color: lighter(lighter(@bar_bg));
+	background-image: none;
+	border-width: 0;
+}
+
+.power-menu button#power-btn:hover {
+	background-color: lighter(lighter(lighter(@bar_bg)));
+	background-image: none;
+	border-width: 0;
+}
+
+.power-menu .popup .header {
+	margin: 1mm 0 5mm 0;
+}
+
+.power-menu .popup button {
+	margin: 1mm 0 1mm 0;
+}
