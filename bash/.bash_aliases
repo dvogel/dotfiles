@@ -18,6 +18,10 @@ alias jsoncount="jq -n 'reduce inputs as \$i (0; . + 1)'"
 alias certtext="openssl x509 -noout -text"
 alias certattrs="openssl x509 -noout -subject -issuer -startdate -enddate"
 alias vy="view --cmd 'set ft=yaml' -"
+alias sc="systemctl"
+alias scu="systemctl --user"
+alias jc="journalctl"
+alias jcu="journalctl --user"
 
 alias gdc='git diff --cached'
 alias githist='git log --graph --branches --oneline'
