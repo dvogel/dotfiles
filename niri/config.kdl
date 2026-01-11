@@ -1,4 +1,4 @@
-// vim: commentstring=//\ %s
+// vim: commentstring=//\ %s nowrap
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 
@@ -16,8 +16,8 @@ input {
 
         // You can set the keyboard repeat parameters. The defaults match wlroots and sway.
         // Delay is in milliseconds before the repeat starts. Rate is in characters per second.
-        // repeat-delay 600
-        // repeat-rate 25
+        repeat-delay 700
+        repeat-rate 25
 
         // Niri can remember the keyboard layout globally (the default) or per-window.
         // - "global" - layout change is global for all windows.
@@ -130,7 +130,7 @@ layout {
 
         // Color of the ring on the active monitor.
         // active-color "#7fc8ff"
-        active-color "#886699"
+        active-color "#9966cc"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -206,7 +206,8 @@ layout {
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
     // - "always", the focused column will always be centered.
-    center-focused-column "on-overflow"
+    // center-focused-column "on-overflow"
+	center-focused-column "never"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -399,10 +400,11 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+    Super+O { open-overview; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "kitty"; }
-    Mod+D { spawn "fuzzel"; }
+    Super+T { spawn "kitty"; }
+	Super+Space { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell:
@@ -518,6 +520,10 @@ binds {
     Mod+Ctrl+7 { move-column-to-workspace 7; }
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
+	Super+Z { set-window-width "33%"; }
+	Super+X { set-window-width "50%"; }
+	Super+C { set-window-width "66%"; }
+	Super+Shift+T { toggle-column-tabbed-display; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
@@ -529,6 +535,7 @@ binds {
     // Mod+BracketLeft  { consume-or-expel-window-left; }
     // Mod+BracketRight { consume-or-expel-window-right; }
 
+	Alt+F { switch-focus-between-floating-and-tiling; }
     Mod+R { switch-preset-column-width; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
@@ -572,6 +579,12 @@ binds {
     // directly scanned out. It's therefore useful to check if direct scanout
     // is working.
     // Mod+Shift+Ctrl+T { toggle-debug-tint; }
+
+	Super+Grave { open-overview; }
+	Alt+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+	Alt+WheelScrollUp cooldown-ms=150 { focus-column-left; }
+	Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+	Ctrl+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
 }
 
 // Settings for debugging. Not meant for normal use.
