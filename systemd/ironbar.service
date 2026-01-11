@@ -1,0 +1,9 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/home/dvogel/opt/ironbar/ironbar
+Environment=PATH=/home/dvogel/bin:/home/dvogel/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Restart=on-failure
