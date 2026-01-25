@@ -80,6 +80,8 @@ if has("mac")
     set nobackup
 end
 
+let g:dim_java_path = "/opt/homebrew/opt/openjdk/bin/java"
+
 let g:lsp_use_event_queue = 0
 
 let g:sign_column_error_signs = [
