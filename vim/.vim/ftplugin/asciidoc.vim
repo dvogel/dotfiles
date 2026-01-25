@@ -16,9 +16,14 @@ setlocal breakindent
 setlocal breakindentopt=sbr,shift:4
 setlocal wrap
 
-def AsciDocMakeCodeBlock(firstLine: number, lastLine: number): void
+def AsciiDocMakeCodeBlock(firstLine: number, lastLine: number): void
     append(firstLine - 1, "-------------------")
     append(lastLine + 1, "-------------------")
+enddef
+
+def AsciiDocMakeHeader(ch: string): void
+    var headerLine = substitute(getline('.'), '.', ch, 'g')
+    append(line('.'), [headerLine])
 enddef
 
 def AsciiDocHelpCloseCallback(popupWinId: number, result: any): void
@@ -44,6 +49,20 @@ def AsciiDocHelpPopupFilter(winid: number, key: string): number
     return 0
 enddef
 
+def OpenAsciiDocHelpBuffer()
+    enew
+    setlocal noswapfile
+    setlocal buftype=nofile
+    setlocal bufhidden=
+    silent file [AsciiDoc Help]
+    setlocal filetype=
+
+    var helpText = system("asciidoc --help syntax")
+    helpText = tr(helpText, "\r", "\n")
+    var helpLines = split(helpText, "\n", v:true)
+    append('$', helpLines)
+enddef
+
 def AsciiDocHelp()
     var helpText = system("asciidoc --help syntax")
     helpText = tr(helpText, "\r", "\n")
@@ -64,8 +83,13 @@ def CloseAsciiDocHelp()
     endif
 enddef
 
-command! AsciiDocHelp AsciiDocHelp()
-command! -range AsciiDocCode AsciDocMakeCodeBlock(<line1>, <line2>)
-
-
-
+# command! AsciiDocHelp AsciiDocHelp()
+command! AsciiDocHelp OpenAsciiDocHelpBuffer()
+command! -range AsciiDocCode AsciiDocMakeCodeBlock(<line1>, <line2>)
+command! AsciiDocMakeTitleHeader AsciiDocMakeHeader("=")
+command! AsciiDocMakeSectionHeader AsciiDocMakeHeader("-")
+command! AsciiDocMakeHeaderL0 AsciiDocMakeHeader("=")
+command! AsciiDocMakeHeaderL1 AsciiDocMakeHeader("-")
+command! AsciiDocMakeHeaderL2 AsciiDocMakeHeader("~")
+command! AsciiDocMakeHeaderL3 AsciiDocMakeHeader("^")
+command! AsciiDocMakeHeaderL4 AsciiDocMakeHeader("+")
