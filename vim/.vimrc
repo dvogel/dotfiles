@@ -451,3 +451,7 @@ import "prettyprint.vim"
 let g:PrettyFormat = function("prettyprint.PrettyFormat")
 let g:PrettyPrint = function("prettyprint.PrettyPrint")
 
+let l:localVimRc = getenv('HOME') . '/.local.vimrc'
+if filereadable(l:localVimRc)
+    execute 'gsource 'g . l:localVimRc
+endif

@@ -89,6 +89,8 @@ def g:LlamaConnect(prompt: string): void
         llamaChannel = v:null
     endif
 
+    var ctxBufFiletype = &filetype
+
     g:CreateNewLlamaLogBuffer()
 
     llamaChannel = ch_open(g:llamaServerAddress, {
@@ -107,8 +109,8 @@ def g:LlamaConnect(prompt: string): void
     }
 
     var systemPrompt = "You are a helpful assistant."
-    if has_key(filetypeSystemPrompts, &filetype)
-        systemPrompt = systemPrompt .. " " .. filetypeSystemPrompts[&filetype]
+    if has_key(filetypeSystemPrompts, ctxBufFiletype)
+        systemPrompt = systemPrompt .. " " .. filetypeSystemPrompts[ctxBufFiletype]
     else
         systemPrompt = systemPrompt .. " I am writing code in " .. &filetype .. "."
     endif
@@ -126,8 +128,7 @@ def g:LlamaConnect(prompt: string): void
     appendbufline(g:llamaLogBufNr, '$', "")
     appendbufline(g:llamaLogBufNr, '$', "")
 
-
-    var entityBody = json_encode({
+    var entityBodyData = {
         "stream": true,
         "temperature": 0.8,
         "messages": [
@@ -158,10 +159,14 @@ def g:LlamaConnect(prompt: string): void
         "dry_base": 1.75,
         "dry_allowed_length": 2,
         "dry_penalty_last_n": -1,
-        "max_tokens": -1
-    })
+        "max_tokens": -1,
+    }
+    if exists("g:llamaModel")
+        entityBodyData["model"] = g:llamaModel
+    endif
+    var entityBody = json_encode(entityBodyData)
 
-    ch_sendraw(llamaChannel, "POST /chat/completions HTTP/1.1\r\n")
+    ch_sendraw(llamaChannel, "POST /v1/chat/completions HTTP/1.1\r\n")
     ch_sendraw(llamaChannel, "Host: " .. g:llamaServerAddress .. "\r\n")
     ch_sendraw(llamaChannel, "Content-Type: application/json\r\n")
     ch_sendraw(llamaChannel, "Accept: text/event-stream\r\n")
@@ -181,6 +186,7 @@ enddef
 def g:MoveCursorToTheEndOfTheFileAsSave()
 enddef
 
+command! -nargs=1 LlmPrompt g:LlamaConnect(<q-args>)
+command! -range LlmSelection g:PromptFromVisualSelection()
 
 defcompile
-
