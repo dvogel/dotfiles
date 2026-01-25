@@ -46,7 +46,15 @@ function within_line_boundary {
 }
 
 function asciidoc_stdout () {
-  asciidoc --no-header-footer -o - - < "$1" | lynx -stdin -dump
+  asciidoc -b html5 -o - - < "$1" | lynx -stdin -dump
+}
+
+function asciidoc_readme () {
+  if [[ ! -e README.adoc ]]; then
+    echo "No such file: README.adoc"
+    return
+  fi
+  asciidoc -b html5 -a stylesheet=stylesheets/github.css -o README.html README.adoc
 }
 
 
