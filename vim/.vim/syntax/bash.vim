@@ -150,7 +150,7 @@ syn match bashDerefOperator contained  +##\=\|%%\=+
 
 " command line options
 
-syn match bashCommandOpts "[ \t]\zs\(--\=\|+\)\([a-zA-Z0-9]\)\=\([-a-zA-Z0-9]\)*"
+syn match bashCommandOpts "[ \t]\zs\(--\=\|+\)\([a-zA-Z0-9]\)\=\([-_a-zA-Z0-9]\)*"
 
 " special variables
 if exists("is_bash")
