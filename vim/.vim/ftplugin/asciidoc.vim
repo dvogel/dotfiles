@@ -83,6 +83,15 @@ def CloseAsciiDocHelp()
     endif
 enddef
 
+import "cmdmenu.vim"
+var asciiDocCmdMenu = [
+    ["Make code block", "AsciiDocCode"],
+    ["Make title header", "AsciiDocMakeTitleHeader"],
+    ["Make section header", "AsciiDocMakeSectionHeader"],
+]
+command! -buffer ShowAsciiDocCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocCmdMenu)
+nmap <buffer> L :ShowAsciiDocCmdMenu<CR>
+
 # command! AsciiDocHelp AsciiDocHelp()
 command! AsciiDocHelp OpenAsciiDocHelpBuffer()
 command! -range AsciiDocCode AsciiDocMakeCodeBlock(<line1>, <line2>)
