@@ -135,6 +135,7 @@
 --ignore-directory=match:/jacoco.*/
 --ignore-directory=is:maven-status
 --ignore-directory=is:target/
+--ignore-directory=is:cargo-cache/
 --ignore-file=is:project.assets.json
 --ignore-file=match:.*.deps.json
 --ignore-directory=is:obj
