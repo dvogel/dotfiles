@@ -53,8 +53,8 @@ function! SetLspOptionsAgain() abort
                 \ })
 endfunction
 augroup LspInit
-    autocmd VimEnter * call SetLspOptionsAgain()
-    autocmd BufReadPre *.go,*.rs,*.js,*.ts call SetLspOptionsAgain()
+    " autocmd VimEnter * call SetLspOptionsAgain()
+    " autocmd BufReadPre *.go,*.rs,*.js,*.ts call SetLspOptionsAgain()
 augroup END
 nmap <silent> <C-S-i> :call ToggleLspOption("highlightDiagInline") \| :echo "Inline type hints will change after the next save."<CR>
 
@@ -70,13 +70,7 @@ if executable('gopls')
 endif
 
 if executable('rust-analyzer')
-    call LspAddServer([#{
-                \    name: 'rustlang',
-                \    filetype: ['rust'],
-                \    path: exepath('rust-analyzer'),
-                \    args: ['--log-file', getenv('HOME') . "/tmp/rust-analyzer.log"],
-                \    syncInit: v:true,
-                \    initializationOptions: {
+    let initializationOptions = {
                 \        "rust-analyzer.cargo.targetDir": v:true,
                 \        "rust-analyzer.completion.autoimport.enable": v:true,
                 \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"],
@@ -84,6 +78,18 @@ if executable('rust-analyzer')
                 \        "rust-analyzer.references.excludeImports": v:true,
                 \        "rust-analyzer.references.excludeTests": v:true,
                 \    }
+    let cmdlineArgs = ['--log-file', getenv('HOME') . "/tmp/rust-analyzer.log"]
+    let configPath = getenv('HOME') . "/rust-analyzer.cargo.config.toml"
+    if filereadable(configPath)
+        call extend(cmdlineArgs, ['--config-path', shellescape(configPath)])
+    endif
+    call LspAddServer([#{
+                \    name: 'rustlang',
+                \    filetype: ['rust'],
+                \    path: exepath('rust-analyzer'),
+                \    args: cmdlineArgs,
+                \    syncInit: v:true,
+                \    initializationOptions: initializationOptions,
                 \  }])
 endif
 
@@ -98,6 +104,12 @@ if executable('start-typescript-language-server')
                 \    }
                 \  }])
 endif
+
+function OmniSharpCommand(cmd)
+  for editAct in a:cmd.arguments
+      echomsg string(editAct)
+  endfor
+endfunction
 
 if executable('omnisharp-lsp')
     call LspAddServer([#{

@@ -21,7 +21,7 @@ nnoremap <buffer> <leader>fn /^\(pub \)\?fn <CR>
 
 # Remaps C-S-n from the 'complete' sources to 'completefunc'. This is because
 # inoremap <buffer> <C-S-N> <C-x><C-u>
-# setlocal completefunc=
+setlocal completefunc=g:LspOmniFunc
 # setlocal completefunc=lsc#complete#complete
 
 b:autoformat_remove_trailing_spaces = 1
@@ -102,6 +102,21 @@ def g:BuildRustStatusLine(): string
     return accum
 enddef
 
+def RustConvertIfLetToMatch(text: string): list<string>
+    var pattern = '\v(if\s+)?(let\s+)(%(Ok|Err)[(].+[)])\s*[=]\s*(.*) [{]'
+    var groups = matchlist(trim(text), pattern)
+    if groups == []
+        return [text]
+    else
+        var replacement = [
+            "match " .. groups[4] .. " {",
+            groups[3] .. " => {"
+        ]
+        echo string(replacement)
+        return replacement
+    endif
+enddef
+
 setlocal statusline=%f\ %h%r\ %{%g:BuildRustStatusLine()%}%=%l,%c\ \ 
 
 omap <buffer> S :<C-U>call <SID>MarkSome()<CR>
@@ -115,7 +130,10 @@ nmap <buffer> <leader>Err ciWErr(<C-r>-)<Esc>
 nmap <buffer> <leader>ok ciwOk(<C-r>-)<Esc>
 nmap <buffer> <leader>Ok ciWOk(<C-r>-)<Esc>
 nmap <buffer> <leader>u "uyiwciW<C-r>u
+nmap <buffer> <leader>dynerr iBox<dyn Error + Send + Sync><Esc>
+imap <buffer> <leader>dynerr Box<dyn Error + Send + Sync>
 
+command! -buffer RustConvertIfLetToMatch setline('.', RustConvertIfLetToMatch(getline('.')))
 command! -buffer -nargs=1 BrowserDocsForCrate call BrowseDocsForCrate(<q-args>)
 
 # For compatibility with cargo-quickfix
