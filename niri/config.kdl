@@ -1,4 +1,4 @@
-// vim: commentstring=//\ %s nowrap
+// vim: commentstring=//\ %s nowrap sw=4 ts=4 expandtab
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 
@@ -406,6 +406,7 @@ binds {
     Super+T { spawn "kitty"; }
 	Super+Space { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
+    Ctrl+Alt+H { spawn "rofi" "-i" "-modi" "clipboard:clipbox" "-show" "clipboard"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -502,27 +503,19 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
-	Super+Z { set-window-width "33%"; }
-	Super+X { set-window-width "50%"; }
-	Super+C { set-window-width "66%"; }
+    Ctrl+Alt+1 { focus-workspace 1; }
+    Ctrl+Alt+2 { focus-workspace 2; }
+    Ctrl+Alt+3 { focus-workspace 3; }
+    Ctrl+Alt+4 { focus-workspace 4; }
+    Ctrl+Alt+5 { focus-workspace 5; }
+    Ctrl+Alt+6 { focus-workspace 6; }
+    Ctrl+Alt+7 { focus-workspace 7; }
+    Ctrl+Alt+8 { focus-workspace 8; }
+    Ctrl+Alt+9 { focus-workspace 9; }
+	Super+1 { set-window-width "33%"; }
+	Super+2 { set-window-width "50%"; }
+	Super+3 { set-window-width "66%"; }
+	Super+4 { maximize-column; }
 	Super+Shift+T { toggle-column-tabbed-display; }
 
     // Alternatively, there are commands to move just a single window:
@@ -535,11 +528,11 @@ binds {
     // Mod+BracketLeft  { consume-or-expel-window-left; }
     // Mod+BracketRight { consume-or-expel-window-right; }
 
-	Alt+F { switch-focus-between-floating-and-tiling; }
+    Alt+F { switch-focus-between-floating-and-tiling; }
     Mod+R { switch-preset-column-width; }
-    Mod+F { maximize-column; }
+    Super+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+C { center-column; }
+    Super+C { center-column; }
 
     // Finer width adjustments.
     // This command can also:
@@ -549,12 +542,12 @@ binds {
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Super+Minus { set-column-width "-10%"; }
+    Super+Equal { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Super+Shift+Minus { set-window-height "-10%"; }
+    Super+Shift+Equal { set-window-height "+10%"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have

@@ -34,7 +34,7 @@ monitors:
             widgets:
               - type: "image"
                 src: "/home/dvogel/devel/rustfolio/icons/folder-icon.png"
-            on_click: "!"
+            on_click: "!rustfolio"
           - type: "button"
             name: "launch-steam"
             widgets:
