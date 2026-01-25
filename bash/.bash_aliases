@@ -56,6 +56,12 @@ alias rtags='rusty-tags --omit-deps --output TAGS vi'
 
 alias miniktl='minikube kubectl --'
 
+jsonschema_bin="$(type -p jsonschema)"
+if [[ -n "$jsonschema_bin" ]] && [[ -x "$jsonschema_bin" ]]; then
+  alias jsonschema-validate-github-workflow='jsonschema validate "$HOME"/github-workflow.json'
+  alias jsonschema-validate-github-action='jsonschema validate "$HOME"/github-action.json'
+fi
+
 [[ -e /usr/local/bin/ctags ]] && alias ctags=/usr/local/bin/ctags
 
 [[ -e ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
