@@ -186,3 +186,10 @@ def AutofmtCommandHook(bufnr: number): dict<any>
 enddef
 # b:autofmt_command_hook = function('AutofmtCommandHook')
 unlet! b:autofmt_command_hook
+
+# This is a kludge to work around a bug in either the LSP plugin or
+# rust-analyzer wherein the buffer stops updating with new diagnostics after
+# saving.
+command! -buffer LspReinitBuffer unlet b:LspQfId
+
+command! -buffer TestsInFile vimgrep "fn given_" % | copen

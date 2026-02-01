@@ -74,15 +74,16 @@ if executable('rust-analyzer')
                 \        "rust-analyzer.cargo.targetDir": v:true,
                 \        "rust-analyzer.completion.autoimport.enable": v:true,
                 \        "rust-analyzer.check.ignore": ["unused_imports", "unused_variables"],
+                \        "rust-analyzer.check.targets": ["aarch64-apple-darwin", "aarch64-unknown-linux-musl"],
                 \        "rust-analyzer.imports.granularity.group": "module",
                 \        "rust-analyzer.references.excludeImports": v:true,
                 \        "rust-analyzer.references.excludeTests": v:true,
                 \    }
     let cmdlineArgs = ['--log-file', getenv('HOME') . "/tmp/rust-analyzer.log"]
-    let configPath = getenv('HOME') . "/rust-analyzer.cargo.config.toml"
-    if filereadable(configPath)
-        call extend(cmdlineArgs, ['--config-path', shellescape(configPath)])
-    endif
+    " let configPath = getenv('HOME') . "/rust-analyzer.cargo.config.toml"
+    " if filereadable(configPath)
+    "     call extend(cmdlineArgs, ['--config-path', shellescape(configPath)])
+    " endif
     call LspAddServer([#{
                 \    name: 'rustlang',
                 \    filetype: ['rust'],
