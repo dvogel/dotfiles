@@ -392,3 +392,10 @@ jwt_decode() {
   echo "$token" | awk -F. '{ print $2 }' | base64_pad | base64 -d | jq .
 }
 
+jwt_decode_authorization_header() {
+  local header="$(cat)"
+  local token="${header##Bearer }"
+  echo "$token" | awk -F. '{ print $1 }' | base64_pad | base64 -d | jq .
+  echo "$token" | awk -F. '{ print $2 }' | base64_pad | base64 -d | jq .
+}
+
