@@ -117,6 +117,40 @@ def RustConvertIfLetToMatch(text: string): list<string>
     endif
 enddef
 
+def OmniLensTransformParseGivenWhenThen(textObj: dict<any>): list<string>
+    if match(textObj["text"], '\cgiven_.*\(_when_\)\?.*_then_') == -1
+        echo "Not a given-when-then"
+        return null_list
+    endif
+
+    var words = split(textObj["text"], "_")
+    map(words, (idx, w) => tolower(w))
+    var given = words[0]
+    if given != "given"
+        return null_list
+    endif
+
+    var lines = ["Given:"]
+    words = words[1 : ]
+    var whenIdx = match(words, "when")
+    if whenIdx > 0
+        extend(lines, [
+            "  " .. join(words[0 : whenIdx - 1], " "),
+            "When:"
+        ])
+        words = words[whenIdx + 1 : ]
+    endif
+
+    var thenIdx = match(words, "then")
+    extend(lines, [
+            "  " .. join(words[0 : thenIdx - 1], " "),
+            "Then:",
+            "  " .. join(words[thenIdx + 1 : ], " ")
+        ])
+    return lines
+enddef
+b:omniLensAnalyzers = [funcref(OmniLensTransformParseGivenWhenThen)]
+
 setlocal statusline=%f\ %h%r\ %{%g:BuildRustStatusLine()%}%=%l,%c\ \ 
 
 omap <buffer> S :<C-U>call <SID>MarkSome()<CR>
