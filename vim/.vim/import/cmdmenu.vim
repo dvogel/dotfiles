@@ -49,8 +49,8 @@ if selfTest == v:true
     command! -buffer CmdMenuTest CmdMenuTestShowMenu()
     nmap <buffer> L :CmdMenuTest<CR>
 else
-    delcommand! CmdMenuTestSayHello
-    delcommand! CmdMenuTestSayGoodbye
-    delcommand! CmdMenuTestSaySomething
-    delcommand! CmdMenuTest
+    delcommand CmdMenuTestSayHello
+    delcommand CmdMenuTestSayGoodbye
+    delcommand CmdMenuTestSaySomething
+    delcommand CmdMenuTest
 endif
