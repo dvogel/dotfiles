@@ -31,5 +31,8 @@ def mark(text, args, Mark, extra_cli_args, *a):
     git_merge_conflict_pattern = 'both (?:added|modified):\s+([-_/.\w]+)'
     append_matches(matches, re.finditer(git_merge_conflict_pattern, text), 1)
 
+    rust_error_path_pattern = '--> ([-_\w]+(?:/[-_\w]+)*[.]rs):\d+:\d+'
+    append_matches(matches, re.finditer(rust_error_path_pattern, text), 1)
+
     for (idx, (start, end, text)) in enumerate(sorted(matches, key=itemgetter(0))):
         yield Mark(idx, start, end, text, {})
