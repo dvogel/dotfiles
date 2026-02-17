@@ -149,7 +149,7 @@ def OmniLensTransformParseGivenWhenThen(textObj: dict<any>): list<string>
         ])
     return lines
 enddef
-b:omniLensAnalyzers = [funcref(OmniLensTransformParseGivenWhenThen)]
+b:omniLensAnalyzers = [function(OmniLensTransformParseGivenWhenThen)]
 
 setlocal statusline=%f\ %h%r\ %{%g:BuildRustStatusLine()%}%=%l,%c\ \ 
 
@@ -192,4 +192,4 @@ unlet! b:autofmt_command_hook
 # saving.
 command! -buffer LspReinitBuffer unlet b:LspQfId
 
-command! -buffer TestsInFile vimgrep "fn given_" % | copen
+command! -buffer TestsInFile vimgrep "fn \zsgiven_" % | copen
