@@ -2,13 +2,13 @@ vim9script
 
 var selfTest = v:false
 
-def MoveOptionToTop(menuChoices: list<list<string>>, idx: number): void
+def MoveOptionToTop(menuChoices: list<list<any>>, idx: number): void
     var entry = menuChoices[idx]
     remove(menuChoices, idx)
     insert(menuChoices, entry, 0)
 enddef
 
-export def ShowCmdMenu(menuName: string, menuChoices: list<list<string>>): void
+export def ShowCmdMenu(menuName: string, menuChoices: list<list<any>>, options: dict<any>): void
     var dispChoices = mapnew(menuChoices, (idx, pair) => pair[0])
     var screenCur = screenpos(win_getid(), line('.'), col('.'))
     popup_menu(dispChoices, {
@@ -26,7 +26,13 @@ export def ShowCmdMenu(menuName: string, menuChoices: list<list<string>>): void
 
             var idx = result - 1
             var chosenCmd = menuChoices[idx][1]
-            execute chosenCmd
+            if type(chosenCmd) == v:t_string
+                execute chosenCmd
+            elseif type(chosenCmd) == v:t_func
+                chosenCmd->call([options])
+            else
+                echoerr "Unrecognized command associated with menu entry: " .. menuChoices[idx][0]
+            endif
             MoveOptionToTop(menuChoices, idx)
         }
     })
@@ -49,8 +55,12 @@ if selfTest == v:true
     command! -buffer CmdMenuTest CmdMenuTestShowMenu()
     nmap <buffer> L :CmdMenuTest<CR>
 else
-    delcommand CmdMenuTestSayHello
-    delcommand CmdMenuTestSayGoodbye
-    delcommand CmdMenuTestSaySomething
-    delcommand CmdMenuTest
+    try
+        delcommand -buffer CmdMenuTestSayHello
+        delcommand -buffer CmdMenuTestSayGoodbye
+        delcommand -buffer CmdMenuTestSaySomething
+        delcommand -buffer CmdMenuTest
+    catch /E1237/
+        # no-op
+    endtry
 endif

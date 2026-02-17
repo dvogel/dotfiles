@@ -2,8 +2,10 @@ vim9script
 
 syntax sync fromstart
 
-setlocal tabstop=4
-setlocal shiftwidth=4
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
 setlocal nojoinspaces
 # q = allow formatting with gq
 # n = use formatlistpat to auto-indent numbered list items
@@ -89,8 +91,14 @@ var asciiDocCmdMenu = [
     ["Make title header", "AsciiDocMakeTitleHeader"],
     ["Make section header", "AsciiDocMakeSectionHeader"],
 ]
-command! -buffer ShowAsciiDocCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocCmdMenu)
+var asciiDocVisualCmdMenu = [
+    ["Make code block", (options) => AsciiDocMakeCodeBlock(options.line1, options.line2)],
+]
+command! -buffer ShowAsciiDocCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocCmdMenu, {})
+command! -buffer -range ShowAsciiDocVisualCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocVisualCmdMenu, { "line1": <line1>, "line2": <line2> })
 nmap <buffer> L :ShowAsciiDocCmdMenu<CR>
+vmap <buffer> L :ShowAsciiDocVisualCmdMenu<CR>
+vmap <buffer> <leader>c :AsciiDocCode<CR>
 
 # command! AsciiDocHelp AsciiDocHelp()
 command! AsciiDocHelp OpenAsciiDocHelpBuffer()
