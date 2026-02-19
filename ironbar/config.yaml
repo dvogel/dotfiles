@@ -1,7 +1,7 @@
 ---
 monitors:
-  DP-1: 
-    name: "DP-1"
+  DP-2: 
+    name: "DP-2"
     position: "top"
     height: 42
     start:
