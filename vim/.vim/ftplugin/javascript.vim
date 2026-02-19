@@ -6,7 +6,7 @@ def AutofmtCommandHook(bufnr: number): dict<any>
     var prettierCmd = "prettier"
 
     var packageJsonPath = findfiles.FindPackageJson()
-    echo "packageJsonPath: " .. packageJsonPath
+    # echo "packageJsonPath: " .. packageJsonPath
     if packageJsonPath != ""
         var prettierPath = fnamemodify(packageJsonPath, ":h") .. "/node_modules/.bin/prettier"
         if executable(prettierPath)
@@ -24,7 +24,7 @@ def AutofmtCommandHook(bufnr: number): dict<any>
     endif
     
     var cmd = join(prettierCmdParts, " ")
-    echomsg cmd
+    # echomsg cmd
     return {
         "command": cmd,
         "options": {},
