@@ -104,6 +104,7 @@ def g:LlamaConnect(prompt: string): void
         'bash': 'I am writing a bash shell script.',
         'sh': 'I am writing a POSIX shell script.',
         'python': 'I am writing a python program.',
+        'javascript': 'I am writing a javascript program.',
         'java': 'I am writing a java program.',
         'vim': 'I am writing vimscript.',
     }
@@ -115,9 +116,12 @@ def g:LlamaConnect(prompt: string): void
         systemPrompt = systemPrompt .. " I am writing code in " .. &filetype .. "."
     endif
 
-    appendbufline(g:llamaLogBufNr, '$', "")
-    appendbufline(g:llamaLogBufNr, '$', "")
-    appendbufline(g:llamaLogBufNr, '$', "")
+    var bufinfo = getbufinfo(g:llamaLogBufNr)[0]
+    if has_key(bufinfo, "linecount") && bufinfo["linecount"] > 0
+        appendbufline(g:llamaLogBufNr, '$', "")
+        appendbufline(g:llamaLogBufNr, '$', "")
+        appendbufline(g:llamaLogBufNr, '$', "")
+    endif
     appendbufline(g:llamaLogBufNr, '$', "# Llama system Prompt:")
     appendbufline(g:llamaLogBufNr, '$', systemPrompt)
     appendbufline(g:llamaLogBufNr, '$', "")
