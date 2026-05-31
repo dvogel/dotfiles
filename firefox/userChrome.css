@@ -1,5 +1,9 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* This file will only take effect after setting:
+ *  toolkit.legacyUserProfileCustomizations.stylesheets = true
+ */
+
 #TabsToolbar {
     visibility: collapse !important;
 }
