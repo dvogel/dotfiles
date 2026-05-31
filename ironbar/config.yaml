@@ -1,7 +1,8 @@
 ---
+$schema: "schema.json"
 monitors:
-  DP-2: 
-    name: "DP-2"
+  defaultMenu: &defaultMenu
+    name: "defaultMenu"
     position: "top"
     height: 42
     start:
@@ -22,7 +23,7 @@ monitors:
             widgets:
               - type: "image"
                 src: "/usr/share/icons/hicolor/48x48/apps/firefox-esr.png"
-            on_click: "!/home/dvogel/firefox/firefox -ProfileManager"
+            on_click: "!/home/dvogel/opt/bin/firefox -ProfileManager"
           - type: "button"
             name: "launch-nautilus"
             widgets:
@@ -48,38 +49,47 @@ monitors:
         justify: "center"
     end:
       - type: "volume"
+      - type: "battery"
+        icon_size: 16
       - type: "custom"
         name: power-menu
         class: power-menu
         bar:
-        - type: button
-          name: power-btn
-          label: "⏻"
-          on_click: "popup:toggle"
+          - type: button
+            name: power-btn
+            label: "⏻"
+            on_click: "popup:toggle"
         popup:
-        - type: box
-          name: power-menu-popup
-          orientation: vertical
-          widgets:
-          - type: label
-            name: header
-            class: header
-            label: Power menu
           - type: box
-            name: buttons
+            name: power-menu-popup
             orientation: vertical
             widgets:
-            - type: button
-              label: <span>🔒 Lock</span>
-              on_click: '!ironbar bar DP-1 hide-popup; swaylock'
-            - type: button
-              label: <span>💤 Suspend</span>
-              on_click: '!ironbar bar DP-1 hide-popup; systemctl suspend'
-            - type: button
-              label: <span>⥮ Reboot</span>
-              on_click: '!ironbar bar DP-1 hide-popup; systemctl reboot'
-            - type: button
-              label: <span>⏻ Shutdown</span>
-              on_click: '!shutdown now'
+              - type: label
+                name: header
+                class: header
+                label: Power menu
+              - type: box
+                name: buttons
+                orientation: vertical
+                widgets:
+                  - type: button
+                    label: <span>🔒 Lock</span>
+                    on_click: '!ironbar bar defaultMenu hide-popup; swaylock'
+                  - type: button
+                    label: <span>💤 Suspend</span>
+                    on_click: '!ironbar bar defaultMenu hide-popup; systemctl suspend'
+                  - type: button
+                    label: <span>⥮ Reboot</span>
+                    on_click: '!ironbar bar defaultMenu hide-popup; systemctl reboot'
+                  - type: button
+                    label: <span>⏻ Shutdown</span>
+                    on_click: '!shutdown now'
+  eDP-1:
+    *defaultMenu
+  DP-1:
+    *defaultMenu
+  DP-2: 
+    *defaultMenu
 position: "top"
 height: 42
+# vim: set ts=2 sw=2 sts=2 expandtab:

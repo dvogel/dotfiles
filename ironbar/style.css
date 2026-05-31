@@ -92,6 +92,23 @@ button.volume:hover {
 	background-color: lighter(lighter(lighter(@bar_bg)));
 }
 
+.battery {
+	margin: 0 1em 0 0;
+	padding: 0;
+	border-width: 0;
+	border-radius: 1em;
+}
+
+.battery .contents {
+	border-radius: 1em;
+	background-color: lighter(lighter(@bar_bg));
+	padding: 0 0.2em 0 0.2em;
+}
+
+.battery:hover .contents {
+	background-color: lighter(lighter(lighter(@bar_bg)));
+}
+
 .power-menu {
 	border-width: 0;
 	margin: 0 1em 0 0;
