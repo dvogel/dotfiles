@@ -1,0 +1,7 @@
+swaylock
+swayidle
+swaybg
+wlr-randr
+wlrctl
+wayland-utils
+fuzzel

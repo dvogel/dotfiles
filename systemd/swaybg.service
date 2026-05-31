@@ -4,5 +4,8 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swaybg -m fill -i "%h/Pictures/FirewatchWallpaper.jpg"
+ExecStart=/usr/bin/swaybg -m fill -i "%h/Pictures/swaybg.jpg"
 Restart=on-failure
+
+[Install]
+WantedBy=niri.service
