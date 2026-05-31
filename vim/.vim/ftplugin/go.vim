@@ -23,10 +23,16 @@ function! GoToggleAssignment() abort
     call setcursorcharpos(l:savedpos[1], l:savedpos[2])
 endfunction
 
+function! AutofmtCommandHook(bufnr) abort
+    return { "command": "gofmt", "options": {} }
+endfunction
+let b:autofmt_command_hook = function('AutofmtCommandHook')
+" unlet! b:autofmt_command_hook
+
 nnoremap <buffer> <C-,> A,<Esc>
 inoremap <buffer> <C-,> <Esc>A,<Esc>
-nnoremap <buffer> <silent> <C-S-e> :call GoToggleAssignment()<CR>
-inoremap <buffer> <silent> <C-S-e> <Esc>:call GoToggleAssignment()<CR>i
+" nnoremap <buffer> <silent> <C-S-e> :call GoToggleAssignment()<CR>
+" inoremap <buffer> <silent> <C-S-e> <Esc>:call GoToggleAssignment()<CR>i
 command! GoNoParens :s/[()]//g
 nmap <Leader>np :GoNoParens<CR>
 nmap <Leader>gf :call GoFmtBuffer()<CR>
