@@ -56,11 +56,12 @@ if selfTest == v:true
     nmap <buffer> L :CmdMenuTest<CR>
 else
     try
+    catch /E1237/
         delcommand -buffer CmdMenuTestSayHello
         delcommand -buffer CmdMenuTestSayGoodbye
         delcommand -buffer CmdMenuTestSaySomething
         delcommand -buffer CmdMenuTest
-    catch /E1237/
+    catch /E184/
         # no-op
     endtry
 endif
