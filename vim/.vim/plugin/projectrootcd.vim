@@ -10,5 +10,8 @@ function! <SID>AutoProjectRootCD()
   endtry
 endfunction
 
-autocmd BufEnter * call <SID>AutoProjectRootCD()
+augroup AutoProjectRootCD
+  autocmd BufEnter * call <SID>AutoProjectRootCD()
+  autocmd BufReadPost * call <SID>AutoProjectRootCD()
+augroup END
 
