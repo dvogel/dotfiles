@@ -154,6 +154,8 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_structs = 1
+let g:go_gopls_enabled = 0
+let g:go_def_mapping_enabled = 0
 
 " Paste from system clipboard (instead of primary selection)
 nmap <Leader>cbp "+p
