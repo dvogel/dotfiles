@@ -303,6 +303,8 @@ retag_here() {
     ./bin/retag
   elif [[ -e Cargo.toml ]]; then
     rusty-tags -o -O TAGS vi
+  elif [[ -e go.mod ]]; then
+    gotags -R -tag-relative -f TAGS .
   else
     ctags -R -f TAGS .
   fi
