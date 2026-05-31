@@ -126,6 +126,10 @@ export JQ_COLORS="0;36:0;32:0;32:0;36:0;31:0;37:0;37:0;34"
 # debian 'buster').
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+if [[ -e /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 declare -a PATH_DIRS
 PATH_DIRS=(
             "/opt/homebrew/opt/openjdk/bin"
@@ -136,7 +140,6 @@ PATH_DIRS=(
             "${HOME}/opt/firefox"
             "${HOME}/opt/gotools/bin"
             "${HOME}/opt/just"
-            "${HOME}/.local/bin"
             "${HOME}/.rvm/bin"
             "${HOME}/.rbenv/bin"
             "${HOME}/.tfenv/bin"
@@ -156,6 +159,7 @@ PATH_DIRS=(
             "/usr/local/git/bin"
             "/usr/local/node/bin"
             "/usr/local/bin"
+            "${HOME}/.local/bin"
             "${HOME}/opt/bin"
             "${HOME}/bin")
 
@@ -219,12 +223,11 @@ for aws_completer_path in "${HOME}/.local/bin/aws_completer"; do
   fi
 done
 
+source <(just --completions bash)
+
 quiet_source "/usr/share/doc/fzf/examples/key-bindings.bash"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [[ -e /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
