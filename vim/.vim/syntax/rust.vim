@@ -62,11 +62,11 @@ syn region    rustEnumStructEntry matchgroup=rustEnumVariantDecl skip="[^}]" sta
 syn match     rustEnumVariantArgsDecl "[A-Z]\w*" contained
 
 syn match     rustStructBlock "struct\s\+\w\+\(<[^>]\+>\)\?\s*;"
-            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
-syn region    ruststructblock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\_\s*\(where\_[^{]\+\)\?{" end="}" keepend 
-            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
+            \ contains=rustStructure,rustAttribute,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
+syn region    ruststructBlock skip="[^}]" start="struct\s\+\w\+\(<[^>]\+>\)\?\_\s*\(where\_[^{]\+\)\?{" end="}" keepend 
+            \ contains=rustStructure,rustAttribute,rustStructMemberType,rustStructMemberTypeLevel,rustStructMemberValueLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 syn region    rustStructBlock skip="[^)]" start="struct\s\+\w\+\(<[^>]\+>\)\?(" end=")" keepend 
-            \ contains=rustStructure,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
+            \ contains=rustStructure,rustAttribute,rustStructMemberType,rustStructMemberTypeLevel,rustKeyword,rustOperator,rustCommentLine,rustComment
 
 syn match     rustUseKeyword "use\ze[ \t]" contained
 syn region    rustUseDecl matchgroup=rustUseDeclDelims start="use\ze[ \t]" end=";" keepend contains=rustUseKeyword,rustPathSep,rustUseBlock1,rustPath,rustPathIdentifierValueLevel,rustPathIdentifierTypeLevel
@@ -212,9 +212,9 @@ syn match     rustEscapeError   display contained /\\./
 syn match     rustEscape        display contained /\\\([nrt0\\'"]\|x\x\{2}\)/
 syn match     rustEscapeUnicode display contained /\\u{\%(\x_*\)\{1,6}}/
 syn match     rustStringContinuation display contained /\\\n\s*/
-syn region    rustString      matchgroup=rustStringDelimiter start=+b"+ skip=+\\\\\|\\"+ end=+"+ contains=rustEscape,rustEscapeError,rustStringContinuation
-syn region    rustString      matchgroup=rustStringDelimiter start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=rustEscape,rustEscapeUnicode,rustEscapeError,rustStringContinuation,@Spell
-syn region    rustString      matchgroup=rustStringDelimiter start='b\?r\z(#*\)"' end='"\z1' contains=@Spell
+syn region    rustString      matchgroup=rustStringDelimiter start=+b"+ skip=+\\\\\|\\"+ end=+"+ contains=rustEscape,rustEscapeError,rustStringContinuation extend
+syn region    rustString      matchgroup=rustStringDelimiter start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=rustEscape,rustEscapeUnicode,rustEscapeError,rustStringContinuation,@Spell extend
+syn region    rustString      matchgroup=rustStringDelimiter start='b\?r\z(#*\)"' end='"\z1' contains=@Spell extend
 
 " Match attributes with either arbitrary syntax or special highlighting for
 " derives. We still highlight strings and comments inside of the attribute.

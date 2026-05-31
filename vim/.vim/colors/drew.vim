@@ -44,6 +44,7 @@ call extend(v:colornames, {
             \ 'drew_purple': '#ba99fa',
             \ 'drew_magenta': '#bb00bb',
             \ 'drew_grape': '#883388',
+            \ 'drew_raspberry_plum': '#c14096',
             \ 'drew_green': '#379f4d',
             \ 'drew_camogreen': '#90ac96',
             \ 'drew_darkgreen': '#276f44',
@@ -53,6 +54,8 @@ call extend(v:colornames, {
             \ 'drew_neongreen': '#b3e46f',
             \ 'drew_khaki': '#ad6d2b',
             \ 'drew_brown': '#642e0e',
+            \ 'drew_blackred': '#3b1b1b',
+            \ 'drew_blackgreen': '#1b2b1b',
             \ 'drew_bloodorange': '#a52c0f',
             \ 'drew_orange': '#e35c0f',
             \ 'drew_salmon': '#f37c2f',
@@ -71,11 +74,11 @@ call extend(v:colornames, {
             \ 'drew_graywood': '#d9d0b4',
             \ 'drew_white': '#dfdfdf',
             \ 'drew_grayishblue': '#cacaf0',
-            \ 'drew_ltgray': '#c5c8c6',
+            \ 'drew_ltgray': '#a0a0a0',
             \ 'drew_midgray': '#8e9194',
             \ 'drew_darkgray': '#5e6164',
-            \ 'drew_almostblack': '#1e2124',
-            \ 'drew_background': '#111111',
+            \ 'drew_almostblack': '#212121',
+            \ 'drew_background': '#1b1b1b',
             \ }, "force")
 
 
@@ -88,12 +91,11 @@ hi Todo gui=REVERSE,BOLD guifg=drew_firebrick guibg=drew_babyyellow
 hi ErrorMsg guibg=drew_red guifg=drew_ltgray
 hi Error guibg=drew_bloodred guifg=drew_ltgray
 hi ModeMsg gui=bold
-hi StatusLine gui=bold guibg=drew_midgray guifg=drew_almostblack
-hi StatusLineNC gui=none guibg=drew_midgray guifg=drew_almostblack
+hi StatusLine gui=bold guibg=drew_darkgray guifg=drew_almostblack
+hi StatusLineNC gui=none guibg=drew_darkgray guifg=drew_almostblack
 hi VertSplit gui=none guibg=drew_midgray
 hi Visual gui=reverse guifg=NONE guibg=NONE
 hi VisualNOS gui=underline,bold
-hi DiffText gui=bold guibg=Red
 hi Cursor guibg=NONE guifg=NONE gui=inverse
 hi lCursor guibg=drew_cyan guifg=NONE
 hi Directory guifg=drew_blue
@@ -109,9 +111,11 @@ hi Title gui=bold guifg=Magenta
 hi WarningMsg guifg=Red
 hi WildMenu guibg=Cyan guifg=Black
 hi Folded guibg=DarkBlue guifg=Grey
-hi DiffAdd guibg=LightBlue
-hi DiffChange guibg=LightMagenta
-hi DiffDelete gui=bold guifg=Blue guibg=LightCyan
+hi DiffAdd gui=NONE guifg=drew_ltgray guibg=drew_blackgreen
+hi DiffChange gui=NONE guifg=drew_babyyellow guibg=drew_darkgray
+hi DiffDelete gui=NONE guifg=drew_ltgray guibg=drew_blackred
+hi DiffText gui=NONE guifg=drew_ltgray guibg=drew_blackgreen
+hi DiffTextAdd gui=NONE guifg=drew_teal guibg=drew_ltgray
 hi Foldcolumn guibg=NONE guifg=NONE
 hi SignColumn guibg=drew_darkgray guifg=drew_red
 
@@ -502,7 +506,7 @@ highlight GBufExBasename guifg=drew_tan ctermfg=yellow
 
 
 highlight link rustStorage StorageClass
-highlight rustAttribute guifg=drew_grape ctermfg=Magenta
+highlight rustAttribute guifg=drew_raspberry_plum ctermfg=Magenta
 highlight rustLifetime guifg=drew_grape ctermfg=Magenta
 highlight rustModPath guifg=drew_slateblue ctermfg=DarkGray
 highlight rustTypeScope guifg=drew_slateblue ctermfg=DarkGray
