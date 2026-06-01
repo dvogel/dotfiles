@@ -32,6 +32,18 @@ def AsciiDocHelpCloseCallback(popupWinId: number, result: any): void
     unlet b:asciiDocHelpPopupWinId
 enddef
 
+def AsciiDocAdmonish(line: number, admonishment: string): void
+    var ln = getline(line)
+    var admonishmentPat = '^[A-Z]\+:'
+    if match(ln, admonishmentPat) == -1
+        var newLn = admonishment .. ": " .. ln
+        setline(line, newLn)
+    else
+        var replLn = substitute(ln, admonishmentPat, admonishment .. ":", "")
+        setline(line, replLn)
+    endif
+enddef
+
 def AsciiDocHelpPopupFilter(winid: number, key: string): number
     if !exists("b:asciiDocHelpPopupWinId")
         return 0
@@ -90,11 +102,20 @@ var asciiDocCmdMenu = [
     ["Make code block", "AsciiDocCode"],
     ["Make title header", "AsciiDocMakeTitleHeader"],
     ["Make section header", "AsciiDocMakeSectionHeader"],
+    ["Admonish: Note", (options) => AsciiDocAdmonish(options.line, "NOTE")],
+    ["Admonish: Important", (options) => AsciiDocAdmonish(options.line, "IMPORTANT")],
+    ["Admonish: Warning", (options) => AsciiDocAdmonish(options.line, "WARNING")],
+    ["Admonish: Tip", (options) => AsciiDocAdmonish(options.line, "TIP")],
+    ["Admonish: Caution", (options) => AsciiDocAdmonish(options.line, "CAUTION")],
 ]
+# TODO: The visual menu should have a Linkify entry that converts the selected text to a URL macro.
+#       Use this syntax: https://asciidoctor.org[Asciidoctor]
+#       The normal menu should have a Linkify entry that inserts a new URL macro.
+#       Use this syntax: link:index.html[Docs]
 var asciiDocVisualCmdMenu = [
     ["Make code block", (options) => AsciiDocMakeCodeBlock(options.line1, options.line2)],
 ]
-command! -buffer ShowAsciiDocCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocCmdMenu, {})
+command! -buffer ShowAsciiDocCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocCmdMenu, { "line": line('.') })
 command! -buffer -range ShowAsciiDocVisualCmdMenu cmdmenu.ShowCmdMenu("AsciiDoc", asciiDocVisualCmdMenu, { "line1": <line1>, "line2": <line2> })
 nmap <buffer> L :ShowAsciiDocCmdMenu<CR>
 vmap <buffer> L :ShowAsciiDocVisualCmdMenu<CR>
