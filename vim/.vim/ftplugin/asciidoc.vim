@@ -18,6 +18,34 @@ setlocal breakindent
 setlocal breakindentopt=sbr,shift:4
 setlocal wrap
 
+def AsciiDocIncreaseLevel(): void
+    var ln = getline('.')
+    if len(ln) == 0
+        return
+    endif
+    if ln[0] == "="
+        keeppatterns s/^=/==/
+    elseif ln[0] == "*"
+        keeppatterns s/^[*]/**/
+    elseif ln[0] == "."
+        keeppatterns s/^[.]/../
+    endif
+enddef
+
+def AsciiDocDecreaseLevel(): void
+    var ln = getline('.')
+    if len(ln) == 0
+        return
+    endif
+    if ln[0] == "="
+        keeppatterns s/^=//
+    elseif ln[0] == "*"
+        keeppatterns s/^[*]//
+    elseif ln[0] == "."
+        keeppatterns s/^[.]//
+    endif
+enddef
+
 def AsciiDocMakeCodeBlock(firstLine: number, lastLine: number): void
     append(firstLine - 1, "-------------------")
     append(lastLine + 1, "-------------------")
@@ -131,3 +159,8 @@ command! AsciiDocMakeHeaderL1 AsciiDocMakeHeader("-")
 command! AsciiDocMakeHeaderL2 AsciiDocMakeHeader("~")
 command! AsciiDocMakeHeaderL3 AsciiDocMakeHeader("^")
 command! AsciiDocMakeHeaderL4 AsciiDocMakeHeader("+")
+
+command! AsciiDocIncreaseLevel AsciiDocIncreaseLevel()
+command! AsciiDocDecreaseLevel AsciiDocDecreaseLevel()
+nmap <buffer> <silent> <Tab> :keeppatterns AsciiDocIncreaseLevel<CR>
+nmap <buffer> <silent> <S-Tab> :keeppatterns AsciiDocDecreaseLevel<CR>
