@@ -80,6 +80,8 @@ defcompile
 
 command! CargoEdit EditCargoToml()
 command! UseCargoWorkspaceTags UseCargoWorkspaceTags()
+command! -buffer GoToTests silent! g/^mod tests {/
+
 
 def BrowseDocsForCrate(crateName: string): void
     var url = $"https://docs.rs/{crateName}/latest/"
