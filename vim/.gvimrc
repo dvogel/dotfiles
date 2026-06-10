@@ -2,9 +2,11 @@ import "fontsize.vim" as fontsize
 
 if has("mac")
     " set guifont=Menlo\ Regular:h14
-    set guifont=Fira\ Code:h14
+    " set guifont=Fira\ Code:h14
+    set guifont=SourceCodePro-Light:h14
 else
-    set guifont=Fira\ Code\ Normal\ 13
+    " set guifont=FiraCode-Light:h13
+    set guifont=Source\ Code\ Pro\ 12
 endif
 
 command! IncreaseGuiFontSize :call fontsize.IncreaseGuiFontSize()
